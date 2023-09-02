@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Debian.GPGKeys :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567187 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567187 rel=stylesheet><link href=/css/featherlight.min.css?1693567187 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567187 rel=stylesheet><link href=/css/auto-complete.css?1693567187 rel=stylesheet><link href=/css/theme.css?1693567187 rel=stylesheet><link href=/css/tabs.css?1693567187 rel=stylesheet><link href=/css/hugo-theme.css?1693567187 rel=stylesheet><link href=/css/theme-mine.css?1693567187 rel=stylesheet><link href=/css/dark.css?1693567187 rel=stylesheet><link href=/css/syntax.css?1693567187 rel=stylesheet><link href=/css/light.css?1693567187 rel=stylesheet><link href=/css/hljs.css?1693567187 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567187 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567187></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Debian.GPGKeys :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/linux.debian.gpgkeys/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,11 +75,12 @@ files found matching the globs in KeyringFiles. The files need not be keyrings.<
 identities. This artifact may be useful in other artifacts to inspect GPG
 files or GPG data in order to correlate keys by their IDs, or look at connected
 user IDs.</p><p>This artifact doesn&rsquo;t provide any information about whether a key is
-&ldquo;trustworthy&rdquo;.</p><p>Note that some keyring files contain a lot of subkeys and identities.</p><p>The following columns are returned by this artifact:</p><ul><li>OSPath: Path to the key file</li><li>KeyInfo: dict with the following entries:<ul><li>Type: pub|sub</li><li>ID</li><li>Fingerprint</li><li>Algorithm</li><li>Validity</li><li>Created</li><li>Expiry</li></ul></li><li>SubKeys: array of dicts with the same structure as KeyInfo</li><li>UserIDs: array of strings (name and e-mail)</li></ul><pre><code class=language-yaml>name: Linux.Debian.GPGKeys
+&ldquo;trustworthy&rdquo;.</p><p>Note that some keyring files contain a lot of subkeys and identities.</p><p>The following columns are returned by this artifact:</p><ul><li>OSPath: Path to the key file</li><li>KeyInfo: dict with the following entries:<ul><li>Type: pub|sub</li><li>ID</li><li>Fingerprint</li><li>Algorithm</li><li>Validity</li><li>Created</li><li>Expiry</li></ul></li><li>SubKeys: array of dicts with the same structure as KeyInfo</li><li>UserIDs: array of strings (name and e-mail)</li></ul><pre><code class=language-yaml>
+name: Linux.Debian.GPGKeys
 description: |
   Extract keys, fingerprints and identities from GPG keys.
 
-  This artifact runs the tool &quot;gpg&quot; (must be installed on the system) on the
+  This artifact runs the tool "gpg" (must be installed on the system) on the
   files found matching the globs in KeyringFiles. The files need not be keyrings.
 
   Every entry consists of a public or secret key, optional subkeys and optional
@@ -88,7 +89,7 @@ description: |
   user IDs.
 
   This artifact doesn't provide any information about whether a key is
-  &quot;trustworthy&quot;.
+  "trustworthy".
 
   Note that some keyring files contain a lot of subkeys and identities.
 
@@ -113,7 +114,7 @@ reference:
   - https://www.ietf.org/rfc/rfc4880.txt
 
 export: |
-        /* Extract machine-&quot;readable&quot; data from the GPG keys found in the file.
+        /* Extract machine-"readable" data from the GPG keys found in the file.
            The format is documented in the reference above. However, as the blog
            post mentions, detailed knowledge about GPG is needed in order to
            decipher the output. See ParseKeyInfo_(). */
@@ -147,7 +148,7 @@ export: |
             condition=epoch, then=timestamp(epoch=epoch), else=null)
 
         LET ParseKeyInfo_(data) = SELECT * FROM foreach(
-            /* A file may contain several &quot;keys&quot; (i.e. sections of either a
+            /* A file may contain several "keys" (i.e. sections of either a
                public or private key, followed by a fingerprint, subkeys and
                identities). In order to parse these sections, the contents of
                the file are split (an arbitraray binary blob is used): */
@@ -158,8 +159,8 @@ export: |
                 /* There is only one key (public or private) followed by an
                    optional fingerprint: */
                 SELECT parse_string_with_regex(string=KeyInfo, regex=(
-                    '''(?m)(?P&lt;Type&gt;pub|sec):(?P&lt;Validity&gt;[^:]*):(?P&lt;Length&gt;[^:]*):(?P&lt;Algorithm&gt;[^:]*):(?P&lt;ID&gt;[^:]*):(?P&lt;Created&gt;[^:]*):(?P&lt;Expiry&gt;[^:]*):[^:]*:(?P&lt;Trust&gt;[^:]*)''',
-                    '''fpr:::::::::(?P&lt;Fingerprint&gt;[^:]*)'''
+                    '''(?m)(?P<type>pub|sec):(?P<validity>[^:]*):(?P<length>[^:]*):(?P<algorithm>[^:]*):(?P<id>[^:]*):(?P<created>[^:]*):(?P<expiry>[^:]*):[^:]*:(?P<trust>[^:]*)''',
+                    '''fpr:::::::::(?P<fingerprint>[^:]*)'''
                 )) AS KeyInfo,
                 /* There may be none or several subkeys (following the same
                    format as public/private keys): */
@@ -174,15 +175,15 @@ export: |
                         file=KeyInfo,
                         accessor='data',
                         regex=(
-                        '''(?m)(?P&lt;Type&gt;sub):(?P&lt;Validity&gt;[^:]*):(?P&lt;Length&gt;[^:]*):(?P&lt;Algorithm&gt;[^:]*):(?P&lt;ID&gt;[^:]*):(?P&lt;Created&gt;[^:]*):(?P&lt;Expiry&gt;[^:]*):[^:]*:(?P&lt;Trust&gt;[^:]*)''',
-                            '''fpr:::::::::(?P&lt;Fingerprint&gt;[^:]*)'''
+                        '''(?m)(?P<type>sub):(?P<validity>[^:]*):(?P<length>[^:]*):(?P<algorithm>[^:]*):(?P<id>[^:]*):(?P<created>[^:]*):(?P<expiry>[^:]*):[^:]*:(?P<trust>[^:]*)''',
+                            '''fpr:::::::::(?P<fingerprint>[^:]*)'''
                         ))
                 } AS SubKeys,
                 /* There may be none or several identities: */
                 array(uids={SELECT UserID FROM parse_records_with_regex(
                     file=KeyInfo,
                     accessor='data',
-                    regex='''uid:::::::::(?P&lt;UserID&gt;[^:]*)''')}) AS UserIDs
+                    regex='''uid:::::::::(?P<userid>[^:]*)''')}) AS UserIDs
                 FROM scope()
                 WHERE KeyInfo
             })
@@ -230,12 +231,12 @@ sources:
 
         SELECT * FROM GPGKeys
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567187></script>
-<script src=/js/jquery.sticky.js?1693567187></script>
-<script src=/js/featherlight.min.js?1693567187></script>
-<script src=/js/highlight.min.js?1693567187></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567187></script>
-<script src=/js/learn.js?1693567187></script>
-<script src=/js/hugo-learn.js?1693567187></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
+<script src=/js/jquery.sticky.js?1693663124></script>
+<script src=/js/featherlight.min.js?1693663124></script>
+<script src=/js/highlight.min.js?1693663124></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
+<script src=/js/learn.js?1693663124></script>
+<script src=/js/hugo-learn.js?1693663124></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Network.PacketCapture :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Network.PacketCapture :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.network.packetcapture/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,8 +76,9 @@ single row (the TraceFile generated) When you want to stop
 collecting, and transform this TraceFile to a PCAP, re-run this
 artifact with StartTrace as false, and put path of the .etl file
 created in the previous step in the TraceFile. This will then
-convert the .etl to a PCAP and upload it.</p><pre><code class=language-yaml>name: Windows.Network.PacketCapture
-author: Cybereason &lt;omer.yampel@cybereason.com&gt;
+convert the .etl to a PCAP and upload it.</p><pre><code class=language-yaml>
+name: Windows.Network.PacketCapture
+author: Cybereason <omer.yampel@cybereason.com>
 description: |
   Run this artifact twice, the first time, set the StartTrace flag to
   True to start the PCAP collection, this will have the VQL return a
@@ -104,21 +105,21 @@ parameters:
 sources:
     - query: |
         LET tool_zip = SELECT * FROM Artifact.Generic.Utils.FetchBinary(
-            ToolName=&quot;etl2pcapng&quot;, IsExecutable=FALSE)
+            ToolName="etl2pcapng", IsExecutable=FALSE)
 
-        LET ExePath &lt;= tempfile(extension='.exe')
+        LET ExePath <= tempfile(extension='.exe')
 
-        LET etl2pcapbin &lt;= SELECT
+        LET etl2pcapbin <= SELECT
             copy(
               filename=pathspec(
                  DelegatePath=tool_zip[0].OSPath,
-                 Path=&quot;etl2pcapng/x64/etl2pcapng.exe&quot;),
+                 Path="etl2pcapng/x64/etl2pcapng.exe"),
               dest=ExePath,
               accessor='zip'
             ) AS file
         FROM scope()
 
-        LET outfile &lt;= tempfile(extension=&quot;.pcapng&quot;)
+        LET outfile <= tempfile(extension=".pcapng")
 
         LET stop_trace = SELECT * FROM execve(
              argv=['netsh', 'trace', 'stop'])
@@ -137,10 +138,10 @@ sources:
                 SELECT
                     split(string=split(
                         string=Stdout,
-                        sep=&quot;Trace File: &quot;)[1],
-                    sep=&quot;\r\nAppend:&quot;)[0] as etl_file
-                FROM execve(argv=[&quot;netsh&quot;, &quot;trace&quot;, &quot;start&quot;, &quot;capture=yes&quot;])
-                WHERE log(message=&quot;stderr: &quot; + Stderr), log(message=&quot;stdout: &quot; + Stdout)
+                        sep="Trace File: ")[1],
+                    sep="\r\nAppend:")[0] as etl_file
+                FROM execve(argv=["netsh", "trace", "start", "capture=yes"])
+                WHERE log(message="stderr: " + Stderr), log(message="stdout: " + Stdout)
 
         SELECT * FROM if(
                 condition=StartTrace,
@@ -148,12 +149,12 @@ sources:
                 else={ SELECT * FROM end_trace }
         )
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

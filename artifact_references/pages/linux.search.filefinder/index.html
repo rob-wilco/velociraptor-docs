@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Search.FileFinder :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Search.FileFinder :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663118 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663118 rel=stylesheet><link href=/css/featherlight.min.css?1693663118 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663118 rel=stylesheet><link href=/css/auto-complete.css?1693663118 rel=stylesheet><link href=/css/theme.css?1693663118 rel=stylesheet><link href=/css/tabs.css?1693663118 rel=stylesheet><link href=/css/hugo-theme.css?1693663118 rel=stylesheet><link href=/css/theme-mine.css?1693663118 rel=stylesheet><link href=/css/dark.css?1693663118 rel=stylesheet><link href=/css/syntax.css?1693663118 rel=stylesheet><link href=/css/light.css?1693663118 rel=stylesheet><link href=/css/hljs.css?1693663118 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663118 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663118></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/linux.search.filefinder/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -80,7 +80,8 @@ random strings in specific folders and need to search for other
 instances across the network.</p></li><li><p>We believe our user account credentials have been dumped and
 need to locate them.</p></li><li><p>We need to search for exposed credit card data to satisfy PCI
 requirements.</p></li><li><p>We have a sample of data that has been disclosed and need to
-locate other similar files</p></li></ul><pre><code class=language-yaml>name: Linux.Search.FileFinder
+locate other similar files</p></li></ul><pre><code class=language-yaml>
+name: Linux.Search.FileFinder
 description: |
   Find files on the filesystem using the filename or content.
 
@@ -141,15 +142,15 @@ parameters:
     type: bool
 
   - name: MoreRecentThan
-    default: &quot;&quot;
+    default: ""
     type: timestamp
 
   - name: ModifiedBefore
-    default: &quot;&quot;
+    default: ""
     type: timestamp
 
   - name: ExcludePathRegex
-    default: &quot;^/(proc|sys|run|snap)&quot;
+    default: "^/(proc|sys|run|snap)"
     type: regex
     description: If this regex matches the path of any directory we do not even descend inside of it.
 
@@ -173,7 +174,7 @@ sources:
     -- This list comes from cat /proc/devices and represents actual
     -- devices. Most virtual devices like /proc, fuse and network
     -- filesystems have a major number of 0.
-    LET LocalDeviceMajor &lt;= (
+    LET LocalDeviceMajor <= (
        253,
        7,   -- loop
        8,   -- sd
@@ -203,11 +204,11 @@ sources:
     LET RecursionCallback = if(
        condition=LocalFilesystemOnly,
          then=if(condition=ExcludePathRegex,
-                 then=&quot;x=&gt;x.Data.DevMajor IN LocalDeviceMajor AND NOT x.OSPath =~ ExcludePathRegex&quot;,
-                 else=&quot;x=&gt;x.Data.DevMajor IN LocalDeviceMajor&quot;),
+                 then="x=>x.Data.DevMajor IN LocalDeviceMajor AND NOT x.OSPath =~ ExcludePathRegex",
+                 else="x=>x.Data.DevMajor IN LocalDeviceMajor"),
          else=if(condition=ExcludePathRegex,
-                 then=&quot;x=&gt;NOT x.OSPath =~ ExcludePathRegex&quot;,
-                 else=&quot;&quot;))
+                 then="x=>NOT x.OSPath =~ ExcludePathRegex",
+                 else=""))
 
     LET file_search = SELECT OSPath,
                Sys.mft as Inode,
@@ -219,13 +220,13 @@ sources:
         FROM glob(globs=SearchFilesGlobTable.Glob + SearchFilesGlob,
                   recursion_callback=RecursionCallback,
                   one_filesystem=OneFilesystem,
-                  accessor=&quot;file&quot;, nosymlink=DoNotFollowSymlinks)
+                  accessor="file", nosymlink=DoNotFollowSymlinks)
 
     LET more_recent = SELECT * FROM if(
         condition=MoreRecentThan,
         then={
           SELECT * FROM file_search
-          WHERE MTime &gt; MoreRecentThan
+          WHERE MTime > MoreRecentThan
         }, else={
           SELECT * FROM file_search
         })
@@ -234,8 +235,8 @@ sources:
         condition=ModifiedBefore,
         then={
           SELECT * FROM more_recent
-          WHERE MTime &lt; ModifiedBefore
-            AND MTime &gt; MoreRecentThan
+          WHERE MTime < ModifiedBefore
+            AND MTime > MoreRecentThan
         }, else={
           SELECT * FROM more_recent
         })
@@ -254,9 +255,9 @@ sources:
                       str(str=String.Data) As Keywords
 
                FROM yara(files=OSPath,
-                         key=&quot;A&quot;,
+                         key="A",
                          rules=YaraRule,
-                         accessor=&quot;file&quot;)
+                         accessor="file")
             })
         }, else={
           SELECT *, NULL AS Keywords FROM modified_before
@@ -266,10 +267,10 @@ sources:
              MTime, CTime, Keywords,
                if(condition=Upload_File and Mode.IsRegular,
                   then=upload(file=OSPath,
-                              accessor=&quot;file&quot;)) AS Upload,
+                              accessor="file")) AS Upload,
                if(condition=Calculate_Hash and Mode.IsRegular,
                   then=hash(path=OSPath,
-                            accessor=&quot;file&quot;)) AS Hash
+                            accessor="file")) AS Hash
     FROM keyword_search
 
 column_types:
@@ -282,12 +283,12 @@ column_types:
   - name: Upload
     type: preview_upload
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663118></script>
+<script src=/js/jquery.sticky.js?1693663118></script>
+<script src=/js/featherlight.min.js?1693663118></script>
+<script src=/js/highlight.min.js?1693663118></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663118></script>
+<script src=/js/learn.js?1693663118></script>
+<script src=/js/hugo-learn.js?1693663118></script></body></html>

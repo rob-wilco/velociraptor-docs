@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Collectors.SQLECmd :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Collectors.SQLECmd :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663117 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663117 rel=stylesheet><link href=/css/featherlight.min.css?1693663117 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663117 rel=stylesheet><link href=/css/auto-complete.css?1693663117 rel=stylesheet><link href=/css/theme.css?1693663117 rel=stylesheet><link href=/css/tabs.css?1693663117 rel=stylesheet><link href=/css/hugo-theme.css?1693663117 rel=stylesheet><link href=/css/theme-mine.css?1693663117 rel=stylesheet><link href=/css/dark.css?1693663117 rel=stylesheet><link href=/css/syntax.css?1693663117 rel=stylesheet><link href=/css/light.css?1693663117 rel=stylesheet><link href=/css/hljs.css?1693663117 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663117 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663117></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/generic.collectors.sqlecmd/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -79,7 +79,8 @@ then queried.</p></li><li><p>If UseFilenames is enabled we only look at known
 filenames. Disabling it will try to identify all sqlite files
 within the search glob. This is slower but may find more
 potential files (e.g. renamed).</p></li></ol><h2 id=notes-1>NOTES:</h2><p>This artifact is deprecated in favor of
-Generic.Forensic.SQLiteHunter and will be removed in future</p><pre><code class=language-yaml>name: Generic.Collectors.SQLECmd
+Generic.Forensic.SQLiteHunter and will be removed in future</p><pre><code class=language-yaml>
+name: Generic.Collectors.SQLECmd
 description: |
   Many applications maintain internal state using SQLite
   databases. The SQLECmd project is an open source resource for known
@@ -114,7 +115,7 @@ export: |
     } AS Hits
   FROM scope()
   WHERE Hits = IdentifyValue
-    AND log(message=&quot;%v was identified as %v&quot;, args=[OSPath, FileType])
+    AND log(message="%v was identified as %v", args=[OSPath, FileType])
 
   LET ApplyFile(IdentifyQuery, FileType, SQLQuery, IdentifyValue) = SELECT *
     FROM foreach(row=SQLiteFiles,
@@ -133,142 +134,142 @@ parameters:
   type: csv
   default: |
     Name,Glob
-    &quot;Bitdefender:Bitdefender Endpoint Security Logs&quot;,&quot;C:\ProgramData\Bitdefender\Endpoint Security\Logs/**10&quot;
-    &quot;Bitdefender:Bitdefender Internet Security Logs&quot;,&quot;C:\ProgramData\Bitdefender\Desktop\Profiles\Logs/**10&quot;
-    &quot;Chrome:Chrome bookmarks&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Bookmarks*&quot;
-    &quot;Chrome:Chrome Cookies&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Cookies*&quot;
-    &quot;Chrome:Chrome Current Session&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Current Session&quot;
-    &quot;Chrome:Chrome Current Tabs&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Current Tabs&quot;
-    &quot;Chrome:Chrome Download Metadata&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/DownloadMetadata&quot;
-    &quot;Chrome:Chrome Extension Cookies&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Extension Cookies&quot;
-    &quot;Chrome:Chrome Favicons&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Favicons*&quot;
-    &quot;Chrome:Chrome History&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/History*&quot;
-    &quot;Chrome:Chrome Last Session&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Last Session&quot;
-    &quot;Chrome:Chrome Last Tabs&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Last Tabs&quot;
-    &quot;Chrome:Chrome Sessions Folder&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*\Sessions/**10&quot;
-    &quot;Chrome:Chrome Login Data&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Login Data&quot;
-    &quot;Chrome:Chrome Media History&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Media History*&quot;
-    &quot;Chrome:Chrome Network Action Predictor&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Network Action Predictor&quot;
-    &quot;Chrome:Chrome Network Persistent State&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Network Persistent State&quot;
-    &quot;Chrome:Chrome Preferences&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Preferences&quot;
-    &quot;Chrome:Chrome Quota Manager&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/QuotaManager&quot;
-    &quot;Chrome:Chrome Reporting and NEL&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Reporting and NEL&quot;
-    &quot;Chrome:Chrome Shortcuts&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Shortcuts*&quot;
-    &quot;Chrome:Chrome Top Sites&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Top Sites*&quot;
-    &quot;Chrome:Chrome Trust Tokens&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Trust Tokens*&quot;
-    &quot;Chrome:Chrome SyncData Database&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*\Sync Data/**10/SyncData.sqlite3&quot;
-    &quot;Chrome:Chrome Visited Links&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Visited Links&quot;
-    &quot;Chrome:Chrome Web Data&quot;,&quot;C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Web Data*&quot;
-    &quot;Chrome:Windows Protect Folder&quot;,&quot;C:\Users\*\AppData\Roaming\Microsoft\Protect\*/**10&quot;
-    &quot;Firefox:Addons&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/addons.sqlite*&quot;
-    &quot;Firefox:Bookmarks&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*\weave/**10/bookmarks.sqlite*&quot;
-    &quot;Firefox:Cookies&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/cookies.sqlite*&quot;
-    &quot;Firefox:Downloads&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/downloads.sqlite*&quot;
-    &quot;Firefox:Extensions&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/extensions.json&quot;
-    &quot;Firefox:Favicons&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/favicons.sqlite*&quot;
-    &quot;Firefox:Form history&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/formhistory.sqlite*&quot;
-    &quot;Firefox:Permissions&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/permissions.sqlite*&quot;
-    &quot;Firefox:Places&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/places.sqlite*&quot;
-    &quot;Firefox:Protections&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/protections.sqlite*&quot;
-    &quot;Firefox:Search&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/search.sqlite*&quot;
-    &quot;Firefox:Signons&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/signons.sqlite*&quot;
-    &quot;Firefox:Storage Sync&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/storage-sync.sqlite*&quot;
-    &quot;Firefox:Webappstore&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/webappstore.sqlite*&quot;
-    &quot;Firefox:Password&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/key*.db&quot;
-    &quot;Firefox:Preferences&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/prefs.js&quot;
-    &quot;Firefox:Sessionstore&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/sessionstore*&quot;
-    &quot;Firefox:Sessionstore Folder&quot;,&quot;C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*\sessionstore-backups/**10&quot;
-    &quot;MicrosoftStickyNotes:Microsoft Sticky Notes - Windows 7, 8, and 10 version 1511 and earlier&quot;,&quot;C:\Users\*\AppData\Roaming\Microsoft\StickyNotes/**10/StickyNotes.snt&quot;
-    &quot;MicrosoftStickyNotes:Microsoft Sticky Notes - 1607 and later&quot;,&quot;C:\Users\*\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes*\LocalState/**10/plum.sqlite*&quot;
-    &quot;TeraCopy:TeraCopy&quot;,&quot;C:\Users\*\AppData\Roaming\TeraCopy/**10&quot;
-    &quot;WindowsNotificationsDB:Windows 10 Notification DB&quot;,&quot;C:\Users\*\AppData\Local\Microsoft\Windows\Notifications/**10/wpndatabase.db&quot;
-    &quot;WindowsOSUpgradeArtifacts:Update Store.db&quot;,&quot;C:\ProgramData\USOPrivate\UpdateStore/**10/store.db&quot;
-    &quot;WindowsYourPhone:Windows Your Phone - All Databases&quot;,&quot;C:\Users\*\AppData\Local\Packages\Microsoft.YourPhone_8wekyb3d8bbwe\LocalCache\Indexed/**10&quot;
-    &quot;pCloudDatabase:pCloud Database&quot;,&quot;C:\Users\*\AppData\Local\pCloud/**10/*.db&quot;
-    &quot;pCloudDatabase:pCloud Database WAL File&quot;,&quot;C:\Users\*\AppData\Local\pCloud/**10/*.db-wal&quot;
-    &quot;pCloudDatabase:pCloud Database Shared Memory File&quot;,&quot;C:\Users\*\AppData\Local\pCloud/**10/*.db-shm&quot;
-    &quot;Chrome:Chrome bookmarks&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Bookmarks*&quot;
-    &quot;Chrome:Chrome Cookies&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Cookies*&quot;
-    &quot;Chrome:Chrome Current Session&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Current Session&quot;
-    &quot;Chrome:Chrome Current Tabs&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Current Tabs&quot;
-    &quot;Chrome:Chrome Download Metadata&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/DownloadMetadata&quot;
-    &quot;Chrome:Chrome Extension Cookies&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Extension Cookies&quot;
-    &quot;Chrome:Chrome Favicons&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Favicons*&quot;
-    &quot;Chrome:Chrome History&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/History*&quot;
-    &quot;Chrome:Chrome Last Session&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Last Session&quot;
-    &quot;Chrome:Chrome Last Tabs&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Last Tabs&quot;
-    &quot;Chrome:Chrome Sessions Folder&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/Sessions/**10&quot;
-    &quot;Chrome:Chrome Login Data&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Login Data&quot;
-    &quot;Chrome:Chrome Media History&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Media History*&quot;
-    &quot;Chrome:Chrome Network Action Predictor&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Network Action Predictor&quot;
-    &quot;Chrome:Chrome Network Persistent State&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Network Persistent State&quot;
-    &quot;Chrome:Chrome Preferences&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Preferences&quot;
-    &quot;Chrome:Chrome Quota Manager&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/QuotaManager&quot;
-    &quot;Chrome:Chrome Reporting and NEL&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Reporting and NEL&quot;
-    &quot;Chrome:Chrome Shortcuts&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Shortcuts*&quot;
-    &quot;Chrome:Chrome Top Sites&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Top Sites*&quot;
-    &quot;Chrome:Chrome Trust Tokens&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Trust Tokens*&quot;
-    &quot;Chrome:Chrome SyncData Database&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/SyncData.sqlite3&quot;
-    &quot;Chrome:Chrome Visited Links&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Visited Links&quot;
-    &quot;Chrome:Chrome Web Data&quot;,&quot;/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Web Data*&quot;
-    &quot;Firefox:Addons&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/addons.sqlite*&quot;
-    &quot;Firefox:Bookmarks&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/bookmarks.sqlite*&quot;
-    &quot;Firefox:Cookies&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/cookies.sqlite*&quot;
-    &quot;Firefox:Downloads&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/downloads.sqlite*&quot;
-    &quot;Firefox:Extensions&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/extensions.json&quot;
-    &quot;Firefox:Favicons&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/favicons.sqlite*&quot;
-    &quot;Firefox:Form history&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/formhistory.sqlite*&quot;
-    &quot;Firefox:Permissions&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/permissions.sqlite*&quot;
-    &quot;Firefox:Places&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/places.sqlite*&quot;
-    &quot;Firefox:Protections&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/protections.sqlite*&quot;
-    &quot;Firefox:Search&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/search.sqlite*&quot;
-    &quot;Firefox:Signons&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/signons.sqlite*&quot;
-    &quot;Firefox:Storage Sync&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/storage-sync.sqlite*&quot;
-    &quot;Firefox:Webappstore&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/webappstore.sqlite*&quot;
-    &quot;Firefox:Password&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/key*.db&quot;
-    &quot;Firefox:Preferences&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/prefs.js&quot;
-    &quot;Firefox:Sessionstore&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/**10/sessionstore*&quot;
-    &quot;Firefox:Sessionstore Folder&quot;,&quot;/Users/*/Library/Application Support/Firefox/Profiles/sessionstore-backups/**10&quot;
-    &quot;Chrome:Chrome Current Session&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Current Session&quot;
-    &quot;Chrome:Chrome Current Tabs&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Current Tabs&quot;
-    &quot;Chrome:Chrome Download Metadata&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/DownloadMetadata&quot;
-    &quot;Chrome:Chrome Extension Cookies&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Extension Cookies&quot;
-    &quot;Chrome:Chrome Favicons&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Favicons*&quot;
-    &quot;Chrome:Chrome History&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/History*&quot;
-    &quot;Chrome:Chrome Last Session&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Last Session&quot;
-    &quot;Chrome:Chrome Last Tabs&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Last Tabs&quot;
-    &quot;Chrome:Chrome Sessions Folder&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/Sessions/**10&quot;
-    &quot;Chrome:Chrome Login Data&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Login Data&quot;
-    &quot;Chrome:Chrome Media History&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Media History*&quot;
-    &quot;Chrome:Chrome Network Action Predictor&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Network Action Predictor&quot;
-    &quot;Chrome:Chrome Network Persistent State&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Network Persistent State&quot;
-    &quot;Chrome:Chrome Preferences&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Preferences&quot;
-    &quot;Chrome:Chrome Quota Manager&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/QuotaManager&quot;
-    &quot;Chrome:Chrome Reporting and NEL&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Reporting and NEL&quot;
-    &quot;Chrome:Chrome Shortcuts&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Shortcuts*&quot;
-    &quot;Chrome:Chrome Top Sites&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Top Sites*&quot;
-    &quot;Chrome:Chrome Trust Tokens&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Trust Tokens*&quot;
-    &quot;Chrome:Chrome SyncData Database&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/SyncData.sqlite3&quot;
-    &quot;Chrome:Chrome Visited Links&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Visited Links&quot;
-    &quot;Chrome:Chrome Web Data&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Web Data*&quot;
-    &quot;Firefox:Addons&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/addons.sqlite*&quot;
-    &quot;Firefox:Bookmarks&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/bookmarks.sqlite*&quot;
-    &quot;Firefox:Cookies&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/cookies.sqlite*&quot;
-    &quot;Firefox:Downloads&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/downloads.sqlite*&quot;
-    &quot;Firefox:Extensions&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/extensions.json&quot;
-    &quot;Firefox:Favicons&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/favicons.sqlite*&quot;
-    &quot;Firefox:Form history&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/formhistory.sqlite*&quot;
-    &quot;Firefox:Permissions&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/permissions.sqlite*&quot;
-    &quot;Firefox:Places&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/places.sqlite*&quot;
-    &quot;Firefox:Protections&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/protections.sqlite*&quot;
-    &quot;Firefox:Search&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/search.sqlite*&quot;
-    &quot;Firefox:Signons&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/signons.sqlite*&quot;
-    &quot;Firefox:Storage Sync&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/storage-sync.sqlite*&quot;
-    &quot;Firefox:Webappstore&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/webappstore.sqlite*&quot;
-    &quot;Firefox:Password&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/key*.db&quot;
-    &quot;Firefox:Preferences&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/prefs.js&quot;
-    &quot;Firefox:Sessionstore&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/sessionstore*&quot;
-    &quot;Firefox:Sessionstore Folder&quot;,&quot;/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/sessionstore-backups/**10&quot;
+    "Bitdefender:Bitdefender Endpoint Security Logs","C:\ProgramData\Bitdefender\Endpoint Security\Logs/**10"
+    "Bitdefender:Bitdefender Internet Security Logs","C:\ProgramData\Bitdefender\Desktop\Profiles\Logs/**10"
+    "Chrome:Chrome bookmarks","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Bookmarks*"
+    "Chrome:Chrome Cookies","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Cookies*"
+    "Chrome:Chrome Current Session","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Current Session"
+    "Chrome:Chrome Current Tabs","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Current Tabs"
+    "Chrome:Chrome Download Metadata","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/DownloadMetadata"
+    "Chrome:Chrome Extension Cookies","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Extension Cookies"
+    "Chrome:Chrome Favicons","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Favicons*"
+    "Chrome:Chrome History","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/History*"
+    "Chrome:Chrome Last Session","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Last Session"
+    "Chrome:Chrome Last Tabs","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Last Tabs"
+    "Chrome:Chrome Sessions Folder","C:\Users\*\AppData\Local\Google\Chrome\User Data\*\Sessions/**10"
+    "Chrome:Chrome Login Data","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Login Data"
+    "Chrome:Chrome Media History","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Media History*"
+    "Chrome:Chrome Network Action Predictor","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Network Action Predictor"
+    "Chrome:Chrome Network Persistent State","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Network Persistent State"
+    "Chrome:Chrome Preferences","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Preferences"
+    "Chrome:Chrome Quota Manager","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/QuotaManager"
+    "Chrome:Chrome Reporting and NEL","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Reporting and NEL"
+    "Chrome:Chrome Shortcuts","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Shortcuts*"
+    "Chrome:Chrome Top Sites","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Top Sites*"
+    "Chrome:Chrome Trust Tokens","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Trust Tokens*"
+    "Chrome:Chrome SyncData Database","C:\Users\*\AppData\Local\Google\Chrome\User Data\*\Sync Data/**10/SyncData.sqlite3"
+    "Chrome:Chrome Visited Links","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Visited Links"
+    "Chrome:Chrome Web Data","C:\Users\*\AppData\Local\Google\Chrome\User Data\*/**10/Web Data*"
+    "Chrome:Windows Protect Folder","C:\Users\*\AppData\Roaming\Microsoft\Protect\*/**10"
+    "Firefox:Addons","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/addons.sqlite*"
+    "Firefox:Bookmarks","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*\weave/**10/bookmarks.sqlite*"
+    "Firefox:Cookies","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/cookies.sqlite*"
+    "Firefox:Downloads","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/downloads.sqlite*"
+    "Firefox:Extensions","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/extensions.json"
+    "Firefox:Favicons","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/favicons.sqlite*"
+    "Firefox:Form history","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/formhistory.sqlite*"
+    "Firefox:Permissions","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/permissions.sqlite*"
+    "Firefox:Places","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/places.sqlite*"
+    "Firefox:Protections","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/protections.sqlite*"
+    "Firefox:Search","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/search.sqlite*"
+    "Firefox:Signons","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/signons.sqlite*"
+    "Firefox:Storage Sync","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/storage-sync.sqlite*"
+    "Firefox:Webappstore","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/webappstore.sqlite*"
+    "Firefox:Password","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/key*.db"
+    "Firefox:Preferences","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/prefs.js"
+    "Firefox:Sessionstore","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*/**10/sessionstore*"
+    "Firefox:Sessionstore Folder","C:\Users\*\AppData\Roaming\Mozilla\Firefox\Profiles\*\sessionstore-backups/**10"
+    "MicrosoftStickyNotes:Microsoft Sticky Notes - Windows 7, 8, and 10 version 1511 and earlier","C:\Users\*\AppData\Roaming\Microsoft\StickyNotes/**10/StickyNotes.snt"
+    "MicrosoftStickyNotes:Microsoft Sticky Notes - 1607 and later","C:\Users\*\AppData\Local\Packages\Microsoft.MicrosoftStickyNotes*\LocalState/**10/plum.sqlite*"
+    "TeraCopy:TeraCopy","C:\Users\*\AppData\Roaming\TeraCopy/**10"
+    "WindowsNotificationsDB:Windows 10 Notification DB","C:\Users\*\AppData\Local\Microsoft\Windows\Notifications/**10/wpndatabase.db"
+    "WindowsOSUpgradeArtifacts:Update Store.db","C:\ProgramData\USOPrivate\UpdateStore/**10/store.db"
+    "WindowsYourPhone:Windows Your Phone - All Databases","C:\Users\*\AppData\Local\Packages\Microsoft.YourPhone_8wekyb3d8bbwe\LocalCache\Indexed/**10"
+    "pCloudDatabase:pCloud Database","C:\Users\*\AppData\Local\pCloud/**10/*.db"
+    "pCloudDatabase:pCloud Database WAL File","C:\Users\*\AppData\Local\pCloud/**10/*.db-wal"
+    "pCloudDatabase:pCloud Database Shared Memory File","C:\Users\*\AppData\Local\pCloud/**10/*.db-shm"
+    "Chrome:Chrome bookmarks","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Bookmarks*"
+    "Chrome:Chrome Cookies","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Cookies*"
+    "Chrome:Chrome Current Session","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Current Session"
+    "Chrome:Chrome Current Tabs","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Current Tabs"
+    "Chrome:Chrome Download Metadata","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/DownloadMetadata"
+    "Chrome:Chrome Extension Cookies","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Extension Cookies"
+    "Chrome:Chrome Favicons","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Favicons*"
+    "Chrome:Chrome History","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/History*"
+    "Chrome:Chrome Last Session","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Last Session"
+    "Chrome:Chrome Last Tabs","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Last Tabs"
+    "Chrome:Chrome Sessions Folder","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/Sessions/**10"
+    "Chrome:Chrome Login Data","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Login Data"
+    "Chrome:Chrome Media History","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Media History*"
+    "Chrome:Chrome Network Action Predictor","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Network Action Predictor"
+    "Chrome:Chrome Network Persistent State","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Network Persistent State"
+    "Chrome:Chrome Preferences","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Preferences"
+    "Chrome:Chrome Quota Manager","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/QuotaManager"
+    "Chrome:Chrome Reporting and NEL","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Reporting and NEL"
+    "Chrome:Chrome Shortcuts","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Shortcuts*"
+    "Chrome:Chrome Top Sites","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Top Sites*"
+    "Chrome:Chrome Trust Tokens","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Trust Tokens*"
+    "Chrome:Chrome SyncData Database","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/SyncData.sqlite3"
+    "Chrome:Chrome Visited Links","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Visited Links"
+    "Chrome:Chrome Web Data","/Users/*/Library/Application Support/{BraveSoftware/Brave,Google/Chrome,Microsoft Edge}/**10/Web Data*"
+    "Firefox:Addons","/Users/*/Library/Application Support/Firefox/Profiles/**10/addons.sqlite*"
+    "Firefox:Bookmarks","/Users/*/Library/Application Support/Firefox/Profiles/**10/bookmarks.sqlite*"
+    "Firefox:Cookies","/Users/*/Library/Application Support/Firefox/Profiles/**10/cookies.sqlite*"
+    "Firefox:Downloads","/Users/*/Library/Application Support/Firefox/Profiles/**10/downloads.sqlite*"
+    "Firefox:Extensions","/Users/*/Library/Application Support/Firefox/Profiles/**10/extensions.json"
+    "Firefox:Favicons","/Users/*/Library/Application Support/Firefox/Profiles/**10/favicons.sqlite*"
+    "Firefox:Form history","/Users/*/Library/Application Support/Firefox/Profiles/**10/formhistory.sqlite*"
+    "Firefox:Permissions","/Users/*/Library/Application Support/Firefox/Profiles/**10/permissions.sqlite*"
+    "Firefox:Places","/Users/*/Library/Application Support/Firefox/Profiles/**10/places.sqlite*"
+    "Firefox:Protections","/Users/*/Library/Application Support/Firefox/Profiles/**10/protections.sqlite*"
+    "Firefox:Search","/Users/*/Library/Application Support/Firefox/Profiles/**10/search.sqlite*"
+    "Firefox:Signons","/Users/*/Library/Application Support/Firefox/Profiles/**10/signons.sqlite*"
+    "Firefox:Storage Sync","/Users/*/Library/Application Support/Firefox/Profiles/**10/storage-sync.sqlite*"
+    "Firefox:Webappstore","/Users/*/Library/Application Support/Firefox/Profiles/**10/webappstore.sqlite*"
+    "Firefox:Password","/Users/*/Library/Application Support/Firefox/Profiles/**10/key*.db"
+    "Firefox:Preferences","/Users/*/Library/Application Support/Firefox/Profiles/**10/prefs.js"
+    "Firefox:Sessionstore","/Users/*/Library/Application Support/Firefox/Profiles/**10/sessionstore*"
+    "Firefox:Sessionstore Folder","/Users/*/Library/Application Support/Firefox/Profiles/sessionstore-backups/**10"
+    "Chrome:Chrome Current Session","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Current Session"
+    "Chrome:Chrome Current Tabs","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Current Tabs"
+    "Chrome:Chrome Download Metadata","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/DownloadMetadata"
+    "Chrome:Chrome Extension Cookies","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Extension Cookies"
+    "Chrome:Chrome Favicons","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Favicons*"
+    "Chrome:Chrome History","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/History*"
+    "Chrome:Chrome Last Session","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Last Session"
+    "Chrome:Chrome Last Tabs","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Last Tabs"
+    "Chrome:Chrome Sessions Folder","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/Sessions/**10"
+    "Chrome:Chrome Login Data","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Login Data"
+    "Chrome:Chrome Media History","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Media History*"
+    "Chrome:Chrome Network Action Predictor","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Network Action Predictor"
+    "Chrome:Chrome Network Persistent State","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Network Persistent State"
+    "Chrome:Chrome Preferences","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Preferences"
+    "Chrome:Chrome Quota Manager","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/QuotaManager"
+    "Chrome:Chrome Reporting and NEL","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Reporting and NEL"
+    "Chrome:Chrome Shortcuts","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Shortcuts*"
+    "Chrome:Chrome Top Sites","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Top Sites*"
+    "Chrome:Chrome Trust Tokens","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Trust Tokens*"
+    "Chrome:Chrome SyncData Database","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/SyncData.sqlite3"
+    "Chrome:Chrome Visited Links","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Visited Links"
+    "Chrome:Chrome Web Data","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/Web Data*"
+    "Firefox:Addons","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/addons.sqlite*"
+    "Firefox:Bookmarks","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/bookmarks.sqlite*"
+    "Firefox:Cookies","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/cookies.sqlite*"
+    "Firefox:Downloads","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/downloads.sqlite*"
+    "Firefox:Extensions","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/extensions.json"
+    "Firefox:Favicons","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/favicons.sqlite*"
+    "Firefox:Form history","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/formhistory.sqlite*"
+    "Firefox:Permissions","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/permissions.sqlite*"
+    "Firefox:Places","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/places.sqlite*"
+    "Firefox:Protections","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/protections.sqlite*"
+    "Firefox:Search","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/search.sqlite*"
+    "Firefox:Signons","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/signons.sqlite*"
+    "Firefox:Storage Sync","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/storage-sync.sqlite*"
+    "Firefox:Webappstore","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/webappstore.sqlite*"
+    "Firefox:Password","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/key*.db"
+    "Firefox:Preferences","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/prefs.js"
+    "Firefox:Sessionstore","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/**10/sessionstore*"
+    "Firefox:Sessionstore Folder","/home/*/.config/{google-chrome,chrome-remote-desktop/chrome-profile,chromium}/sessionstore-backups/**10"
 - name: Accessor
   default: auto
 - name: UseFilenames
@@ -281,8 +282,8 @@ parameters:
 
 sources:
 - query: |
-   LET AllFilenamesRegex &lt;= '''^(CarsDB.db|Contacts.db|random.sqlite|ActivitiesCache.db|Antiphishing.db|RansomwareRecover.db|cache.db|es.db|Web Data|Web Data|Cookies|History|Favicons|History|History|Web Data|Media History|Media History|Network Action Predictor|Shortcuts|Top Sites|aggregation.dbx|config.db|filecache.db|icon.db|instance.dbx|home.db|home.db|home.db|home.db|sync_history.db|tray-thumbnails.db|EventTranscript.db|EventTranscript.db|queue.sqlite3|places.sqlite|cookies.sqlite|downloads.sqlite|places.sqlite|favicons.sqlite|formhistory.sqlite|places.sqlite|random.db|cloud_graph.db|snapshot.db|sync_config.db|metadata_sqlite_db|plum.sqlite|nessusd.db|MediaDb.v1.sqlite|random.db|Main.db|wpndatabase.db|wpndatabase.db|Store.db|contacts.db|Notifications.db|Phone.db|photos.db|settings.db|accounts4.db|callhistory.storedata)$'''
-   LET SQLiteFiles &lt;=
+   LET AllFilenamesRegex <= '''^(CarsDB.db|Contacts.db|random.sqlite|ActivitiesCache.db|Antiphishing.db|RansomwareRecover.db|cache.db|es.db|Web Data|Web Data|Cookies|History|Favicons|History|History|Web Data|Media History|Media History|Network Action Predictor|Shortcuts|Top Sites|aggregation.dbx|config.db|filecache.db|icon.db|instance.dbx|home.db|home.db|home.db|home.db|sync_history.db|tray-thumbnails.db|EventTranscript.db|EventTranscript.db|queue.sqlite3|places.sqlite|cookies.sqlite|downloads.sqlite|places.sqlite|favicons.sqlite|formhistory.sqlite|places.sqlite|random.db|cloud_graph.db|snapshot.db|sync_config.db|metadata_sqlite_db|plum.sqlite|nessusd.db|MediaDb.v1.sqlite|random.db|Main.db|wpndatabase.db|wpndatabase.db|Store.db|contacts.db|Notifications.db|Phone.db|photos.db|settings.db|accounts4.db|callhistory.storedata)$'''
+   LET SQLiteFiles <=
    SELECT OSPath,
     read_file(filename=OSPath, length=15, accessor=Accessor) AS Magic,
     if(condition=AlsoUpload,
@@ -294,7 +295,7 @@ sources:
    FROM glob(globs=GlobExpr.Glob, accessor=Accessor)
    WHERE NOT IsDir
      AND if(condition=UseFilenames, then=Name =~ AllFilenamesRegex, else=TRUE)
-     AND Magic =~ &quot;SQLite format 3&quot;
+     AND Magic =~ "SQLite format 3"
 
    SELECT * FROM SQLiteFiles
 
@@ -487,8 +488,8 @@ sources:
     autofill.name AS Name,
     autofill.value AS Value,
     autofill.value_lower AS ValueLowercase,
-    datetime( &quot;date_created&quot;, 'unixepoch' ) AS DateCreated,
-    datetime( &quot;date_last_used&quot;, 'unixepoch' ) AS LastUsed,
+    datetime( "date_created", 'unixepoch' ) AS DateCreated,
+    datetime( "date_last_used", 'unixepoch' ) AS LastUsed,
     autofill.count AS Count
     FROM
     autofill
@@ -506,8 +507,8 @@ sources:
     LET IdentifyValue = 5
     LET SQLQuery = '''SELECT
     autofill_profiles.guid AS GUID,
-    datetime( &quot;date_modified&quot;, 'unixepoch' ) AS DateModified,
-    datetime( &quot;use_date&quot;, 'unixepoch' ) AS UseDate,
+    datetime( "date_modified", 'unixepoch' ) AS DateModified,
+    datetime( "use_date", 'unixepoch' ) AS UseDate,
     autofill_profile_names.first_name AS FirstName,
     autofill_profile_names.middle_name AS MiddleName,
     autofill_profile_names.last_name AS LastName,
@@ -947,12 +948,12 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='snapshot');'''
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
-    snapshot.&quot;key&quot; AS &quot;Key&quot;,
-    snapshot.value AS &quot;Value(ConvertToJSON)&quot;
+    snapshot."key" AS "Key",
+    snapshot.value AS "Value(ConvertToJSON)"
     FROM
     snapshot
     ORDER BY
-    snapshot.&quot;key&quot; ASC'''
+    snapshot."key" ASC'''
     LET FileType = '''Dropbox Aggregation database'''
 
     SELECT * FROM ApplyFile(
@@ -971,22 +972,22 @@ sources:
     local_filename,
     local_infinite_details,
     local_size,
-    datetime(local_mtime,'unixepoch') AS &quot;Local Modified Time&quot;,
-    datetime(local_ctime,'unixepoch') AS &quot;Local Created Time&quot;,
+    datetime(local_mtime,'unixepoch') AS "Local Modified Time",
+    datetime(local_ctime,'unixepoch') AS "Local Created Time",
     local_attrs,
-    datetime(local_timestamp,'unixepoch') AS &quot;Local Timestamp&quot;,
+    datetime(local_timestamp,'unixepoch') AS "Local Timestamp",
     local_user_id,
     Local_sync_type,
     updated_filename,
     updated_host_id,
     updated_size,
-    datetime(updated_mtime) AS &quot;Updated Modified Time&quot;,
-    datetime(updated_timestamp) AS &quot;Updated Timestamp&quot;,
+    datetime(updated_mtime) AS "Updated Modified Time",
+    datetime(updated_timestamp) AS "Updated Timestamp",
     updated_dir,
     updated_user_id,
     updated_sync_type
     from file_journal
-    order by &quot;local created time&quot; desc'''
+    order by "local created time" desc'''
     LET FileType = '''Drobpox'''
 
     SELECT * FROM ApplyFile(
@@ -998,8 +999,8 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='ext_icon_table' OR name='folder_icon_table' OR name='path_icon_table');'''
     LET IdentifyValue = 3
     LET SQLQuery = '''SELECT
-    datetime( &quot;created_time&quot;, 'unixepoch' ) AS CreatedTime,
-    datetime( &quot;file_mtime&quot;, 'unixepoch' ) AS ModifiedTime,
+    datetime( "created_time", 'unixepoch' ) AS CreatedTime,
+    datetime( "file_mtime", 'unixepoch' ) AS ModifiedTime,
     path_icon_table.file_path AS FilePath
     FROM
     path_icon_table
@@ -1153,7 +1154,7 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='sync_history');'''
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
-    datetime( &quot;timestamp&quot;, 'unixepoch' ) AS Timestamp,
+    datetime( "timestamp", 'unixepoch' ) AS Timestamp,
     sync_history.event_type AS EventType,
     sync_history.file_event_type AS FileEventType,
     sync_history.direction AS Direction,
@@ -1174,7 +1175,7 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='cached_thumbnail_table');'''
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
-    datetime( &quot;timestamp&quot;, 'unixepoch' ) AS Timestamp,
+    datetime( "timestamp", 'unixepoch' ) AS Timestamp,
     cached_thumbnail_table.file_name AS FileName,
     cached_thumbnail_table.blocklist AS BlockList
     FROM
@@ -4141,8 +4142,8 @@ sources:
     moz_cookies.host AS Host,
     moz_cookies.name AS Name,
     moz_cookies.value AS Value,
-    datetime( moz_cookies.creationTime / 1000000, 'UNIXEPOCH', 'localtime' ) AS &quot;Creation Time&quot;,
-    datetime( moz_cookies.lastAccessed / 1000000, 'UNIXEPOCH', 'localtime' ) AS &quot;Last Accessed Time&quot;,
+    datetime( moz_cookies.creationTime / 1000000, 'UNIXEPOCH', 'localtime' ) AS "Creation Time",
+    datetime( moz_cookies.lastAccessed / 1000000, 'UNIXEPOCH', 'localtime' ) AS "Last Accessed Time",
     datetime( moz_cookies.expiry, 'UNIXEPOCH', 'localtime' ) AS Expiration,
     CASE
 
@@ -4243,8 +4244,8 @@ sources:
      fieldname AS FieldName,
      value AS Value,
      timesUsed AS TimesUsed,
-     datetime( firstUsed / 1000000, 'unixepoch', 'localtime' ) AS &quot;First Used&quot;,
-     datetime( lastUsed / 1000000, 'unixepoch', 'localtime' ) AS &quot;Last Used&quot;,
+     datetime( firstUsed / 1000000, 'unixepoch', 'localtime' ) AS "First Used",
+     datetime( lastUsed / 1000000, 'unixepoch', 'localtime' ) AS "Last Used",
      guid AS GUID
     FROM
      moz_formhistory
@@ -4324,7 +4325,7 @@ sources:
     sqlite_sequence.seq AS Sequence,
     fschanges.identifier AS Identifier,
     fschanges.direction AS Direction,
-    fschanges.&quot;action&quot; AS &quot;Action&quot;,
+    fschanges."action" AS "Action",
     fschanges.inode AS Inode,
     fschanges.parent_inode AS ParentInode,
     fschanges.volume AS Volume,
@@ -4518,7 +4519,7 @@ sources:
     local_entry.volume AS Volume,
     ( SELECT local_entry.filename FROM local_entry WHERE local_relations.parent_inode = local_entry.inode ) AS ParentFolder,
     local_entry.filename AS Filename,
-    datetime( modified, 'unixepoch' ) AS &quot;ModifiedTime&quot;,
+    datetime( modified, 'unixepoch' ) AS "ModifiedTime",
     local_entry.checksum AS Checksum,
     local_entry.size AS SizeInBytes,
     CASE
@@ -4586,28 +4587,28 @@ sources:
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
     items.stable_id,
-    items.local_title as &quot;Name&quot;,
-    items.file_size as &quot;SizeInBytes&quot;,
+    items.local_title as "Name",
+    items.file_size as "SizeInBytes",
     items.mime_type,
-    datetime(items.modified_date / 1000, 'unixepoch') as &quot;ModifiedTime&quot;,
-    datetime(items.viewed_by_me_date / 1000, 'unixepoch') as &quot;LastInteractionTime&quot;,
+    datetime(items.modified_date / 1000, 'unixepoch') as "ModifiedTime",
+    datetime(items.viewed_by_me_date / 1000, 'unixepoch') as "LastInteractionTime",
     CASE
-    when items.is_folder = 1 then &quot;Folder&quot;
-    when items.is_folder = 0 then &quot;File&quot;
-    end as &quot;IsFolder&quot;,
+    when items.is_folder = 1 then "Folder"
+    when items.is_folder = 0 then "File"
+    end as "IsFolder",
     CASE
-    when items.trashed = 1 then &quot;Deleted&quot;
-    when items.trashed = 0 then &quot;Not Deleted&quot;
-    end as &quot;DeletionStatus&quot;,
+    when items.trashed = 1 then "Deleted"
+    when items.trashed = 0 then "Not Deleted"
+    end as "DeletionStatus",
     CASE
-    when items.is_owner = 1 then &quot;Owner&quot;
-    when items.is_owner = 0 then &quot;Not Owner&quot;
-    end as &quot;Ownership&quot;,
+    when items.is_owner = 1 then "Owner"
+    when items.is_owner = 0 then "Not Owner"
+    end as "Ownership",
     CASE
-    when items.shared_with_me_date = 1 then &quot;Shared&quot;
-    when items.shared_with_me_date = 0 then &quot;Not Shared&quot;
-    end as &quot;SharedWithUser&quot;,
-    items.id AS &quot;CloudIdentifier&quot;
+    when items.shared_with_me_date = 1 then "Shared"
+    when items.shared_with_me_date = 0 then "Not Shared"
+    end as "SharedWithUser",
+    items.id AS "CloudIdentifier"
     FROM
     items'''
     LET FileType = '''Google Drive for Desktop Metadata'''
@@ -4621,9 +4622,9 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='Note' OR name='Media' OR name='Insight' OR name='User' OR name='Stroke');'''
     LET IdentifyValue = 5
     LET SQLQuery = '''SELECT
-    datetime( ( &quot;CreatedAt&quot; / 10000000 ) - 62135596800, 'unixepoch' ) AS CreatedAt,
-    datetime( ( &quot;UpdatedAt&quot; / 10000000 ) - 62135596800, 'unixepoch' ) AS UpdatedAt,
-    datetime( ( &quot;DeletedAt&quot; / 10000000 ) - 62135596800, 'unixepoch' ) AS DeletedAt,
+    datetime( ( "CreatedAt" / 10000000 ) - 62135596800, 'unixepoch' ) AS CreatedAt,
+    datetime( ( "UpdatedAt" / 10000000 ) - 62135596800, 'unixepoch' ) AS UpdatedAt,
+    datetime( ( "DeletedAt" / 10000000 ) - 62135596800, 'unixepoch' ) AS DeletedAt,
     Note.WindowPosition AS WindowPosition,
     CASE
     WHEN Note.IsOpen = 0 THEN 'No'
@@ -4758,13 +4759,13 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='list');'''
     LET IdentifyValue = 1
     LET SQLQuery = '''select
-     Name AS &quot;Name of SQLite DB&quot;,
-     datetime(julianday(Started)) as &quot;Transfer Started&quot;,
-     datetime(julianday(Finished)) as &quot;Transfer Finished&quot;,
-     source AS &quot;Source&quot;,
-     target AS &quot;Target&quot;,
-     Files AS &quot;Number of Files&quot;,
-     size AS &quot;Size (Bytes)&quot;
+     Name AS "Name of SQLite DB",
+     datetime(julianday(Started)) as "Transfer Started",
+     datetime(julianday(Finished)) as "Transfer Finished",
+     source AS "Source",
+     target AS "Target",
+     Files AS "Number of Files",
+     size AS "Size (Bytes)"
      from list'''
     LET FileType = '''TeraCopy MainDB'''
 
@@ -4778,7 +4779,7 @@ sources:
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
         Source,
-        size AS &quot;Size (Bytes)&quot;,
+        size AS "Size (Bytes)",
     CASE
 
             WHEN IsFolder = 0 THEN
@@ -4914,7 +4915,7 @@ sources:
     Notification.Payload AS Payload,
     Notification.PayloadType AS PayloadType,
     Notification.Tag AS Tag,
-    Notification.&quot;Group&quot; AS &quot;Group&quot;,
+    Notification."Group" AS "Group",
     datetime( ( Notification.ArrivalTime - 116444736000000000 ) / 10000000, 'unixepoch' ) AS ArrivalTime,
     CASE
 
@@ -5179,8 +5180,8 @@ sources:
     LET SQLQuery = '''SELECT
         message.message_id AS MessageID,
         message.thread_id AS ThreadID,
-        datetime( ( &quot;timestamp&quot; / 10000000 ) - 11644473600, 'unixepoch' ) AS Timestamp,
-        message.from_address AS &quot;From&quot;,
+        datetime( ( "timestamp" / 10000000 ) - 11644473600, 'unixepoch' ) AS Timestamp,
+        message.from_address AS "From",
     CASE
 
             WHEN message.type = 1 THEN
@@ -5252,7 +5253,7 @@ sources:
     WHEN subscription.should_send_multipart_sms_as_separate_messages = 1 THEN
     'Yes' ELSE 'Unknown'
     END AS ShouldSendMultiPartSMSAsSeparateMessages,
-    subscription.max_message_size AS &quot;MaxMessageSize (Bytes)&quot;,
+    subscription.max_message_size AS "MaxMessageSize (Bytes)",
     subscription.recipient_limit AS RecipientLimit,
     subscription.max_image_height AS MaxImageHeight,
     subscription.max_image_width AS MaxImageWidth,
@@ -5295,8 +5296,8 @@ sources:
     WHEN subscription.is_rcs_supported = 1 THEN
     'Yes' ELSE 'Unknown'
     END AS IsRCSSupported,
-    subscription.max_rcs_message_size AS &quot;MaxRCSMessageSize (Bytes)&quot;,
-    subscription.max_rcs_file_size AS &quot;MaxRCSFileSize (Bytes)&quot;
+    subscription.max_rcs_message_size AS "MaxRCSMessageSize (Bytes)",
+    subscription.max_rcs_file_size AS "MaxRCSFileSize (Bytes)"
     FROM
     subscription'''
     LET FileType = '''Windows Your Phone Subscription Info'''
@@ -5338,18 +5339,18 @@ sources:
     LET IdentifyQuery = '''SELECT count(*) FROM sqlite_master WHERE type='table' AND (name='ZCALLRECORD');'''
     LET IdentifyValue = 1
     LET SQLQuery = '''select
-    z_pk AS &quot;Call Sequence #&quot;,
-    zaddress AS &quot;Phone Number&quot;,
-    zduration AS &quot;Call in Seconds&quot;,
+    z_pk AS "Call Sequence #",
+    zaddress AS "Phone Number",
+    zduration AS "Call in Seconds",
     case
-    when zoriginated = 0 then &quot;Incoming&quot;
-    when zoriginated = 1 then &quot;Outgoing&quot;
-    end AS &quot;Call Direction&quot;,
+    when zoriginated = 0 then "Incoming"
+    when zoriginated = 1 then "Outgoing"
+    end AS "Call Direction",
     case
-    when zanswered = 0 then &quot;Call Missed&quot;
-    when zanswered = 1 then &quot;Call Answered&quot;
-    end as &quot;Call Status&quot;,
-    datetime(zdate+978307200,'unixepoch','localtime') AS &quot;Timestamp&quot;
+    when zanswered = 0 then "Call Missed"
+    when zanswered = 1 then "Call Answered"
+    end as "Call Status",
+    datetime(zdate+978307200,'unixepoch','localtime') AS "Timestamp"
     from zcallrecord'''
     LET FileType = '''Calls'''
 
@@ -5363,13 +5364,13 @@ sources:
     LET IdentifyValue = 1
     LET SQLQuery = '''SELECT
     Z_PK,
-    ZACCOUNTTYPE AS &quot;Account Type&quot;,
-    ZPARENTACCOUNT AS &quot;Parent Account&quot;,
-    ZUSERNAME AS &quot;Username&quot;,
-    DATETIME(ZDATE+978307200,'UNIXEPOCH') AS &quot;TIMESTAMP&quot;,
-    ZACCOUNTDESCRIPTION AS &quot;Account Description&quot;,
-    ZIDENTIFIER AS &quot;Identifier&quot;,
-    ZOWNINGBUNDLEID AS &quot;Bundle ID&quot;
+    ZACCOUNTTYPE AS "Account Type",
+    ZPARENTACCOUNT AS "Parent Account",
+    ZUSERNAME AS "Username",
+    DATETIME(ZDATE+978307200,'UNIXEPOCH') AS "TIMESTAMP",
+    ZACCOUNTDESCRIPTION AS "Account Description",
+    ZIDENTIFIER AS "Identifier",
+    ZOWNINGBUNDLEID AS "Bundle ID"
     FROM ZACCOUNT'''
     LET FileType = '''Accounts'''
 
@@ -5377,12 +5378,12 @@ sources:
       SQLQuery=SQLQuery, FileType=FileType,
       IdentifyQuery=IdentifyQuery, IdentifyValue=IdentifyValue)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663117></script>
+<script src=/js/jquery.sticky.js?1693663117></script>
+<script src=/js/featherlight.min.js?1693663117></script>
+<script src=/js/highlight.min.js?1693663117></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663117></script>
+<script src=/js/learn.js?1693663117></script>
+<script src=/js/hugo-learn.js?1693663117></script></body></html>

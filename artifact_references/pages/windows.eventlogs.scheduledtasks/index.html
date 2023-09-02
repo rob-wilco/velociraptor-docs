@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.ScheduledTasks :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.ScheduledTasks :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.eventlogs.scheduledtasks/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -81,7 +81,8 @@ and registration (EID 106) can be a good collection hunting for unusual paths.</
 (e.g taskname|delete|created|update)</p><p>Note: Audit Other Object Access Events is required to be implemented to record
 scheduled tasks being registered, modified or disabled in the Security event
 log channel.
-See: Computer Configuration\Policies\Windows Settings\Security Settings\Advanced Audit Policy Configuration\Object Access</p><pre><code class=language-yaml>name: Windows.EventLogs.ScheduledTasks
+See: Computer Configuration\Policies\Windows Settings\Security Settings\Advanced Audit Policy Configuration\Object Access</p><pre><code class=language-yaml>
+name: Windows.EventLogs.ScheduledTasks
 description: |
   This artifact will extract Event Logs related to ScheduledTasks and provide
   a nice format for simplified review.
@@ -104,7 +105,7 @@ description: |
   log channel.
   See: Computer Configuration\Policies\Windows Settings\Security Settings\Advanced Audit Policy Configuration\Object Access
 
-author: &quot;@mgreen27 - Matt Green&quot;
+author: "@mgreen27 - Matt Green"
 
 precondition: SELECT OS From info() where OS = 'windows'
 
@@ -120,10 +121,10 @@ parameters:
     description: path to the TaskScheduler/Operational event log
     default: '%SystemRoot%\System32\Winevt\Logs\Microsoft-Windows-TaskScheduler%4Operational.evtx'
   - name: DateAfter
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: DateBefore
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: TaskSchedulerEventRegex
     description: Regex of TaskScheduler log event ids.
@@ -170,22 +171,22 @@ parameters:
 
 sources:
   - query: |
-      LET VSS_MAX_AGE_DAYS &lt;= VSSAnalysisAge
-      LET Accessor = if(condition=VSSAnalysisAge &gt; 0, then=&quot;ntfs_vss&quot;, else=&quot;auto&quot;)
+      LET VSS_MAX_AGE_DAYS <= VSSAnalysisAge
+      LET Accessor = if(condition=VSSAnalysisAge > 0, then="ntfs_vss", else="auto")
 
       -- firstly set timebounds for performance
-      LET DateAfterTime &lt;= if(condition=DateAfter,
-        then=DateAfter, else=timestamp(epoch=&quot;1600-01-01&quot;))
-      LET DateBeforeTime &lt;= if(condition=DateBefore,
-        then=DateBefore, else=timestamp(epoch=&quot;2200-01-01&quot;))
+      LET DateAfterTime <= if(condition=DateAfter,
+        then=DateAfter, else=timestamp(epoch="1600-01-01"))
+      LET DateBeforeTime <= if(condition=DateBefore,
+        then=DateBefore, else=timestamp(epoch="2200-01-01"))
 
       -- Lookup what each task ID means (sadly dict keys are always strings).
-      LET TaskIDLookup &lt;= dict(
-        `4698`=&quot;A scheduled task was created.&quot;,
-        `4699`=&quot;A scheduled task was deleted.&quot;,
-        `4700`=&quot;A scheduled task was enabled.&quot;,
-        `4701`=&quot;A scheduled task was disabled.&quot;,
-        `4702`=&quot;A scheduled task was updated.&quot;)
+      LET TaskIDLookup <= dict(
+        `4698`="A scheduled task was created.",
+        `4699`="A scheduled task was deleted.",
+        `4700`="A scheduled task was enabled.",
+        `4701`="A scheduled task was disabled.",
+        `4702`="A scheduled task was updated.")
 
       -- expand provided glob into a list of paths on the file system (fs)
       LET fspaths = SELECT OSPath
@@ -206,7 +207,7 @@ sources:
                  then= data.TaskContentNew,
                  else= if(condition= data.TaskContent,
                     then= data.TaskContent)),
-                       re='&lt;[?].+?&gt;',
+                       re='<[?].+?>',
                        replace='')).Task,
 
          ClientProcessStartKey=data.ClientProcessStartKey,
@@ -243,7 +244,7 @@ sources:
                     if(condition=EventData.TaskContent OR EventData.TaskContentNew,
                             then= parse_task(data=EventData),
                             else= EventData) as EventData,
-                    get(field=&quot;Message&quot;) as Message,
+                    get(field="Message") as Message,
                     OSPath
                 FROM parse_evtx(filename=OSPath, accessor=Accessor)
                 WHERE
@@ -262,7 +263,7 @@ sources:
                     AND UserName =~ UserNameRegex
                     AND format(format='%v %v %v %v', args=[
                             EventData, UserData, Message, System]) =~ IocRegex
-                    AND EventTime &gt;= DateAfterTime AND EventTime &lt;= DateBeforeTime
+                    AND EventTime >= DateAfterTime AND EventTime <= DateBeforeTime
             }
           )
 
@@ -290,12 +291,12 @@ sources:
         OSPath
       FROM evtxsearch(PathList=fspaths)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

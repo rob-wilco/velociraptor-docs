@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Applications.DefenderQuarantineExtract :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567186 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567186 rel=stylesheet><link href=/css/featherlight.min.css?1693567186 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567186 rel=stylesheet><link href=/css/auto-complete.css?1693567186 rel=stylesheet><link href=/css/theme.css?1693567186 rel=stylesheet><link href=/css/tabs.css?1693567186 rel=stylesheet><link href=/css/hugo-theme.css?1693567186 rel=stylesheet><link href=/css/theme-mine.css?1693567186 rel=stylesheet><link href=/css/dark.css?1693567186 rel=stylesheet><link href=/css/syntax.css?1693567186 rel=stylesheet><link href=/css/light.css?1693567186 rel=stylesheet><link href=/css/hljs.css?1693567186 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567186 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567186></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Applications.DefenderQuarantineExtract :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663123 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663123 rel=stylesheet><link href=/css/featherlight.min.css?1693663123 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663123 rel=stylesheet><link href=/css/auto-complete.css?1693663123 rel=stylesheet><link href=/css/theme.css?1693663123 rel=stylesheet><link href=/css/tabs.css?1693663123 rel=stylesheet><link href=/css/hugo-theme.css?1693663123 rel=stylesheet><link href=/css/theme-mine.css?1693663123 rel=stylesheet><link href=/css/dark.css?1693663123 rel=stylesheet><link href=/css/syntax.css?1693663123 rel=stylesheet><link href=/css/light.css?1693663123 rel=stylesheet><link href=/css/hljs.css?1693663123 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663123 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663123></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/defenderquarantineextract/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,8 +71,9 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.Applications.DefenderQuarantineExtract</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.Applications.DefenderQuarantineExtract</h1><p>Extracts Quarantine Files from Windows Defender.</p><p>This artifact decrypts the RC4 encrypted Windows Defender Quarantined files
-and returns information about it. If it is a PE, it also parses the PE.</p><p>You may also choose to upload the extracted binaries for deeper malware analysis.</p><pre><code class=language-yaml>name: Windows.Applications.DefenderQuarantineExtract
-author: &quot;Eduardo Mattos - @eduardfir&quot;
+and returns information about it. If it is a PE, it also parses the PE.</p><p>You may also choose to upload the extracted binaries for deeper malware analysis.</p><pre><code class=language-yaml>
+name: Windows.Applications.DefenderQuarantineExtract
+author: "Eduardo Mattos - @eduardfir"
 description: |
    Extracts Quarantine Files from Windows Defender.
 
@@ -94,22 +95,22 @@ parameters:
      description: Select to upload decoded quarantined files.
      type: bool
    - name: DefenderRC4KeyHex
-     default: &quot;1e87781b8dbaa844ce69702c0c78b786a3f623b738f5edf9af83530fb3fc54faa21eb9cf1331fd0f0da954f687cb9e18279697900e53fb317c9cbce48e23d05371ecc15951b8f3649d7ca33ed68dc9047e82c9baad9799d0d458cb847ca9ffbe3c8a775233557dde13a8b14087cc1bc8f10f6ecdd083a959cff84a9d1d50755e3e191818af23e2293558766d2c07e25712b2ca0b535ed8f6c56ce73d24bdd0291771861a54b4c285a9a3db7aca6d224aeacd621db9f2a22ed1e9e11d75bed7dc0ecb0a8e68a2ff1263408dc808dffd164b116774cd0b9b8d05411ed6262e429ba495676b8398db2f35d3c1b9ced52636f2765e1a95cb7ca4c3ddabddbff38253&quot;
+     default: "1e87781b8dbaa844ce69702c0c78b786a3f623b738f5edf9af83530fb3fc54faa21eb9cf1331fd0f0da954f687cb9e18279697900e53fb317c9cbce48e23d05371ecc15951b8f3649d7ca33ed68dc9047e82c9baad9799d0d458cb847ca9ffbe3c8a775233557dde13a8b14087cc1bc8f10f6ecdd083a959cff84a9d1d50755e3e191818af23e2293558766d2c07e25712b2ca0b535ed8f6c56ce73d24bdd0291771861a54b4c285a9a3db7aca6d224aeacd621db9f2a22ed1e9e11d75bed7dc0ecb0a8e68a2ff1263408dc808dffd164b116774cd0b9b8d05411ed6262e429ba495676b8398db2f35d3c1b9ced52636f2765e1a95cb7ca4c3ddabddbff38253"
 
 sources:
   - query: |
-        LET Targets &lt;= SELECT Mtime, Name, FullPath FROM glob(globs=TargetGlob)
+        LET Targets <= SELECT Mtime, Name, FullPath FROM glob(globs=TargetGlob)
 
-        LET DefenderRC4Key &lt;= unhex(string=DefenderRC4KeyHex)
+        LET DefenderRC4Key <= unhex(string=DefenderRC4KeyHex)
 
-        LET DeQuarantine = SELECT read_file(filename=crypto_rc4(key=DefenderRC4Key, string=read_file(filename=FullPath, accessor=&quot;file&quot;)), accessor=&quot;data&quot;, offset=204) as DecodedFile,
+        LET DeQuarantine = SELECT read_file(filename=crypto_rc4(key=DefenderRC4Key, string=read_file(filename=FullPath, accessor="file")), accessor="data", offset=204) as DecodedFile,
                             Name,
                             FullPath,
                             Mtime
                            FROM Targets
 
-        LET TempQuery = SELECT magic(path=DecodedFile, accessor=&quot;data&quot;) as Magic,
-                            hash(path=DecodedFile, accessor=&quot;data&quot;) as Hash,
+        LET TempQuery = SELECT magic(path=DecodedFile, accessor="data") as Magic,
+                            hash(path=DecodedFile, accessor="data") as Hash,
                             DecodedFile,
                             Name,
                             FullPath,
@@ -119,25 +120,25 @@ sources:
         SELECT
             Mtime,
             Magic,
-            if(condition=Magic=~&quot;PE&quot;, then=parse_pe(file=DecodedFile, accessor=&quot;data&quot;)) as ParsedPE,
+            if(condition=Magic=~"PE", then=parse_pe(file=DecodedFile, accessor="data")) as ParsedPE,
             Hash,
             FullPath,
             if(condition=UploadDecodedFiles,
              then={
                 SELECT
                 upload(file=DecodedFile,
-                    accessor=&quot;data&quot;,
-                    name=Name + &quot;_Defender_Quarantine_Extract.bin&quot;) as FileDetails
+                    accessor="data",
+                    name=Name + "_Defender_Quarantine_Extract.bin") as FileDetails
                 FROM TempQuery
              }) as Upload
         FROM TempQuery
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567186></script>
-<script src=/js/jquery.sticky.js?1693567186></script>
-<script src=/js/featherlight.min.js?1693567186></script>
-<script src=/js/highlight.min.js?1693567186></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567186></script>
-<script src=/js/learn.js?1693567186></script>
-<script src=/js/hugo-learn.js?1693567186></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663123></script>
+<script src=/js/jquery.sticky.js?1693663123></script>
+<script src=/js/featherlight.min.js?1693663123></script>
+<script src=/js/highlight.min.js?1693663123></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663123></script>
+<script src=/js/learn.js?1693663123></script>
+<script src=/js/hugo-learn.js?1693663123></script></body></html>

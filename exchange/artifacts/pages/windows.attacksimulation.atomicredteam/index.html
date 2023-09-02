@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.AttackSimulation.AtomicRedTeam :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.AttackSimulation.AtomicRedTeam :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.attacksimulation.atomicredteam/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -87,7 +87,8 @@ state. You are responsible for understanding what a test does
 before executing.</p></li><li><p>Ensure you have permission to test before you begin.</p></li><li><p>It is recommended to set up a test machine for atomic test
 execution that is similar to the build in your environment. Be
 sure you have your collection/EDR solution in place, and that
-the endpoint is checking in and active.</p></li></ul><pre><code class=language-yaml>name: Windows.AttackSimulation.AtomicRedTeam
+the endpoint is checking in and active.</p></li></ul><pre><code class=language-yaml>
+name: Windows.AttackSimulation.AtomicRedTeam
 author: Wes Lambert -- @therealwlambert
 description: |
     This artifact allows you to run Atomic Red Team tests on Windows
@@ -108,9 +109,9 @@ description: |
 
     Invoke-AtomicRedTeam is a PowerShell module to execute tests as
     defined in the atomics folder of Red Canary's Atomic Red Team
-    project. The &quot;atomics folder&quot; contains a folder for each Technique
-    defined by the MITRE ATT&amp;CK™ Framework. Inside of each of these
-    &quot;T#&quot; folders you'll find a yaml file that defines the attack
+    project. The "atomics folder" contains a folder for each Technique
+    defined by the MITRE ATT&CK™ Framework. Inside of each of these
+    "T#" folders you'll find a yaml file that defines the attack
     procedures for each atomic test as well as an easier to read
     markdown (md) version of the same data.
 
@@ -841,7 +842,7 @@ parameters:
       type: bool
 
     - name: T1197 - 3
-      description: BITS Jobs - Persist, Download, &amp; Execute
+      description: BITS Jobs - Persist, Download, & Execute
       type: bool
 
     - name: T1197 - 4
@@ -1177,11 +1178,11 @@ parameters:
       type: bool
 
     - name: T1564 - 2
-      description: Hide Artifacts - Create a Hidden User Called &quot;$&quot;
+      description: Hide Artifacts - Create a Hidden User Called "$"
       type: bool
 
     - name: T1564 - 3
-      description: Hide Artifacts - Create an &quot;Administrator &quot; user (with a space on the end)
+      description: Hide Artifacts - Create an "Administrator " user (with a space on the end)
       type: bool
 
     - name: T1070 - 1
@@ -1737,7 +1738,7 @@ parameters:
       type: bool
 
     - name: T1197 - 3
-      description: BITS Jobs - Persist, Download, &amp; Execute
+      description: BITS Jobs - Persist, Download, & Execute
       type: bool
 
     - name: T1197 - 4
@@ -2901,7 +2902,7 @@ precondition: SELECT OS From info() where OS = 'windows'
 
 sources:
   - query: |
-     LET CommandTable = SELECT * FROM parse_csv(accessor=&quot;data&quot;, filename='''
+     LET CommandTable = SELECT * FROM parse_csv(accessor="data", filename='''
      Flag,Command
      T1558.004 - 1,Invoke-AtomicTest T1558.004 -TestNumbers 1
      T1056.004 - 1,Invoke-AtomicTest T1056.004 -TestNumbers 1
@@ -3589,29 +3590,29 @@ sources:
      T1566.001 - 1,Invoke-AtomicTest T1566.001 -TestNumbers 1
      T1566.001 - 2,Invoke-AtomicTest T1566.001 -TestNumbers 2
      ''')
-     LET CommandsToRun &lt;= if(condition=RunAll, then='''Invoke-AtomicTest All -Confirm:$false''', else={ SELECT Command FROM CommandTable WHERE get(field=Flag)})
+     LET CommandsToRun <= if(condition=RunAll, then='''Invoke-AtomicTest All -Confirm:$false''', else={ SELECT Command FROM CommandTable WHERE get(field=Flag)})
 
-     LET RemoveLog &lt;= if(condition=RemoveExecLog, then={ SELECT * FROM execve(argv=[&quot;powershell.exe&quot;, &quot;Remove-Item&quot;, ExecutionLogFile])})
+     LET RemoveLog <= if(condition=RemoveExecLog, then={ SELECT * FROM execve(argv=["powershell.exe", "Remove-Item", ExecutionLogFile])})
 
-     LET InstallART &lt;= if(condition=InstallART, then={ SELECT * FROM execve(argv=[   'powershell.exe', '-exec', 'bypass',
-                                                '-Command', &quot;IEX (IWR https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1 -UseBasicParsing); Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser; Install-AtomicRedTeam -getAtomics -F&quot;
+     LET InstallART <= if(condition=InstallART, then={ SELECT * FROM execve(argv=[   'powershell.exe', '-exec', 'bypass',
+                                                '-Command', "IEX (IWR https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1 -UseBasicParsing); Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force -Scope CurrentUser; Install-AtomicRedTeam -getAtomics -F"
                                             ])})
 
-     LET JustDoIt &lt;= SELECT * FROM foreach(row=CommandsToRun, query={
+     LET JustDoIt <= SELECT * FROM foreach(row=CommandsToRun, query={
             SELECT * FROM execve(argv=[   'powershell.exe', '-exec', 'bypass',
-                                                '-Command', '''Import-Module &quot;C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1&quot; -Force; ''' + Command + ''' -GetPreReqs; ''' + Command + ''' -ExecutionLogPath ''' + ExecutionLogFile + ''';''' + if(condition=Cleanup, then=Command + ''' -Cleanup''', else='''''')
+                                                '-Command', '''Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force; ''' + Command + ''' -GetPreReqs; ''' + Command + ''' -ExecutionLogPath ''' + ExecutionLogFile + ''';''' + if(condition=Cleanup, then=Command + ''' -Cleanup''', else='''''')
                                             ])}
 
      )
 
-     SELECT `Execution Time (UTC)`, `Execution Time (Local)`, '[' + Technique + '](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/' + Technique + '/' + Technique + '.md)' AS Technique, `Test Number`, `Test Name`, Hostname, Username, GUID FROM parse_csv(accessor=&quot;file&quot;, filename=ExecutionLogFile)
+     SELECT `Execution Time (UTC)`, `Execution Time (Local)`, '[' + Technique + '](https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/' + Technique + '/' + Technique + '.md)' AS Technique, `Test Number`, `Test Name`, Hostname, Username, GUID FROM parse_csv(accessor="file", filename=ExecutionLogFile)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

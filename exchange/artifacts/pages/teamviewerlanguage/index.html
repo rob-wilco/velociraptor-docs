@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.TeamViewerLanguage :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.TeamViewerLanguage :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/teamviewerlanguage/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,7 +76,8 @@ to extract log lines. The artifact by default hunts for Chinese, Vietnamese
 and Russian language changes as priority, then uses a catch all for generic
 changes. You can add additional targeted yara as desired to sort output.</p><p>In each log entry there are two language codes, the first being keyboard
 layout of the connecting system and the second one the default input profile
-of the target host. The same language codes could indicate legitimate support.</p><p>Lookup Language codes at the Microsoft link for references. Examples below:</p><p>0409 - US English<br>0419 - Russian<br>0804 - Chinese Simplified<br>0404 - Chinese Traditional<br>042a - Vietnamese</p><pre><code class=language-yaml>name: Windows.Detection.TeamViewerLanguage
+of the target host. The same language codes could indicate legitimate support.</p><p>Lookup Language codes at the Microsoft link for references. Examples below:</p><p>0409 - US English<br>0419 - Russian<br>0804 - Chinese Simplified<br>0404 - Chinese Traditional<br>042a - Vietnamese</p><pre><code class=language-yaml>
+name: Windows.Detection.TeamViewerLanguage
 author: Matt Green - @mgreen27
 description: |
    This artifact enables collection of TeamViewer log entries for keyboard layout 
@@ -111,7 +112,7 @@ parameters:
      default: ^TeamViewer.._Logfile.*\.log$
      description: target teamviewer log filenames.
    - name: DriveLetter
-     default: &quot;C:&quot;
+     default: "C:"
    - name: AllDrives
      type: bool
    - name: LayoutRegex
@@ -122,45 +123,45 @@ parameters:
      default: |
         rule LOG_TeamViewer_Connect_Chinese_Keyboard_Layout {
            meta:
-              description = &quot;Detects a suspicious TeamViewer log entry stating that the remote systems had a Chinese keyboard layout&quot;
-              author = &quot;Florian Roth&quot;
-              date = &quot;2019-10-12&quot;
-              modified = &quot;2020-12-16&quot;
+              description = "Detects a suspicious TeamViewer log entry stating that the remote systems had a Chinese keyboard layout"
+              author = "Florian Roth"
+              date = "2019-10-12"
+              modified = "2020-12-16"
               score = 60
-              limit = &quot;Logscan&quot;
-              reference = &quot;https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs&quot;
+              limit = "Logscan"
+              reference = "https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs"
            strings:
               /* Source has Chinese simplified keyboard layout */
-              $x1 = &quot;Changing keyboard layout to: 0804&quot; ascii
-              $x2 = &quot;Changing keyboard layout to: 042a&quot;
+              $x1 = "Changing keyboard layout to: 0804" ascii
+              $x2 = "Changing keyboard layout to: 042a"
               /* Avoiding Chinese to Chinese support cases */
-              $fp1 = &quot;Changing keyboard layout to: 08040804&quot; ascii
-              $fp2 = &quot;Changing keyboard layout to: 042a042a&quot; ascii
+              $fp1 = "Changing keyboard layout to: 08040804" ascii
+              $fp2 = "Changing keyboard layout to: 042a042a" ascii
            condition:
-              ( #x1 + #x2 ) &gt; ( #fp1 + #fp2 )
+              ( #x1 + #x2 ) > ( #fp1 + #fp2 )
         }
         rule LOG_TeamViewer_Connect_Russian_Keyboard_Layout {
            meta:
-              description = &quot;Detects a suspicious TeamViewer log entry stating that the remote systems had a Russian keyboard layout&quot;
-              author = &quot;Florian Roth&quot;
-              date = &quot;2019-10-12&quot;
-              modified = &quot;2022-12-07&quot;
+              description = "Detects a suspicious TeamViewer log entry stating that the remote systems had a Russian keyboard layout"
+              author = "Florian Roth"
+              date = "2019-10-12"
+              modified = "2022-12-07"
               score = 60
-              limit = &quot;Logscan&quot;
-              reference = &quot;https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs&quot;
+              limit = "Logscan"
+              reference = "https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/default-input-locales-for-windows-language-packs"
            strings:
               /* Source has Russian keyboard layout */
-              $x1 = &quot;Changing keyboard layout to: 0419&quot; ascii
+              $x1 = "Changing keyboard layout to: 0419" ascii
               /* Avoiding Russian to Russian support cases */
-              $fp1 = &quot;Changing keyboard layout to: 04190419&quot; ascii
+              $fp1 = "Changing keyboard layout to: 04190419" ascii
            condition:
-              #x1 &gt; #fp1
+              #x1 > #fp1
         }
         rule LOG_TeamViewer_Connect_any_Keyboard_Layout {
            meta:
-              description = &quot;Detects a generic TeamViewer log entry stating change in keyboard layout&quot;
+              description = "Detects a generic TeamViewer log entry stating change in keyboard layout"
            strings:
-             $x1 = &quot;Changing keyboard layout to:&quot; ascii
+             $x1 = "Changing keyboard layout to:" ascii
             condition:
               any of them
         }
@@ -186,8 +187,8 @@ sources:
       LET details = SELECT*,
             parse_string_with_regex(string=HitContent,
             regex=[
-                '^(?P&lt;EventTime&gt;\\d{4}.\\d{2}.\\d{2}.\\d{2}:\\d{2}:\\d{2}[^\\s]+)',
-                'Changing keyboard layout to: (?P&lt;KeyboardLayout&gt;[^\\s]+)']) as Details
+                '^(?P<eventtime>\\d{4}.\\d{2}.\\d{2}.\\d{2}:\\d{2}:\\d{2}[^\\s]+)',
+                'Changing keyboard layout to: (?P<keyboardlayout>[^\\s]+)']) as Details
       FROM hits
 
       SELECT
@@ -200,12 +201,12 @@ sources:
       FROM details
       WHERE KeyboardLayout =~ LayoutRegex
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

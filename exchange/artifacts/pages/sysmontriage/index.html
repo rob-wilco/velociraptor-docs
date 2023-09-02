@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Triage.Sysmon :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Triage.Sysmon :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/sysmontriage/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,7 +71,8 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.Triage.Sysmon</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.Triage.Sysmon</h1><p>This artifact allows collecting Sysmon Events for Triage around a timestamp.</p><p>By default collection will be 600 seconds from the current time and allows
-fast triage of a machine with recent telemetry.</p><pre><code class=language-yaml>name: Windows.Triage.Sysmon
+fast triage of a machine with recent telemetry.</p><pre><code class=language-yaml>
+name: Windows.Triage.Sysmon
 author: Matt Green - @mgreen27
 description: |
    This artifact allows collecting Sysmon Events for Triage around a timestamp.
@@ -104,9 +105,9 @@ sources:
 
     query: |
       -- firstly set boxed timebounds
-      LET DateAfterTime &lt;= if(condition=TargetTime,
+      LET DateAfterTime <= if(condition=TargetTime,
         then=timestamp(epoch=TargetTime.Unix - TargetTimeBox), else=timestamp(epoch=now() - TargetTimeBox))
-      LET DateBeforeTime &lt;= if(condition=TargetTime,
+      LET DateBeforeTime <= if(condition=TargetTime,
         then=timestamp(epoch=TargetTime.Unix + TargetTimeBox), else=timestamp(epoch=now() + TargetTimeBox))
         
       -- run query and output rows
@@ -143,14 +144,14 @@ sources:
                 --,EventData.LogonId as LogonId
                 --,EventData.TerminalSessionId as TerminalSessionId
                 --,EventData.IntegrityLevel as IntegrityLevel
-                --,parse_string_with_regex(string=EventData.Hashes, regex=[&quot;MD5=(?P&lt;MD5&gt;[^,]+)&quot;,&quot;SHA1=(?P&lt;SHA1&gt;[^,]+)&quot;,&quot;SHA256=(?P&lt;SHA256&gt;[^,]+)&quot;,&quot;IMPHASH=(?P&lt;IMPHASH&gt;[^,]+)&quot;] ) as Hash
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)","IMPHASH=(?P<imphash>[^,]+)"] ) as Hash
                 --,EventData.ParentProcessGuid as ParentProcessGuid
                 ,EventData.ParentProcessId as ParentProcessId
                 ,EventData.ParentImage as ParentImage
                 ,EventData.ParentCommandLine as ParentCommandLine
                 --,EventData.ParentUser as ParentUser
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 1
  
       - type: vql_suggestion
@@ -178,7 +179,7 @@ sources:
                 ,EventData.PreviousCreationUtcTime as PreviousCreationUtcTime
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 2
 
       - type: vql_suggestion
@@ -208,7 +209,7 @@ sources:
                 ,EventData.DestinationPort as DestinationPort
                 ,EventData.DestinationPortName as DestinationPortName
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 3
        
        
@@ -242,7 +243,7 @@ sources:
                 ,EventData.StartFunction as StartFunction
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 8
      
       - type: vql_suggestion
@@ -277,7 +278,7 @@ sources:
                 ,EventData.CallTrace as CallTrace
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 10
 
       - type: vql_suggestion
@@ -298,7 +299,7 @@ sources:
                 ,EventData.CreationUtcTime as CreationUtcTime
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 11
 
       - type: vql_suggestion
@@ -321,7 +322,7 @@ sources:
                 ,EventData.NewName as NewName
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID in ( 12, 13, 14 )
 
       - type: vql_suggestion
@@ -340,11 +341,11 @@ sources:
                 ,EventData.User as User
                 ,EventData.TargetFileName as TargetFileName
                 ,EventData.CreationUtcTime as CreationUtcTime
-                --,parse_string_with_regex(string=EventData.Hash, regex=[&quot;MD5=(?P&lt;MD5&gt;[^,]+)&quot;,&quot;SHA1=(?P&lt;SHA1&gt;[^,]+)&quot;,&quot;SHA256=(?P&lt;SHA256&gt;[^,]+)&quot;] ) as Hash
+                --,parse_string_with_regex(string=EventData.Hash, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hash
                 ,EventData.Hash as Hash
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 15
 
       - type: vql_suggestion
@@ -367,7 +368,7 @@ sources:
                 ,EventData.PipeName as PipeName
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID in ( 17,18 )
             
             
@@ -403,7 +404,7 @@ sources:
                 ,EventData.Filter as Filter
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID in ( 19,20,21 )
 
       - type: vql_suggestion
@@ -424,7 +425,7 @@ sources:
                 ,EventData.QueryStatus as QueryStatus
                 ,EventData.QueryResults as QueryResults
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 22
 
       - type: vql_suggestion
@@ -442,12 +443,12 @@ sources:
                 ,EventData.Image as Image
                 ,EventData.User as User
                 ,EventData.TargetFilename as TargetFilename
-                --,parse_string_with_regex(string=EventData.Hashes, regex=[&quot;MD5=(?P&lt;MD5&gt;[^,]+)&quot;,&quot;SHA1=(?P&lt;SHA1&gt;[^,]+)&quot;,&quot;SHA256=(?P&lt;SHA256&gt;[^,]+)&quot;] ) as Hashes
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hashes
                 ,EventData.Hashes as Hashes
                 ,EventData.Archived as Archived
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 23
 
       - type: vql_suggestion
@@ -466,12 +467,12 @@ sources:
                 ,EventData.User as User
                 ,EventData.Session as Session
                 ,EventData.ClientInfo as ClientInfo
-                --,parse_string_with_regex(string=EventData.Hashes, regex=[&quot;MD5=(?P&lt;MD5&gt;[^,]+)&quot;,&quot;SHA1=(?P&lt;SHA1&gt;[^,]+)&quot;,&quot;SHA256=(?P&lt;SHA256&gt;[^,]+)&quot;] ) as Hashes
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hashes
                 ,EventData.Hashes as Hashes
                 ,EventData.Archived as Archived
                 --,EventData
                 --,Message
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
             WHERE EventID = 24
 
       - type: vql_suggestion
@@ -499,7 +500,7 @@ sources:
                     `14` = 'Registry object renamed',
                     `15` = 'File stream created',
                     `16` = 'Sysmon config state changed',
-                    `17` = 'Pipe Created&quot;',
+                    `17` = 'Pipe Created"',
                     `18` = 'Pipe Connected',
                     `19` = 'WmiEventFilter activity detected',
                     `20` = 'WmiEventConsumer activity detected',
@@ -515,14 +516,14 @@ sources:
                     member=str(str=EventID)) as timestamp_desc
                 ,Message as message
                 --,EventData
-            FROM source(artifact=&quot;Exchange.Windows.Triage.Sysmon&quot;)
+            FROM source(artifact="Exchange.Windows.Triage.Sysmon")
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

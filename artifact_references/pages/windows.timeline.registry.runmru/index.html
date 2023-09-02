@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Timeline.Registry.RunMRU :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567186 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567186 rel=stylesheet><link href=/css/featherlight.min.css?1693567186 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567186 rel=stylesheet><link href=/css/auto-complete.css?1693567186 rel=stylesheet><link href=/css/theme.css?1693567186 rel=stylesheet><link href=/css/tabs.css?1693567186 rel=stylesheet><link href=/css/hugo-theme.css?1693567186 rel=stylesheet><link href=/css/theme-mine.css?1693567186 rel=stylesheet><link href=/css/dark.css?1693567186 rel=stylesheet><link href=/css/syntax.css?1693567186 rel=stylesheet><link href=/css/light.css?1693567186 rel=stylesheet><link href=/css/hljs.css?1693567186 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567186 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567186></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Timeline.Registry.RunMRU :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663123 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663123 rel=stylesheet><link href=/css/featherlight.min.css?1693663123 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663123 rel=stylesheet><link href=/css/auto-complete.css?1693663123 rel=stylesheet><link href=/css/theme.css?1693663123 rel=stylesheet><link href=/css/tabs.css?1693663123 rel=stylesheet><link href=/css/hugo-theme.css?1693663123 rel=stylesheet><link href=/css/theme-mine.css?1693663123 rel=stylesheet><link href=/css/dark.css?1693663123 rel=stylesheet><link href=/css/syntax.css?1693663123 rel=stylesheet><link href=/css/light.css?1693663123 rel=stylesheet><link href=/css/hljs.css?1693663123 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663123 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663123></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.timeline.registry.runmru/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,11 +75,12 @@ Entries will be logged in the user hive under: Software\Microsoft\Windows\Curren
 reg_mtime starting at 0. Second recent 1, Third recent 2 etc.</p><p>Default output enables a line per MRU entry.
 A tickbox enables Grouped results with order in a single line.</p><p>Note: This artifact will collect RunMRU from ntuser.dat files and
 may exclude very recent entries in transaction (HKCU). Future
-versions of this content will address this gap.</p><pre><code class=language-yaml>name: Windows.Timeline.Registry.RunMRU
+versions of this content will address this gap.</p><pre><code class=language-yaml>
+name: Windows.Timeline.Registry.RunMRU
 description: |
     # Output all available RunMRU registry keys in timeline format.
 
-    RunMRU is when a user enters a command into the START &gt; Run prompt.
+    RunMRU is when a user enters a command into the START > Run prompt.
     Entries will be logged in the user hive under:    Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU
 
     The artifact numbers all entries with the most recent at
@@ -101,28 +102,28 @@ parameters:
     type: hidden
     default: Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU\MRUList
   - name: dateAfter
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: dateBefore
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: targetUser
-    description: &quot;target user regex&quot;
+    description: "target user regex"
     type: regex
   - name: regexValue
-    description: &quot;regex search over RunMRU values.&quot;
+    description: "regex search over RunMRU values."
     type: regex
   - name: groupResults
-    description: &quot;groups MRU entries to one message line&quot;
+    description: "groups MRU entries to one message line"
     type: bool
 
 sources:
  - query: |
-        LET hostname_lu &lt;= SELECT Fqdn FROM info()
-        LET HKEY_USERS &lt;= pathspec(parse=&quot;HKEY_USERS&quot;, path_type=&quot;registry&quot;)
+        LET hostname_lu <= SELECT Fqdn FROM info()
+        LET HKEY_USERS <= pathspec(parse="HKEY_USERS", path_type="registry")
 
         // First we need to extract populated RunMRU
-        LET MRUList &lt;= SELECT OSPath,
+        LET MRUList <= SELECT OSPath,
            Data.value as RunMruOrder,
            len(list=Data.value) as RunMruLength,
            Username,
@@ -130,7 +131,7 @@ sources:
         FROM Artifact.Windows.Registry.NTUser(KeyGlob=KeyGlob)
 
         // Now extract RunMRU entries and order
-        LET results &lt;= SELECT * FROM foreach(
+        LET results <= SELECT * FROM foreach(
            row=MRUList,
            query={
              SELECT
@@ -141,37 +142,37 @@ sources:
                 HKEY_USERS + UUID + OSPath.Dirname.Path as reg_key,
 
                 -- Value data is similar to 'cmd.exe\1' so we just need the bit before the \
-                regex_replace(source=Data.value, re=&quot;\\\\1$&quot;, replace=&quot;&quot;) as reg_value,
+                regex_replace(source=Data.value, re="\\\\1$", replace="") as reg_value,
                 Data.type as reg_type,
                 RunMruLength - 1 - len(list=regex_replace(
                    source=RunMruOrder,
-                   re=&quot;^.*&quot; + OSPath.Basename,
-                   replace=&quot;&quot;)) as mru_order,
+                   re="^.*" + OSPath.Basename,
+                   replace="")) as mru_order,
                 RunMruOrder
-             FROM glob(globs='*', root=OSPath.Dirname, accessor=&quot;raw_reg&quot;)
-             WHERE not reg_name = &quot;MRUList&quot; AND
+             FROM glob(globs='*', root=OSPath.Dirname, accessor="raw_reg")
+             WHERE not reg_name = "MRUList" AND
                     if(condition=targetUser, then=Username =~ targetUser,
                         else=TRUE) AND
-                    if(condition=dateAfter, then=reg_mtime &gt; timestamp(string=dateAfter),
+                    if(condition=dateAfter, then=reg_mtime > timestamp(string=dateAfter),
                         else=TRUE) AND
-                    if(condition=dateBefore, then=reg_mtime &lt; timestamp(string=dateBefore),
+                    if(condition=dateBefore, then=reg_mtime < timestamp(string=dateBefore),
                         else=TRUE)
                     AND log(message=UUID)
              ORDER BY mru_order
           })
 
         // join mru values and order for presentation
-        LET usercommands &lt;= SELECT Username as user, mru_order,
-                format(format=&quot;MRU%v: %v&quot;, args=[mru_order,reg_value]) as mru_grouped
+        LET usercommands <= SELECT Username as user, mru_order,
+                format(format="MRU%v: %v", args=[mru_order,reg_value]) as mru_grouped
         FROM results
 
         // Prepare join use case
         LET joinOut = SELECT
                 reg_mtime as event_time,
                 hostname_lu[0].Fqdn as hostname,
-                &quot;RunMRU&quot; as parser,
-                &quot;RunMRU evidence user: &quot; + Username + &quot;, &quot; +
-                  join(array=mru_grouped, sep=&quot; | &quot;)  + &quot;'&quot; as message,
+                "RunMRU" as parser,
+                "RunMRU evidence user: " + Username + ", " +
+                  join(array=mru_grouped, sep=" | ")  + "'" as message,
                 source,
                 Username as user
         FROM foreach(row=usercommands,
@@ -192,10 +193,10 @@ sources:
         LET splitOut = SELECT
                     reg_mtime as event_time,
                     hostname_lu.Fqdn[0] as hostname,
-                    &quot;RunMRU&quot; as parser,
-                    &quot;RunMRU evidence user: &quot; + Username +
-                        format(format=&quot;, order: %v, command: %v&quot;, args=[mru_order,reg_value])
-                            + &quot;'&quot; as message,
+                    "RunMRU" as parser,
+                    "RunMRU evidence user: " + Username +
+                        format(format=", order: %v, command: %v", args=[mru_order,reg_value])
+                            + "'" as message,
                     source,
                     Username as user,
                     reg_key,
@@ -212,12 +213,12 @@ sources:
             else={ SELECT * FROM splitOut})
         WHERE if(condition=regexValue, then=message =~ regexValue, else=TRUE)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567186></script>
-<script src=/js/jquery.sticky.js?1693567186></script>
-<script src=/js/featherlight.min.js?1693567186></script>
-<script src=/js/highlight.min.js?1693567186></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567186></script>
-<script src=/js/learn.js?1693567186></script>
-<script src=/js/hugo-learn.js?1693567186></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663123></script>
+<script src=/js/jquery.sticky.js?1693663123></script>
+<script src=/js/featherlight.min.js?1693663123></script>
+<script src=/js/highlight.min.js?1693663123></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663123></script>
+<script src=/js/learn.js?1693663123></script>
+<script src=/js/hugo-learn.js?1693663123></script></body></html>

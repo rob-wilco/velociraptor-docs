@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.ExtendedAttributes :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.ExtendedAttributes :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.ntfs.extendedattributes/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -78,8 +78,9 @@ Extended Attribute size, name or content.</p><p>NOTE:
 By default an EAName exclusion has been applied to filter some common $EA names
 found on Windows System. Recommended hunt would be by rare name or $EA size.
 By default we only parse $EA and discard $EA_INFORMATION. $EA_INFORMATION
-typically is very small and available in NtfsMetadata field of output.</p><pre><code class=language-yaml>name: Windows.NTFS.ExtendedAttributes
-author: &quot;Matt Green - @mgreen27&quot;
+typically is very small and available in NtfsMetadata field of output.</p><pre><code class=language-yaml>
+name: Windows.NTFS.ExtendedAttributes
+author: "Matt Green - @mgreen27"
 description: |
   Adversaries may use NTFS file attributes for defence evasion to hide malicious
   data. This artifact parses NTFS Extended attributes ($EA).
@@ -101,22 +102,22 @@ reference:
 
 parameters:
   - name: MFTDrive
-    default: &quot;C:&quot;
+    default: "C:"
   - name: HostPathRegex
-    description: &quot;Regex search over OSPath.&quot;
-    default: &quot;.&quot;
+    description: "Regex search over OSPath."
+    default: "."
     type: regex
   - name: DateAfter
     type: timestamp
-    description: &quot;search for host files with timestamps after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for host files with timestamps after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for  host files with timestamps before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for  host files with timestamps before this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: AllDrives
     type: bool
-    description: &quot;Select MFT search on all attached ntfs drives.&quot;
+    description: "Select MFT search on all attached ntfs drives."
   - name: EANameRegex
-    description: &quot;$EA Name regex filter to include in results.&quot;
+    description: "$EA Name regex filter to include in results."
     default: .
     type: regex
   - name: EANameExclusion
@@ -124,40 +125,40 @@ parameters:
     default: ^(\$KERNEL\.PURGE\.(ESBCACHE|APPXFICACHE)|\$CI\.CATALOGHINT|\w{8}-\w{4}-\w{4}-\w{4}-\w{12}\.CSC\.\w+)$
     type: regex
   - name: EAContentRegex
-    description: &quot;$EA content to search for by regex.&quot;
+    description: "$EA content to search for by regex."
     default: .
     type: regex
   - name: SizeMax
     type: int64
-    description: &quot;Total $EA attributes in the MFT under this size in bytes.&quot;
+    description: "Total $EA attributes in the MFT under this size in bytes."
     default: 100000
   - name: SizeMin
     type: int64
-    description: &quot;Total $EA attributes in the MFT over this size in bytes.&quot;
+    description: "Total $EA attributes in the MFT over this size in bytes."
     default: 0
   - name: UploadHits
     type: bool
-    description: &quot;Upload complete complete attribute data.&quot;
+    description: "Upload complete complete attribute data."
 
 sources:
   - query: |
       LET Profile = '''[
-         [&quot;EAData&quot;, 0, [
-            [&quot;Entries&quot;, 0, &quot;Array&quot;,{
-                &quot;type&quot;: &quot;EA&quot;,
-                &quot;count&quot;: 99 }],
+         ["EAData", 0, [
+            ["Entries", 0, "Array",{
+                "type": "EA",
+                "count": 99 }],
          ]],
-         [&quot;EA&quot;, &quot;x=&gt;x.__NextOffset&quot;, [
-            [&quot;__NextOffset&quot;, 0, &quot;uint32&quot;],
-            [&quot;__NameLength&quot;, 5, &quot;uint8&quot;],
-            [&quot;__ValueLength&quot;, 6, &quot;uint16&quot;],
-            [&quot;Name&quot;, 8, String, {
-                length: &quot;x=&gt;x.__NameLength&quot; }],
-            [&quot;Flags&quot;, 4, &quot;uint8&quot;],
-            [&quot;ValueLength&quot;, 6, &quot;uint16&quot;],
-            [&quot;Value&quot;, &quot;x=&gt;9 + x.__NameLength&quot;, &quot;String&quot;,{
-                term: &quot;********** NO TERM **********&quot;,
-                length: &quot;x=&gt;x.__ValueLength&quot;,
+         ["EA", "x=>x.__NextOffset", [
+            ["__NextOffset", 0, "uint32"],
+            ["__NameLength", 5, "uint8"],
+            ["__ValueLength", 6, "uint16"],
+            ["Name", 8, String, {
+                length: "x=>x.__NameLength" }],
+            ["Flags", 4, "uint8"],
+            ["ValueLength", 6, "uint16"],
+            ["Value", "x=>9 + x.__NameLength", "String",{
+                term: "********** NO TERM **********",
+                length: "x=>x.__ValueLength",
                 max_length: 10000 }],
        ]]
        ]'''
@@ -180,13 +181,13 @@ sources:
             --{ SELECT * FROM NtfsMetadata.Attributes WHERE Type = '$EA_INFORMATION'} as _EA_INFORMATION_Metadata,
             { SELECT * FROM NtfsMetadata.Attributes WHERE Type = '$EA'} as _EA_Metadata
         FROM mft_entries
-        WHERE _EA_Metadata.Size &gt; SizeMin AND _EA_Metadata.Size &lt; SizeMax
+        WHERE _EA_Metadata.Size > SizeMin AND _EA_Metadata.Size < SizeMax
 
       -- parse EA attribute
       LET parse_ea = SELECT OSPath, NtfsMetadata, _EA_Metadata,
-            parse_binary(accessor=&quot;mft&quot;,
+            parse_binary(accessor="mft",
                 filename=NtfsMetadata.Device + _EA_Metadata.Inode,
-                profile=Profile, struct=&quot;EAData&quot;).Entries AS EA
+                profile=Profile, struct="EAData").Entries AS EA
         FROM enriched_results
 
       -- flattern results and output a row for each EA parsed
@@ -218,12 +219,12 @@ sources:
         then=upload_hits,
         else=flatten_results)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663122></script>
+<script src=/js/jquery.sticky.js?1693663122></script>
+<script src=/js/featherlight.min.js?1693663122></script>
+<script src=/js/highlight.min.js?1693663122></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663122></script>
+<script src=/js/learn.js?1693663122></script>
+<script src=/js/hugo-learn.js?1693663122></script></body></html>

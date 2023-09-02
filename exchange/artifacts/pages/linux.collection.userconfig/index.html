@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Collection.UserConfig :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567187 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567187 rel=stylesheet><link href=/css/featherlight.min.css?1693567187 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567187 rel=stylesheet><link href=/css/auto-complete.css?1693567187 rel=stylesheet><link href=/css/theme.css?1693567187 rel=stylesheet><link href=/css/tabs.css?1693567187 rel=stylesheet><link href=/css/hugo-theme.css?1693567187 rel=stylesheet><link href=/css/theme-mine.css?1693567187 rel=stylesheet><link href=/css/dark.css?1693567187 rel=stylesheet><link href=/css/syntax.css?1693567187 rel=stylesheet><link href=/css/light.css?1693567187 rel=stylesheet><link href=/css/hljs.css?1693567187 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567187 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567187></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Collection.UserConfig :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/linux.collection.userconfig/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,7 +71,8 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Linux.Collection.UserConfig</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Linux.Collection.UserConfig</h1><p>Collect user configurations and upload them.
-Based on TriageUserConfiguration from forensicartifacts.com</p><pre><code class=language-yaml>name: Linux.Collection.UserConfig
+Based on TriageUserConfiguration from forensicartifacts.com</p><pre><code class=language-yaml>
+name: Linux.Collection.UserConfig
 author: alternate
 description: |
   Collect user configurations and upload them.
@@ -85,37 +86,37 @@ precondition: SELECT OS FROM info() WHERE OS = 'linux'
 parameters:
 - name: BashShellConfigurationFile
   default: |
-    [&quot;/{root,home/*}/.bash_logout&quot;,&quot;/{root,home/*}/.bash_profile&quot;,&quot;/{root,home/*}/.bashrc&quot;,
-     &quot;/etc/bash.bashrc&quot;,&quot;/etc/bashrc&quot;]
+    ["/{root,home/*}/.bash_logout","/{root,home/*}/.bash_profile","/{root,home/*}/.bashrc",
+     "/etc/bash.bashrc","/etc/bashrc"]
 
 - name: ChromePreferences
   default: |
-    [&quot;/{root,home/*}/.config/chrome-remote-desktop/chrome-config/google-chrome/*/Preferences&quot;,
-     &quot;/{root,home/*}/.config/chrome-remote-desktop/chrome-config/google-chrome/*/Secure Preferences&quot;,
-     &quot;/{root,home/*}/.config/chrome-remote-desktop/chrome-profile/*/Preferences&quot;,
-     &quot;/{root,home/*}/.config/chrome-remote-desktop/chrome-profile/*/Secure Preferences&quot;,
-     &quot;/{root,home/*}/.config/chromium/*/Preferences&quot;,
-     &quot;/{root,home/*}/.config/chromium/*/Secure Preferences&quot;,
-     &quot;/{root,home/*}/.config/google-chrome/*/Preferences&quot;,
-     &quot;/{root,home/*}/.config/google-chrome/*/Secure Preferences&quot;]
+    ["/{root,home/*}/.config/chrome-remote-desktop/chrome-config/google-chrome/*/Preferences",
+     "/{root,home/*}/.config/chrome-remote-desktop/chrome-config/google-chrome/*/Secure Preferences",
+     "/{root,home/*}/.config/chrome-remote-desktop/chrome-profile/*/Preferences",
+     "/{root,home/*}/.config/chrome-remote-desktop/chrome-profile/*/Secure Preferences",
+     "/{root,home/*}/.config/chromium/*/Preferences",
+     "/{root,home/*}/.config/chromium/*/Secure Preferences",
+     "/{root,home/*}/.config/google-chrome/*/Preferences",
+     "/{root,home/*}/.config/google-chrome/*/Secure Preferences"]
 
 - name: CShellConfigurationFile
   default: |
-    [&quot;/{root,home/*}/.cshrc&quot;,&quot;/etc/csh.cshrc&quot;,&quot;/etc/csh.login&quot;,&quot;/etc/csh.logout&quot;]
+    ["/{root,home/*}/.cshrc","/etc/csh.cshrc","/etc/csh.login","/etc/csh.logout"]
 
 - name: FishShellConfigurationFile
   default: |
-    [&quot;/{root,home/*}/.local/share/fish/fish_history&quot;,
-     &quot;/{root,home/*}/.config/fish/conf.d/config.fish&quot;,
-     &quot;/{root,home/*}/.config/fish/config.fish&quot;,
-     &quot;/etc/fish/config.fish,/etc/fish/conf.d/*.fish&quot;]
+    ["/{root,home/*}/.local/share/fish/fish_history",
+     "/{root,home/*}/.config/fish/conf.d/config.fish",
+     "/{root,home/*}/.config/fish/config.fish",
+     "/etc/fish/config.fish,/etc/fish/conf.d/*.fish"]
 
 - name: JupyterConfigFile
   default: /{root,home/*}/.jupyter/jupyter_notebook_config.py
 
 - name: KornShellConfigurationFile
   default: |
-    [&quot;/{root,home/*}/.ksh&quot;,&quot;/etc/kshrc&quot;]
+    ["/{root,home/*}/.ksh","/etc/kshrc"]
 
 - name: RHostsFile
   default: /{root,home/*}/.rhosts
@@ -125,22 +126,22 @@ parameters:
 
 - name: ShellProfileFile
   default: | 
-    [&quot;/{root,home/*}/.profile&quot;,&quot;/etc/profile&quot;]
+    ["/{root,home/*}/.profile","/etc/profile"]
 
 - name: SignalApplicationContent
   default: |
-    [&quot;/{root,home/*}/.var/app/org.signal.Signal/*/attachments.noindex/*&quot;,
-     &quot;/{root,home/*}/.var/app/org.signal.Signal/*/Cache/*&quot;,
-     &quot;/{root,home/*}/.var/app/org.signal.Signal/*/logs/*&quot;,
-     &quot;/{root,home/*}/.var/app/org.signal.Signal/config.json&quot;]
+    ["/{root,home/*}/.var/app/org.signal.Signal/*/attachments.noindex/*",
+     "/{root,home/*}/.var/app/org.signal.Signal/*/Cache/*",
+     "/{root,home/*}/.var/app/org.signal.Signal/*/logs/*",
+     "/{root,home/*}/.var/app/org.signal.Signal/config.json"]
 
 - name: SSHAuthorizedKeysFiles
   default: |
-    [&quot;/{root,home/*}/.ssh/authorized_keys&quot;,&quot;/{root,home/*}/.ssh/authorized_keys2&quot;]
+    ["/{root,home/*}/.ssh/authorized_keys","/{root,home/*}/.ssh/authorized_keys2"]
 
 - name: SSHKnownHostsFiles
   default: | 
-    [&quot;/{root,home/*}/.ssh/known_hosts&quot;,&quot;/etc/ssh/known_hosts&quot;]
+    ["/{root,home/*}/.ssh/known_hosts","/etc/ssh/known_hosts"]
 
 - name: SSHUserConfigFile
   default: /{root,home/*}/.ssh/config
@@ -150,9 +151,9 @@ parameters:
 
 - name: ZShellConfigurationFile
   default: |
-    [&quot;/{root,home/*}/.zlogin&quot;,&quot;/{root,home/*}/.zlogout&quot;,&quot;/{root,home/*}/.zprofile&quot;,
-     &quot;/etc/zshenv,/etc/zshrc&quot;,&quot;/etc/zsh/zlogin&quot;,&quot;/etc/zsh/zlogout&quot;,&quot;/etc/zsh/zprofile&quot;,
-     &quot;/etc/zsh/zshenv&quot;,&quot;/etc/zsh/zshrc&quot;]
+    ["/{root,home/*}/.zlogin","/{root,home/*}/.zlogout","/{root,home/*}/.zprofile",
+     "/etc/zshenv,/etc/zshrc","/etc/zsh/zlogin","/etc/zsh/zlogout","/etc/zsh/zprofile",
+     "/etc/zsh/zshenv","/etc/zsh/zshrc"]
 
 sources:
 - name: uploadBashShellConfigurationFile
@@ -260,12 +261,12 @@ sources:
            upload(file=OSPath) AS Upload
     FROM glob(globs=parse_json_array(data=ZShellConfigurationFile))
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567187></script>
-<script src=/js/jquery.sticky.js?1693567187></script>
-<script src=/js/featherlight.min.js?1693567187></script>
-<script src=/js/highlight.min.js?1693567187></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567187></script>
-<script src=/js/learn.js?1693567187></script>
-<script src=/js/hugo-learn.js?1693567187></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
+<script src=/js/jquery.sticky.js?1693663124></script>
+<script src=/js/featherlight.min.js?1693663124></script>
+<script src=/js/highlight.min.js?1693663124></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
+<script src=/js/learn.js?1693663124></script>
+<script src=/js/hugo-learn.js?1693663124></script></body></html>

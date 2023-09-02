@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Server.Monitor.Autolabeling.Clients :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Server.Monitor.Autolabeling.Clients :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/server.monitor.autolabeling.clients/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -70,14 +70,15 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/exchange/artifacts/Server.Monitor.Autolabeling.Clients.yaml target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>Server.Monitor.Autolabeling.Clients</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Server.Monitor.Autolabeling.Clients</h1><p>This server side event monitoring artifact watches for new client enrollments and automatically labels them according to their domain roles.</p><ul><li>Standalone & Member Workstations will get the label <code>Workstation</code> assigned.</li><li>Standalone & Member Servers will get the label <code>Server</code> assigned.</li><li>Primary & Backup Domain Controller will get the label <code>Domain Controller</code> assigned.</li><li>Linux Systems will get the label <code>Linux</code> assigned.</li></ul><p>Relabeling of all clients even after they were enrolled can be achieved by starting a hunt for <code>Generic.Client.Info</code>. The labels are either Set or Cleared so it is fine to re-apply the label many times. See <a href=https://docs.velociraptor.app/knowledge_base/tips/automating_labels/>https://docs.velociraptor.app/knowledge_base/tips/automating_labels/</a></p><pre><code class=language-yaml>name: Server.Monitor.Autolabeling.Clients
+<span class=links>Server.Monitor.Autolabeling.Clients</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Server.Monitor.Autolabeling.Clients</h1><p>This server side event monitoring artifact watches for new client enrollments and automatically labels them according to their domain roles.</p><ul><li>Standalone & Member Workstations will get the label <code>Workstation</code> assigned.</li><li>Standalone & Member Servers will get the label <code>Server</code> assigned.</li><li>Primary & Backup Domain Controller will get the label <code>Domain Controller</code> assigned.</li><li>Linux Systems will get the label <code>Linux</code> assigned.</li></ul><p>Relabeling of all clients even after they were enrolled can be achieved by starting a hunt for <code>Generic.Client.Info</code>. The labels are either Set or Cleared so it is fine to re-apply the label many times. See <a href=https://docs.velociraptor.app/knowledge_base/tips/automating_labels/>https://docs.velociraptor.app/knowledge_base/tips/automating_labels/</a></p><pre><code class=language-yaml>
+name: Server.Monitor.Autolabeling.Clients
 author: Stephan Mikiss @StephMikiss
 description: |
     This server side event monitoring artifact watches for new client enrollments and automatically labels them according to their domain roles.
     
-    * Standalone &amp; Member Workstations will get the label `Workstation` assigned.
-    * Standalone &amp; Member Servers will get the label `Server` assigned.
-    * Primary &amp; Backup Domain Controller will get the label `Domain Controller` assigned.
+    * Standalone & Member Workstations will get the label `Workstation` assigned.
+    * Standalone & Member Servers will get the label `Server` assigned.
+    * Primary & Backup Domain Controller will get the label `Domain Controller` assigned.
     * Linux Systems will get the label `Linux` assigned.
     
     Relabeling of all clients even after they were enrolled can be achieved by starting a hunt for `Generic.Client.Info`. The labels are either Set or Cleared so it is fine to re-apply the label many times. See https://docs.velociraptor.app/knowledge_base/tips/automating_labels/
@@ -87,29 +88,29 @@ sources:
 - query: |
     
     LET interrogations = SELECT *
-        FROM watch_monitoring(artifact=&quot;System.Flow.Completion&quot;)
-        WHERE Flow.artifacts_with_results =~ &quot;Generic.Client.Info/WindowsInfo|Generic.Client.Info/BasicInformation&quot;
+        FROM watch_monitoring(artifact="System.Flow.Completion")
+        WHERE Flow.artifacts_with_results =~ "Generic.Client.Info/WindowsInfo|Generic.Client.Info/BasicInformation"
     
     LET matches = SELECT * FROM switch(
-        z={SELECT *,label(client_id=ClientId, labels=&quot;Linux&quot;, op=&quot;set&quot;) FROM source(
-            artifact=&quot;Generic.Client.Info/BasicInformation&quot;) WHERE OS =~ &quot;linux&quot;},
-        a={SELECT *,label(client_id=ClientId, labels=&quot;Workstation&quot;, op=&quot;set&quot;) FROM source(
-            artifact=&quot;Generic.Client.Info/WindowsInfo&quot;) WHERE `Computer Info`.DomainRole =~&quot;Workstation&quot;},
-        b={SELECT *,label(client_id=ClientId, labels=&quot;Server&quot;, op=&quot;set&quot;) FROM source(
-            artifact=&quot;Generic.Client.Info/WindowsInfo&quot;) WHERE `Computer Info`.DomainRole =~&quot;Server&quot;},
-        c={SELECT *,label(client_id=ClientId, labels=&quot;Domain Controller&quot;, op=&quot;set&quot;) FROM source(
-            artifact=&quot;Generic.Client.Info/WindowsInfo&quot;) WHERE `Computer Info`.DomainRole =~&quot;Domain Controller&quot;}
+        z={SELECT *,label(client_id=ClientId, labels="Linux", op="set") FROM source(
+            artifact="Generic.Client.Info/BasicInformation") WHERE OS =~ "linux"},
+        a={SELECT *,label(client_id=ClientId, labels="Workstation", op="set") FROM source(
+            artifact="Generic.Client.Info/WindowsInfo") WHERE `Computer Info`.DomainRole =~"Workstation"},
+        b={SELECT *,label(client_id=ClientId, labels="Server", op="set") FROM source(
+            artifact="Generic.Client.Info/WindowsInfo") WHERE `Computer Info`.DomainRole =~"Server"},
+        c={SELECT *,label(client_id=ClientId, labels="Domain Controller", op="set") FROM source(
+            artifact="Generic.Client.Info/WindowsInfo") WHERE `Computer Info`.DomainRole =~"Domain Controller"}
     )
        
     SELECT * FROM foreach(row=interrogations, query=matches)
     
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

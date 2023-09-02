@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.System.VAD :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567186 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567186 rel=stylesheet><link href=/css/featherlight.min.css?1693567186 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567186 rel=stylesheet><link href=/css/auto-complete.css?1693567186 rel=stylesheet><link href=/css/theme.css?1693567186 rel=stylesheet><link href=/css/tabs.css?1693567186 rel=stylesheet><link href=/css/hugo-theme.css?1693567186 rel=stylesheet><link href=/css/theme-mine.css?1693567186 rel=stylesheet><link href=/css/dark.css?1693567186 rel=stylesheet><link href=/css/syntax.css?1693567186 rel=stylesheet><link href=/css/light.css?1693567186 rel=stylesheet><link href=/css/hljs.css?1693567186 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567186 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567186></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.System.VAD :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663123 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663123 rel=stylesheet><link href=/css/featherlight.min.css?1693663123 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663123 rel=stylesheet><link href=/css/auto-complete.css?1693663123 rel=stylesheet><link href=/css/theme.css?1693663123 rel=stylesheet><link href=/css/tabs.css?1693663123 rel=stylesheet><link href=/css/hugo-theme.css?1693663123 rel=stylesheet><link href=/css/theme-mine.css?1693663123 rel=stylesheet><link href=/css/dark.css?1693663123 rel=stylesheet><link href=/css/syntax.css?1693663123 rel=stylesheet><link href=/css/light.css?1693663123 rel=stylesheet><link href=/css/hljs.css?1693663123 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663123 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663123></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.system.vad/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,8 +74,9 @@
 Address Descriptor (VAD). The VAD is used by the Windows memory manager to
 describe allocated process memory ranges.</p><p>Availible filters include process, mapping path, memory permissions
 or by content with yara.</p><p>NOTE:</p><ul><li>ProtectionChoice is a choice to filter on section protection. Default is
-all sections and ProtectionRegex can override selection.</li><li>To filter on unmapped sections the MappingNameRegex: ^$ can be used.</li></ul><pre><code class=language-yaml>name: Windows.System.VAD
-author: &quot;Matt Green - @mgreen27&quot;
+all sections and ProtectionRegex can override selection.</li><li>To filter on unmapped sections the MappingNameRegex: ^$ can be used.</li></ul><pre><code class=language-yaml>
+name: Windows.System.VAD
+author: "Matt Green - @mgreen27"
 description: |
   This artifact enables enumeration of process memory sections via the Virtual
   Address Descriptor (VAD). The VAD is used by the Windows memory manager to
@@ -130,8 +131,8 @@ sources:
               Name, Exe, CommandLine, CreateTime
         FROM process_tracker_pslist()
         WHERE Name =~ ProcessRegex
-            AND format(format=&quot;%d&quot;, args=Pid) =~ PidRegex
-            AND log(message=&quot;Scanning pid %v : %v&quot;, args=[Pid, Name])
+            AND format(format="%d", args=Pid) =~ PidRegex
+            AND log(message="Scanning pid %v : %v", args=[Pid, Name])
 
       -- next find sections in scope
       LET sections = SELECT * FROM foreach(
@@ -143,7 +144,7 @@ sources:
                 State,Type,ProtectionMsg,Protection,
                 Size as SectionSize,
                 pathspec(
-                    DelegateAccessor=&quot;process&quot;,
+                    DelegateAccessor="process",
                     DelegatePath=Pid,
                     Path=Address) AS _PathSpec
             FROM vad(pid=Pid)
@@ -164,7 +165,7 @@ sources:
       LET yara_sections = SELECT *
         FROM foreach(row={
                 SELECT * FROM sections
-                WHERE NOT State =~ &quot;RESERVE&quot;
+                WHERE NOT State =~ "RESERVE"
             }, query={
                 SELECT
                     ProcessCreateTime, Pid, Name,MappingName,
@@ -177,13 +178,13 @@ sources:
                          Name=String.Name) as YaraHit,
                     upload( accessor='scope',
                             file='String.Data',
-                            name=format(format=&quot;%v-%v_%v.bin-%v-%v&quot;,
+                            name=format(format="%v-%v_%v.bin-%v-%v",
                             args=[
                                 Name, Pid, AddressRange,
-                                if(condition= String.Offset - ContextBytes &lt; 0,
+                                if(condition= String.Offset - ContextBytes < 0,
                                     then= 0,
                                     else= String.Offset - ContextBytes),
-                                if(condition= String.Offset + ContextBytes &gt; SectionSize,
+                                if(condition= String.Offset + ContextBytes > SectionSize,
                                     then= SectionSize,
                                     else= String.Offset + ContextBytes ) ])
                             ) as HitContext,
@@ -209,7 +210,7 @@ sources:
       LET upload_results = SELECT *,
         upload(accessor='sparse',
                file=pathspec(
-                    DelegateAccessor=&quot;process&quot;,
+                    DelegateAccessor="process",
                     DelegatePath=Pid,
                     Path=[dict(Offset=_Address, Length=SectionSize),]),
                 name=pathspec(
@@ -227,12 +228,12 @@ column_types:
   - name: HitContext
     type: preview_upload
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567186></script>
-<script src=/js/jquery.sticky.js?1693567186></script>
-<script src=/js/featherlight.min.js?1693567186></script>
-<script src=/js/highlight.min.js?1693567186></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567186></script>
-<script src=/js/learn.js?1693567186></script>
-<script src=/js/hugo-learn.js?1693567186></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663123></script>
+<script src=/js/jquery.sticky.js?1693663123></script>
+<script src=/js/featherlight.min.js?1693663123></script>
+<script src=/js/highlight.min.js?1693663123></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663123></script>
+<script src=/js/learn.js?1693663123></script>
+<script src=/js/hugo-learn.js?1693663123></script></body></html>

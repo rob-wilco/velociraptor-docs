@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.ETW.Powershell :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567188 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567188 rel=stylesheet><link href=/css/featherlight.min.css?1693567188 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567188 rel=stylesheet><link href=/css/auto-complete.css?1693567188 rel=stylesheet><link href=/css/theme.css?1693567188 rel=stylesheet><link href=/css/tabs.css?1693567188 rel=stylesheet><link href=/css/hugo-theme.css?1693567188 rel=stylesheet><link href=/css/theme-mine.css?1693567188 rel=stylesheet><link href=/css/dark.css?1693567188 rel=stylesheet><link href=/css/syntax.css?1693567188 rel=stylesheet><link href=/css/light.css?1693567188 rel=stylesheet><link href=/css/hljs.css?1693567188 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567188 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567188></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.ETW.Powershell :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/powershellmonitoring/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -70,7 +70,8 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/exchange/artifacts/PowershellMonitoring.yaml target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>Windows.ETW.Powershell</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.ETW.Powershell</h1><p>This artifact enables Powershell scriptblock and commandlet load monitoring.<br>It uses the ETW provider: Microsoft-Windows-PowerShell</p><p>Detection logic is managed by several global ignore entries and an IOC csv.</p><h5 id=global-ignore>Global Ignore</h5><p>IgnoreProcessExe - Process exe path to ignore<br>IgnoreParentProcessExe - Parent exe path for child generated events to ignore<br>IgnoreParentProcessName - Ignore events generated by a child process</p><h5 id=ioccsv>IocCsv</h5><p>Name - detection name<br>Type - type of detection: ScriptBlock,Commandlet or ScriptBlock|Commandlet<br>Regex - regex to search for<br>Ignore - regex to ignore<br>DateModified - date detection last modified</p><pre><code class=language-yaml>name: Windows.ETW.Powershell
+<span class=links>Windows.ETW.Powershell</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><ul><li></li></ul></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.ETW.Powershell</h1><p>This artifact enables Powershell scriptblock and commandlet load monitoring.<br>It uses the ETW provider: Microsoft-Windows-PowerShell</p><p>Detection logic is managed by several global ignore entries and an IOC csv.</p><h5 id=global-ignore>Global Ignore</h5><p>IgnoreProcessExe - Process exe path to ignore<br>IgnoreParentProcessExe - Parent exe path for child generated events to ignore<br>IgnoreParentProcessName - Ignore events generated by a child process</p><h5 id=ioccsv>IocCsv</h5><p>Name - detection name<br>Type - type of detection: ScriptBlock,Commandlet or ScriptBlock|Commandlet<br>Regex - regex to search for<br>Ignore - regex to ignore<br>DateModified - date detection last modified</p><pre><code class=language-yaml>
+name: Windows.ETW.Powershell
 author: Matt Green - @mgreen27
 description: |
     This artifact enables Powershell scriptblock and commandlet load monitoring.  
@@ -101,7 +102,7 @@ parameters:
     description: Regex of parent exe path for child generated events to ignore
     default: ^(C:\\Program Files\\Windows Defender Advanced Threat Protection\\SenseIR\.exe|C:\\Program Files\\Microsoft SQL Server\\MSSQL\d{1,2}\.MSSQLSERVER\\MSSQL\\Binn\\SQLAGENT\.EXE)$
   - name: IgnorePaths
-    description: &quot;List of path regex to ignore. This list will be joined and excluded.&quot;
+    description: "List of path regex to ignore. This list will be joined and excluded."
     default: |
         \\SDIAG_.{8}-(.{4}-){3}.{12}\\
         \\Windows Defender Advanced Threat Protection\\
@@ -112,7 +113,7 @@ parameters:
         \\Program Files(|\(x86\))\\Automox\\execDir
   - name: IocCsv
     type: csv
-    description: &quot;Application name Regex to enable filtering on source.&quot;
+    description: "Application name Regex to enable filtering on source."
     default: |
         Name,Type,Regex,Ignore,DateModified
         T1059.001-Mimikatz Execution via PowerShell,ScriptBlock,TOKEN_PRIVILE|SE_PRIVILEGE_ENABLED|mimikatz|lsass.dmp,,12/8/2022
@@ -129,23 +130,23 @@ sources:
       LET ScriptIgnore = SELECT _value as PathRegex 
         FROM foreach(row=split(string=IgnorePaths,sep='\n')) 
         WHERE PathRegex AND NOT PathRegex =~ '^\\s+$'
-      LET ScriptIgnorePath &lt;= join(array=ScriptIgnore.PathRegex,sep='|')
+      LET ScriptIgnorePath <= join(array=ScriptIgnore.PathRegex,sep='|')
       
       -- materialize scriptblock regex for initial pass
       LET ScriptBlock = SELECT Regex,Type FROM IocCsv WHERE Type =~ 'ScriptBlock'
-      LET ScriptBlockRegex &lt;= join(array=ScriptBlock.Regex,sep='|')
+      LET ScriptBlockRegex <= join(array=ScriptBlock.Regex,sep='|')
       
       -- materialize Commandlet regex for initial pass
       LET Commandlet = SELECT Regex,Type FROM IocCsv WHERE Type =~ 'Commandlet'
-      LET CommandletRegex &lt;= join(array=Commandlet.Regex,sep='|')
+      LET CommandletRegex <= join(array=Commandlet.Regex,sep='|')
       
       -- watch ETW provider and first round data manipulation
       LET hits = SELECT 
             timestamp(epoch=timestamp(string=System.TimeStamp).unix) as EventTime,
             System.ID as EventID,
             System.ProcessID as ProcessID,
-            get(member=&quot;EventData&quot;) AS EventData
-      FROM watch_etw(guid=&quot;{a0c1853b-5c40-4b15-8766-3cf1c58f985a}&quot;) 
+            get(member="EventData") AS EventData
+      FROM watch_etw(guid="{a0c1853b-5c40-4b15-8766-3cf1c58f985a}") 
       WHERE ( EventData.ScriptBlockText OR EventData.Payload =~ '^Command .+ is Started\.\r\n$' )
         AND ( EventData.ScriptBlockText =~ ScriptBlockRegex
            OR EventData.Payload =~ CommandletRegex )
@@ -173,22 +174,22 @@ sources:
                     else= dict(Payload=EventData.Payload,
                         ContextInfo=parse_string_with_regex(string=EventData.ContextInfo,
                         regex=[
-                            'Severity = (?P&lt;Severity&gt;[^\\r]*)',
-                            'Host Name = (?P&lt;HostName&gt;[^\\r]*)',
-                            'Host Version = (?P&lt;HostVersion&gt;[^\\r]*)',
-                            'Host ID = (?P&lt;HostID&gt;[^\\r]*)',
-                            'Host Application = (?P&lt;HostApplication&gt;[^\\r]*)',
-                            'Engine Version = (?P&lt;EngineVersion&gt;[^\\r]*)',
-                            'Runspace ID = (?P&lt;RunspaceID&gt;[^\\r]*)',
-                            'Pipeline ID = (?P&lt;PipelineID&gt;[^\\r]*)',
-                            'Command Name= (?P&lt;CommandName&gt;[^\\r]*)',
-                            'CommandType = (?P&lt;CommandType&gt;[^\\r]*)',
-                            'Script Name = (?P&lt;ScriptName&gt;[^\\r]*)',
-                            'Command Path = (?P&lt;CommandPath&gt;[^\\r]*)',
-                            'Sequence Number = (?P&lt;SequenceNumber&gt;[^\\r]*)',
-                            'User = (?P&lt;User&gt;[^\\r]*)',
-                            'Connected User = (?P&lt;ConnectedUser&gt;[^\\r]*)',
-                            'Shell ID = (?P&lt;ShellID&gt;[^\\r]*)'
+                            'Severity = (?P<severity>[^\\r]*)',
+                            'Host Name = (?P<hostname>[^\\r]*)',
+                            'Host Version = (?P<hostversion>[^\\r]*)',
+                            'Host ID = (?P<hostid>[^\\r]*)',
+                            'Host Application = (?P<hostapplication>[^\\r]*)',
+                            'Engine Version = (?P<engineversion>[^\\r]*)',
+                            'Runspace ID = (?P<runspaceid>[^\\r]*)',
+                            'Pipeline ID = (?P<pipelineid>[^\\r]*)',
+                            'Command Name= (?P<commandname>[^\\r]*)',
+                            'CommandType = (?P<commandtype>[^\\r]*)',
+                            'Script Name = (?P<scriptname>[^\\r]*)',
+                            'Command Path = (?P<commandpath>[^\\r]*)',
+                            'Sequence Number = (?P<sequencenumber>[^\\r]*)',
+                            'User = (?P<user>[^\\r]*)',
+                            'Connected User = (?P<connecteduser>[^\\r]*)',
+                            'Shell ID = (?P<shellid>[^\\r]*)'
                         ]),
                         UserData=EventData.UserData)) as EventData,
                 process_tracker_callchain(id=ProcessID).Data[-1] as ProcessInfo,
@@ -209,12 +210,12 @@ sources:
             LIMIT 1 -- limts to 1 row per IocCsv entry.
         })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567188></script>
-<script src=/js/jquery.sticky.js?1693567188></script>
-<script src=/js/featherlight.min.js?1693567188></script>
-<script src=/js/highlight.min.js?1693567188></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567188></script>
-<script src=/js/learn.js?1693567188></script>
-<script src=/js/hugo-learn.js?1693567188></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

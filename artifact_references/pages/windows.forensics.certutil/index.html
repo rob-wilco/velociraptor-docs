@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.CertUtil :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.CertUtil :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.forensics.certutil/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,7 +74,8 @@
 files. Attackers typically use it to fetch tools undetected using
 Living off the Land (LOL) techniques.</p><p>Certutil maintains a cache of the downloaded files and this contains
 valuable metadata. This artifact parses this metadata to establish
-what was downloaded and when.</p><pre><code class=language-yaml>name: Windows.Forensics.CertUtil
+what was downloaded and when.</p><pre><code class=language-yaml>
+name: Windows.Forensics.CertUtil
 description: |
   The Windows Certutil binary is capable of downloading arbitrary
   files. Attackers typically use it to fetch tools undetected using
@@ -129,48 +130,48 @@ parameters:
 
 sources:
   - query: |
-      LET VSS_MAX_AGE_DAYS &lt;= VSSAnalysisAge
-      LET Accessor = if(condition=VSSAnalysisAge &gt; 0, then=&quot;ntfs_vss&quot;, else=&quot;auto&quot;)
+      LET VSS_MAX_AGE_DAYS <= VSSAnalysisAge
+      LET Accessor = if(condition=VSSAnalysisAge > 0, then="ntfs_vss", else="auto")
 
       LET Profile = '[
-        [&quot;Header&quot;, 0, [
-          [&quot;UrlSize&quot;, 12, &quot;uint32&quot;],
-          [&quot;HashSize&quot;, 100, &quot;uint32&quot;],
-          [&quot;DownloadTime&quot;, 16, &quot;uint64&quot;],
-          [&quot;FileSize&quot;, 112, &quot;uint32&quot;],
-          [&quot;URL&quot;, 116, &quot;String&quot;, {
-              &quot;encoding&quot;: &quot;utf16&quot;,
-              &quot;length&quot;: &quot;x=&gt;x.UrlSize&quot;
+        ["Header", 0, [
+          ["UrlSize", 12, "uint32"],
+          ["HashSize", 100, "uint32"],
+          ["DownloadTime", 16, "uint64"],
+          ["FileSize", 112, "uint32"],
+          ["URL", 116, "String", {
+              "encoding": "utf16",
+              "length": "x=>x.UrlSize"
           }],
-          [&quot;Hash&quot;, &quot;x=&gt;x.UrlSize + 116&quot;, &quot;String&quot;, {
-              &quot;encoding&quot;: &quot;utf16&quot;,
-              &quot;length&quot;: &quot;x=&gt;x.HashSize&quot;
+          ["Hash", "x=>x.UrlSize + 116", "String", {
+              "encoding": "utf16",
+              "length": "x=>x.HashSize"
           }]
         ]]
       ]'
 
       -- Build a whitelist regex
-      LET URLRegex &lt;= &quot;^&quot; + join(array=URLWhitelist.URL, sep=&quot;|&quot;)
+      LET URLRegex <= "^" + join(array=URLWhitelist.URL, sep="|")
       LET Files = SELECT OSPath,
 
           -- Parse each metadata file.
           parse_binary(filename=OSPath, accessor=Accessor,
                        profile=Profile,
-                       struct=&quot;Header&quot;) AS Header,
+                       struct="Header") AS Header,
 
           -- The content is kept in the Content directory.
-          OSPath.Dirname.Dirname + &quot;Content&quot; + OSPath.Basename AS _ContentPath,
+          OSPath.Dirname.Dirname + "Content" + OSPath.Basename AS _ContentPath,
           read_file(length=4, accessor=Accessor,
-                filename=OSPath.Dirname.Dirname + &quot;Content&quot; + OSPath.Basename) AS ContentHeader
+                filename=OSPath.Dirname.Dirname + "Content" + OSPath.Basename) AS ContentHeader
       FROM glob(globs=[MetadataGlobUser, MetadataGlobSystem], accessor=Accessor)
-      WHERE Header.FileSize &gt; MinSize
+      WHERE Header.FileSize > MinSize
 
       SELECT OSPath AS _MetadataFile, _ContentPath,
                if(condition=AlsoUpload, then=upload(file=OSPath, accessor=Accessor)) AS _MetdataUpload,
                if(condition=AlsoUpload, then=upload(file=_ContentPath, accessor=Accessor)) AS _Upload,
                Header.URL AS URL,
                Header.FileSize AS FileSize,
-               regex_replace(re='&quot;', replace=&quot;&quot;, source=Header.Hash) AS Hash,
+               regex_replace(re='"', replace="", source=Header.Hash) AS Hash,
                timestamp(winfiletime=Header.DownloadTime) AS DownloadTime,
                if(condition= ContentHeader=~ 'MZ',
                     then= parse_pe(file= _ContentPath, accessor=Accessor).VersionInformation,
@@ -182,12 +183,12 @@ sources:
       FROM Files
       WHERE NOT URL =~ URLRegex
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

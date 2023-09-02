@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.MFT.HiveNightmare :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.MFT.HiveNightmare :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.ntfs.mft.hivenightmare/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -72,7 +72,8 @@
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.NTFS.MFT.HiveNightmare</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.NTFS.MFT.HiveNightmare</h1><p>This artifact uses Windows.NTFS.MFT (By Matt Green - @mgreen27) to
 find several files created as part of the POC tooling for
-HiveNightmare (CVE-2021-36934):</p><ul><li>\hive_sam_ - <a href=https://github.com/FireFart/hivenightmare>https://github.com/FireFart/hivenightmare</a></li><li>\SAM-20 - <a href=https://github.com/GossiTheDog/HiveNightmare>https://github.com/GossiTheDog/HiveNightmare</a></li><li>\SAM-haxx - <a href=https://github.com/GossiTheDog/HiveNightmare>https://github.com/GossiTheDog/HiveNightmare</a></li><li>\Sam.save - PowerShell version</li><li>\Sam.hive - <a href=https://github.com/WiredPulse/Invoke-HiveNightmare>https://github.com/WiredPulse/Invoke-HiveNightmare</a></li><li>C:\windows\temp\sam - <a href=https://github.com/cube0x0/CVE-2021-36934>https://github.com/cube0x0/CVE-2021-36934</a></li></ul><p>See Florian Roth&rsquo;s rule here:</p><ul><li><a href=https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/win_hivenightmare_file_exports.yml>https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/win_hivenightmare_file_exports.yml</a></li></ul><pre><code class=language-yaml>name: Windows.NTFS.MFT.HiveNightmare
+HiveNightmare (CVE-2021-36934):</p><ul><li>\hive_sam_ - <a href=https://github.com/FireFart/hivenightmare>https://github.com/FireFart/hivenightmare</a></li><li>\SAM-20 - <a href=https://github.com/GossiTheDog/HiveNightmare>https://github.com/GossiTheDog/HiveNightmare</a></li><li>\SAM-haxx - <a href=https://github.com/GossiTheDog/HiveNightmare>https://github.com/GossiTheDog/HiveNightmare</a></li><li>\Sam.save - PowerShell version</li><li>\Sam.hive - <a href=https://github.com/WiredPulse/Invoke-HiveNightmare>https://github.com/WiredPulse/Invoke-HiveNightmare</a></li><li>C:\windows\temp\sam - <a href=https://github.com/cube0x0/CVE-2021-36934>https://github.com/cube0x0/CVE-2021-36934</a></li></ul><p>See Florian Roth&rsquo;s rule here:</p><ul><li><a href=https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/win_hivenightmare_file_exports.yml>https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/win_hivenightmare_file_exports.yml</a></li></ul><pre><code class=language-yaml>
+name: Windows.NTFS.MFT.HiveNightmare
 description: |
   This artifact uses Windows.NTFS.MFT (By Matt Green - @mgreen27) to
   find several files created as part of the POC tooling for
@@ -88,46 +89,46 @@ description: |
   See Florian Roth's rule here:
   - https://github.com/SigmaHQ/sigma/blob/master/rules/windows/file_event/win_hivenightmare_file_exports.yml
 
-author: &quot;Zach Stanford - @svch0st&quot;
+author: "Zach Stanford - @svch0st"
 
 parameters:
   - name: MFTFilename
-    default: &quot;C:/$MFT&quot;
+    default: "C:/$MFT"
   - name: Accessor
     default: ntfs
   - name: PathRegex
-    description: &quot;Regex search over FullPath.&quot;
-    default: &quot;Windows/Temp/sam$&quot;
+    description: "Regex search over FullPath."
+    default: "Windows/Temp/sam$"
   - name: FileRegex
-    description: &quot;Regex search over File Name&quot;
-    default: &quot;^(hive_sam_|SAM-2021-|SAM-2022-|SAM-haxx$|Sam.save$|Sam.hive$)&quot;
+    description: "Regex search over File Name"
+    default: "^(hive_sam_|SAM-2021-|SAM-2022-|SAM-haxx$|Sam.save$|Sam.hive$)"
   - name: DateAfter
     type: timestamp
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: SizeMax
     type: int64
-    description: &quot;Entries in the MFT under this size in bytes.&quot;
+    description: "Entries in the MFT under this size in bytes."
   - name: SizeMin
     type: int64
-    description: &quot;Entries in the MFT over this size in bytes.&quot;
+    description: "Entries in the MFT over this size in bytes."
   - name: AllDrives
     type: bool
-    description: &quot;Select MFT search on all attached ntfs drives.&quot;
+    description: "Select MFT search on all attached ntfs drives."
 
 
 sources:
   - query: |
       -- firstly set timebounds for performance
-      LET DateAfterTime &lt;= if(condition=DateAfter,
-            then=DateAfter, else=&quot;1600-01-01&quot;)
-      LET DateBeforeTime &lt;= if(condition=DateBefore,
-            then=DateBefore, else=&quot;2200-01-01&quot;)
+      LET DateAfterTime <= if(condition=DateAfter,
+            then=DateAfter, else="1600-01-01")
+      LET DateBeforeTime <= if(condition=DateBefore,
+            then=DateBefore, else="2200-01-01")
       -- find all ntfs drives
       LET ntfs_drives = SELECT FullPath + '/$MFT'as Path
-        FROM glob(globs=&quot;/*&quot;, accessor=&quot;ntfs&quot;)
+        FROM glob(globs="/*", accessor="ntfs")
       -- function returning MFT entries
       LET mftsearch(MFTPath) = SELECT EntryNumber,InUse,ParentEntryNumber,
             MFTPath,FullPath,FileName,FileSize,ReferenceCount,IsDir,
@@ -135,34 +136,34 @@ sources:
             LastRecordChange0x10,LastRecordChange0x30,LastAccess0x10,LastAccess0x30
         FROM parse_mft(filename=MFTPath, accessor=Accessor)
         WHERE FullPath =~ PathRegex  OR FileName =~ FileRegex
-            AND Created0x10 &lt; DateBeforeTime
-            AND Created0x10 &gt; DateAfterTime
-            AND Created0x30 &lt; DateBeforeTime
-            AND Created0x30 &gt; DateAfterTime
-            AND LastModified0x10 &lt; DateBeforeTime
-            AND LastModified0x10 &gt; DateAfterTime
-            AND LastModified0x30 &lt; DateBeforeTime
-            AND LastModified0x30 &gt; DateAfterTime
-            AND LastRecordChange0x10 &lt; DateBeforeTime
-            AND LastRecordChange0x10 &gt; DateAfterTime
-            AND LastRecordChange0x30 &lt; DateBeforeTime
-            AND LastRecordChange0x30 &gt; DateAfterTime
-            AND LastAccess0x10 &lt; DateBeforeTime
-            AND LastAccess0x10 &gt; DateAfterTime
-            AND LastAccess0x30 &lt; DateBeforeTime
-            AND LastAccess0x30 &gt; DateAfterTime
+            AND Created0x10 < DateBeforeTime
+            AND Created0x10 > DateAfterTime
+            AND Created0x30 < DateBeforeTime
+            AND Created0x30 > DateAfterTime
+            AND LastModified0x10 < DateBeforeTime
+            AND LastModified0x10 > DateAfterTime
+            AND LastModified0x30 < DateBeforeTime
+            AND LastModified0x30 > DateAfterTime
+            AND LastRecordChange0x10 < DateBeforeTime
+            AND LastRecordChange0x10 > DateAfterTime
+            AND LastRecordChange0x30 < DateBeforeTime
+            AND LastRecordChange0x30 > DateAfterTime
+            AND LastAccess0x10 < DateBeforeTime
+            AND LastAccess0x10 > DateAfterTime
+            AND LastAccess0x30 < DateBeforeTime
+            AND LastAccess0x30 > DateAfterTime
             AND if(condition=SizeMax,
-                then=FileSize &lt; atoi(string=SizeMax),
+                then=FileSize < atoi(string=SizeMax),
                 else=TRUE)
             AND if(condition=SizeMin,
-                then=FileSize &gt; atoi(string=SizeMin),
+                then=FileSize > atoi(string=SizeMin),
                 else=TRUE)
       -- include all attached drives
       LET all_drives = SELECT * FROM foreach(row=ntfs_drives,
             query={
                 SELECT *
                 FROM mftsearch(MFTPath=Path)
-                WHERE log(message=&quot;Processing &quot; + Path)
+                WHERE log(message="Processing " + Path)
               })
       -- return rows
       SELECT * FROM if(condition=AllDrives,
@@ -171,12 +172,12 @@ sources:
            SELECT * FROM mftsearch(MFTPath=MFTFilename)
         })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
+<script src=/js/jquery.sticky.js?1693663126></script>
+<script src=/js/featherlight.min.js?1693663126></script>
+<script src=/js/highlight.min.js?1693663126></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
+<script src=/js/learn.js?1693663126></script>
+<script src=/js/hugo-learn.js?1693663126></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.PipeHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.PipeHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.detection.pipehunter/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -77,7 +77,8 @@ communication pipe. This means a low privileged user
 could use a stale pipe to get remote execution as SYSTEM. If you uncover any
 named pipes with the name RemCom_communication, investigate the owning proc
 and remove it from the system.
-#impacket</p><pre><code class=language-yaml>name: Windows.Detection.PipeHunter
+#impacket</p><pre><code class=language-yaml>
+name: Windows.Detection.PipeHunter
 author: ACEResponder.com
 description: |
    Takes a pipe name and returns the owning process and access rights. The primary
@@ -94,21 +95,21 @@ reference:
 
 parameters:
   - name: pipe_name
-    default: &quot;RemCom_communicaton&quot;
+    default: "RemCom_communicaton"
 
 sources:
   - precondition:
       SELECT OS From info() where OS = 'windows'
 
     query: |
-        LET ps = '''Add-Type -TypeDefinition  @&quot;
+        LET ps = '''Add-Type -TypeDefinition  @"
             using System;
             using System.Diagnostics;
             using System.Runtime.InteropServices;
         
             public static class Kernel32
             {
-                [DllImport(&quot;kernel32.dll&quot;, CharSet = CharSet.Unicode, SetLastError = true)]
+                [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
                 public static extern IntPtr CreateFile(
                       string filename,
                       System.IO.FileAccess access,
@@ -117,13 +118,13 @@ sources:
                       System.IO.FileMode creationDisposition,
                       uint flagsAndAttributes,
                       IntPtr templateFile);
-                [DllImport(&quot;kernel32.dll&quot;, SetLastError = true)]
+                [DllImport("kernel32.dll", SetLastError = true)]
                 public static extern bool GetNamedPipeServerProcessId(IntPtr hPipe, out int ClientProcessId);
             
-                [DllImport(&quot;kernel32.dll&quot;, SetLastError=true)]
+                [DllImport("kernel32.dll", SetLastError=true)]
                 public static extern bool CloseHandle(IntPtr hObject);
             }
-        &quot;@
+        "@
         $remcom=$null
         $pipeOwner=0
 
@@ -149,7 +150,7 @@ sources:
           $pipeOwnerFound = [Kernel32]::GetNamedPipeServerProcessId([System.IntPtr]$hPipe, [ref]$pipeOwner);
           if ($pipeOwnerFound) {
             # Now that we have the process id, Get process name
-            $processName = Get-WmiObject -Query &quot;SELECT Caption FROM Win32_Process WHERE ProcessID = $pipeOwner&quot; | select -ExpandProperty Caption;
+            $processName = Get-WmiObject -Query "SELECT Caption FROM Win32_Process WHERE ProcessID = $pipeOwner" | select -ExpandProperty Caption;
                     
             # Add to the name and ID to output
             $output.ProcessID = $pipeOwner;
@@ -169,15 +170,15 @@ sources:
         
         '''
 
-        SELECT * FROM execve(argv=[&quot;Powershell&quot;, &quot;-ExecutionPolicy&quot;,
-            &quot;unrestricted&quot;, &quot;-c&quot;, ps+pipe_name+ps2])    
+        SELECT * FROM execve(argv=["Powershell", "-ExecutionPolicy",
+            "unrestricted", "-c", ps+pipe_name+ps2])    
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

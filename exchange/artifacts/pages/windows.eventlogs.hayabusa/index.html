@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.Hayabusa :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.Hayabusa :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.eventlogs.hayabusa/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,7 +75,8 @@ Windows event log fast forensics timeline generator and threat
 hunting tool.</p><p>This artifact runs Hayabusa on the endpoint against the specified
 Windows event log directory, and generates and uploads a single CSV
 file for further analysis with excel, timeline explorer, elastic
-stack, etc.</p><pre><code class=language-yaml>name: Windows.EventLogs.Hayabusa
+stack, etc.</p><pre><code class=language-yaml>
+name: Windows.EventLogs.Hayabusa
 description: |
    [Hayabusa](https://github.com/Yamato-Security/hayabusa) is a
    Windows event log fast forensics timeline generator and threat
@@ -98,19 +99,19 @@ precondition: SELECT OS From info() where OS = 'windows'
 
 parameters:
  - name: UTC
-   description: &quot;Output time in UTC format&quot;
+   description: "Output time in UTC format"
    type: bool
    default: Y
  - name: UpdateRules
-   description: &quot;Update rules before scanning&quot;
+   description: "Update rules before scanning"
    type: bool
    default: Y
  - name: NoisyRules
-   description: &quot;Enable rules marked as noisy&quot;
+   description: "Enable rules marked as noisy"
    type: bool
    default: N
  - name: OutputProfile
-   description: &quot;Decide how much data you want back&quot;
+   description: "Decide how much data you want back"
    default: standard
    type: choices
    choices:
@@ -123,11 +124,11 @@ parameters:
      - timesketch-minimal
      - timesketch-verbose
  - name: EIDFilter
-   description: &quot;Scan only common Event IDs for quicker scans&quot;
+   description: "Scan only common Event IDs for quicker scans"
    type: bool
    default: N
  - name: MinimalLevel
-   description: &quot;Minimum level for rules&quot;
+   description: "Minimum level for rules"
    default: informational
    type: choices
    choices:
@@ -137,7 +138,7 @@ parameters:
      - high
      - critical
  - name: Threads
-   description: &quot;Number of threads&quot;
+   description: "Number of threads"
    type: int
    default: 2
 
@@ -145,39 +146,39 @@ sources:
  - name: Upload
    query: |
         -- Fetch the binary
-        LET Toolzip &lt;= SELECT FullPath
-        FROM Artifact.Generic.Utils.FetchBinary(ToolName=&quot;Hayabusa-2.3.3&quot;, IsExecutable=FALSE)
+        LET Toolzip <= SELECT FullPath
+        FROM Artifact.Generic.Utils.FetchBinary(ToolName="Hayabusa-2.3.3", IsExecutable=FALSE)
 
-        LET TmpDir &lt;= tempdir()
+        LET TmpDir <= tempdir()
 
         -- Unzip the binary
-        LET _ &lt;= SELECT *
+        LET _ <= SELECT *
         FROM unzip(filename=Toolzip.FullPath, output_directory=TmpDir)
 
-        LET HayabusaExe &lt;= TmpDir + '\\hayabusa-2.3.3-win-x64.exe'
+        LET HayabusaExe <= TmpDir + '\\hayabusa-2.3.3-win-x64.exe'
 
         -- Optionally update the rules
-        LET _ &lt;= if(condition=UpdateRules, then={
-        SELECT * FROM execve(argv=['cmd.exe', '/c', 'cd', TmpDir, '&amp;', HayabusaExe, 'update-rules']) })
+        LET _ <= if(condition=UpdateRules, then={
+        SELECT * FROM execve(argv=['cmd.exe', '/c', 'cd', TmpDir, '&', HayabusaExe, 'update-rules']) })
 
-        LET CSVFile &lt;= TmpDir + '\\hayabusa_results.csv'
+        LET CSVFile <= TmpDir + '\\hayabusa_results.csv'
 
         -- Build the command line considering all options
-        LET cmdline &lt;= filter(list=(
-          HayabusaExe, &quot;csv-timeline&quot;, &quot;--live-analysis&quot;,
-          &quot;--output&quot;, CSVFile,
-          &quot;--min-level&quot;, MinimalLevel,
-          &quot;--profile&quot;, OutputProfile,
-          &quot;--quiet&quot;, &quot;--no-summary&quot;,
-          &quot;--threads&quot;, str(str=Threads),
-          if(condition=UTC, then=&quot;--UTC&quot;),
-          if(condition=NoisyRules, then=&quot;--enable-noisy-rules&quot;),
-          if(condition=EIDFilter, then=&quot;--eid-filter&quot;)
-        ),  regex=&quot;.+&quot;)
+        LET cmdline <= filter(list=(
+          HayabusaExe, "csv-timeline", "--live-analysis",
+          "--output", CSVFile,
+          "--min-level", MinimalLevel,
+          "--profile", OutputProfile,
+          "--quiet", "--no-summary",
+          "--threads", str(str=Threads),
+          if(condition=UTC, then="--UTC"),
+          if(condition=NoisyRules, then="--enable-noisy-rules"),
+          if(condition=EIDFilter, then="--eid-filter")
+        ),  regex=".+")
 
         -- Run the tool and divert messages to logs.
-        LET ExecHB &lt;= SELECT *
-        FROM execve(argv=cmdline, sep=&quot;\n&quot;, length=9999999)
+        LET ExecHB <= SELECT *
+        FROM execve(argv=cmdline, sep="\n", length=9999999)
         WHERE log(message=Stdout)
 
         -- Upload the raw file.
@@ -188,12 +189,12 @@ sources:
         SELECT *, timestamp(string=Timestamp) AS EventTime
         FROM parse_csv(filename=CSVFile)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
+<script src=/js/jquery.sticky.js?1693663126></script>
+<script src=/js/featherlight.min.js?1693663126></script>
+<script src=/js/highlight.min.js?1693663126></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
+<script src=/js/learn.js?1693663126></script>
+<script src=/js/hugo-learn.js?1693663126></script></body></html>

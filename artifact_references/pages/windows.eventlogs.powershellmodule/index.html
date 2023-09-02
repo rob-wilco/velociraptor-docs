@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.PowershellModule :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.PowershellModule :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.eventlogs.powershellmodule/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -72,7 +72,8 @@
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.EventLogs.PowershellModule</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.EventLogs.PowershellModule</h1><p>This Artifact will search and extract Module events (Event ID 4103) from
 Powershell-Operational Event Logs.</p><p>Powershell is commonly used by attackers across all stages of the attack
-lifecycle. Although quite noisy Module logging can provide valuable insight.</p><p>There are several parameter&rsquo;s available for search leveraging regex.</p><ul><li>DateAfter enables search for events after this date.</li><li>DateBefore enables search for events before this date.</li><li>ContextRegex enables regex search over ContextInfo text field.</li><li>PayloadRegex enables a regex search over Payload text field.</li><li>SearchVSS enables VSS search</li></ul><pre><code class=language-yaml>name: Windows.EventLogs.PowershellModule
+lifecycle. Although quite noisy Module logging can provide valuable insight.</p><p>There are several parameter&rsquo;s available for search leveraging regex.</p><ul><li>DateAfter enables search for events after this date.</li><li>DateBefore enables search for events before this date.</li><li>ContextRegex enables regex search over ContextInfo text field.</li><li>PayloadRegex enables a regex search over Payload text field.</li><li>SearchVSS enables VSS search</li></ul><pre><code class=language-yaml>
+name: Windows.EventLogs.PowershellModule
 description: |
   This Artifact will search and extract Module events (Event ID 4103) from
   Powershell-Operational Event Logs.
@@ -98,16 +99,16 @@ parameters:
   - name: EventLog
     default: C:\Windows\system32\winevt\logs\Microsoft-Windows-PowerShell%4Operational.evtx
   - name: DateAfter
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: DateBefore
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: ContextRegex
-    description: &quot;regex search over Payload text field.&quot;
+    description: "regex search over Payload text field."
     type: regex
   - name: PayloadRegex
-    description: &quot;regex search over Payload text field.&quot;
+    description: "regex search over Payload text field."
     type: regex
 
   - name: VSSAnalysisAge
@@ -121,14 +122,14 @@ parameters:
 
 sources:
   - query: |
-        LET VSS_MAX_AGE_DAYS &lt;= VSSAnalysisAge
-        LET Accessor = if(condition=VSSAnalysisAge &gt; 0, then=&quot;ntfs_vss&quot;, else=&quot;auto&quot;)
+        LET VSS_MAX_AGE_DAYS <= VSSAnalysisAge
+        LET Accessor = if(condition=VSSAnalysisAge > 0, then="ntfs_vss", else="auto")
 
         -- Build time bounds
-        LET DateAfterTime &lt;= if(condition=DateAfter,
-            then=timestamp(epoch=DateAfter), else=timestamp(epoch=&quot;1600-01-01&quot;))
-        LET DateBeforeTime &lt;= if(condition=DateBefore,
-            then=timestamp(epoch=DateBefore), else=timestamp(epoch=&quot;2200-01-01&quot;))
+        LET DateAfterTime <= if(condition=DateAfter,
+            then=timestamp(epoch=DateAfter), else=timestamp(epoch="1600-01-01"))
+        LET DateBeforeTime <= if(condition=DateBefore,
+            then=timestamp(epoch=DateBefore), else=timestamp(epoch="2200-01-01"))
 
         -- Determine target files
         LET files =
@@ -154,8 +155,8 @@ sources:
                 Source
               FROM parse_evtx(filename=OSPath, accessor=Accessor)
               WHERE EventID = 4103
-                AND EventTime &gt; DateAfterTime
-                AND EventTime &lt; DateBeforeTime
+                AND EventTime > DateAfterTime
+                AND EventTime < DateBeforeTime
                 AND if(condition=ContextRegex,
                     then=ContextInfo=~ContextRegex,else=TRUE)
                 AND if(condition=PayloadRegex,
@@ -180,12 +181,12 @@ sources:
         FROM hits
         GROUP BY EventRecordID, Channel
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663120></script>
+<script src=/js/jquery.sticky.js?1693663120></script>
+<script src=/js/featherlight.min.js?1693663120></script>
+<script src=/js/highlight.min.js?1693663120></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663120></script>
+<script src=/js/learn.js?1693663120></script>
+<script src=/js/hugo-learn.js?1693663120></script></body></html>

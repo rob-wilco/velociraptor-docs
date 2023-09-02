@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.UnifiedLogHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567188 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567188 rel=stylesheet><link href=/css/featherlight.min.css?1693567188 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567188 rel=stylesheet><link href=/css/auto-complete.css?1693567188 rel=stylesheet><link href=/css/theme.css?1693567188 rel=stylesheet><link href=/css/tabs.css?1693567188 rel=stylesheet><link href=/css/hugo-theme.css?1693567188 rel=stylesheet><link href=/css/theme-mine.css?1693567188 rel=stylesheet><link href=/css/dark.css?1693567188 rel=stylesheet><link href=/css/syntax.css?1693567188 rel=stylesheet><link href=/css/light.css?1693567188 rel=stylesheet><link href=/css/hljs.css?1693567188 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567188 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567188></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.UnifiedLogHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/macos.unifiedloghunter/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -70,7 +70,8 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/exchange/artifacts/MacOS.UnifiedLogHunter.yaml target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>MacOS.UnifiedLogHunter</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>MacOS.UnifiedLogHunter</h1><p>This artifact allows for live hunting through Apple&rsquo;s Unified Logs using the native <code>log</code> command.</p><p>The Unified Logs can be a great resource for learning about system events. There are many logging subsystems that can provide a wealth of data for investigators.</p><p>However, users should ensure their searches are scoped appropriately (date/time/event type/etc), as a lot of data can be returned, which could affect the ability to review the collected data or potentially impact client performance.</p><p>The <code>Predicate</code> parameter can be used to filter logs. Example filters are included as artifact parameters.</p><p>Users may need to adjust the <code>Length</code> parameter to accomodate a large number of events being returned.</p><p>If you would like to perform an offline collection, or only care about collecting the raw files associated with this data, consider using <a href=https://docs.velociraptor.app/exchange/artifacts/pages/macos.unifiedlogparser/>Exchange.MacOS.UnifiedLogParser</a>.</p><pre><code class=language-yaml>name: MacOS.UnifiedLogHunter
+<span class=links>MacOS.UnifiedLogHunter</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>MacOS.UnifiedLogHunter</h1><p>This artifact allows for live hunting through Apple&rsquo;s Unified Logs using the native <code>log</code> command.</p><p>The Unified Logs can be a great resource for learning about system events. There are many logging subsystems that can provide a wealth of data for investigators.</p><p>However, users should ensure their searches are scoped appropriately (date/time/event type/etc), as a lot of data can be returned, which could affect the ability to review the collected data or potentially impact client performance.</p><p>The <code>Predicate</code> parameter can be used to filter logs. Example filters are included as artifact parameters.</p><p>Users may need to adjust the <code>Length</code> parameter to accomodate a large number of events being returned.</p><p>If you would like to perform an offline collection, or only care about collecting the raw files associated with this data, consider using <a href=https://docs.velociraptor.app/exchange/artifacts/pages/macos.unifiedlogparser/>Exchange.MacOS.UnifiedLogParser</a>.</p><pre><code class=language-yaml>
+name: MacOS.UnifiedLogHunter
 description: |
         This artifact allows for live hunting through Apple's Unified Logs using the native `log` command.
         
@@ -179,81 +180,81 @@ required_permissions:
 precondition: SELECT OS From info() where OS = 'darwin' AND StartDate AND EndDate
 sources:
   - query: |
-      LET QueryTable = SELECT * FROM parse_csv(accessor=&quot;data&quot;, filename='''
+      LET QueryTable = SELECT * FROM parse_csv(accessor="data", filename='''
             QueryName,Q
-            Airdrop Transfer Outbound,subsystem == &quot;com.apple.sharing&quot; AND process == &quot;AirDrop&quot; AND processImagePath BEGINSWITH &quot;/System/Library&quot; AND eventMessage BEGINSWITH &quot;Successfully issued sandbox extension for&quot;
-            Application Firewall Logging,subsystem == &quot;com.apple.alf&quot;
-            Configuration Profile - Manual Install,subsystem == &quot;com.apple.ManagedClient&quot; AND process == &quot;mdmclient&quot; AND category == &quot;MDMDaemon&quot; and eventMessage CONTAINS &quot;Installed configuration profile:&quot; AND eventMessage CONTAINS &quot;Source: Manual&quot;
-            Configuration Profile - Manual Removal,subsystem == &quot;com.apple.ManagedClient&quot; AND process == &quot;mdmclient&quot; AND category == &quot;MDMDaemon&quot; and eventMessage CONTAINS &quot;Removed configuration profile:&quot; AND eventMessage CONTAINS &quot;Source: Manual&quot;
-            DNS configuration changes,subsystem == &quot;com.apple.networkextension&quot; and process == &quot;nehelper&quot; and eventMessage CONTAINS &quot;DNS settings are enabled&quot; OR subsystem == &quot;com.apple.networkextension&quot; and process == &quot;nesessionmanager&quot; and eventMessage contains &quot;status changed to disconnected, last stop reason Configuration was disabled&quot;'
-            Gatekeeper File Access Rejections and User Bypasses,subsystem == &quot;com.apple.launchservices&quot; AND process == &quot;CoreServicesUIAgent&quot; AND category == &quot;uiagent&quot; AND (eventMessage BEGINSWITH &quot;Saving rejection record:&quot; OR eventMessage CONTAINS &quot;Gatekeeper rejection record&quot;)
-            Gatekeeper File Access Scan Activity,subsystem == &quot;com.apple.syspolicy.exec&quot; AND process == &quot;syspolicyd&quot; AND category == &quot;default&quot;
-            Failed Lock Screen Unlock,processImagePath BEGINSWITH &quot;/System/Library/CoreServices&quot; AND process == &quot;loginwindow&quot; AND eventMessage CONTAINS[c] &quot;INCORRECT&quot;
-            Failed Local Password Login,processImagePath BEGINSWITH &quot;/System/&quot; AND process == &quot;SecurityAgent&quot; AND subsystem == &quot;com.apple.loginwindow&quot; AND eventMessage CONTAINS &quot;Authentication failure&quot;
-            Failed Local TouchID Login,process == &quot;loginwindow&quot; AND eventMessage CONTAINS[c] &quot;APEventTouchIDNoMatch&quot;
-            Failed Local User Password Change,subsystem == &quot;com.apple.opendirectoryd&quot; AND process == &quot;opendirectoryd&quot; AND category == &quot;auth&quot; AND eventMessage CONTAINS &quot;Failed to change password&quot;
-            Failed sudo access,process == &quot;sudo&quot; AND eventMessage CONTAINS[c] &quot;TTY&quot; AND eventMessage CONTAINS[c] &quot;3 incorrect password attempts&quot;
-            Inbound screen sharing,process == &quot;screensharingd&quot; AND eventMessage BEGINSWITH &quot;Authentication: &quot;
-            Kernel Extension Additions,process == &quot;kextd&quot; &amp;&amp; sender == &quot;IOKit&quot;
-            Keychain DB Unlock,process == &quot;loginwindow&quot; &amp;&amp; sender == &quot;Security&quot;
-            MDM Profile - Manual Removal,subsystem == &quot;com.apple.ManagedClient&quot; AND eventMessage CONTAINS &quot;Removed configuration profile: MDM Profile&quot; AND eventMessage CONTAINS &quot;Source: Manual&quot;
-            Network server connection attempts inbound,process == &quot;NetAuthSysAgent&quot; AND subsystem == &quot;com.apple.NetAuthAgent&quot; AND category == &quot;IPC&quot; AND eventMessage BEGINSWITH &quot;URL = &quot;
-            Permissions and Access Violations,process == &quot;tccd&quot;
-            Root user enabled or password changed,processImagePath == &quot;/usr/libexec/opendirectoryd&quot; AND process == &quot;opendirectoryd&quot; AND subsystem == &quot;com.apple.opendirectoryd&quot; AND eventMessage CONTAINS &quot;Password changed for root&quot;
-            Session Creation and Destruction,process == &quot;securityd&quot; &amp;&amp; eventMessage CONTAINS &quot;Session&quot;  &amp;&amp; subsystem == &quot;com.apple.securityd&quot;
-            SSH Login Activity,process == &quot;sshd&quot;
-            Successful Local Password Login,processImagePath BEGINSWITH &quot;/System/Library/CoreServices&quot; AND process == &quot;loginwindow&quot; AND subsystem == &quot;com.apple.loginwindow.logging&quot; AND eventMessage CONTAINS &quot;[Login1 doLogin] | shortUsername&quot;
-            Successful Local TouchID Login,process == &quot;loginwindow&quot; AND eventMessage CONTAINS[c] &quot;APEventTouchIDMatch&quot;
-            Successful Local User Password Change,subsystem == &quot;com.apple.opendirectoryd&quot; AND process == &quot;opendirectoryd&quot; AND category == &quot;auth&quot; AND eventMessage CONTAINS &quot;Password changed for&quot;
-            XProtect Remediator scanning activity,subsystem == &quot;com.apple.XProtectFramework.PluginAPI&quot; &amp;&amp; category == &quot;XPEvent.structured&quot;''')
+            Airdrop Transfer Outbound,subsystem == "com.apple.sharing" AND process == "AirDrop" AND processImagePath BEGINSWITH "/System/Library" AND eventMessage BEGINSWITH "Successfully issued sandbox extension for"
+            Application Firewall Logging,subsystem == "com.apple.alf"
+            Configuration Profile - Manual Install,subsystem == "com.apple.ManagedClient" AND process == "mdmclient" AND category == "MDMDaemon" and eventMessage CONTAINS "Installed configuration profile:" AND eventMessage CONTAINS "Source: Manual"
+            Configuration Profile - Manual Removal,subsystem == "com.apple.ManagedClient" AND process == "mdmclient" AND category == "MDMDaemon" and eventMessage CONTAINS "Removed configuration profile:" AND eventMessage CONTAINS "Source: Manual"
+            DNS configuration changes,subsystem == "com.apple.networkextension" and process == "nehelper" and eventMessage CONTAINS "DNS settings are enabled" OR subsystem == "com.apple.networkextension" and process == "nesessionmanager" and eventMessage contains "status changed to disconnected, last stop reason Configuration was disabled"'
+            Gatekeeper File Access Rejections and User Bypasses,subsystem == "com.apple.launchservices" AND process == "CoreServicesUIAgent" AND category == "uiagent" AND (eventMessage BEGINSWITH "Saving rejection record:" OR eventMessage CONTAINS "Gatekeeper rejection record")
+            Gatekeeper File Access Scan Activity,subsystem == "com.apple.syspolicy.exec" AND process == "syspolicyd" AND category == "default"
+            Failed Lock Screen Unlock,processImagePath BEGINSWITH "/System/Library/CoreServices" AND process == "loginwindow" AND eventMessage CONTAINS[c] "INCORRECT"
+            Failed Local Password Login,processImagePath BEGINSWITH "/System/" AND process == "SecurityAgent" AND subsystem == "com.apple.loginwindow" AND eventMessage CONTAINS "Authentication failure"
+            Failed Local TouchID Login,process == "loginwindow" AND eventMessage CONTAINS[c] "APEventTouchIDNoMatch"
+            Failed Local User Password Change,subsystem == "com.apple.opendirectoryd" AND process == "opendirectoryd" AND category == "auth" AND eventMessage CONTAINS "Failed to change password"
+            Failed sudo access,process == "sudo" AND eventMessage CONTAINS[c] "TTY" AND eventMessage CONTAINS[c] "3 incorrect password attempts"
+            Inbound screen sharing,process == "screensharingd" AND eventMessage BEGINSWITH "Authentication: "
+            Kernel Extension Additions,process == "kextd" && sender == "IOKit"
+            Keychain DB Unlock,process == "loginwindow" && sender == "Security"
+            MDM Profile - Manual Removal,subsystem == "com.apple.ManagedClient" AND eventMessage CONTAINS "Removed configuration profile: MDM Profile" AND eventMessage CONTAINS "Source: Manual"
+            Network server connection attempts inbound,process == "NetAuthSysAgent" AND subsystem == "com.apple.NetAuthAgent" AND category == "IPC" AND eventMessage BEGINSWITH "URL = "
+            Permissions and Access Violations,process == "tccd"
+            Root user enabled or password changed,processImagePath == "/usr/libexec/opendirectoryd" AND process == "opendirectoryd" AND subsystem == "com.apple.opendirectoryd" AND eventMessage CONTAINS "Password changed for root"
+            Session Creation and Destruction,process == "securityd" && eventMessage CONTAINS "Session"  && subsystem == "com.apple.securityd"
+            SSH Login Activity,process == "sshd"
+            Successful Local Password Login,processImagePath BEGINSWITH "/System/Library/CoreServices" AND process == "loginwindow" AND subsystem == "com.apple.loginwindow.logging" AND eventMessage CONTAINS "[Login1 doLogin] | shortUsername"
+            Successful Local TouchID Login,process == "loginwindow" AND eventMessage CONTAINS[c] "APEventTouchIDMatch"
+            Successful Local User Password Change,subsystem == "com.apple.opendirectoryd" AND process == "opendirectoryd" AND category == "auth" AND eventMessage CONTAINS "Password changed for"
+            XProtect Remediator scanning activity,subsystem == "com.apple.XProtectFramework.PluginAPI" && category == "XPEvent.structured"''')
       
-      LET QueriesToRun &lt;= SELECT Q FROM QueryTable WHERE if(condition=RunAllQueries, then=QueryName, else=get(field=QueryName))
+      LET QueriesToRun <= SELECT Q FROM QueryTable WHERE if(condition=RunAllQueries, then=QueryName, else=get(field=QueryName))
                                               
-      LET Raw &lt;= SELECT * FROM foreach(row={ SELECT * FROM chain( a=QueriesToRun, b=if(condition=Predicate, then={ SELECT Predicate AS Q FROM scope()}))}, 
+      LET Raw <= SELECT * FROM foreach(row={ SELECT * FROM chain( a=QueriesToRun, b=if(condition=Predicate, then={ SELECT Predicate AS Q FROM scope()}))}, 
                                        query={ SELECT Stdout FROM execve(
                    length=Length, 
                    argv=[
-                     &quot;log&quot;, 
-                     &quot;show&quot;,
-                     &quot;--start&quot;,
-                     grok(grok=&quot;%{TIMESTAMP_ISO8601:Date}&quot;, data=StartDate).Date,
-                     &quot;--end&quot;,
-                     grok(grok=&quot;%{TIMESTAMP_ISO8601:Date}&quot;, data=EndDate).Date,
-                     &quot;--predicate&quot;,
+                     "log", 
+                     "show",
+                     "--start",
+                     grok(grok="%{TIMESTAMP_ISO8601:Date}", data=StartDate).Date,
+                     "--end",
+                     grok(grok="%{TIMESTAMP_ISO8601:Date}", data=EndDate).Date,
+                     "--predicate",
                      Q,
-                     &quot;--style&quot;,
-                     &quot;json&quot;])}, async=TRUE) WHERE NOT Stdout = &quot;[]&quot;
+                     "--style",
+                     "json"])}, async=TRUE) WHERE NOT Stdout = "[]"
       SELECT 
-        timestamp(string=get(member=&quot;timestamp&quot;)) AS EventTime,
-        get(member=&quot;machTimestamp&quot;) AS _TimeSinceBoot,
-        get(member=&quot;traceID&quot;) AS _TraceID,
-        get(member=&quot;eventMessage&quot;) AS EventMessage,
-        get(member=&quot;eventType&quot;) AS EventType,
-        get(member=&quot;messageType&quot;) AS MessageType,
-        get(member=&quot;category&quot;) AS Category,
-        get(member=&quot;subsystem&quot;) AS Subsystem,
-        get(member=&quot;processID&quot;) AS PID,
-        get(member=&quot;processImagePath&quot;) AS ProcessImagePath,
-        get(member=&quot;processImageUUID&quot;) AS ProcessImageUUID,
-        get(member=&quot;senderImagePath&quot;) AS SenderImagePath,
-        get(member=&quot;senderImageUUID&quot;) AS SenderImageUUID,
-        get(member=&quot;senderProgramCounter&quot;) AS SenderProgramCounter,
-        get(member=&quot;source&quot;) AS _Source,
-        get(member=&quot;formatString&quot;) AS _FormatString,
-        get(member=&quot;activityIdentifier&quot;) AS ActivityID,
-        get(member=&quot;parentActivityIdentifier&quot;) AS ParentActivityID,
-        get(member=&quot;threadID&quot;) AS _ThreadID,
-        get(member=&quot;backtrace&quot;) AS _Backtrace,
-        get(member=&quot;bootUUID&quot;) AS _BootUUID,
-        get(member=&quot;timezoneName&quot;) AS _TimezoneName
+        timestamp(string=get(member="timestamp")) AS EventTime,
+        get(member="machTimestamp") AS _TimeSinceBoot,
+        get(member="traceID") AS _TraceID,
+        get(member="eventMessage") AS EventMessage,
+        get(member="eventType") AS EventType,
+        get(member="messageType") AS MessageType,
+        get(member="category") AS Category,
+        get(member="subsystem") AS Subsystem,
+        get(member="processID") AS PID,
+        get(member="processImagePath") AS ProcessImagePath,
+        get(member="processImageUUID") AS ProcessImageUUID,
+        get(member="senderImagePath") AS SenderImagePath,
+        get(member="senderImageUUID") AS SenderImageUUID,
+        get(member="senderProgramCounter") AS SenderProgramCounter,
+        get(member="source") AS _Source,
+        get(member="formatString") AS _FormatString,
+        get(member="activityIdentifier") AS ActivityID,
+        get(member="parentActivityIdentifier") AS ParentActivityID,
+        get(member="threadID") AS _ThreadID,
+        get(member="backtrace") AS _Backtrace,
+        get(member="bootUUID") AS _BootUUID,
+        get(member="timezoneName") AS _TimezoneName
       FROM foreach(row=Raw.Stdout, query={SELECT * FROM parse_json_array(data=_value)})
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567188></script>
-<script src=/js/jquery.sticky.js?1693567188></script>
-<script src=/js/featherlight.min.js?1693567188></script>
-<script src=/js/highlight.min.js?1693567188></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567188></script>
-<script src=/js/learn.js?1693567188></script>
-<script src=/js/hugo-learn.js?1693567188></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
+<script src=/js/jquery.sticky.js?1693663124></script>
+<script src=/js/featherlight.min.js?1693663124></script>
+<script src=/js/highlight.min.js?1693663124></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
+<script src=/js/learn.js?1693663124></script>
+<script src=/js/hugo-learn.js?1693663124></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.RDPAuth :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.RDPAuth :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.eventlogs.rdpauth/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,8 +76,9 @@ Security channel - EventID in 4778,4625,4779, or 4647.
 System channel - EventID 9009.
 Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational - EventID 1149.
 Microsoft-Windows-TerminalServices-LocalSessionManager/Operational - EventID 23,22,21,24,25,39, or 40.</p><p>Best use of this artifact is to collect RDP and Authentication events around
-a timeframe of interest and order by EventTime to scope RDP activity.</p><pre><code class=language-yaml>name: Windows.EventLogs.RDPAuth
-author: &quot;Matt Green - @mgreen27&quot;
+a timeframe of interest and order by EventTime to scope RDP activity.</p><pre><code class=language-yaml>
+name: Windows.EventLogs.RDPAuth
+author: "Matt Green - @mgreen27"
 description: |
     This artifact will extract Event Logs related to Remote Desktop sessions,
     logon and logoff.
@@ -110,16 +111,16 @@ parameters:
     description: path to TerminalServices-RemoteConnectionManager operational event log.
     default: '%SystemRoot%\System32\Winevt\Logs\Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Operational.evtx'
   - name: DateAfter
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: DateBefore
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ss Z&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ss Z"
     type: timestamp
   - name: SourceIPRegex
-    default: &quot;.+&quot;
+    default: ".+"
     type: regex
   - name: UserNameRegex
-    default: &quot;.+&quot;
+    default: ".+"
     type: regex
   - name: UserNameWhitelist
     default: '\$$'
@@ -135,17 +136,17 @@ parameters:
 
 sources:
   - query: |
-      LET VSS_MAX_AGE_DAYS &lt;= VSSAnalysisAge
-      LET Accessor = if(condition=VSSAnalysisAge &gt; 0, then=&quot;ntfs_vss&quot;, else=&quot;auto&quot;)
+      LET VSS_MAX_AGE_DAYS <= VSSAnalysisAge
+      LET Accessor = if(condition=VSSAnalysisAge > 0, then="ntfs_vss", else="auto")
 
       -- firstly set timebounds for performance
-      LET DateAfterTime &lt;= if(condition=DateAfter,
-        then=DateAfter, else=timestamp(epoch=&quot;1600-01-01&quot;))
-      LET DateBeforeTime &lt;= if(condition=DateBefore,
-        then=DateBefore, else=timestamp(epoch=&quot;2200-01-01&quot;))
+      LET DateAfterTime <= if(condition=DateAfter,
+        then=DateAfter, else=timestamp(epoch="1600-01-01"))
+      LET DateBeforeTime <= if(condition=DateBefore,
+        then=DateBefore, else=timestamp(epoch="2200-01-01"))
 
       -- expand provided glob into a list of paths on the file system (fs)
-      LET fspaths &lt;= SELECT OSPath
+      LET fspaths <= SELECT OSPath
         FROM glob(globs=[
             expand(path=Security),
             expand(path=System),
@@ -222,7 +223,7 @@ sources:
                                 `4634`='LOGOFF_DISCONNECT'),
                                     member=str(str=System.EventID.Value)
                         ))))))) as Description,
-                    get(field=&quot;Message&quot;) as Message,
+                    get(field="Message") as Message,
                     System.EventRecordID as EventRecordID,
                     OSPath
                 FROM parse_evtx(filename=OSPath, accessor=Accessor)
@@ -235,8 +236,8 @@ sources:
                         AND EventID = 1149 )
                     OR ( Channel = 'Microsoft-Windows-TerminalServices-LocalSessionManager/Operational'
                         AND EventID in (23,22,21,24,25,39,40))
-                    AND EventTime &lt; DateBeforeTime
-                    AND EventTime &gt; DateAfterTime
+                    AND EventTime < DateBeforeTime
+                    AND EventTime > DateAfterTime
                     AND if(condition= UserNameWhitelist,
                         then= NOT UserName =~ UserNameWhitelist,
                         else= True)
@@ -245,7 +246,7 @@ sources:
             }
           )
 
-      SELECT * FROM if(condition=VSSAnalysisAge &gt; 0,
+      SELECT * FROM if(condition=VSSAnalysisAge > 0,
       then={
         SELECT * FROM evtxsearch(PathList=fspaths)
         GROUP BY EventRecordID, Channel
@@ -253,12 +254,12 @@ sources:
         SELECT * FROM evtxsearch(PathList=fspaths)
       })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

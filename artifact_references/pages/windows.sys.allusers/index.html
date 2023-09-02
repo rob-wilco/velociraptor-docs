@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Sys.AllUsers :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567185 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567185 rel=stylesheet><link href=/css/featherlight.min.css?1693567185 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567185 rel=stylesheet><link href=/css/auto-complete.css?1693567185 rel=stylesheet><link href=/css/theme.css?1693567185 rel=stylesheet><link href=/css/tabs.css?1693567185 rel=stylesheet><link href=/css/hugo-theme.css?1693567185 rel=stylesheet><link href=/css/theme-mine.css?1693567185 rel=stylesheet><link href=/css/dark.css?1693567185 rel=stylesheet><link href=/css/syntax.css?1693567185 rel=stylesheet><link href=/css/light.css?1693567185 rel=stylesheet><link href=/css/hljs.css?1693567185 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567185 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567185></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Sys.AllUsers :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663122 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663122 rel=stylesheet><link href=/css/featherlight.min.css?1693663122 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663122 rel=stylesheet><link href=/css/auto-complete.css?1693663122 rel=stylesheet><link href=/css/theme.css?1693663122 rel=stylesheet><link href=/css/tabs.css?1693663122 rel=stylesheet><link href=/css/hugo-theme.css?1693663122 rel=stylesheet><link href=/css/theme-mine.css?1693663122 rel=stylesheet><link href=/css/dark.css?1693663122 rel=stylesheet><link href=/css/syntax.css?1693663122 rel=stylesheet><link href=/css/light.css?1693663122 rel=stylesheet><link href=/css/hljs.css?1693663122 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663122 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663122></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.sys.allusers/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -80,7 +80,8 @@ of the entire ActiveDirectory as a list of &rsquo;local&rsquo; users, however
 this does not mean that the users have logged into the DC
 locally. In this artifact we limit the number of users to 1000. If
 you need to obtain the full list from the AD, customize this
-artifact.</p><pre><code class=language-yaml>name: Windows.Sys.AllUsers
+artifact.</p><pre><code class=language-yaml>
+name: Windows.Sys.AllUsers
 description: |
   List User accounts. We combine two data sources - the output from
   the `NetUserEnum` API (termed `local` users) and the list of SIDs in
@@ -110,11 +111,11 @@ sources:
                 then=timestamp(winfiletime=High * 4294967296 + Low))
 
         -- lookupSID() may not be available on deaddisk analysis
-        LET roaming_users &lt;= memoize(query={
+        LET roaming_users <= memoize(query={
           SELECT
-             split(string=Key.OSPath.Basename, sep=&quot;-&quot;)[-1] as Uid,
-             &quot;&quot; AS Gid,
-             lookupSID(sid=Key.OSPath.Basename) || &quot;&quot; AS Name,
+             split(string=Key.OSPath.Basename, sep="-")[-1] as Uid,
+             "" AS Gid,
+             lookupSID(sid=Key.OSPath.Basename) || "" AS Name,
              Key.OSPath as Description,
              ProfileImagePath as Directory,
              Key.OSPath.Basename as UUID,
@@ -128,8 +129,8 @@ sources:
                 ProfileUnloadTime=GetTimestamp(
                   High=LocalProfileUnloadTimeHigh, Low=LocalProfileUnloadTimeLow)
              ) AS Data
-           FROM read_reg_key(globs=remoteRegKey, accessor=&quot;registry&quot;)
-        }, key=&quot;UUID&quot;)
+           FROM read_reg_key(globs=remoteRegKey, accessor="registry")
+        }, key="UUID")
 
         -- On a DC the NetUserEnum API will return the entire domain!
         LET local_users = select User_id as Uid,
@@ -167,12 +168,12 @@ reports:
       compromised and the attackers are laterally moving through the
       network.
 
-      {{ define &quot;users&quot; }}
+      {{ define "users" }}
          SELECT Name, UUID, Fqdn, Mtime as LastMod FROM source()
-         WHERE NOT UUID =~ &quot;(-5..$|S-1-5-18|S-1-5-19|S-1-5-20)&quot;
+         WHERE NOT UUID =~ "(-5..$|S-1-5-18|S-1-5-19|S-1-5-20)"
       {{ end }}
 
-      {{ Query &quot;users&quot; | Table }}
+      {{ Query "users" | Table }}
 
   - type: CLIENT
     template: |
@@ -189,18 +190,18 @@ reports:
 
       * Local users show the mtime of their home directory.
 
-      {{ define &quot;users&quot; }}
-         LET users &lt;= SELECT Name, UUID, Type, Mtime
+      {{ define "users" }}
+         LET users <= SELECT Name, UUID, Type, Mtime
          FROM source()
       {{ end }}
-      {{ Query &quot;users&quot; &quot;SELECT Name, UUID, Type, Mtime FROM users&quot; | Table }}
+      {{ Query "users" "SELECT Name, UUID, Type, Mtime FROM users" | Table }}
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567185></script>
-<script src=/js/jquery.sticky.js?1693567185></script>
-<script src=/js/featherlight.min.js?1693567185></script>
-<script src=/js/highlight.min.js?1693567185></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567185></script>
-<script src=/js/learn.js?1693567185></script>
-<script src=/js/hugo-learn.js?1693567185></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663122></script>
+<script src=/js/jquery.sticky.js?1693663122></script>
+<script src=/js/featherlight.min.js?1693663122></script>
+<script src=/js/highlight.min.js?1693663122></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663122></script>
+<script src=/js/learn.js?1693663122></script>
+<script src=/js/hugo-learn.js?1693663122></script></body></html>

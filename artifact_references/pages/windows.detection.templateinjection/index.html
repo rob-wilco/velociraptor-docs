@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.TemplateInjection :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567183 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567183 rel=stylesheet><link href=/css/featherlight.min.css?1693567183 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567183 rel=stylesheet><link href=/css/auto-complete.css?1693567183 rel=stylesheet><link href=/css/theme.css?1693567183 rel=stylesheet><link href=/css/tabs.css?1693567183 rel=stylesheet><link href=/css/hugo-theme.css?1693567183 rel=stylesheet><link href=/css/theme-mine.css?1693567183 rel=stylesheet><link href=/css/dark.css?1693567183 rel=stylesheet><link href=/css/syntax.css?1693567183 rel=stylesheet><link href=/css/light.css?1693567183 rel=stylesheet><link href=/css/hljs.css?1693567183 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567183 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567183></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.TemplateInjection :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.detection.templateinjection/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -80,7 +80,8 @@ hosting image files for canary files or abused for NetNTLM hash collection.</li>
 Change TemplateTargetRegex to &lsquo;^(https?|smb|\\|//|mhtml|file)&rsquo; for looser
 Target selection.</p><p>This artifact can also be modified to quickly deploy yara based detections on
 other documents. Simply replace RtfYara with yara of interest and modify glob
-for targeting.</p><pre><code class=language-yaml>name: Windows.Detection.TemplateInjection
+for targeting.</p><pre><code class=language-yaml>
+name: Windows.Detection.TemplateInjection
 author: Matt Green - @mgreen27
 description: |
     This content will detect injected templates in Office and RTF documents.
@@ -90,7 +91,7 @@ description: |
     via a resource file masquerading as an office template. The OOXML artifact structure
     will also detect MSHTML RCE Vulnerability #CVE-2021-40444 which has a similar payload technique.
     For RTF documents a malicious payload can be delivered by modifying document
-    formatting control via the &quot;\\\*\template&quot; structure.
+    formatting control via the "\\\*\template" structure.
 
 
     This artifact can be modified to search for other suspicious rels files:
@@ -137,8 +138,8 @@ parameters:
     default: |
         rule RTF_TemplateInjection {
             meta:
-                author = &quot;Matt Green - @mgreen27&quot;
-                description = &quot;Yara for RTF template injection. Using regex match to extract template information&quot;
+                author = "Matt Green - @mgreen27"
+                description = "Yara for RTF template injection. Using regex match to extract template information"
 
             strings:
                 $regex1 = /\{\\\*\\template\s+http[^\}]+\}/ nocase
@@ -158,9 +159,9 @@ sources:
       -- Find target docs
       LET office_docs = SELECT OSPath, Mtime, Size
         FROM glob(globs=SearchGlob)
-        WHERE NOT IsDir and Size &gt; 0
+        WHERE NOT IsDir and Size > 0
 
-      LET rtf_injection &lt;= SELECT * FROM foreach(
+      LET rtf_injection <= SELECT * FROM foreach(
          row=office_docs,
          query={
                 SELECT
@@ -194,11 +195,11 @@ sources:
                     OSPath.Path AS ZipMemberPath,
                     OfficePath
                 FROM glob(
-                  globs=&quot;/**&quot;,
+                  globs="/**",
                   root=pathspec(DelegatePath=OfficePath),
                   accessor='zip')
                 WHERE not IsDir
-                  AND Size &gt; 0
+                  AND Size > 0
                   AND ZipMemberPath =~ TemplateFileRegex
             })
 
@@ -211,7 +212,7 @@ sources:
                 OSPath.Path as Section,
                 parse_string_with_regex(
                     string=Line,
-                    regex=['\\s+Target=&quot;(?P&lt;Target&gt;[^&quot;]+)&quot;\\s+TargetMode='
+                    regex=['\\s+Target="(?P<target>[^"]+)"\\s+TargetMode='
                         ]).Target as TemplateTarget,
                 Mtime as SectionMtime,
                 Atime as SectionAtime,
@@ -233,7 +234,7 @@ sources:
                         Size,
                         Section,
                         regex_replace(source=TemplateTarget,
-                            re='.*Target=&quot;(mhtml)',
+                            re='.*Target="(mhtml)',
                             replace='mhtml') as TemplateTarget,
                         SectionMtime,
                         hash(path=SectionPath,accessor='zip') as SectionHash
@@ -254,12 +255,12 @@ sources:
             then= { SELECT * FROM upload_hits},
             else= { SELECT * FROM hits})
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567183></script>
-<script src=/js/jquery.sticky.js?1693567183></script>
-<script src=/js/featherlight.min.js?1693567183></script>
-<script src=/js/highlight.min.js?1693567183></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567183></script>
-<script src=/js/learn.js?1693567183></script>
-<script src=/js/hugo-learn.js?1693567183></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663120></script>
+<script src=/js/jquery.sticky.js?1693663120></script>
+<script src=/js/featherlight.min.js?1693663120></script>
+<script src=/js/highlight.min.js?1693663120></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663120></script>
+<script src=/js/learn.js?1693663120></script>
+<script src=/js/hugo-learn.js?1693663120></script></body></html>

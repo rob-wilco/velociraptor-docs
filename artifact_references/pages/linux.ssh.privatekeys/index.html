@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Ssh.PrivateKeys :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Ssh.PrivateKeys :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663118 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663118 rel=stylesheet><link href=/css/featherlight.min.css?1693663118 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663118 rel=stylesheet><link href=/css/auto-complete.css?1693663118 rel=stylesheet><link href=/css/theme.css?1693663118 rel=stylesheet><link href=/css/tabs.css?1693663118 rel=stylesheet><link href=/css/hugo-theme.css?1693663118 rel=stylesheet><link href=/css/theme-mine.css?1693663118 rel=stylesheet><link href=/css/dark.css?1693663118 rel=stylesheet><link href=/css/syntax.css?1693663118 rel=stylesheet><link href=/css/light.css?1693663118 rel=stylesheet><link href=/css/hljs.css?1693663118 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663118 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663118></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/linux.ssh.privatekeys/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -79,7 +79,8 @@ on their systems without encrypting it.</p><p>This artifact searches for private
 also records if they are encrypted or not. Not all key types are
 supported</p><p>NOTE: In order to encrypt your private key run:</p><pre><code>ssh-keygen -p -f my_private_key
 </code></pre><p>Change the glob to /** if you would like to search the entire filesystem.
-Be aware, this is an expensive operation.</p><pre><code class=language-yaml>name: Linux.Ssh.PrivateKeys
+Be aware, this is an expensive operation.</p><pre><code class=language-yaml>
+name: Linux.Ssh.PrivateKeys
 description: |
   SSH Private keys can be either encrypted or unencrypted. Unencrypted
   private keys are more risky because an attacker can use them without
@@ -96,129 +97,132 @@ description: |
 
   NOTE: In order to encrypt your private key run:
 
-</code></pre><p>ssh-keygen -p -f my_private_key</p><pre><code>
-Change the glob to /** if you would like to search the entire filesystem.
-Be aware, this is an expensive operation.
+  ```
+  ssh-keygen -p -f my_private_key
+  ```
+
+  Change the glob to /** if you would like to search the entire filesystem.
+  Be aware, this is an expensive operation.
 
 reference:
-- https://attack.mitre.org/techniques/T1145/
-- https://coolaj86.com/articles/the-openssh-private-key-format/
-- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
+  - https://attack.mitre.org/techniques/T1145/
+  - https://coolaj86.com/articles/the-openssh-private-key-format/
+  - https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html
 
 precondition: SELECT OS From info() where OS = 'linux'
 
 parameters:
-- name: KeyGlobs
-  default: /home/*/.ssh/{*.pem,id_rsa,id_dsa}
+  - name: KeyGlobs
+    default: /home/*/.ssh/{*.pem,id_rsa,id_dsa}
 
-- name: ExcludePathRegex
-  default: &quot;^/(proc|sys|run|snap)&quot;
-  type: regex
-  description: If this regex matches the path of any directory we do not even descend inside of it.
+  - name: ExcludePathRegex
+    default: "^/(proc|sys|run|snap)"
+    type: regex
+    description: If this regex matches the path of any directory we do not even descend inside of it.
 
 sources:
-- query: |
-    -- For new OpenSSH format
-    LET SSHProfile = '''[
-      [&quot;Header&quot;, 0, [
-      [&quot;Magic&quot;, 0, &quot;String&quot;, {
-          &quot;length&quot;: 100,
-      }],
-      [&quot;cipher_length&quot;, 15, &quot;uint32b&quot;],
-      [&quot;cipher&quot;, 19, &quot;String&quot;, {
-          &quot;length&quot;: &quot;x=&gt;x.cipher_length&quot;,
-      }]
-    ]]]
-    '''
+  - query: |
+      -- For new OpenSSH format
+      LET SSHProfile = '''[
+        ["Header", 0, [
+        ["Magic", 0, "String", {
+            "length": 100,
+        }],
+        ["cipher_length", 15, "uint32b"],
+        ["cipher", 19, "String", {
+            "length": "x=>x.cipher_length",
+        }]
+      ]]]
+      '''
 
-    -- Device major numbers considered local. See Linux.Search.FileFinder
-    LET LocalDeviceMajor &lt;= (NULL,
-        253, 7, 8, 9, 11, 65, 66, 67, 68, 69, 70,
-        71, 128, 129, 130, 131, 132, 133, 134, 135, 202, 253, 254, 259)
+      -- Device major numbers considered local. See Linux.Search.FileFinder
+      LET LocalDeviceMajor <= (NULL,
+          253, 7, 8, 9, 11, 65, 66, 67, 68, 69, 70,
+          71, 128, 129, 130, 131, 132, 133, 134, 135, 202, 253, 254, 259)
 
-    // Only search local filesystems
-    LET RecursionCallback = &quot;x=&gt;x.Data.DevMajor IN LocalDeviceMajor&quot;
+      // Only search local filesystems
+      LET RecursionCallback = "x=>x.Data.DevMajor IN LocalDeviceMajor"
 
-    LET _Hits = SELECT OSPath,
-         read_file(filename=OSPath, length=20240) AS Data
-      FROM glob(globs=KeyGlobs, recursion_callback=RecursionCallback)
-      WHERE Size &lt; 20000
+      LET _Hits = SELECT OSPath,
+           read_file(filename=OSPath, length=20240) AS Data
+        FROM glob(globs=KeyGlobs, recursion_callback=RecursionCallback)
+        WHERE Size < 20000
 
-    LET Hits = SELECT OSPath, Data,
-           base64decode(
-              string=parse_string_with_regex(
-                  string=Data,
-                  regex=&quot;(?sm)KEY-----(.+)-----END&quot;).g1) || &quot;&quot; AS Decoded,
-          parse_string_with_regex(
-             string=Data,
-             regex=&quot;(BEGIN.* PRIVATE KEY)&quot;).g1 AS Header,
-          read_file(filename=OSPath.Dirname + (OSPath.Basename + &quot;.pub&quot;) ) AS PublicKey
-    FROM _Hits
-    WHERE Header
+      LET Hits = SELECT OSPath, Data,
+             base64decode(
+                string=parse_string_with_regex(
+                    string=Data,
+                    regex="(?sm)KEY-----(.+)-----END").g1) || "" AS Decoded,
+            parse_string_with_regex(
+               string=Data,
+               regex="(BEGIN.* PRIVATE KEY)").g1 AS Header,
+            read_file(filename=OSPath.Dirname + (OSPath.Basename + ".pub") ) AS PublicKey
+      FROM _Hits
+      WHERE Header
 
-    LET OpenSSHKeyParser(OSPath, Decoded) = SELECT OSPath,
-       parse_binary(accessor=&quot;data&quot;, filename=Decoded,
-                    profile=SSHProfile, struct=&quot;Header&quot;) AS Parsed
-       FROM scope()
+      LET OpenSSHKeyParser(OSPath, Decoded) = SELECT OSPath,
+         parse_binary(accessor="data", filename=Decoded,
+                      profile=SSHProfile, struct="Header") AS Parsed
+         FROM scope()
 
-    -- Support both types of ssh keys dependingg on the header
-    SELECT * FROM foreach(row={SELECT * FROM Hits},
-    query={
-      SELECT * FROM switch(
-        a={
-           -- new format
-           SELECT OSPath,
-                  Parsed.Magic AS KeyType,
-                  Parsed.cipher AS Cipher,
-                  Header, PublicKey
-           FROM OpenSSHKeyParser(OSPath= OSPath, Decoded=Decoded)
-           WHERE Header =~ &quot;BEGIN OPENSSH PRIVATE KEY&quot;
-        },
-        a2={
-           -- encrypted rsa key from e.g. putty
-           SELECT OSPath,
-                  &quot;PKCS8&quot; AS KeyType,
-                  parse_string_with_regex(string=Data,
-                    regex=&quot;DEK-Info: ([-a-zA-Z0-9]+)&quot;).g1 AS Cipher,
-                  Header, PublicKey
-           FROM scope()
-           WHERE Header =~ &quot;BEGIN RSA PRIVATE KEY&quot;
-             AND &quot;Proc-Type: 4,ENCRYPTED&quot; in Data
-        },
-        b={
-           -- unencrypted rsa key from e.g. AWS
-           SELECT OSPath,
-                  &quot;PKCS8&quot; AS KeyType,
-                  &quot;none&quot; AS Cipher,
-                  Header, PublicKey
-           FROM scope()
-           WHERE Header =~ &quot;BEGIN (RSA )?PRIVATE KEY&quot;
-        },
-        c={
-           -- old format encrypted
-           SELECT OSPath,
-                  &quot;PKCS8&quot; AS KeyType,
-                  &quot;PKCS#5&quot; AS Cipher,
-                  Header, PublicKey
-           FROM scope()
-           WHERE Header =~ &quot;BEGIN ENCRYPTED PRIVATE KEY&quot;
-        },
-        d={
-           -- catch all for unknown keys
-           SELECT OSPath,
-                  &quot;Unknown&quot; AS KeyType,
-                  &quot;Unknown&quot; AS Cipher,
-                  Header, PublicKey
-           FROM scope()
-        })
-    })
+      -- Support both types of ssh keys dependingg on the header
+      SELECT * FROM foreach(row={SELECT * FROM Hits},
+      query={
+        SELECT * FROM switch(
+          a={
+             -- new format
+             SELECT OSPath,
+                    Parsed.Magic AS KeyType,
+                    Parsed.cipher AS Cipher,
+                    Header, PublicKey
+             FROM OpenSSHKeyParser(OSPath= OSPath, Decoded=Decoded)
+             WHERE Header =~ "BEGIN OPENSSH PRIVATE KEY"
+          },
+          a2={
+             -- encrypted rsa key from e.g. putty
+             SELECT OSPath,
+                    "PKCS8" AS KeyType,
+                    parse_string_with_regex(string=Data,
+                      regex="DEK-Info: ([-a-zA-Z0-9]+)").g1 AS Cipher,
+                    Header, PublicKey
+             FROM scope()
+             WHERE Header =~ "BEGIN RSA PRIVATE KEY"
+               AND "Proc-Type: 4,ENCRYPTED" in Data
+          },
+          b={
+             -- unencrypted rsa key from e.g. AWS
+             SELECT OSPath,
+                    "PKCS8" AS KeyType,
+                    "none" AS Cipher,
+                    Header, PublicKey
+             FROM scope()
+             WHERE Header =~ "BEGIN (RSA )?PRIVATE KEY"
+          },
+          c={
+             -- old format encrypted
+             SELECT OSPath,
+                    "PKCS8" AS KeyType,
+                    "PKCS#5" AS Cipher,
+                    Header, PublicKey
+             FROM scope()
+             WHERE Header =~ "BEGIN ENCRYPTED PRIVATE KEY"
+          },
+          d={
+             -- catch all for unknown keys
+             SELECT OSPath,
+                    "Unknown" AS KeyType,
+                    "Unknown" AS Cipher,
+                    Header, PublicKey
+             FROM scope()
+          })
+      })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663118></script>
+<script src=/js/jquery.sticky.js?1693663118></script>
+<script src=/js/featherlight.min.js?1693663118></script>
+<script src=/js/highlight.min.js?1693663118></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663118></script>
+<script src=/js/learn.js?1693663118></script>
+<script src=/js/hugo-learn.js?1693663118></script></body></html>

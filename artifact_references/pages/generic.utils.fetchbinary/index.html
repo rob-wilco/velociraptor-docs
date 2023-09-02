@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Utils.FetchBinary :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Utils.FetchBinary :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663117 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663117 rel=stylesheet><link href=/css/featherlight.min.css?1693663117 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663117 rel=stylesheet><link href=/css/auto-complete.css?1693663117 rel=stylesheet><link href=/css/theme.css?1693663117 rel=stylesheet><link href=/css/tabs.css?1693663117 rel=stylesheet><link href=/css/hugo-theme.css?1693663117 rel=stylesheet><link href=/css/theme-mine.css?1693663117 rel=stylesheet><link href=/css/dark.css?1693663117 rel=stylesheet><link href=/css/syntax.css?1693663117 rel=stylesheet><link href=/css/light.css?1693663117 rel=stylesheet><link href=/css/hljs.css?1693663117 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663117 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663117></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/generic.utils.fetchbinary/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -77,7 +77,8 @@ binary path will be emitted in the OSPath column.</p><p>As a result of launching
 field, the server will populate the following environment
 variables.</p><p>Tool_<toolname><em>HASH - The hash of the binary
 Tool</em><toolname><em>FILENAME - The filename to store it.
-Tool</em><toolname>_URL - The URL.</p><pre><code class=language-yaml>name: Generic.Utils.FetchBinary
+Tool</em><toolname>_URL - The URL.</p><pre><code class=language-yaml>
+name: Generic.Utils.FetchBinary
 description: |
    A utility artifact which fetches a binary from a URL and caches it on disk.
    We verify the hash of the binary on disk and if it does not match we fetch it again
@@ -86,13 +87,13 @@ description: |
    This artifact is designed to be called from other artifacts. The
    binary path will be emitted in the OSPath column.
 
-   As a result of launching an artifact with declared &quot;tools&quot;
+   As a result of launching an artifact with declared "tools"
    field, the server will populate the following environment
    variables.
 
-   Tool_&lt;ToolName&gt;_HASH     - The hash of the binary
-   Tool_&lt;ToolName&gt;_FILENAME - The filename to store it.
-   Tool_&lt;ToolName&gt;_URL      - The URL.
+   Tool_<toolname>_HASH     - The hash of the binary
+   Tool_<toolname>_FILENAME - The filename to store it.
+   Tool_<toolname>_URL      - The URL.
 
 parameters:
   - name: ToolName
@@ -104,7 +105,7 @@ parameters:
     description: Set to Y if the file needs to be executable (on windows it will have .exe extension)
 
   - name: SleepDuration
-    default: &quot;20&quot;
+    default: "20"
     type: int
     description: A time to sleep before fetching the binary.
 
@@ -127,35 +128,35 @@ sources:
       -- running on the client and it needs to be compatibile with
       -- clients at least back to 0.3.9
 
-      LET info_cache &lt;= SELECT * FROM info()
+      LET info_cache <= SELECT * FROM info()
       LET inventory_item = SELECT inventory_get(
          tool=ToolName, version=Version) AS Item FROM scope()
 
-      LET args &lt;= SELECT * FROM switch(
+      LET args <= SELECT * FROM switch(
         // Try to get info from the ToolInfo parameter.
-        a={SELECT get(field=&quot;Tool_&quot; + ToolName + &quot;_HASH&quot;, item=ToolInfo) AS ToolHash,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_FILENAME&quot;, item=ToolInfo) AS ToolFilename,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_URL&quot;, item=ToolInfo) AS ToolURL,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_PATH&quot;, item=ToolInfo) AS ToolPath
+        a={SELECT get(field="Tool_" + ToolName + "_HASH", item=ToolInfo) AS ToolHash,
+                  get(field="Tool_" + ToolName + "_FILENAME", item=ToolInfo) AS ToolFilename,
+                  get(field="Tool_" + ToolName + "_URL", item=ToolInfo) AS ToolURL,
+                  get(field="Tool_" + ToolName + "_PATH", item=ToolInfo) AS ToolPath
            FROM scope()  WHERE ToolFilename},
 
         // Failing this - get it from the scope()
-        b={SELECT get(field=&quot;Tool_&quot; + ToolName + &quot;_HASH&quot;, item=scope()) AS ToolHash,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_FILENAME&quot;, item=scope()) AS ToolFilename,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_URL&quot;, item=scope()) AS ToolURL,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_PATH&quot;, item=ToolInfo) AS ToolPath
+        b={SELECT get(field="Tool_" + ToolName + "_HASH", item=scope()) AS ToolHash,
+                  get(field="Tool_" + ToolName + "_FILENAME", item=scope()) AS ToolFilename,
+                  get(field="Tool_" + ToolName + "_URL", item=scope()) AS ToolURL,
+                  get(field="Tool_" + ToolName + "_PATH", item=ToolInfo) AS ToolPath
            FROM scope()  WHERE ToolFilename},
 
         // Failing this - try to get it from the inventory service directly.
-        c={SELECT get(field=&quot;Tool_&quot; + ToolName + &quot;_HASH&quot;, item=(inventory_item[0]).Item) AS ToolHash,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_FILENAME&quot;, item=(inventory_item[0]).Item) AS ToolFilename,
-                  get(field=&quot;Tool_&quot; + ToolName + &quot;_URL&quot;, item=(inventory_item[0]).Item) AS ToolURL
+        c={SELECT get(field="Tool_" + ToolName + "_HASH", item=(inventory_item[0]).Item) AS ToolHash,
+                  get(field="Tool_" + ToolName + "_FILENAME", item=(inventory_item[0]).Item) AS ToolFilename,
+                  get(field="Tool_" + ToolName + "_URL", item=(inventory_item[0]).Item) AS ToolURL
            FROM scope()  WHERE ToolFilename}
       )
 
       // Keep the binaries cached in the temp directory. We verify the
       // hashes all the time so this should be safe.
-      LET binpath &lt;= SELECT Path FROM switch(
+      LET binpath <= SELECT Path FROM switch(
 
           -- Allow user to specify a temporary directory which
           -- will be cleaned up.
@@ -167,51 +168,51 @@ sources:
           b={SELECT dirname(path=tempfile()) AS Path
              FROM scope() WHERE Path },
 
-          c={SELECT &quot;/tmp&quot; AS Path FROM info_cache WHERE OS = &quot;linux&quot; }
+          c={SELECT "/tmp" AS Path FROM info_cache WHERE OS = "linux" }
         )
 
       // Where we should save the file.
-      LET ToolPath &lt;= SELECT path_join(components=[
+      LET ToolPath <= SELECT path_join(components=[
            (binpath[0]).Path, (args[0]).ToolFilename]) AS Path FROM scope()
 
       // Support tools locally served from disk
       LET local_file =
           SELECT hash(path=(args[0]).ToolPath) as Hash,
                  (args[0]).ToolFilename AS Name,
-                 &quot;Downloaded&quot; AS DownloadStatus,
+                 "Downloaded" AS DownloadStatus,
                  (args[0]).ToolPath AS OSPath
           FROM scope()
           WHERE (args[0]).ToolPath AND
-                log(message=&quot;File served from &quot; + (args[0]).ToolPath)
+                log(message="File served from " + (args[0]).ToolPath)
 
       // Download the file from the binary URL and store in the local
       // binary cache.
       LET download = SELECT * FROM if(condition=log(
-             message=&quot;URL for &quot; + (args[0]).ToolFilename +
-                &quot; is at &quot; + (args[0]).ToolURL + &quot; and has hash of &quot; + (args[0]).ToolHash)
+             message="URL for " + (args[0]).ToolFilename +
+                " is at " + (args[0]).ToolURL + " and has hash of " + (args[0]).ToolHash)
              AND binpath AND (args[0]).ToolHash AND (args[0]).ToolURL,
         then={
           SELECT hash(path=Content) as Hash,
               (args[0]).ToolFilename AS Name,
-              &quot;Downloaded&quot; AS DownloadStatus,
+              "Downloaded" AS DownloadStatus,
               copy(filename=Content, dest=(ToolPath[0]).Path,
-                   permissions=if(condition=IsExecutable, then=&quot;x&quot;)) AS OSPath
-          FROM http_client(url=(args[0]).ToolURL, tempfile_extension=&quot;.exe&quot;)
-          WHERE log(message=format(format=&quot;downloaded hash of %v: %v, expected %v&quot;, args=[
+                   permissions=if(condition=IsExecutable, then="x")) AS OSPath
+          FROM http_client(url=(args[0]).ToolURL, tempfile_extension=".exe")
+          WHERE log(message=format(format="downloaded hash of %v: %v, expected %v", args=[
                     Content, Hash.SHA256, (args[0]).ToolHash]))
                 AND Hash.SHA256 = (args[0]).ToolHash
         }, else={
            SELECT * FROM scope()
-           WHERE NOT log(message=&quot;No valid setup - is tool &quot; + ToolName +
-                        &quot; configured in the server inventory?&quot;)
+           WHERE NOT log(message="No valid setup - is tool " + ToolName +
+                        " configured in the server inventory?")
         })
 
       // Check if the existing file in the binary file cache matches
       // the hash.
       LET existing = SELECT OSPath, hash(path=OSPath) AS Hash, Name,
-                    &quot;Cached&quot; AS DownloadStatus
+                    "Cached" AS DownloadStatus
         FROM stat(filename=(ToolPath[0]).Path)
-        WHERE log(message=format(format=&quot;Local hash of %v: %v, expected %v&quot;, args=[
+        WHERE log(message=format(format="Local hash of %v: %v, expected %v", args=[
             OSPath, Hash.SHA256, (args[0]).ToolHash]))
         AND Hash.SHA256 = (args[0]).ToolHash
 
@@ -232,12 +233,12 @@ sources:
         },
         d=download)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663117></script>
+<script src=/js/jquery.sticky.js?1693663117></script>
+<script src=/js/featherlight.min.js?1693663117></script>
+<script src=/js/highlight.min.js?1693663117></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663117></script>
+<script src=/js/learn.js?1693663117></script>
+<script src=/js/hugo-learn.js?1693663117></script></body></html>

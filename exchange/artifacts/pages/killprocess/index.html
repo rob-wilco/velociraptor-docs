@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Remediation.KillProcess :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567187 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567187 rel=stylesheet><link href=/css/featherlight.min.css?1693567187 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567187 rel=stylesheet><link href=/css/auto-complete.css?1693567187 rel=stylesheet><link href=/css/theme.css?1693567187 rel=stylesheet><link href=/css/tabs.css?1693567187 rel=stylesheet><link href=/css/hugo-theme.css?1693567187 rel=stylesheet><link href=/css/theme-mine.css?1693567187 rel=stylesheet><link href=/css/dark.css?1693567187 rel=stylesheet><link href=/css/syntax.css?1693567187 rel=stylesheet><link href=/css/light.css?1693567187 rel=stylesheet><link href=/css/hljs.css?1693567187 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567187 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567187></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Remediation.KillProcess :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/killprocess/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -72,7 +72,8 @@
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.Remediation.KillProcess</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.Remediation.KillProcess</h1><p>Quick and dirty monitoring artifact to kill a process by Image Name.
 We monitor the Microsoft-Windows-Kernel-Process ETW provider and leverage
-taskkill to kill the process.</p><p>There are no guardrails on this artifact please be VERY careful adding new entries.</p><pre><code class=language-yaml>name: Windows.Remediation.KillProcess
+taskkill to kill the process.</p><p>There are no guardrails on this artifact please be VERY careful adding new entries.</p><pre><code class=language-yaml>
+name: Windows.Remediation.KillProcess
 author: Matt Green - @mgreen27
 description: |
    Quick and dirty monitoring artifact to kill a process by Image Name.
@@ -90,7 +91,7 @@ parameters:
         ImageRegex,Description
         \\folder\\folder2\\file\.exe$,Example target image
         \\psexesvc\.exe$,Default psexec executable on target machine.
-        \\calc\.exe$,Test fast running process: start &gt; run calc.exe
+        \\calc\.exe$,Test fast running process: start > run calc.exe
         \\calculator\.exe$,Test killing calc.exe alias (modern Windows calc.exe)
         
 
@@ -106,7 +107,7 @@ sources:
                    EventData.MandatoryLabel AS MandatoryLabel,
                    EventData.ProcessTokenElevationType AS ProcessTokenElevationType,
                    EventData.ProcessTokenIsElevated AS TokenIsElevated
-        FROM watch_etw(guid=&quot;{22fb2cd6-0e7b-422b-a0c7-2fad1fd0e716}&quot;, any=0x10)
+        FROM watch_etw(guid="{22fb2cd6-0e7b-422b-a0c7-2fad1fd0e716}", any=0x10)
         WHERE System.ID = 1 AND ImageName =~ name_regex
         
       SELECT * FROM foreach(row=watch_processes,
@@ -115,15 +116,15 @@ sources:
                 if(condition= ReturnCode=0,
                     then= Stdout,
                     else= 'There was a problem on tasklill attempt. ' + Stderr) as TaskKill
-            FROM execve(argv=[&quot;taskkill&quot;, &quot;/PID&quot;, Pid, &quot;/T&quot;, &quot;/F&quot;])
+            FROM execve(argv=["taskkill", "/PID", Pid, "/T", "/F"])
         })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567187></script>
-<script src=/js/jquery.sticky.js?1693567187></script>
-<script src=/js/featherlight.min.js?1693567187></script>
-<script src=/js/highlight.min.js?1693567187></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567187></script>
-<script src=/js/learn.js?1693567187></script>
-<script src=/js/hugo-learn.js?1693567187></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
+<script src=/js/jquery.sticky.js?1693663124></script>
+<script src=/js/featherlight.min.js?1693663124></script>
+<script src=/js/highlight.min.js?1693663124></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
+<script src=/js/learn.js?1693663124></script>
+<script src=/js/hugo-learn.js?1693663124></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Sys.FirewallRules :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567185 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567185 rel=stylesheet><link href=/css/featherlight.min.css?1693567185 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567185 rel=stylesheet><link href=/css/auto-complete.css?1693567185 rel=stylesheet><link href=/css/theme.css?1693567185 rel=stylesheet><link href=/css/tabs.css?1693567185 rel=stylesheet><link href=/css/hugo-theme.css?1693567185 rel=stylesheet><link href=/css/theme-mine.css?1693567185 rel=stylesheet><link href=/css/dark.css?1693567185 rel=stylesheet><link href=/css/syntax.css?1693567185 rel=stylesheet><link href=/css/light.css?1693567185 rel=stylesheet><link href=/css/hljs.css?1693567185 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567185 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567185></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Sys.FirewallRules :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663122 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663122 rel=stylesheet><link href=/css/featherlight.min.css?1693663122 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663122 rel=stylesheet><link href=/css/auto-complete.css?1693663122 rel=stylesheet><link href=/css/theme.css?1693663122 rel=stylesheet><link href=/css/tabs.css?1693663122 rel=stylesheet><link href=/css/hugo-theme.css?1693663122 rel=stylesheet><link href=/css/theme-mine.css?1693663122 rel=stylesheet><link href=/css/dark.css?1693663122 rel=stylesheet><link href=/css/syntax.css?1693663122 rel=stylesheet><link href=/css/light.css?1693663122 rel=stylesheet><link href=/css/hljs.css?1693663122 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663122 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663122></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.sys.firewallrules/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -70,7 +70,8 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/artifact_references/pages/windows.sys.firewallrules.md target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>Windows.Sys.FirewallRules</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.Sys.FirewallRules</h1><p>List Windows firewall rules.</p><pre><code class=language-yaml>name: Windows.Sys.FirewallRules
+<span class=links>Windows.Sys.FirewallRules</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.Sys.FirewallRules</h1><p>List Windows firewall rules.</p><pre><code class=language-yaml>
+name: Windows.Sys.FirewallRules
 description: List Windows firewall rules.
 reference:
   - https://social.technet.microsoft.com/Forums/azure/en-US/aaed9c6a-fb8b-4d43-8b69-9f4e0f619a8c/how-to-check-the-windows-firewall-settings-from-netsh-command?forum=winserverGP
@@ -85,42 +86,42 @@ sources:
     query: |
         LET rules = SELECT Name as Value,
                parse_string_with_regex(string=Data,
-                 regex=[&quot;Action=(?P&lt;Action&gt;[^|]+)&quot;,
-                        &quot;Active=(?P&lt;Active&gt;[^|]+)&quot;,
-                        &quot;Dir=(?P&lt;Dir&gt;[^|]+)&quot;,
-                        &quot;Protocol=(?P&lt;Protocol&gt;[^|]+)&quot;,
-                        &quot;LPort=(?P&lt;LPort&gt;[^|]+)&quot;,
-                        &quot;Name=(?P&lt;Name&gt;[^|]+)&quot;,
-                        &quot;Desc=(?P&lt;Desc&gt;[^|]+)&quot;,
-                        &quot;App=(?P&lt;App&gt;[^|]+)&quot;]) as Record,
+                 regex=["Action=(?P<action>[^|]+)",
+                        "Active=(?P<active>[^|]+)",
+                        "Dir=(?P<dir>[^|]+)",
+                        "Protocol=(?P<protocol>[^|]+)",
+                        "LPort=(?P<lport>[^|]+)",
+                        "Name=(?P<name>[^|]+)",
+                        "Desc=(?P<desc>[^|]+)",
+                        "App=(?P<app>[^|]+)"]) as Record,
                Data,
                OSPath
-        FROM glob(globs=regKey, accessor=&quot;registry&quot;)
+        FROM glob(globs=regKey, accessor="registry")
 
         SELECT Value,
                Record.Name as Name,
-               get(item=Record, field=&quot;Desc&quot;) as Description,
+               get(item=Record, field="Desc") as Description,
                Record.App as App,
-               if(condition=Record.Active =~ &quot;TRUE&quot;, then=&quot;Yes&quot;, else=&quot;No&quot;) as Active,
+               if(condition=Record.Active =~ "TRUE", then="Yes", else="No") as Active,
                Record.Action as Action,
                Record.Dir as Dir,
-               if(condition=Record.Protocol = &quot;6&quot;,
-                  then=&quot;TCP&quot;,
-                  else=if(condition=Record.Protocol = &quot;17&quot;,
-                          then=&quot;UDP&quot;,
+               if(condition=Record.Protocol = "6",
+                  then="TCP",
+                  else=if(condition=Record.Protocol = "17",
+                          then="UDP",
                           else=Record.Protocol)) as Protocol,
                if(condition=Record.LPort = NULL,
-                  then=&quot;Any&quot;,
+                  then="Any",
                   else=Record.LPort) as LPort,
                Record.Name as Name
         FROM rules
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567185></script>
-<script src=/js/jquery.sticky.js?1693567185></script>
-<script src=/js/featherlight.min.js?1693567185></script>
-<script src=/js/highlight.min.js?1693567185></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567185></script>
-<script src=/js/learn.js?1693567185></script>
-<script src=/js/hugo-learn.js?1693567185></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663122></script>
+<script src=/js/jquery.sticky.js?1693663122></script>
+<script src=/js/featherlight.min.js?1693663122></script>
+<script src=/js/highlight.min.js?1693663122></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663122></script>
+<script src=/js/learn.js?1693663122></script>
+<script src=/js/hugo-learn.js?1693663122></script></body></html>

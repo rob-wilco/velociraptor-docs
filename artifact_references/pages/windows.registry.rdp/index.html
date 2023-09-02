@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Registry.RDP :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567185 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567185 rel=stylesheet><link href=/css/featherlight.min.css?1693567185 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567185 rel=stylesheet><link href=/css/auto-complete.css?1693567185 rel=stylesheet><link href=/css/theme.css?1693567185 rel=stylesheet><link href=/css/tabs.css?1693567185 rel=stylesheet><link href=/css/hugo-theme.css?1693567185 rel=stylesheet><link href=/css/theme-mine.css?1693567185 rel=stylesheet><link href=/css/dark.css?1693567185 rel=stylesheet><link href=/css/syntax.css?1693567185 rel=stylesheet><link href=/css/light.css?1693567185 rel=stylesheet><link href=/css/hljs.css?1693567185 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567185 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567185></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Registry.RDP :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663122 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663122 rel=stylesheet><link href=/css/featherlight.min.css?1693663122 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663122 rel=stylesheet><link href=/css/auto-complete.css?1693663122 rel=stylesheet><link href=/css/theme.css?1693663122 rel=stylesheet><link href=/css/tabs.css?1693663122 rel=stylesheet><link href=/css/hugo-theme.css?1693663122 rel=stylesheet><link href=/css/theme-mine.css?1693663122 rel=stylesheet><link href=/css/dark.css?1693663122 rel=stylesheet><link href=/css/syntax.css?1693663122 rel=stylesheet><link href=/css/light.css?1693663122 rel=stylesheet><link href=/css/hljs.css?1693663122 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663122 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663122></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.registry.rdp/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -72,7 +72,8 @@
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.Registry.RDP</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.Registry.RDP</h1><p>This artifact will collect historical RDP server names and MRU items stored
 in each users NTUser.dat</p><ol><li><p>Servers - list of all RDP connections that have ever been established by
-this user.<br>UsernameHint shows the username used to connect to the RDP/RDS host.<br>CertHash variable contains the RDP server SSL certificate thumbprint.</p></li><li><p>MRU 10 - Most recently used RDP connections</p></li></ol><p>UserRegex and SidRegex can be used to target a specific user.</p><pre><code class=language-yaml>name: Windows.Registry.RDP
+this user.<br>UsernameHint shows the username used to connect to the RDP/RDS host.<br>CertHash variable contains the RDP server SSL certificate thumbprint.</p></li><li><p>MRU 10 - Most recently used RDP connections</p></li></ol><p>UserRegex and SidRegex can be used to target a specific user.</p><pre><code class=language-yaml>
+name: Windows.Registry.RDP
 author: Matt Green - @mgreen27
 description: |
    This artifact will collect historical RDP server names and MRU items stored 
@@ -107,7 +108,7 @@ precondition: SELECT OS From info() where OS = 'windows'
 sources:
   - name: Servers
     query: |
-      LET servers &lt;= SELECT 
+      LET servers <= SELECT 
             Mtime as LastWriteTime,
             basename(path=OSPath.Dirname) as Server,
             OSPath.Basename as KeyName,
@@ -146,7 +147,7 @@ sources:
 
   - name: Mru
     query: |
-      LET mru &lt;= SELECT 
+      LET mru <= SELECT 
             Mtime as LastWriteTime,
             OSPath.Basename as KeyName,
             Data.value as KeyValue,
@@ -175,12 +176,12 @@ sources:
         LastWriteTime,
         find_mru(sid=SID).KeyValue as Mru
       FROM results
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567185></script>
-<script src=/js/jquery.sticky.js?1693567185></script>
-<script src=/js/featherlight.min.js?1693567185></script>
-<script src=/js/highlight.min.js?1693567185></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567185></script>
-<script src=/js/learn.js?1693567185></script>
-<script src=/js/hugo-learn.js?1693567185></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.min.js?1693663122></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663122></script>
+<script src=/js/jquery.sticky.js?1693663122></script>
+<script src=/js/featherlight.min.js?1693663122></script>
+<script src=/js/highlight.min.js?1693663122></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663122></script>
+<script src=/js/learn.js?1693663122></script>
+<script src=/js/hugo-learn.js?1693663122></script></body></html>

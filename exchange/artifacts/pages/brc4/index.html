@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.BRc4 :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567186 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567186 rel=stylesheet><link href=/css/featherlight.min.css?1693567186 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567186 rel=stylesheet><link href=/css/auto-complete.css?1693567186 rel=stylesheet><link href=/css/theme.css?1693567186 rel=stylesheet><link href=/css/tabs.css?1693567186 rel=stylesheet><link href=/css/hugo-theme.css?1693567186 rel=stylesheet><link href=/css/theme-mine.css?1693567186 rel=stylesheet><link href=/css/dark.css?1693567186 rel=stylesheet><link href=/css/syntax.css?1693567186 rel=stylesheet><link href=/css/light.css?1693567186 rel=stylesheet><link href=/css/hljs.css?1693567186 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567186 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567186></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.BRc4 :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663123 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663123 rel=stylesheet><link href=/css/featherlight.min.css?1693663123 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663123 rel=stylesheet><link href=/css/auto-complete.css?1693663123 rel=stylesheet><link href=/css/theme.css?1693663123 rel=stylesheet><link href=/css/tabs.css?1693663123 rel=stylesheet><link href=/css/hugo-theme.css?1693663123 rel=stylesheet><link href=/css/theme-mine.css?1693663123 rel=stylesheet><link href=/css/dark.css?1693663123 rel=stylesheet><link href=/css/syntax.css?1693663123 rel=stylesheet><link href=/css/light.css?1693663123 rel=stylesheet><link href=/css/hljs.css?1693663123 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663123 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663123></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/brc4/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,7 +76,8 @@ attack simulation tool.</p><p>The User can define bytes, file glob, process name
 The artifact firstly discovers BruteRatel configuration and extracts bytes,
 before parsing with Velociraptor Binary Parser.</p><ul><li>BRc4&rsquo;s configuration consits of 8 characters inside several sections.</li><li>Character lists reversed in order</li><li>This list of characters is: either base64 + RC4 encoded or in clear text.</li></ul><p>This content simply carves the configuration and does not unpack files on
 disk. That means pointing this artifact as a packed or obfuscated file may not
-obtain the expected results.</p><pre><code class=language-yaml>name: Windows.Carving.BRc4
+obtain the expected results.</p><pre><code class=language-yaml>
+name: Windows.Carving.BRc4
 author: Matt Green - @mgreen27
 description: |
   This artifact extracts Brute Ratel C4 (BRc4) configuration from a byte stream, 
@@ -112,7 +113,7 @@ parameters:
     default: .
     type: regex
   - name: DecodeKey
-    default: &quot;bYXJm/3#M?:XyMBF&quot;
+    default: "bYXJm/3#M?:XyMBF"
   - name: FindConfig
     type: hidden
     description: Final Yara option and the default if no other options provided.
@@ -124,7 +125,7 @@ parameters:
                     $split_marker = { 50 48 b8 [8] 50 48 b8 }
             
                 condition:
-                    $config_block and #split_marker &gt; 30
+                    $config_block and #split_marker > 30
             }
 
 
@@ -140,11 +141,11 @@ sources:
       -- binary parse profile to extract BRc4 configuration. NOTE: need reverse dynamic fuctions above
       LET PROFILE = '''[
                 [BRc4Config, 0, [
-                    [&quot;__FindConfig&quot;,0, &quot;String&quot;,{term_hex: &quot;5048b8&quot;}],
-                    [&quot;Reversed&quot;,&quot;x=&gt;len(list=x.__FindConfig) + 3&quot;, &quot;String&quot;, { term_hex: &quot;5068&quot; }],
-                    [&quot;ConfigData&quot;,0,&quot;Value&quot;,{ &quot;value&quot;: &quot;x=&gt;join(array=Reverse(data=split(string=x.Reversed,sep_string=unhex(string='5048b8'))))&quot; }],
-                    [&quot;DecodedConfig&quot;,0,&quot;Value&quot;,{ &quot;value&quot;: &quot;x=&gt;crypto_rc4(string=base64decode(string=x.ConfigData),key=DecodeKey)&quot; }],
-                    [&quot;Config&quot;,0,&quot;Value&quot;,{ &quot;value&quot;: &quot;x=&gt;if(condition= x.DecodedConfig, then=x.DecodedConfig, else=x.ConfigData)&quot; }],
+                    ["__FindConfig",0, "String",{term_hex: "5048b8"}],
+                    ["Reversed","x=>len(list=x.__FindConfig) + 3", "String", { term_hex: "5068" }],
+                    ["ConfigData",0,"Value",{ "value": "x=>join(array=Reverse(data=split(string=x.Reversed,sep_string=unhex(string='5048b8'))))" }],
+                    ["DecodedConfig",0,"Value",{ "value": "x=>crypto_rc4(string=base64decode(string=x.ConfigData),key=DecodeKey)" }],
+                    ["Config",0,"Value",{ "value": "x=>if(condition= x.DecodedConfig, then=x.DecodedConfig, else=x.ConfigData)" }],
                 ]
             ]]'''
       
@@ -154,7 +155,7 @@ sources:
             len(list=TargetBytes) as Size,
             hash(path=TargetBytes,accessor='data') as Hash,
             String.Offset as HitOffset,
-            parse_binary(accessor=&quot;data&quot;,filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
+            parse_binary(accessor="data",filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
         FROM yara(
                 files=TargetBytes,
                 accessor='data',
@@ -175,7 +176,7 @@ sources:
                     OSPath, Size,
                     hash(path=OSPath) as Hash,
                     String.Offset as HitOffset,
-                    parse_binary(accessor=&quot;data&quot;,filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
+                    parse_binary(accessor="data",filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
                 FROM yara(
                         files=OSPath,
                         rules=FindConfig,
@@ -185,7 +186,7 @@ sources:
             })
             
       -- find velociraptor process
-      LET me &lt;= SELECT * FROM if(condition= NOT ( TargetFileGlob OR TargetBytes ),
+      LET me <= SELECT * FROM if(condition= NOT ( TargetFileGlob OR TargetBytes ),
                     then = { SELECT Pid FROM pslist(pid=getpid()) })
 
       -- find all processes and add filters
@@ -193,7 +194,7 @@ sources:
         FROM pslist()
         WHERE
             Name =~ ProcessRegex
-            AND format(format=&quot;%d&quot;, args=Pid) =~ PidRegex
+            AND format(format="%d", args=Pid) =~ PidRegex
             AND NOT Pid in me.Pid
       
       -- scan processes in scope with our rule, limit 1 hit and extract context to parse
@@ -204,9 +205,9 @@ sources:
                 Rule,
                 Pid, ProcessName, CommandLine,
                 String.Offset as HitOffset,
-                parse_binary(accessor=&quot;data&quot;,filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
+                parse_binary(accessor="data",filename=String.Data,profile=PROFILE,struct='BRc4Config').Config as _RawConfig
              FROM yara( 
-                    files=format(format=&quot;/%d&quot;, args=Pid),
+                    files=format(format="/%d", args=Pid),
                     accessor='process',
                     rules=FindConfig,
                     number=1,
@@ -229,12 +230,12 @@ sources:
                 then= FileConfiguration,
                 else= ProcessConfiguration))
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.min.js?1693567186></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567186></script>
-<script src=/js/jquery.sticky.js?1693567186></script>
-<script src=/js/featherlight.min.js?1693567186></script>
-<script src=/js/highlight.min.js?1693567186></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567186></script>
-<script src=/js/learn.js?1693567186></script>
-<script src=/js/hugo-learn.js?1693567186></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663123></script>
+<script src=/js/jquery.sticky.js?1693663123></script>
+<script src=/js/featherlight.min.js?1693663123></script>
+<script src=/js/highlight.min.js?1693663123></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663123></script>
+<script src=/js/learn.js?1693663123></script>
+<script src=/js/hugo-learn.js?1693663123></script></body></html>

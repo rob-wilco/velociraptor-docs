@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Applications.DefenderHistory :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Applications.DefenderHistory :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.applications.defenderhistory/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,14 +74,15 @@
 the contained parameters created by Windows Defender about the detected threat.</p><p>By default with no parameters DefenderHistory parses
 &ldquo;C:/ProgramData/Microsoft/Windows Defender/Scans/History/Service/DetectionHistory/**&rdquo;
 A different TargetGlob can be entered.</p><p>Based on the research work done by Jordan Klepser @JordanKlepser
-<a href=https://github.com/jklepsercyber/defender-detectionhistory-parser>https://github.com/jklepsercyber/defender-detectionhistory-parser</a></p><pre><code class=language-yaml>name: Windows.Applications.DefenderHistory
-author: &quot;Roman Makuch - @rmakuch Kanstantsin Ilioukevitch - @kostyailiouk&quot;
+<a href=https://github.com/jklepsercyber/defender-detectionhistory-parser>https://github.com/jklepsercyber/defender-detectionhistory-parser</a></p><pre><code class=language-yaml>
+name: Windows.Applications.DefenderHistory
+author: "Roman Makuch - @rmakuch Kanstantsin Ilioukevitch - @kostyailiouk"
 description:  |
     This artifact parses the Windows Defender files generated on threat detection and returns
     the contained parameters created by Windows Defender about the detected threat. 
 
     By default with no parameters DefenderHistory parses 
-    &quot;C:/ProgramData/Microsoft/Windows Defender/Scans/History/Service/DetectionHistory/**&quot;
+    "C:/ProgramData/Microsoft/Windows Defender/Scans/History/Service/DetectionHistory/**"
     A different TargetGlob can be entered.
 
     Based on the research work done by Jordan Klepser @JordanKlepser
@@ -99,53 +100,53 @@ sources:
   - query: |
         Let profile = '''
           [
-            [&quot;Info&quot;, 0, [
-                [&quot;__FileHeaderSearch&quot;, 0, &quot;String&quot;, {&quot;length&quot;: 6, &quot;term&quot;:&quot;&quot;}],
-                [&quot;__FileHeader&quot;, 0, &quot;Value&quot;, {&quot;value&quot;:&quot;x=&gt;format(format='%#x', args=x.__FileHeaderSearch)&quot;}],
-                [&quot;__GUID&quot;, 24, &quot;GUIDStruct&quot;],
-                [&quot;__MagicVersion&quot;, 48, &quot;String&quot;, {&quot;length&quot;: 38, &quot;encoding&quot;:&quot;utf16&quot;}],
-                [&quot;__ThreatTypeLength&quot;, 88, &quot;uint8&quot;],
-                [&quot;ThreatType&quot;, 96, &quot;String&quot;, {&quot;length&quot;:&quot;x=&gt; x.__ThreatTypeLength - 2&quot;, &quot;encoding&quot;:&quot;utf16&quot;}],
-                [&quot;ThreatStatusID&quot;, 240, &quot;Enumeration&quot;, {
-                    type: &quot;uint8&quot;,
+            ["Info", 0, [
+                ["__FileHeaderSearch", 0, "String", {"length": 6, "term":""}],
+                ["__FileHeader", 0, "Value", {"value":"x=>format(format='%#x', args=x.__FileHeaderSearch)"}],
+                ["__GUID", 24, "GUIDStruct"],
+                ["__MagicVersion", 48, "String", {"length": 38, "encoding":"utf16"}],
+                ["__ThreatTypeLength", 88, "uint8"],
+                ["ThreatType", 96, "String", {"length":"x=> x.__ThreatTypeLength - 2", "encoding":"utf16"}],
+                ["ThreatStatusID", 240, "Enumeration", {
+                    type: "uint8",
                     map: {
-                         &quot;Unknown&quot;: 0,
-                         &quot;Detected&quot;: 1,
-                         &quot;Cleaned&quot;: 2,
-                         &quot;Quarantined&quot;: 3,
-                         &quot;Removed&quot;: 4,
-                         &quot;Allowed&quot;: 5,
-                         &quot;Blocked&quot;: 6,
-                         &quot;Clean Failed&quot;: 7,
-                         &quot;Quarantine Failed&quot;: 102,
-                         &quot;Remove Failed&quot;: 103,
-                         &quot;Allow Failed&quot;: 104,
-                         &quot;Abandoned&quot;: 105,
-                         &quot;Blocked Failed&quot;: 107,
+                         "Unknown": 0,
+                         "Detected": 1,
+                         "Cleaned": 2,
+                         "Quarantined": 3,
+                         "Removed": 4,
+                         "Allowed": 5,
+                         "Blocked": 6,
+                         "Clean Failed": 7,
+                         "Quarantine Failed": 102,
+                         "Remove Failed": 103,
+                         "Allow Failed": 104,
+                         "Abandoned": 105,
+                         "Blocked Failed": 107,
                      }}],
-                [&quot;__Search&quot;, 241, &quot;String&quot;, {&quot;length&quot;: 1024, &quot;term_hex&quot;:&quot;0A00000015&quot;}],
-                [&quot;SourceType&quot;, &quot;x =&gt; len(list=x.__Search) + 249&quot;, &quot;String&quot;, {&quot;encoding&quot;: &quot;utf16&quot;}],
-                [&quot;__FullPathLength&quot;, &quot;x =&gt; len(list=x.__Search) + 265&quot;, &quot;uint8&quot;],
-                [&quot;FullPath&quot;, &quot;x =&gt; len(list=x.__Search) + 273&quot;, &quot;String&quot;, {&quot;length&quot;:&quot;x=&gt; x.__FullPathLength - 2&quot;, &quot;encoding&quot;:&quot;utf16&quot;}],
-                [&quot;__Sha256Search&quot;, 300, &quot;String&quot;, {&quot;length&quot;: 1024, &quot;term_hex&quot;:&quot;53006800610032&quot;}],
-                [&quot;Sha256&quot;, &quot;x =&gt; len(list=x.__Sha256Search) + 322&quot;, &quot;String&quot;, {&quot;length&quot;: 128, &quot;encoding&quot;:&quot;utf16&quot;}],
-                [&quot;__TimeSearch&quot;, 300, &quot;String&quot;, {&quot;length&quot;: 1024, &quot;term_hex&quot;:&quot;540069006D0065&quot;}],
-                [&quot;Time&quot;, &quot;x =&gt; len(list=x.__TimeSearch) + 314&quot;, &quot;WinFileTime&quot;],
-                [&quot;__FileSizeSearch&quot;, 300, &quot;String&quot;, {&quot;length&quot;: 4000, &quot;max_length&quot;: 4000, &quot;term_hex&quot;:&quot;530069007A0065&quot;}],
-                [&quot;ThreatFileSize&quot;, &quot;x =&gt; len(list=x.__FileSizeSearch) +  314&quot;, &quot;uint32&quot;],
-                [&quot;__UserSearch&quot;, &quot;x=&gt; if(condition=Size &gt; 1024, then=(Size - 1024), else=0)&quot;, &quot;String&quot;, {&quot;length&quot;: 1024, &quot;term_hex&quot;:&quot;0000080000000A0000&quot;}],
-                [&quot;__Section3Offset&quot;, 0, &quot;Value&quot;, {&quot;value&quot;: &quot;x =&gt; if(condition=Size &gt; 1024, then=len(list=x.__UserSearch) + (Size - 1024), else=len(list=x.__UserSearch)) + 114&quot; }],
-                [&quot;User&quot;, &quot;x =&gt; x.__Section3Offset&quot;, &quot;String&quot;, {&quot;encoding&quot;: &quot;utf16&quot;}],
-                [&quot;__SearchStartingProcess&quot;, &quot;x=&gt; x.__Section3Offset + len(list=x.User)&quot;, &quot;String&quot;, {&quot;length&quot;: 1024, &quot;term_hex&quot;: &quot;0000150000&quot;}],
-                [&quot;StartingProcess&quot;, &quot;x=&gt; x.__Section3Offset + len(list=x.User) + len(list=x.__SearchStartingProcess) + 6&quot;, &quot;String&quot;, {&quot;encoding&quot;: &quot;utf16&quot;}]
+                ["__Search", 241, "String", {"length": 1024, "term_hex":"0A00000015"}],
+                ["SourceType", "x => len(list=x.__Search) + 249", "String", {"encoding": "utf16"}],
+                ["__FullPathLength", "x => len(list=x.__Search) + 265", "uint8"],
+                ["FullPath", "x => len(list=x.__Search) + 273", "String", {"length":"x=> x.__FullPathLength - 2", "encoding":"utf16"}],
+                ["__Sha256Search", 300, "String", {"length": 1024, "term_hex":"53006800610032"}],
+                ["Sha256", "x => len(list=x.__Sha256Search) + 322", "String", {"length": 128, "encoding":"utf16"}],
+                ["__TimeSearch", 300, "String", {"length": 1024, "term_hex":"540069006D0065"}],
+                ["Time", "x => len(list=x.__TimeSearch) + 314", "WinFileTime"],
+                ["__FileSizeSearch", 300, "String", {"length": 4000, "max_length": 4000, "term_hex":"530069007A0065"}],
+                ["ThreatFileSize", "x => len(list=x.__FileSizeSearch) +  314", "uint32"],
+                ["__UserSearch", "x=> if(condition=Size > 1024, then=(Size - 1024), else=0)", "String", {"length": 1024, "term_hex":"0000080000000A0000"}],
+                ["__Section3Offset", 0, "Value", {"value": "x => if(condition=Size > 1024, then=len(list=x.__UserSearch) + (Size - 1024), else=len(list=x.__UserSearch)) + 114" }],
+                ["User", "x => x.__Section3Offset", "String", {"encoding": "utf16"}],
+                ["__SearchStartingProcess", "x=> x.__Section3Offset + len(list=x.User)", "String", {"length": 1024, "term_hex": "0000150000"}],
+                ["StartingProcess", "x=> x.__Section3Offset + len(list=x.User) + len(list=x.__SearchStartingProcess) + 6", "String", {"encoding": "utf16"}]
             ]],
-            [&quot;GUIDStruct&quot;, 16, [
-              [&quot;__D1&quot;, 0, &quot;uint32&quot;],
-              [&quot;__D2&quot;, 4, &quot;uint16&quot;],
-              [&quot;__D3&quot;, 6, &quot;uint16&quot;],
-              [&quot;__D4&quot;, 8, &quot;String&quot;, {&quot;term&quot;: &quot;&quot;, &quot;length&quot;: 2}],
-              [&quot;__D5&quot;, 10, &quot;String&quot;, {&quot;term&quot;: &quot;&quot;, &quot;length&quot;: 6}],
-              [&quot;DetectionID&quot;, 0, &quot;Value&quot;, {&quot;value&quot;: &quot;x=&gt;format(format='{%x-%x-%x-%x-%x}', args=[x.__D1, x.__D2, x.__D3, x.__D4, x.__D5])&quot;}]
+            ["GUIDStruct", 16, [
+              ["__D1", 0, "uint32"],
+              ["__D2", 4, "uint16"],
+              ["__D3", 6, "uint16"],
+              ["__D4", 8, "String", {"term": "", "length": 2}],
+              ["__D5", 10, "String", {"term": "", "length": 6}],
+              ["DetectionID", 0, "Value", {"value": "x=>format(format='{%x-%x-%x-%x-%x}', args=[x.__D1, x.__D2, x.__D3, x.__D4, x.__D5])"}]
              ]],
           ]
           '''
@@ -168,12 +169,12 @@ sources:
                     FullPath as ParsedFileFullPath
             FROM temp
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

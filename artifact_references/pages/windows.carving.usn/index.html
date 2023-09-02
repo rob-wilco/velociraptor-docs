@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.USN :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567183 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567183 rel=stylesheet><link href=/css/featherlight.min.css?1693567183 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567183 rel=stylesheet><link href=/css/auto-complete.css?1693567183 rel=stylesheet><link href=/css/theme.css?1693567183 rel=stylesheet><link href=/css/tabs.css?1693567183 rel=stylesheet><link href=/css/hugo-theme.css?1693567183 rel=stylesheet><link href=/css/theme-mine.css?1693567183 rel=stylesheet><link href=/css/dark.css?1693567183 rel=stylesheet><link href=/css/syntax.css?1693567183 rel=stylesheet><link href=/css/light.css?1693567183 rel=stylesheet><link href=/css/hljs.css?1693567183 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567183 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567183></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.USN :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.carving.usn/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -82,7 +82,8 @@ more than an hour).</p></li><li><p>The reassembled OSPath is derived from the MF
 the USN record. Bear in mind that this might be out of date and
 inaccurate.</p></li><li><p>If you need to carve from a standalone file (e.g. collection from
 <code>Windows.KapeFiles.Targets</code>) you should use the
-Windows.Carving.USNFiles artifact instead.</p></li></ol><pre><code class=language-yaml>name: Windows.Carving.USN
+Windows.Carving.USNFiles artifact instead.</p></li></ol><pre><code class=language-yaml>
+name: Windows.Carving.USN
 description: |
   Carve URN Journal records from the disk.
 
@@ -114,110 +115,110 @@ description: |
 
 parameters:
   - name: DriveToScan
-    default: &quot;C:&quot;
+    default: "C:"
   - name: FileRegex
-    description: &quot;Regex search over File Name&quot;
-    default: &quot;.&quot;
+    description: "Regex search over File Name"
+    default: "."
     type: regex
   - name: DateAfter
     type: timestamp
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ssZ"
 
 export: |
   -- Profile to parse the USN record
   LET USNProfile = '''[
-            [&quot;USN_RECORD_V2&quot;, 4, [
-                [&quot;RecordLength&quot;, 0, &quot;unsigned long&quot;],
-                [&quot;MajorVersion&quot;, 4, &quot;unsigned short&quot;],
-                [&quot;MinorVersion&quot;, 6, &quot;unsigned short&quot;],
-                [&quot;FileReferenceNumberSequence&quot;, 8, &quot;BitField&quot;, {
-                    &quot;type&quot;: &quot;unsigned long long&quot;,
-                    &quot;start_bit&quot;: 48,
-                    &quot;end_bit&quot;: 63
+            ["USN_RECORD_V2", 4, [
+                ["RecordLength", 0, "unsigned long"],
+                ["MajorVersion", 4, "unsigned short"],
+                ["MinorVersion", 6, "unsigned short"],
+                ["FileReferenceNumberSequence", 8, "BitField", {
+                    "type": "unsigned long long",
+                    "start_bit": 48,
+                    "end_bit": 63
                 }],
-                [&quot;FileReferenceNumberID&quot;, 8, &quot;BitField&quot;, {
-                    &quot;type&quot;: &quot;unsigned long long&quot;,
-                    &quot;start_bit&quot;: 0,
-                    &quot;end_bit&quot;: 48
+                ["FileReferenceNumberID", 8, "BitField", {
+                    "type": "unsigned long long",
+                    "start_bit": 0,
+                    "end_bit": 48
                 }],
-                [&quot;ParentFileReferenceNumberSequence&quot;, 16, &quot;BitField&quot;, {
-                    &quot;type&quot;: &quot;unsigned long long&quot;,
-                    &quot;start_bit&quot;: 48,
-                    &quot;end_bit&quot;: 63
+                ["ParentFileReferenceNumberSequence", 16, "BitField", {
+                    "type": "unsigned long long",
+                    "start_bit": 48,
+                    "end_bit": 63
                 }],
-                [&quot;ParentFileReferenceNumberID&quot;, 16, &quot;BitField&quot;, {
-                    &quot;type&quot;: &quot;unsigned long long&quot;,
-                    &quot;start_bit&quot;: 0,
-                    &quot;end_bit&quot;: 48
+                ["ParentFileReferenceNumberID", 16, "BitField", {
+                    "type": "unsigned long long",
+                    "start_bit": 0,
+                    "end_bit": 48
                 }],
 
-                [&quot;Usn&quot;, 24, &quot;unsigned long long&quot;],
-                [&quot;TimeStamp&quot;, 32, &quot;WinFileTime&quot;],
-                [&quot;Reason&quot;, 40, &quot;Flags&quot;, {
-                    &quot;type&quot;: &quot;unsigned long&quot;,
-                    &quot;bitmap&quot;: {
-                        &quot;DATA_OVERWRITE&quot;: 0,
-                        &quot;DATA_EXTEND&quot;: 1,
-                        &quot;DATA_TRUNCATION&quot;: 2,
-                        &quot;NAMED_DATA_OVERWRITE&quot;: 4,
-                        &quot;NAMED_DATA_EXTEND&quot;: 5,
-                        &quot;NAMED_DATA_TRUNCATION&quot;: 6,
-                        &quot;FILE_CREATE&quot;: 8,
-                        &quot;FILE_DELETE&quot;: 9,
-                        &quot;EA_CHANGE&quot;: 10,
-                        &quot;SECURITY_CHANGE&quot;: 11,
-                        &quot;RENAME_OLD_NAME&quot;: 12,
-                        &quot;RENAME_NEW_NAME&quot;: 13,
-                        &quot;INDEXABLE_CHANGE&quot;: 14,
-                        &quot;BASIC_INFO_CHANGE&quot;: 15,
-                        &quot;HARD_LINK_CHANGE&quot;: 16,
-                        &quot;COMPRESSION_CHANGE&quot;: 17,
-                        &quot;ENCRYPTION_CHANGE&quot;: 18,
-                        &quot;OBJECT_ID_CHANGE&quot;: 19,
-                        &quot;REPARSE_POINT_CHANGE&quot;: 20,
-                        &quot;STREAM_CHANGE&quot;: 21,
-                        &quot;CLOSE&quot;: 31
+                ["Usn", 24, "unsigned long long"],
+                ["TimeStamp", 32, "WinFileTime"],
+                ["Reason", 40, "Flags", {
+                    "type": "unsigned long",
+                    "bitmap": {
+                        "DATA_OVERWRITE": 0,
+                        "DATA_EXTEND": 1,
+                        "DATA_TRUNCATION": 2,
+                        "NAMED_DATA_OVERWRITE": 4,
+                        "NAMED_DATA_EXTEND": 5,
+                        "NAMED_DATA_TRUNCATION": 6,
+                        "FILE_CREATE": 8,
+                        "FILE_DELETE": 9,
+                        "EA_CHANGE": 10,
+                        "SECURITY_CHANGE": 11,
+                        "RENAME_OLD_NAME": 12,
+                        "RENAME_NEW_NAME": 13,
+                        "INDEXABLE_CHANGE": 14,
+                        "BASIC_INFO_CHANGE": 15,
+                        "HARD_LINK_CHANGE": 16,
+                        "COMPRESSION_CHANGE": 17,
+                        "ENCRYPTION_CHANGE": 18,
+                        "OBJECT_ID_CHANGE": 19,
+                        "REPARSE_POINT_CHANGE": 20,
+                        "STREAM_CHANGE": 21,
+                        "CLOSE": 31
                     }
                 }],
-                [&quot;SourceInfo&quot;, 44, &quot;Flags&quot;, {
-                    &quot;type&quot;: &quot;unsigned long&quot;,
-                    &quot;bitmap&quot;: {
-                        &quot;DATA_MANAGEMENT&quot;: 0,
-                        &quot;AUXILIARY_DATA&quot;: 1,
-                        &quot;REPLICATION_MANAGEMENT&quot;: 2
+                ["SourceInfo", 44, "Flags", {
+                    "type": "unsigned long",
+                    "bitmap": {
+                        "DATA_MANAGEMENT": 0,
+                        "AUXILIARY_DATA": 1,
+                        "REPLICATION_MANAGEMENT": 2
                     }
                 }],
-                [&quot;SecurityId&quot;, 48, &quot;unsigned long&quot;],
-                [&quot;FileAttributes&quot;, 52, &quot;Flags&quot;, {
-                    &quot;type&quot;: &quot;unsigned long&quot;,
-                    &quot;bitmap&quot;: {
-                        &quot;READONLY&quot;: 0,
-                        &quot;HIDDEN&quot;: 1,
-                        &quot;SYSTEM&quot;: 2,
-                        &quot;DIRECTORY&quot;: 4,
-                        &quot;ARCHIVE&quot;: 5,
-                        &quot;DEVICE&quot;: 6,
-                        &quot;NORMAL&quot;: 7,
-                        &quot;TEMPORARY&quot;: 8,
-                        &quot;SPARSE_FILE&quot;: 9,
-                        &quot;REPARSE_POINT&quot;: 10,
-                        &quot;COMPRESSED&quot;: 11,
-                        &quot;OFFLINE&quot;: 12,
-                        &quot;NOT_CONTENT_INDEXED&quot;: 13,
-                        &quot;ENCRYPTED&quot;: 14,
-                        &quot;INTEGRITY_STREAM&quot;: 15,
-                        &quot;VIRTUAL&quot;: 16,
-                        &quot;NO_SCRUB_DATA&quot;: 17
+                ["SecurityId", 48, "unsigned long"],
+                ["FileAttributes", 52, "Flags", {
+                    "type": "unsigned long",
+                    "bitmap": {
+                        "READONLY": 0,
+                        "HIDDEN": 1,
+                        "SYSTEM": 2,
+                        "DIRECTORY": 4,
+                        "ARCHIVE": 5,
+                        "DEVICE": 6,
+                        "NORMAL": 7,
+                        "TEMPORARY": 8,
+                        "SPARSE_FILE": 9,
+                        "REPARSE_POINT": 10,
+                        "COMPRESSED": 11,
+                        "OFFLINE": 12,
+                        "NOT_CONTENT_INDEXED": 13,
+                        "ENCRYPTED": 14,
+                        "INTEGRITY_STREAM": 15,
+                        "VIRTUAL": 16,
+                        "NO_SCRUB_DATA": 17
                     }
                 }],
-                [&quot;FileNameLength&quot;, 56, &quot;unsigned short&quot;],
-                [&quot;FileNameOffset&quot;, 58, &quot;unsigned short&quot;],
-                [&quot;Filename&quot;, &quot;x=&gt;x.FileNameOffset&quot;, &quot;String&quot;, {
-                    encoding: &quot;utf16&quot;,
-                    length: &quot;x=&gt;x.FileNameLength&quot;,
+                ["FileNameLength", 56, "unsigned short"],
+                ["FileNameOffset", 58, "unsigned short"],
+                ["Filename", "x=>x.FileNameOffset", "String", {
+                    encoding: "utf16",
+                    length: "x=>x.FileNameLength",
                 }]
             ]]]
         '''
@@ -228,21 +229,21 @@ sources:
 
     query: |
         -- firstly set timebounds for performance
-        LET DateAfterTime &lt;= if(condition=DateAfter,
-             then=DateAfter, else=&quot;1600-01-01&quot;)
-        LET DateBeforeTime &lt;= if(condition=DateBefore,
-            then=DateBefore, else=&quot;2200-01-01&quot;)
+        LET DateAfterTime <= if(condition=DateAfter,
+             then=DateAfter, else="1600-01-01")
+        LET DateBeforeTime <= if(condition=DateBefore,
+            then=DateBefore, else="2200-01-01")
 
-        LET Device &lt;= '''\\.\''' + DriveToScan
+        LET Device <= '''\\.\''' + DriveToScan
 
         -- This rule performs an initial reduction for speed, then we
         -- reduce further using other conditions.
         LET YaraRule = '''rule X {
             strings:
-              // First byte is the record length &lt; 255 second byte should be 0-1 (0-512 bytes per record)
+              // First byte is the record length < 255 second byte should be 0-1 (0-512 bytes per record)
               // Version Major and Minor must be 2 and 0
               // D7 01 is the ending of a reasonable WinFileTime
-              // Name Offset and Name Length are short ints but should be &lt; 255
+              // Name Offset and Name Length are short ints but should be < 255
               $a = { ?? (00 | 01) 00 00 02 00 00 00 [24] ?? ?? ?? ?? ?? ?? D? 01 [16] ?? 00 3c 00  }
             condition:
               any of them
@@ -251,11 +252,11 @@ sources:
 
         -- Find all the records in the drive.
         LET Hits = SELECT String.Offset AS Offset, parse_binary(
-           filename=Device, accessor=&quot;ntfs&quot;, struct=&quot;USN_RECORD_V2&quot;,
+           filename=Device, accessor="ntfs", struct="USN_RECORD_V2",
            profile=USNProfile, offset=String.Offset) AS _Parsed
-        FROM yara(files=Device, accessor=&quot;ntfs&quot;, rules=YaraRule, number=200000000)
-        WHERE _Parsed.RecordLength &gt; 60 AND  // Record must be at least 60 bytes
-              _Parsed.FileNameLength &gt; 3 AND _Parsed.FileNameLength &lt; 100
+        FROM yara(files=Device, accessor="ntfs", rules=YaraRule, number=200000000)
+        WHERE _Parsed.RecordLength > 60 AND  // Record must be at least 60 bytes
+              _Parsed.FileNameLength > 3 AND _Parsed.FileNameLength < 100
 
         LET FlatHits = SELECT Offset, _Parsed.TimeStamp AS TimeStamp, _Parsed.Filename AS Name,
                _Parsed.FileReferenceNumberID AS MFTId,
@@ -264,20 +265,20 @@ sources:
                _Parsed.Reason AS Reason
         FROM Hits
         WHERE Name =~ FileRegex AND
-              TimeStamp &lt; DateBeforeTime AND
-              TimeStamp &gt; DateAfterTime
+              TimeStamp < DateBeforeTime AND
+              TimeStamp > DateAfterTime
 
         SELECT Offset, TimeStamp, Name, MFTId,
                MFTEntry.OSPath AS OSPath,
                ParentMFTId, Reason
         FROM FlatHits
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567183></script>
-<script src=/js/jquery.sticky.js?1693567183></script>
-<script src=/js/featherlight.min.js?1693567183></script>
-<script src=/js/highlight.min.js?1693567183></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567183></script>
-<script src=/js/learn.js?1693567183></script>
-<script src=/js/hugo-learn.js?1693567183></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663120></script>
+<script src=/js/jquery.sticky.js?1693663120></script>
+<script src=/js/featherlight.min.js?1693663120></script>
+<script src=/js/highlight.min.js?1693663120></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663120></script>
+<script src=/js/learn.js?1693663120></script>
+<script src=/js/hugo-learn.js?1693663120></script></body></html>

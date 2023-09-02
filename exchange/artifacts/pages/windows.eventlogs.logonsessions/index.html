@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.LogonSessions :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.LogonSessions :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.eventlogs.logonsessions/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -73,15 +73,16 @@
 <span class=links>Windows.EventLogs.LogonSessions</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.EventLogs.LogonSessions</h1><p>This artifact searches for logon and logoff events within Security event logs identified
 by Event ID 4624 and 4634. These logon/logoff events are grouped by &ldquo;TargetLogonId&rdquo; field
 into &ldquo;logon sessions&rdquo;. For each of these logon sessions, start, end and duration
-are derived</p><pre><code class=language-yaml>name: Windows.EventLogs.LogonSessions
+are derived</p><pre><code class=language-yaml>
+name: Windows.EventLogs.LogonSessions
 description: |
     This artifact searches for logon and logoff events within Security event logs identified
-    by Event ID 4624 and 4634. These logon/logoff events are grouped by &quot;TargetLogonId&quot; field
-    into &quot;logon sessions&quot;. For each of these logon sessions, start, end and duration
+    by Event ID 4624 and 4634. These logon/logoff events are grouped by "TargetLogonId" field
+    into "logon sessions". For each of these logon sessions, start, end and duration
     are derived
 
 
-author: &quot;Marinus Boekelo - Northwave&quot;
+author: "Marinus Boekelo - Northwave"
 
 type: CLIENT
 
@@ -89,48 +90,48 @@ parameters:
   - name: EvtxGlob
     default: '%SystemRoot%\System32\Winevt\Logs\Security.evtx'
   - name: UsernameRegex
-    description: &quot;Target username Regex&quot;
+    description: "Target username Regex"
     default: .
     type: regex
   - name: UsernameWhitelist
-    description: &quot;Target username witelist Regex&quot;
+    description: "Target username witelist Regex"
     default: '\\$$'
     type: regex
   - name: ServerRegex
-    description: &quot;Target server regex&quot;
+    description: "Target server regex"
     default: .
     type: regex
   - name: ProcessNameRegex
-    description: &quot;Target process Regex&quot;
+    description: "Target process Regex"
     default: .
   - name: ProcessNameWhitelist
-    description: &quot;Target process whitelist Regex&quot;
+    description: "Target process whitelist Regex"
     type: regex
   - name: SearchVSS
-    description: &quot;Add VSS into query.&quot;
+    description: "Add VSS into query."
     type: bool
   - name: DateAfter
     type: timestamp
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ssZ"
 
 sources:
   - query: |
 
       -- firstly set timebounds for performance
-      LET DateAfterTime &lt;= if(condition=DateAfter,
+      LET DateAfterTime <= if(condition=DateAfter,
           then=timestamp(epoch=DateAfter),
-          else=timestamp(epoch=&quot;1600-01-01&quot;)
+          else=timestamp(epoch="1600-01-01")
       )
-      LET DateBeforeTime &lt;= if(condition=DateBefore,
+      LET DateBeforeTime <= if(condition=DateBefore,
           then=timestamp(epoch=DateBefore),
-          else=timestamp(epoch=&quot;2200-01-01&quot;)
+          else=timestamp(epoch="2200-01-01")
       )
 
       -- expand provided glob into a list of paths on the file system (fs)
-      LET fspaths &lt;= SELECT FullPath
+      LET fspaths <= SELECT FullPath
       FROM glob(globs=expand(path=EvtxGlob))
 
       -- function returning list of VSS paths corresponding to path
@@ -156,8 +157,8 @@ sources:
               parse_evtx(filename=FullPath)
             WHERE System.EventID.Value IN (4624,4634)
             AND EventData.TargetLogonId != 999
-            AND EventTime &lt; DateBeforeTime
-            AND EventTime &gt; DateAfterTime
+            AND EventTime < DateBeforeTime
+            AND EventTime > DateAfterTime
           }
         ) GROUP BY TargetLogonId
 
@@ -204,12 +205,12 @@ sources:
         then={ SELECT * FROM include_vss },
         else={ SELECT * FROM exclude_vss })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
+<script src=/js/jquery.sticky.js?1693663126></script>
+<script src=/js/featherlight.min.js?1693663126></script>
+<script src=/js/highlight.min.js?1693663126></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
+<script src=/js/learn.js?1693663126></script>
+<script src=/js/hugo-learn.js?1693663126></script></body></html>

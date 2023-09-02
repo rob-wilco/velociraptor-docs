@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Remediation.Quarantine :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Remediation.Quarantine :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663118 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663118 rel=stylesheet><link href=/css/featherlight.min.css?1693663118 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663118 rel=stylesheet><link href=/css/auto-complete.css?1693663118 rel=stylesheet><link href=/css/theme.css?1693663118 rel=stylesheet><link href=/css/tabs.css?1693663118 rel=stylesheet><link href=/css/hugo-theme.css?1693663118 rel=stylesheet><link href=/css/theme-mine.css?1693663118 rel=stylesheet><link href=/css/dark.css?1693663118 rel=stylesheet><link href=/css/syntax.css?1693663118 rel=stylesheet><link href=/css/light.css?1693663118 rel=stylesheet><link href=/css/hljs.css?1693663118 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663118 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663118></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/linux.remediation.quarantine/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,7 +76,8 @@ hence the availability of nft CLI.</p><p>This artifact will create a table, with
 <em>vrr_quarantine_table</em>, which contains three chains. One
 for inbound traffic, one for outbound traffic, and the other
 for forwarding traffic. The chains will cut off all traffics
-except those for DNS lookup and velociraptor itself.</p><p>To unquarantine the system, set the <em>RemovePolicy</em> parameter to <em>True</em>.</p><pre><code class=language-yaml>name: Linux.Remediation.Quarantine
+except those for DNS lookup and velociraptor itself.</p><p>To unquarantine the system, set the <em>RemovePolicy</em> parameter to <em>True</em>.</p><pre><code class=language-yaml>
+name: Linux.Remediation.Quarantine
 description: |
   This artifact applies quarantine to Linux systems via nftables.
   It expects the target system to have nftables installed, and
@@ -118,25 +119,25 @@ parameters:
 sources:
   - query: |
      LET run_command(Cmd, Message) = SELECT timestamp(epoch=now()) as Time,
-       format(format=&quot;Running %v: %v, Returned %v %v&quot;,
+       format(format="Running %v: %v, Returned %v %v",
               args=[Cmd, Stdout || Stderr,
-                    ReturnCode, Message || &quot;&quot;]) AS Result
+                    ReturnCode, Message || ""]) AS Result
      FROM  execve(argv=Cmd, length=10000)
 
      // If a MessageBox configured truncate to 256 character limit
-     LET MessageBox &lt;= parse_string_with_regex(
-               regex='^(?P&lt;Message&gt;.{0,255}).*',
+     LET MessageBox <= parse_string_with_regex(
+               regex='^(?P<message>.{0,255}).*',
                string=MessageBox).Message
 
      // Parse a URL to get domain name.
-     LET get_domain(URL) = split(string=url(parse=URL).Host, sep=&quot;:&quot;)[0]
-     LET get_port(URL) = if(condition=url(parse=URL).Host =~ &quot;:&quot;,
-         then=split(string=url(parse=URL).Host, sep=&quot;:&quot;)[1],
-         else=if(condition=url(parse=URL).Scheme = &quot;https&quot;,
-                 then=&quot;443&quot;, else=&quot;80&quot;))
+     LET get_domain(URL) = split(string=url(parse=URL).Host, sep=":")[0]
+     LET get_port(URL) = if(condition=url(parse=URL).Host =~ ":",
+         then=split(string=url(parse=URL).Host, sep=":")[1],
+         else=if(condition=url(parse=URL).Scheme = "https",
+                 then="443", else="80"))
 
      // extract Velociraptor config for policy
-     LET extracted_config &lt;= SELECT * FROM foreach(
+     LET extracted_config <= SELECT * FROM foreach(
                row=config.server_urls,
                query={
                    SELECT
@@ -233,10 +234,10 @@ sources:
          row={
              SELECT DstAddr, DstPort, URL + 'server.pem' AS pem_url
              FROM extracted_config
-             WHERE log(message=&quot;Will check connectivity with &quot; + pem_url)
+             WHERE log(message="Will check connectivity with " + pem_url)
          },
          query={
-             SELECT format(format=&quot;Testing connectivity with %v: %v&quot;, args=[Url, Response]) AS Result
+             SELECT format(format="Testing connectivity with %v: %v", args=[Url, Response]) AS Result
              FROM http_client(url=pem_url, disable_ssl_security='TRUE')
              WHERE Response = 200
              LIMIT 1
@@ -265,7 +266,7 @@ sources:
                       Cmd=delete_table_cmd,
                       Message= TableName + ' failed connection test. Removing quarantine table.'))
 
-     LET check_nft_cmd = (pathToNFT, &quot;--version&quot;)
+     LET check_nft_cmd = (pathToNFT, "--version")
 
      // Execute content
      LET doit = SELECT * FROM if(condition=RemovePolicy,
@@ -300,20 +301,20 @@ sources:
      SELECT * FROM if(condition={
         SELECT * FROM run_command(
            Cmd=check_nft_cmd, Message='Check for ' + pathToNFT)
-        WHERE Result =~ &quot;nftables&quot;
+        WHERE Result =~ "nftables"
      }, then=doit,
      else={
-       SELECT * FROM scope() WHERE log(level=&quot;ERROR&quot;,
-            message=&quot;nftables is not installed - quarantine not supported&quot;)
+       SELECT * FROM scope() WHERE log(level="ERROR",
+            message="nftables is not installed - quarantine not supported")
             AND FALSE
        })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.min.js?1693663118></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663118></script>
+<script src=/js/jquery.sticky.js?1693663118></script>
+<script src=/js/featherlight.min.js?1693663118></script>
+<script src=/js/highlight.min.js?1693663118></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663118></script>
+<script src=/js/learn.js?1693663118></script>
+<script src=/js/hugo-learn.js?1693663118></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.PrintNightmare :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567188 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567188 rel=stylesheet><link href=/css/featherlight.min.css?1693567188 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567188 rel=stylesheet><link href=/css/auto-complete.css?1693567188 rel=stylesheet><link href=/css/theme.css?1693567188 rel=stylesheet><link href=/css/tabs.css?1693567188 rel=stylesheet><link href=/css/hugo-theme.css?1693567188 rel=stylesheet><link href=/css/theme-mine.css?1693567188 rel=stylesheet><link href=/css/dark.css?1693567188 rel=stylesheet><link href=/css/syntax.css?1693567188 rel=stylesheet><link href=/css/light.css?1693567188 rel=stylesheet><link href=/css/hljs.css?1693567188 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567188 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567188></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.PrintNightmare :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/printnightmare/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,8 +74,9 @@
 folders with an untrusted Authenticode entry.</p><p>It can be used to hunt for dll files droped during exploitation of
 CVE-2021-1675 - PrintNightmare.</p><p>To query all attached ntfs drives: check the AllDrives switch.</p><p>I have added several filters to uplift search capabilities from the
 original MFT artifact. Due to the multi-drive features, the MFTPath
-will output the MFT path of the entry.</p><p>Available filters include:</p><ul><li>FullPath regex</li><li>FileName regex</li><li>Time bounds to select files with a timestamp within time ranges</li><li>FileSize bounds</li></ul><p><figure><img src=https://github.com/mgreen27/velociraptor-docs/raw/patch-5/content/exchange/artifacts/PrintNightmare.png alt="Sample output" class=captioned><figcaption>Sample output</figcaption></figure></p><pre><code class=language-yaml>name: Windows.Detection.PrintNightmare
-author: &quot;Matt Green - @mgreen27&quot;
+will output the MFT path of the entry.</p><p>Available filters include:</p><ul><li>FullPath regex</li><li>FileName regex</li><li>Time bounds to select files with a timestamp within time ranges</li><li>FileSize bounds</li></ul><p><figure><img src=https://github.com/mgreen27/velociraptor-docs/raw/patch-5/content/exchange/artifacts/PrintNightmare.png alt="Sample output" class=captioned><figcaption>Sample output</figcaption></figure></p><pre><code class=language-yaml>
+name: Windows.Detection.PrintNightmare
+author: "Matt Green - @mgreen27"
 description: |
   This artifact returns any binaries in the Windows/spool/drivers/**
   folders with an untrusted Authenticode entry.
@@ -99,34 +100,34 @@ description: |
 
 parameters:
   - name: MFTFilename
-    default: &quot;C:/$MFT&quot;
+    default: "C:/$MFT"
   - name: Accessor
     default: ntfs
     type: hidden
   - name: PathRegex
-    description: &quot;Regex search over FullPath.&quot;
+    description: "Regex search over FullPath."
     default: Windows/System32/spool/drivers
   - name: FileRegex
-    description: &quot;Regex search over File Name&quot;
+    description: "Regex search over File Name"
     default: .
   - name: AllAuthenticode
     type: bool
-    description: &quot;Show all binaries despite Authenticode trusted status (default shows only untrusted).&quot;
+    description: "Show all binaries despite Authenticode trusted status (default shows only untrusted)."
   - name: DateAfter
     type: timestamp
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: SizeMax
     type: int64
-    description: &quot;Entries in the MFT under this size in bytes.&quot;
+    description: "Entries in the MFT under this size in bytes."
   - name: SizeMin
     type: int64
-    description: &quot;Entries in the MFT over this size in bytes.&quot;
+    description: "Entries in the MFT over this size in bytes."
   - name: AllDrives
     type: bool
-    description: &quot;Select MFT search on all attached ntfs drives.&quot;
+    description: "Select MFT search on all attached ntfs drives."
 
 
 sources:
@@ -134,20 +135,20 @@ sources:
       -- time testing
       LET time_test(stamp) =
             if(condition= DateBefore AND DateAfter,
-                then= stamp &lt; DateBefore AND stamp &gt; DateAfter,
+                then= stamp < DateBefore AND stamp > DateAfter,
                 else=
             if(condition=DateBefore,
-                then= stamp &lt; DateBefore,
+                then= stamp < DateBefore,
                 else=
             if(condition= DateAfter,
-                then= stamp &gt; DateAfter,
+                then= stamp > DateAfter,
                 else= True
             )))
 
 
       -- find all ntfs drives
       LET ntfs_drives = SELECT FullPath + '/$MFT'as Path
-        FROM glob(globs=&quot;/*&quot;, accessor=&quot;ntfs&quot;)
+        FROM glob(globs="/*", accessor="ntfs")
 
 
       -- function returning MFT entries
@@ -171,10 +172,10 @@ sources:
             AND FullPath =~ PathRegex
             AND FileName =~ FileRegex
             AND if(condition=SizeMax,
-                then=FileSize &lt; atoi(string=SizeMax),
+                then=FileSize < atoi(string=SizeMax),
                 else=TRUE)
             AND if(condition=SizeMin,
-                then=FileSize &gt; atoi(string=SizeMin),
+                then=FileSize > atoi(string=SizeMin),
                 else=TRUE)
             AND
              ( time_test(stamp=Created0x10)
@@ -192,7 +193,7 @@ sources:
             query={
                 SELECT *
                 FROM mftsearch(MFTPath=Path)
-                WHERE log(message=&quot;Processing &quot; + Path)
+                WHERE log(message="Processing " + Path)
               })
 
 
@@ -211,12 +212,12 @@ sources:
             then=TRUE,
             else= NOT Authenticode.Trusted = 'trusted')
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567188></script>
-<script src=/js/jquery.sticky.js?1693567188></script>
-<script src=/js/featherlight.min.js?1693567188></script>
-<script src=/js/highlight.min.js?1693567188></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567188></script>
-<script src=/js/learn.js?1693567188></script>
-<script src=/js/hugo-learn.js?1693567188></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

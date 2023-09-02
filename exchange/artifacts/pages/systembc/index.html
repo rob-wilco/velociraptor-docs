@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.SystemBC :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567189 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567189 rel=stylesheet><link href=/css/featherlight.min.css?1693567189 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567189 rel=stylesheet><link href=/css/auto-complete.css?1693567189 rel=stylesheet><link href=/css/theme.css?1693567189 rel=stylesheet><link href=/css/tabs.css?1693567189 rel=stylesheet><link href=/css/hugo-theme.css?1693567189 rel=stylesheet><link href=/css/theme-mine.css?1693567189 rel=stylesheet><link href=/css/dark.css?1693567189 rel=stylesheet><link href=/css/syntax.css?1693567189 rel=stylesheet><link href=/css/light.css?1693567189 rel=stylesheet><link href=/css/hljs.css?1693567189 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567189 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567189></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.SystemBC :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/systembc/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,7 +75,8 @@ process or file on disk.</p><p>The User can define bytes, file glob, process nam
 The artifact firstly discovers configuration and extracts bytes,
 before parsing with Velociraptor Binary Parser.</p><p>This content simply carves the configuration and does not unpack files on
 disk. That means pointing this artifact as a packed or obfuscated file may not
-obtain the expected results.</p><pre><code class=language-yaml>name: Windows.Carving.SystemBC
+obtain the expected results.</p><pre><code class=language-yaml>
+name: Windows.Carving.SystemBC
 author: Matt Green - @mgreen27
 description: |
   This artifact extracts SystemBC RAT configuration from a byte stream, 
@@ -111,16 +112,16 @@ parameters:
         rule SystemBC_Config
             {
                 meta:
-                    author = &quot;Matt Green - @mgreen27&quot;
-                    description = &quot;SystemBC configuration&quot;
+                    author = "Matt Green - @mgreen27"
+                    description = "SystemBC configuration"
             
                 strings:
                     $BEGINDATA = { 00 42 45 47 49 4e 44 41 54 41 00 } //BEGINDATA
-                    $ = &quot;HOST1:&quot; ascii wide fullword
-                    $ = &quot;HOST2:&quot; ascii wide fullword
-                    $ = &quot;PORT1:&quot; ascii wide fullword
-                    $ = &quot;TOR:&quot; ascii wide fullword
-                    $ = &quot;-WindowStyle Hidden -ep bypass -file&quot; ascii wide
+                    $ = "HOST1:" ascii wide fullword
+                    $ = "HOST2:" ascii wide fullword
+                    $ = "PORT1:" ascii wide fullword
+                    $ = "TOR:" ascii wide fullword
+                    $ = "-WindowStyle Hidden -ep bypass -file" ascii wide
             
                 condition:
                     $BEGINDATA and 3 of them
@@ -133,16 +134,16 @@ sources:
       -- binary parse profile to extract SystemBC configuration.
       LET PROFILE = '''[
                 [SystemBC, 0, [
-                    [&quot;__FindHost1&quot;,0, &quot;String&quot;,{term: &quot;HOST1:&quot;}],
-                    [&quot;HOST1&quot;,&quot;x=&gt;len(list=x.__FindHost1) + 6&quot;, &quot;String&quot;,{term_hex: &quot;0000&quot;}],
-                    [&quot;__FindHost2&quot;,0, &quot;String&quot;,{term: &quot;HOST2:&quot;}],
-                    [&quot;HOST2&quot;,&quot;x=&gt;len(list=x.__FindHost2) + 6&quot;, &quot;String&quot;,{term_hex: &quot;0000&quot;}],
-                    [&quot;__FindPort1&quot;,0, &quot;String&quot;,{term: &quot;PORT1:&quot;}],
-                    [&quot;PORT1&quot;,&quot;x=&gt;len(list=x.__FindPort1) + 6&quot;, &quot;String&quot;,{term_hex: &quot;0000&quot;}],
-                    [&quot;__FindTOR&quot;,0, &quot;String&quot;,{term: &quot;TOR:&quot;}],
-                    [&quot;TOR&quot;,&quot;x=&gt;len(list=x.__FindTOR) + 4&quot;, &quot;String&quot;,{term_hex: &quot;0000&quot;}],
-                    [&quot;__FindUserAgent&quot;,0, &quot;String&quot;,{term: &quot;\r\nUser-Agent: &quot;}],
-                    [&quot;User-Agent&quot;,&quot;x=&gt;len(list=x.__FindUserAgent) + 14&quot;, &quot;String&quot;,{term: &quot;\r\n&quot;}],
+                    ["__FindHost1",0, "String",{term: "HOST1:"}],
+                    ["HOST1","x=>len(list=x.__FindHost1) + 6", "String",{term_hex: "0000"}],
+                    ["__FindHost2",0, "String",{term: "HOST2:"}],
+                    ["HOST2","x=>len(list=x.__FindHost2) + 6", "String",{term_hex: "0000"}],
+                    ["__FindPort1",0, "String",{term: "PORT1:"}],
+                    ["PORT1","x=>len(list=x.__FindPort1) + 6", "String",{term_hex: "0000"}],
+                    ["__FindTOR",0, "String",{term: "TOR:"}],
+                    ["TOR","x=>len(list=x.__FindTOR) + 4", "String",{term_hex: "0000"}],
+                    ["__FindUserAgent",0, "String",{term: "\r\nUser-Agent: "}],
+                    ["User-Agent","x=>len(list=x.__FindUserAgent) + 14", "String",{term: "\r\n"}],
                 ]
             ]]'''
             
@@ -153,7 +154,7 @@ sources:
             len(list=TargetBytes) as Size,
             hash(path=TargetBytes,accessor='data') as Hash,
             String.Offset as HitOffset,
-            read_file(accessor=&quot;data&quot;,filename=TargetBytes, offset=String.Offset, length=1000) as _RawConfig
+            read_file(accessor="data",filename=TargetBytes, offset=String.Offset, length=1000) as _RawConfig
         FROM yara(
                 files=TargetBytes,
                 accessor='data',
@@ -186,7 +187,7 @@ sources:
             })
             
       -- find velociraptor process
-      LET me &lt;= SELECT * FROM if(condition= NOT ( TargetFileGlob OR TargetBytes ),
+      LET me <= SELECT * FROM if(condition= NOT ( TargetFileGlob OR TargetBytes ),
                     then = { SELECT Pid FROM pslist(pid=getpid()) })
 
       -- find all processes and add filters
@@ -194,7 +195,7 @@ sources:
         FROM pslist()
         WHERE
             Name =~ ProcessRegex
-            AND format(format=&quot;%d&quot;, args=Pid) =~ PidRegex
+            AND format(format="%d", args=Pid) =~ PidRegex
             AND NOT Pid in me.Pid
       
       -- scan processes in scope with our rule, limit 1 hit and extract context to parse
@@ -205,9 +206,9 @@ sources:
                 Rule,
                 Pid, ProcessName, CommandLine,
                 String.Offset as HitOffset,
-                read_file(accessor=&quot;process&quot;, filename=format(format=&quot;/%d&quot;, args=Pid), offset=String.Offset, length=1000) as _RawConfig
+                read_file(accessor="process", filename=format(format="/%d", args=Pid), offset=String.Offset, length=1000) as _RawConfig
             FROM yara( 
-                    files=format(format=&quot;/%d&quot;, args=Pid),
+                    files=format(format="/%d", args=Pid),
                     accessor='process',
                     rules=FindConfig,
                     number=99,
@@ -220,7 +221,7 @@ sources:
 
       -- generate results remove any FPs
       SELECT *,
-        parse_binary(accessor=&quot;data&quot;, filename=_RawConfig, profile=PROFILE, struct='SystemBC') AS SystemBC,
+        parse_binary(accessor="data", filename=_RawConfig, profile=PROFILE, struct='SystemBC') AS SystemBC,
         _RawConfig
       FROM if(condition=TargetBytes,
             then=ByteConfiguration,
@@ -229,12 +230,12 @@ sources:
                 else= ProcessConfiguration))
       WHERE SystemBC.HOST1 OR SystemBC.HOST2 OR SystemBC.TOR
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.min.js?1693567189></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567189></script>
-<script src=/js/jquery.sticky.js?1693567189></script>
-<script src=/js/featherlight.min.js?1693567189></script>
-<script src=/js/highlight.min.js?1693567189></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567189></script>
-<script src=/js/learn.js?1693567189></script>
-<script src=/js/hugo-learn.js?1693567189></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

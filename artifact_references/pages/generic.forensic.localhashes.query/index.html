@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Forensic.LocalHashes.Query :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567180 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567180 rel=stylesheet><link href=/css/featherlight.min.css?1693567180 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567180 rel=stylesheet><link href=/css/auto-complete.css?1693567180 rel=stylesheet><link href=/css/theme.css?1693567180 rel=stylesheet><link href=/css/tabs.css?1693567180 rel=stylesheet><link href=/css/hugo-theme.css?1693567180 rel=stylesheet><link href=/css/theme-mine.css?1693567180 rel=stylesheet><link href=/css/dark.css?1693567180 rel=stylesheet><link href=/css/syntax.css?1693567180 rel=stylesheet><link href=/css/light.css?1693567180 rel=stylesheet><link href=/css/hljs.css?1693567180 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567180 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567180></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Generic.Forensic.LocalHashes.Query :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663117 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663117 rel=stylesheet><link href=/css/featherlight.min.css?1693663117 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663117 rel=stylesheet><link href=/css/auto-complete.css?1693663117 rel=stylesheet><link href=/css/theme.css?1693663117 rel=stylesheet><link href=/css/tabs.css?1693663117 rel=stylesheet><link href=/css/hugo-theme.css?1693663117 rel=stylesheet><link href=/css/theme-mine.css?1693663117 rel=stylesheet><link href=/css/dark.css?1693663117 rel=stylesheet><link href=/css/syntax.css?1693663117 rel=stylesheet><link href=/css/light.css?1693663117 rel=stylesheet><link href=/css/hljs.css?1693663117 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663117 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663117></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/generic.forensic.localhashes.query/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,7 +75,8 @@ hashes. It is then possible to query this database using the
 Generic.Forensic.LocalHashes.Query artifact.</p><p>NOTE: This artifact expects a CSV file with one hash per line. On
 the command line you can encode carriage return using powershell
 like this:</p><pre><code>.\velociraptor.exe -v artifacts collect Generic.Forensic.LocalHashes.Query --args &quot;Hashes=Hash`ne6c1ce56e6729a0b077c0f2384726b30&quot;
-</code></pre><pre><code class=language-yaml>name: Generic.Forensic.LocalHashes.Query
+</code></pre><pre><code class=language-yaml>
+name: Generic.Forensic.LocalHashes.Query
 description: |
   This artifact maintains a local (client side) database of file
   hashes. It is then possible to query this database using the
@@ -85,55 +86,58 @@ description: |
   the command line you can encode carriage return using powershell
   like this:
 
-</code></pre><p>.\velociraptor.exe -v artifacts collect Generic.Forensic.LocalHashes.Query &ndash;args &ldquo;Hashes=Hash`ne6c1ce56e6729a0b077c0f2384726b30&rdquo;</p><pre><code>
+  ```
+  .\velociraptor.exe -v artifacts collect Generic.Forensic.LocalHashes.Query --args "Hashes=Hash`ne6c1ce56e6729a0b077c0f2384726b30"
+  ```
+
 parameters:
-- name: Hashes
-  description: The hash to query for.
-  type: csv
-  default: |
-    Hash
-    XXX
+  - name: Hashes
+    description: The hash to query for.
+    type: csv
+    default: |
+      Hash
+      XXX
 
-- name: CommaDelimitedHashes
-  description: A set of comma delimited hashes
-  default:
+  - name: CommaDelimitedHashes
+    description: A set of comma delimited hashes
+    default:
 
-- name: HashDb
-  description: Name of the local hash database
-  default: hashdb.sqlite
+  - name: HashDb
+    description: Name of the local hash database
+    default: hashdb.sqlite
 
 sources:
-- query: |
-    LET hash_db &lt;= SELECT OSPath
-    FROM Artifact.Generic.Forensic.LocalHashes.Init(HashDb=HashDb)
+  - query: |
+      LET hash_db <= SELECT OSPath
+      FROM Artifact.Generic.Forensic.LocalHashes.Init(HashDb=HashDb)
 
-    -- Check hashes from the CSV or comma delimited input
-    LET hashes = SELECT Hash FROM chain(
-    a={
-      SELECT lowcase(string=strip(string=Hash)) AS Hash
-      FROM Hashes
-    }, b={
-      SELECT * FROM foreach(row=split(string=CommaDelimitedHashes, sep=&quot;,&quot;),
-      query={
-         SELECT lowcase(string=strip(string=_value)) AS Hash FROM scope()
+      -- Check hashes from the CSV or comma delimited input
+      LET hashes = SELECT Hash FROM chain(
+      a={
+        SELECT lowcase(string=strip(string=Hash)) AS Hash
+        FROM Hashes
+      }, b={
+        SELECT * FROM foreach(row=split(string=CommaDelimitedHashes, sep=","),
+        query={
+           SELECT lowcase(string=strip(string=_value)) AS Hash FROM scope()
+        })
       })
-    })
 
-    SELECT * FROM foreach(row=hashes,
-    query={
-       SELECT path AS Path, md5 AS MD5, size AS Size,
-              timestamp(epoch=time) AS Timestamp
-       FROM sqlite(file=hash_db[0].OSPath,
-                   query=&quot;SELECT path, md5, size, timestamp AS time FROM hashes WHERE md5 = ?&quot;,
-                   args=Hash)
-    })
+      SELECT * FROM foreach(row=hashes,
+      query={
+         SELECT path AS Path, md5 AS MD5, size AS Size,
+                timestamp(epoch=time) AS Timestamp
+         FROM sqlite(file=hash_db[0].OSPath,
+                     query="SELECT path, md5, size, timestamp AS time FROM hashes WHERE md5 = ?",
+                     args=Hash)
+      })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.min.js?1693567180></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567180></script>
-<script src=/js/jquery.sticky.js?1693567180></script>
-<script src=/js/featherlight.min.js?1693567180></script>
-<script src=/js/highlight.min.js?1693567180></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567180></script>
-<script src=/js/learn.js?1693567180></script>
-<script src=/js/hugo-learn.js?1693567180></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.min.js?1693663117></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663117></script>
+<script src=/js/jquery.sticky.js?1693663117></script>
+<script src=/js/featherlight.min.js?1693663117></script>
+<script src=/js/highlight.min.js?1693663117></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663117></script>
+<script src=/js/learn.js?1693663117></script>
+<script src=/js/hugo-learn.js?1693663117></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.Qakbot :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567188 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567188 rel=stylesheet><link href=/css/featherlight.min.css?1693567188 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567188 rel=stylesheet><link href=/css/auto-complete.css?1693567188 rel=stylesheet><link href=/css/theme.css?1693567188 rel=stylesheet><link href=/css/tabs.css?1693567188 rel=stylesheet><link href=/css/hugo-theme.css?1693567188 rel=stylesheet><link href=/css/theme-mine.css?1693567188 rel=stylesheet><link href=/css/dark.css?1693567188 rel=stylesheet><link href=/css/syntax.css?1693567188 rel=stylesheet><link href=/css/light.css?1693567188 rel=stylesheet><link href=/css/hljs.css?1693567188 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567188 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567188></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.Qakbot :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/qakbot/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -83,7 +83,8 @@ decryption process to allow simplified decoding workflow:</p><ul><li>StringOffse
 encoded strings embedded in the malware and is often reused from previous
 samples.</p><p>Each decoded output includes the first 20 bytes in hex as the SHA1 of the
 data as verification. The second pass RC4 key is the next 20 bytes in hex,
-Second pass RC4 decoding has the same verification of decrypted data.</p><p>NOTE: Requires 0.6.8 for PE dump</p><pre><code class=language-yaml>name: Windows.Carving.Qakbot
+Second pass RC4 decoding has the same verification of decrypted data.</p><p>NOTE: Requires 0.6.8 for PE dump</p><pre><code class=language-yaml>
+name: Windows.Carving.Qakbot
 author: Matt Green - @mgreen27
 description: |
     This artifact enables Qakbot payload detection and configuration extraction 
@@ -166,9 +167,9 @@ parameters:
     default: |
         rule win_qakbot {
             meta:
-                author = &quot;Felix Bilstein - yara-signator at cocacoding dot com&quot;
-                date = &quot;2023-01-25&quot;
-                description = &quot;Detects win.qakbot.&quot;
+                author = "Felix Bilstein - yara-signator at cocacoding dot com"
+                date = "2023-01-25"
+                description = "Detects win.qakbot."
             strings:
                 $sequence_0 = { 50 e8???????? 8b06 47 }
                 $sequence_1 = { e9???????? 33c0 7402 ebfa }
@@ -210,7 +211,7 @@ parameters:
                 $sequence_37 = { 01c1 894c2404 8b442404 8d65fc }
                 $sequence_38 = { 01c1 21d1 8a442465 f6642465 }
             condition:
-                7 of them and filesize &lt; 1168384
+                7 of them and filesize < 1168384
         }
 
     
@@ -236,9 +237,9 @@ sources:
             SELECT 
                 filter(
                     list=split(sep='\x00',string=xor(key=data[Index],string=_value)),
-                    regex=&quot;^[ -~]{2,}$&quot; ) as String
+                    regex="^[ -~]{2,}$" ) as String
             FROM foreach(row=data[Index:])
-            WHERE len(list=String) &gt; 2 
+            WHERE len(list=String) > 2 
                 AND NOT String =~ '^\\s+$'
         })
             
@@ -292,7 +293,7 @@ sources:
       LET target_files = SELECT OSPath, Size,
                 Mtime, Btime, Ctime, Atime 
         FROM glob(globs=TargetGlob)
-        WHERE NOT IsDir AND Size &gt; 0
+        WHERE NOT IsDir AND Size > 0
         
       -- search for qakbot in scoped files
       LET file_payloads = SELECT * FROM foreach(row= target_files,
@@ -313,15 +314,15 @@ sources:
                             end=Size,  key='X',
                             number=1 )
             })
-            WHERE log(message=&quot;Scanning file : %v&quot;, args=OSPath)
+            WHERE log(message="Scanning file : %v", args=OSPath)
       
       -- find processes in scope of query
       LET processes = SELECT int(int=Pid) AS Pid,
               Name, Exe, CommandLine, CreateTime,Username
         FROM process_tracker_pslist()
         WHERE Name =~ ProcessRegex
-            AND format(format=&quot;%d&quot;, args=Pid) =~ PidRegex
-            AND log(message=&quot;Scanning pid %v : %v&quot;, args=[Pid, Name])
+            AND format(format="%d", args=Pid) =~ PidRegex
+            AND log(message="Scanning pid %v : %v", args=[Pid, Name])
       
       -- find unbacked sections with xrw permission
       LET sections = SELECT * FROM foreach(
@@ -335,7 +336,7 @@ sources:
                 Address as Offset,
                 Size,
                 pathspec(
-                    DelegateAccessor=&quot;process&quot;,
+                    DelegateAccessor="process",
                     DelegatePath=Pid,
                     Path=Address) AS _PathSpec
             FROM vad(pid=Pid)
@@ -387,27 +388,27 @@ sources:
       -- profile to parse Qakbot C2 data: LE netaddress with a seperator
       LET PROFILE = '''
            [
-             [&quot;Qakbot1&quot;, 0, [
-               [&quot;Method1&quot;, 0, &quot;Array&quot;,
-                     {  &quot;type&quot;: &quot;Entry&quot;,&quot;count&quot;: 200,
-                        &quot;sentinel&quot;: &quot;x=&gt;x.C2 = '0.0.0.0:0'&quot;
+             ["Qakbot1", 0, [
+               ["Method1", 0, "Array",
+                     {  "type": "Entry","count": 200,
+                        "sentinel": "x=>x.C2 = '0.0.0.0:0'"
                      }],
                ]],
-              [&quot;Entry&quot;, 8, [
-               [&quot;__IP&quot;, 1, &quot;uint32&quot;],
-               [&quot;__PORT&quot;, 5, &quot;uint16b&quot;],
-               ['C2',0,'Value',{'value':&quot;x=&gt;format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])&quot;}],
+              ["Entry", 8, [
+               ["__IP", 1, "uint32"],
+               ["__PORT", 5, "uint16b"],
+               ['C2',0,'Value',{'value':"x=>format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
              ]],
-             [&quot;Qakbot2&quot;, 0, [
-               [&quot;Method2&quot;, 0, &quot;Array&quot;,
-                     {  &quot;type&quot;: &quot;Entry2&quot;, &quot;count&quot;: 200,
-                        &quot;sentinel&quot;: &quot;x=&gt;x.C2 = '0.0.0.0:0'&quot;
+             ["Qakbot2", 0, [
+               ["Method2", 0, "Array",
+                     {  "type": "Entry2", "count": 200,
+                        "sentinel": "x=>x.C2 = '0.0.0.0:0'"
                      }],
                ]],
-              [&quot;Entry2&quot;, 7, [
-               [&quot;__IP&quot;, 1, &quot;uint32&quot;],
-               [&quot;__PORT&quot;, 5, &quot;uint16b&quot;],
-               ['C2',0,'Value',{'value':&quot;x=&gt;format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])&quot;}],
+              ["Entry2", 7, [
+               ["__IP", 1, "uint32"],
+               ["__PORT", 5, "uint16b"],
+               ['C2',0,'Value',{'value':"x=>format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
              ]]
            ]'''
            
@@ -416,11 +417,11 @@ sources:
             Campaign.Key as Key,
             parse_string_with_regex(string=Campaign.Data,
                 regex=[
-                        '''3=(?P&lt;Timestamp&gt;[ -~]*)\r\n''',
-                        '''10=(?P&lt;Name&gt;[ -~]*)\r\n'''
+                        '''3=(?P<timestamp>[ -~]*)\r\n''',
+                        '''10=(?P<name>[ -~]*)\r\n'''
                     ]) as Campaign,
-            parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct=&quot;Qakbot1&quot;).Method1['C2'] as _C2method1,
-            parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct=&quot;Qakbot2&quot;).Method2['C2'] as _C2method2
+            parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct="Qakbot1").Method1['C2'] as _C2method1,
+            parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct="Qakbot2").Method2['C2'] as _C2method2
         FROM decode_c2
       
       -- finally determine C2 encoding and pretty timestamp then output rows and remove unwanted fields
@@ -431,13 +432,13 @@ sources:
                 --upload(accessor='scope',file='_C2Raw') as C2RawUpload, --uncomment to troubleshoot bad C2
                 find_c2(methods=[_C2method1,_C2method2])[0].C2 as C2
             FROM results
-        }, exclude=[&quot;_C2method1&quot;,&quot;_C2method2&quot;,&quot;_C2Raw&quot;,&quot;Resources&quot;])
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.min.js?1693567188></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567188></script>
-<script src=/js/jquery.sticky.js?1693567188></script>
-<script src=/js/featherlight.min.js?1693567188></script>
-<script src=/js/highlight.min.js?1693567188></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567188></script>
-<script src=/js/learn.js?1693567188></script>
-<script src=/js/hugo-learn.js?1693567188></script></body></html>
+        }, exclude=["_C2method1","_C2method2","_C2Raw","Resources"])
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

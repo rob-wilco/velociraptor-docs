@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.System.Powershell.ModuleAnalysisCache :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567185 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567185 rel=stylesheet><link href=/css/featherlight.min.css?1693567185 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567185 rel=stylesheet><link href=/css/auto-complete.css?1693567185 rel=stylesheet><link href=/css/theme.css?1693567185 rel=stylesheet><link href=/css/tabs.css?1693567185 rel=stylesheet><link href=/css/hugo-theme.css?1693567185 rel=stylesheet><link href=/css/theme-mine.css?1693567185 rel=stylesheet><link href=/css/dark.css?1693567185 rel=stylesheet><link href=/css/syntax.css?1693567185 rel=stylesheet><link href=/css/light.css?1693567185 rel=stylesheet><link href=/css/hljs.css?1693567185 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567185 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567185></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.System.Powershell.ModuleAnalysisCache :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663123 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663123 rel=stylesheet><link href=/css/featherlight.min.css?1693663123 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663123 rel=stylesheet><link href=/css/auto-complete.css?1693663123 rel=stylesheet><link href=/css/theme.css?1693663123 rel=stylesheet><link href=/css/tabs.css?1693663123 rel=stylesheet><link href=/css/hugo-theme.css?1693663123 rel=stylesheet><link href=/css/theme-mine.css?1693663123 rel=stylesheet><link href=/css/dark.css?1693663123 rel=stylesheet><link href=/css/syntax.css?1693663123 rel=stylesheet><link href=/css/light.css?1693663123 rel=stylesheet><link href=/css/hljs.css?1693663123 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663123 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663123></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.system.powershell.moduleanalysiscache/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,7 +71,8 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.System.Powershell.ModuleAnalysisCache</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.System.Powershell.ModuleAnalysisCache</h1><p>ModuleAnalysisCache stores metadata about loaded Powershell modules.</p><p>Recent updates include filters by regex to enable targeted hunting
-use cases.</p><pre><code class=language-yaml>name: Windows.System.Powershell.ModuleAnalysisCache
+use cases.</p><pre><code class=language-yaml>
+name: Windows.System.Powershell.ModuleAnalysisCache
 description: |
     ModuleAnalysisCache stores metadata about loaded Powershell modules.
 
@@ -100,33 +101,33 @@ sources:
   - query: |
       LET Profile = '
        [
-         [&quot;Header&quot;, 0, [
-           [&quot;Signature&quot;, 0, &quot;String&quot;, {&quot;length&quot;: 13}],
-           [&quot;CountOfEntries&quot;, 14, &quot;uint32&quot;],
-           [&quot;Entries&quot;, 18, &quot;Array&quot;,
-                 {&quot;type&quot;: &quot;Entry&quot;, &quot;count&quot;: &quot;x =&gt; x.CountOfEntries&quot;}]
+         ["Header", 0, [
+           ["Signature", 0, "String", {"length": 13}],
+           ["CountOfEntries", 14, "uint32"],
+           ["Entries", 18, "Array",
+                 {"type": "Entry", "count": "x => x.CountOfEntries"}]
          ]],
 
-         [&quot;Entry&quot;, &quot;x=&gt;x.Func.SizeOf + x.ModuleLength + 20&quot;, [
-           [&quot;Offset&quot;, 0, &quot;Value&quot;, {&quot;value&quot;: &quot;x =&gt; x.StartOf&quot;}],
-           [&quot;TimestampTicks&quot;, 0, &quot;uint64&quot;],
-           [&quot;ModuleLength&quot;, 8, &quot;uint32&quot;],
-           [&quot;ModuleName&quot;, 12, &quot;String&quot;, {&quot;length&quot;: &quot;x =&gt; x.ModuleLength&quot;}],
-           [&quot;CommandCount&quot;, &quot;x =&gt; x.ModuleLength + 12&quot;, &quot;uint32&quot;],
-           [&quot;Func&quot;, &quot;x =&gt; x.ModuleLength + 16&quot;, &quot;Array&quot;,
-                  {&quot;type&quot;: &quot;FunctionInfo&quot;, &quot;count&quot;: &quot;x =&gt; x.CommandCount&quot;}],
-           [&quot;CountOfTypes&quot;, &quot;x =&gt; x.Func.EndOf&quot;, &quot;uint32&quot;]
+         ["Entry", "x=>x.Func.SizeOf + x.ModuleLength + 20", [
+           ["Offset", 0, "Value", {"value": "x => x.StartOf"}],
+           ["TimestampTicks", 0, "uint64"],
+           ["ModuleLength", 8, "uint32"],
+           ["ModuleName", 12, "String", {"length": "x => x.ModuleLength"}],
+           ["CommandCount", "x => x.ModuleLength + 12", "uint32"],
+           ["Func", "x => x.ModuleLength + 16", "Array",
+                  {"type": "FunctionInfo", "count": "x => x.CommandCount"}],
+           ["CountOfTypes", "x => x.Func.EndOf", "uint32"]
          ]],
 
-         [&quot;FunctionInfo&quot;, &quot;x =&gt; x.NameLen + 8&quot;, [
-           [&quot;NameLen&quot;, 0, &quot;uint32&quot;],
-           [&quot;Name&quot;, 4, &quot;String&quot;, {&quot;length&quot;: &quot;x =&gt; x.NameLen&quot;}],
-           [&quot;Count&quot;, &quot;x =&gt; x.NameLen + 4&quot;, &quot;uint32&quot;]
+         ["FunctionInfo", "x => x.NameLen + 8", [
+           ["NameLen", 0, "uint32"],
+           ["Name", 4, "String", {"length": "x => x.NameLen"}],
+           ["Count", "x => x.NameLen + 4", "uint32"]
          ]]
        ]
       '
       LET parsed = SELECT OSPath,
-         parse_binary(filename=OSPath, profile=Profile, struct=&quot;Header&quot;) AS Header
+         parse_binary(filename=OSPath, profile=Profile, struct="Header") AS Header
       FROM glob(globs=GlobLookup)
 
       SELECT * FROM foreach(row=parsed,
@@ -145,12 +146,12 @@ sources:
          })
       })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.min.js?1693567185></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567185></script>
-<script src=/js/jquery.sticky.js?1693567185></script>
-<script src=/js/featherlight.min.js?1693567185></script>
-<script src=/js/highlight.min.js?1693567185></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567185></script>
-<script src=/js/learn.js?1693567185></script>
-<script src=/js/hugo-learn.js?1693567185></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.min.js?1693663123></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663123></script>
+<script src=/js/jquery.sticky.js?1693663123></script>
+<script src=/js/featherlight.min.js?1693663123></script>
+<script src=/js/highlight.min.js?1693663123></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663123></script>
+<script src=/js/learn.js?1693663123></script>
+<script src=/js/hugo-learn.js?1693663123></script></body></html>

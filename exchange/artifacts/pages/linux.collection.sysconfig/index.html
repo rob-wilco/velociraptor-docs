@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Collection.SysConfig :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567187 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567187 rel=stylesheet><link href=/css/featherlight.min.css?1693567187 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567187 rel=stylesheet><link href=/css/auto-complete.css?1693567187 rel=stylesheet><link href=/css/theme.css?1693567187 rel=stylesheet><link href=/css/tabs.css?1693567187 rel=stylesheet><link href=/css/hugo-theme.css?1693567187 rel=stylesheet><link href=/css/theme-mine.css?1693567187 rel=stylesheet><link href=/css/dark.css?1693567187 rel=stylesheet><link href=/css/syntax.css?1693567187 rel=stylesheet><link href=/css/light.css?1693567187 rel=stylesheet><link href=/css/hljs.css?1693567187 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567187 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567187></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Linux.Collection.SysConfig :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/linux.collection.sysconfig/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,7 +71,8 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Linux.Collection.SysConfig</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Linux.Collection.SysConfig</h1><p>Collect system configurations and upload them.
-Based on TriageSystemConfiguration from forensicartifacts.com</p><pre><code class=language-yaml>name: Linux.Collection.SysConfig 
+Based on TriageSystemConfiguration from forensicartifacts.com</p><pre><code class=language-yaml>
+name: Linux.Collection.SysConfig 
 author: alternate
 description: |
   Collect system configurations and upload them.
@@ -80,20 +81,20 @@ description: |
 reference:
   - https://github.com/ForensicArtifacts/artifacts/blob/main/data/triage.yaml
 
-precondition: SELECT OS FROM info() WHERE OS = &quot;linux&quot;
+precondition: SELECT OS FROM info() WHERE OS = "linux"
 
 parameters:
 - name: APTSources
   default: |
-    [&quot;/etc/apt/sources.list&quot;, &quot;/etc/apt/sources.list.d/*.list&quot;]
+    ["/etc/apt/sources.list", "/etc/apt/sources.list.d/*.list"]
 
 - name: APTTrustKeys
   default: |
-    [&quot;/etc/apt/trusted.gpg.d/*.gpg&quot;, &quot;/etc/apt/trustdb.gpg&quot;, &quot;/usr/share/keyrings/*.gpg&quot;, &quot;/etc/apt/trusted.gpg&quot;]
+    ["/etc/apt/trusted.gpg.d/*.gpg", "/etc/apt/trustdb.gpg", "/usr/share/keyrings/*.gpg", "/etc/apt/trusted.gpg"]
 
 - name: CronAtAllowDenyFiles
   default: |
-    [&quot;/etc/at.allow&quot;, &quot;/etc/cron.allow&quot;, &quot;/etc/cron.deny&quot;, &quot;/etc/at.deny&quot;]
+    ["/etc/at.allow", "/etc/cron.allow", "/etc/cron.deny", "/etc/at.deny"]
 
 - name: DebianPackagesStatus
   default: /var/lib/dpkg/status
@@ -103,11 +104,11 @@ parameters:
 
 - name: KernelModules
   default: |
-    [&quot;/etc/modules.conf&quot;, &quot;/etc/modprobe.d/*&quot;]
+    ["/etc/modules.conf", "/etc/modprobe.d/*"]
 
 - name: LinuxCACertificates
   default: |
-    [&quot;/usr/local/share/ca-certificates/*&quot;, &quot;/etc/ssl/certs/ca-certificates.crt&quot;, &quot;/usr/share/ca-certificates/*&quot;]
+    ["/usr/local/share/ca-certificates/*", "/etc/ssl/certs/ca-certificates.crt", "/usr/share/ca-certificates/*"]
 
 - name: LinuxASLREnabled
   default: /proc/sys/kernel/randomize_va_space
@@ -123,23 +124,23 @@ parameters:
 
 - name: LinuxGrubConfiguration
   default: |
-    [&quot;/boot/grub/grub.cfg&quot;, &quot;/boot/grub2/grub.cfg&quot;]
+    ["/boot/grub/grub.cfg", "/boot/grub2/grub.cfg"]
 
 - name: LinuxInitrdFiles
   default: |
-    [&quot;/boot/initramfs*&quot;, &quot;/boot/initrd*&quot;]
+    ["/boot/initramfs*", "/boot/initrd*"]
 
 - name: LinuxIssueFile
   default: |
-    [&quot;/etc/issue.net&quot;, &quot;/etc/issue&quot;]
+    ["/etc/issue.net", "/etc/issue"]
 
 - name: LinuxKernelBootloader
   default: |
-    [&quot;/proc/sys/kernel/bootloader_type&quot;, &quot;/proc/sys/kernel/bootloader_version&quot;]
+    ["/proc/sys/kernel/bootloader_type", "/proc/sys/kernel/bootloader_version"]
 
 - name: LinuxKernelModuleRestrictions
   default: |
-    [&quot;/proc/sys/kernel/modules_disabled&quot;, &quot;/proc/sys/kernel/kexec_load_disabled&quot;]
+    ["/proc/sys/kernel/modules_disabled", "/proc/sys/kernel/kexec_load_disabled"]
 
 - name: LinuxKernelModuleTaintStatus
   default: /proc/sys/kernel/tainted
@@ -152,20 +153,20 @@ parameters:
 
 - name: LinuxLSBInit
   default: |
-    [&quot;/etc/init.d/*&quot;, &quot;/etc/insserv.conf.d/**&quot;, &quot;/etc/insserv.conf&quot;]
+    ["/etc/init.d/*", "/etc/insserv.conf.d/**", "/etc/insserv.conf"]
 
 - name: LinuxLSBRelease
   default: /etc/lsb-release
 
 - name: LinuxNetworkManager
   default: |
-    [&quot;/usr/lib/NetworkManager/conf.d/name.conf&quot;, &quot;/run/NetworkManager/conf.d/name.conf&quot;, 
-     &quot;/var/lib/NetworkManager/*&quot;, &quot;/var/lib/NetworkManager/NetworkManager-intern.conf&quot;, 
-     &quot;/etc/NetworkManager/conf.d/name.conf&quot;, &quot;/etc/NetworkManager/NetworkManager.conf&quot;]
+    ["/usr/lib/NetworkManager/conf.d/name.conf", "/run/NetworkManager/conf.d/name.conf", 
+     "/var/lib/NetworkManager/*", "/var/lib/NetworkManager/NetworkManager-intern.conf", 
+     "/etc/NetworkManager/conf.d/name.conf", "/etc/NetworkManager/NetworkManager.conf"]
 
 - name: LinuxPamConfigs
   default: |
-    [&quot;/etc/pam.d/common-password&quot;, &quot;/etc/pam.conf&quot;, &quot;/etc/pam.d/*&quot;]
+    ["/etc/pam.d/common-password", "/etc/pam.conf", "/etc/pam.d/*"]
 
 - name: LinuxPasswdFile
   default: /etc/passwd
@@ -175,7 +176,7 @@ parameters:
 
 - name: LinuxRelease
   default: |
-    [&quot;/etc/enterprise-release&quot;, &quot;/etc/system-release&quot;, &quot;/etc/oracle-release&quot;, &quot;/etc/lsb-release&quot;, &quot;/etc/redhat-release&quot;]
+    ["/etc/enterprise-release", "/etc/system-release", "/etc/oracle-release", "/etc/lsb-release", "/etc/redhat-release"]
 
 - name: LinuxRestrictedDmesgReadPrivileges
   default: /proc/sys/kernel/dmesg_restrict
@@ -185,11 +186,11 @@ parameters:
 
 - name: LinuxRsyslogConfigs
   default: |
-    [&quot;/etc/rsyslog.d&quot;, &quot;/etc/rsyslog.d/*&quot;, &quot;/etc/rsyslog.conf&quot;]
+    ["/etc/rsyslog.d", "/etc/rsyslog.d/*", "/etc/rsyslog.conf"]
 
 - name: LinuxSecureFsLinks
   default: |
-    [&quot;/proc/sys/fs/protected_symlinks&quot;, &quot;/proc/sys/fs/protected_hardlinks&quot;]
+    ["/proc/sys/fs/protected_symlinks", "/proc/sys/fs/protected_hardlinks"]
 
 - name: LinuxSecureSuidCoreDumps
   default: /proc/sys/fs/suid_dumpable
@@ -199,87 +200,87 @@ parameters:
 
 - name: LinuxSysctlConfigurationFiles
   default: |
-    [&quot;/etc/sysctl.d/*.conf&quot;, &quot;/etc/sysctl.con&quot;, &quot;/usr/lib/sysctl.d/*.conf&quot;, 
-     &quot;/run/sysctl.d/*.conf&quot;, &quot;/lib/sysctl.d/*.conf&quot;, &quot;/usr/local/lib/sysctl.d/*.conf&quot;]
+    ["/etc/sysctl.d/*.conf", "/etc/sysctl.con", "/usr/lib/sysctl.d/*.conf", 
+     "/run/sysctl.d/*.conf", "/lib/sysctl.d/*.conf", "/usr/local/lib/sysctl.d/*.conf"]
 
 - name: LinuxSyslogNgConfigs
   default: |
-    [&quot;/etc/syslog-ng/conf-d/*.conf&quot;, &quot;/etc/syslog-ng/syslog-ng.conf&quot;]
+    ["/etc/syslog-ng/conf-d/*.conf", "/etc/syslog-ng/syslog-ng.conf"]
 
 - name: LinuxSystemdJournalConfig
   default: /etc/systemd/journald.conf
 
 - name: LinuxSystemdOSRelease
   default: |
-    [&quot;/usr/lib/os-release&quot;, &quot;/etc/os-release&quot;]
+    ["/usr/lib/os-release", "/etc/os-release"]
 
 - name: LinuxTimezoneFile
   default: /etc/timezone
 
 - name: LinuxXinetd
   default: |
-    [&quot;/etc/xinetd.d/**&quot;, &quot;/etc/xinetd.conf&quot;]
+    ["/etc/xinetd.d/**", "/etc/xinetd.conf"]
 
 - name: LocateDatabase
   default: |
-    [&quot;/etc/updatedb.conf&quot;, &quot;/var/lib/mlocate/mlocate.db&quot;]
+    ["/etc/updatedb.conf", "/var/lib/mlocate/mlocate.db"]
 
 - name: LoginPolicyConfiguration
   default: |
-    [&quot;/etc/passwd&quot;, &quot;/etc/shadow&quot;, &quot;/root/.k5login&quot;, &quot;/etc/netgroup&quot;, &quot;/etc/nsswitch.conf&quot;, &quot;/etc/security/access.conf&quot;]
+    ["/etc/passwd", "/etc/shadow", "/root/.k5login", "/etc/netgroup", "/etc/nsswitch.conf", "/etc/security/access.conf"]
 
 - name: NetgroupConfiguration
   default: /etc/netgroup
 
 - name: NfsExportsFile
   default: |
-    [&quot;/private/etc/exports&quot;, &quot;/etc/exports&quot;]
+    ["/private/etc/exports", "/etc/exports"]
 
 - name: NtpConfFile
   default: /etc/ntp.conf
 
 - name: PCIDevicesInfoFiles
   default: |
-    [&quot;/sys/bus/pci/devices/*/config&quot;, &quot;/sys/bus/pci/devices/*/vendor&quot;, 
-     &quot;/sys/bus/pci/devices/*/device&quot;, &quot;/sys/bus/pci/devices/*/class&quot;]
+    ["/sys/bus/pci/devices/*/config", "/sys/bus/pci/devices/*/vendor", 
+     "/sys/bus/pci/devices/*/device", "/sys/bus/pci/devices/*/class"]
 
 - name: SambaConfigFile
   default: /etc/samba/smb.conf
 
 - name: SecretsServiceDatabaseFile
   default: |
-    [&quot;/var/lib/sss/secrets/.secrets.mkey&quot;, &quot;/var/lib/sss/secrets/secrets.ldb&quot;]
+    ["/var/lib/sss/secrets/.secrets.mkey", "/var/lib/sss/secrets/secrets.ldb"]
 
 - name: SshdConfigFile
   default: |
-    [&quot;/etc/ssh/sshd_config&quot;, &quot;/private/etc/ssh/sshd_config&quot;]
+    ["/etc/ssh/sshd_config", "/private/etc/ssh/sshd_config"]
 
 - name: SSHHostPubKeys
   default: /etc/ssh/ssh_host_*_key.pub
 
 - name: UnixGroupsFile
   default: |
-    [&quot;/etc/group&quot;, &quot;/private/etc/group&quot;]
+    ["/etc/group", "/private/etc/group"]
 
 - name: UnixLocalTimeConfigurationFile
   default: |
-    [&quot;/private/etc/localtime&quot;, &quot;/etc/localtime&quot;]
+    ["/private/etc/localtime", "/etc/localtime"]
 
 - name: UnixPasswdFile
   default: |
-    [&quot;/private/etc/passwd&quot;, &quot;/etc/passwd&quot;]
+    ["/private/etc/passwd", "/etc/passwd"]
 
 - name: UnixShadowFile
   default: |
-    [&quot;/private/etc/shadow&quot;, &quot;/etc/shadow&quot;]
+    ["/private/etc/shadow", "/etc/shadow"]
 
 - name: UnixSudoersConfigurationFile
   default: |
-    [&quot;/etc/sudoers&quot;, &quot;/private/etc/sudoers&quot;]
+    ["/etc/sudoers", "/private/etc/sudoers"]
 
 - name: YumSources
   default: |
-    [&quot;/etc/yum.conf&quot;, &quot;/etc/yum.repos.d/*.repo&quot;]
+    ["/etc/yum.conf", "/etc/yum.repos.d/*.repo"]
 
 sources:
 - name: uploadAPTSources
@@ -660,12 +661,12 @@ sources:
            upload(file=OSPath) AS Upload
     FROM glob(globs=parse_json_array(data=YumSources))
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.min.js?1693567187></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567187></script>
-<script src=/js/jquery.sticky.js?1693567187></script>
-<script src=/js/featherlight.min.js?1693567187></script>
-<script src=/js/highlight.min.js?1693567187></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567187></script>
-<script src=/js/learn.js?1693567187></script>
-<script src=/js/hugo-learn.js?1693567187></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.min.js?1693663124></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
+<script src=/js/jquery.sticky.js?1693663124></script>
+<script src=/js/featherlight.min.js?1693663124></script>
+<script src=/js/highlight.min.js?1693663124></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
+<script src=/js/learn.js?1693663124></script>
+<script src=/js/hugo-learn.js?1693663124></script></body></html>

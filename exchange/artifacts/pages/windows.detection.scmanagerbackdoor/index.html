@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.ScmanagerBackdoor :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.ScmanagerBackdoor :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.detection.scmanagerbackdoor/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -71,7 +71,8 @@
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
 <span class=links>Windows.Detection.ScmanagerBackdoor</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Windows.Detection.ScmanagerBackdoor</h1><p>Checks for overly permissive DACLs on scmanager. Low priv Users with
-KA - SDDL_KEY_ALL could launch SYSTEM services.</p><pre><code class=language-yaml>name: Windows.Detection.ScmanagerBackdoor
+KA - SDDL_KEY_ALL could launch SYSTEM services.</p><pre><code class=language-yaml>
+name: Windows.Detection.ScmanagerBackdoor
 author: ACEResponder.com
 description: |
    Checks for overly permissive DACLs on scmanager. Low priv Users with
@@ -83,74 +84,74 @@ sources:
 
     query: |
         LET ps = '''
-        $sid_const_json = '{&quot;AA&quot;:&quot;SDDL_ACCESS_CONTROL_ASSISTANCE_OPS&quot;,
-        &quot;AC&quot;:&quot;SDDL_ALL_APP_PACKAGES&quot;,
-        &quot;AN&quot;:&quot;SDDL_ANONYMOUS&quot;,
-        &quot;AO&quot;:&quot;SDDL_ACCOUNT_OPERATORS&quot;,
-        &quot;AP&quot;:&quot;SDDL_PROTECTED_USERS&quot;,
-        &quot;AU&quot;:&quot;SDDL_AUTHENTICATED_USERS&quot;,
-        &quot;BA&quot;:&quot;SDDL_BUILTIN_ADMINISTRATORS&quot;,
-        &quot;BG&quot;:&quot;SDDL_BUILTIN_GUESTS&quot;,
-        &quot;BO&quot;:&quot;SDDL_BACKUP_OPERATORS&quot;,
-        &quot;BU&quot;:&quot;SDDL_BUILTIN_USERS&quot;,
-        &quot;CA&quot;:&quot;SDDL_CERT_SERV_ADMINISTRATORS&quot;,
-        &quot;CD&quot;:&quot;SDDL_CERTSVC_DCOM_ACCESS&quot;,
-        &quot;CG&quot;:&quot;SDDL_CREATOR_GROUP&quot;,
-        &quot;CN&quot;:&quot;SDDL_CLONEABLE_CONTROLLERS&quot;,
-        &quot;CO&quot;:&quot;SDDL_CREATOR_OWNER&quot;,
-        &quot;CY&quot;:&quot;SDDL_CRYPTO_OPERATORS&quot;,
-        &quot;DA&quot;:&quot;SDDL_DOMAIN_ADMINISTRATORS&quot;,
-        &quot;DC&quot;:&quot;SDDL_DOMAIN_COMPUTERS&quot;,
-        &quot;DD&quot;:&quot;SDDL_DOMAIN_DOMAIN_CONTROLLERS&quot;,
-        &quot;DG&quot;:&quot;SDDL_DOMAIN_GUESTS&quot;,
-        &quot;DU&quot;:&quot;SDDL_DOMAIN_USERS&quot;,
-        &quot;EA&quot;:&quot;SDDL_ENTERPRISE_ADMINS&quot;,
-        &quot;ED&quot;:&quot;SDDL_ENTERPRISE_DOMAIN_CONTROLLERS&quot;,
-        &quot;EK&quot;:&quot;SDDL_ENTERPRISE_KEY_ADMINS&quot;,
-        &quot;ER&quot;:&quot;SDDL_EVENT_LOG_READERS&quot;,
-        &quot;ES&quot;:&quot;SDDL_RDS_ENDPOINT_SERVERS&quot;,
-        &quot;HA&quot;:&quot;SDDL_HYPER_V_ADMINS&quot;,
-        &quot;HI&quot;:&quot;SDDL_ML_HIGH&quot;,
-        &quot;IS&quot;:&quot;SDDL_IIS_USERS&quot;,
-        &quot;IU&quot;:&quot;SDDL_INTERACTIVE&quot;,
-        &quot;KA&quot;:&quot;SDDL_KEY_ADMINS&quot;,
-        &quot;LA&quot;:&quot;SDDL_LOCAL_ADMIN&quot;,
-        &quot;LG&quot;:&quot;SDDL_LOCAL_GUEST&quot;,
-        &quot;LS&quot;:&quot;SDDL_LOCAL_SERVICE&quot;,
-        &quot;LU&quot;:&quot;SDDL_PERFLOG_USERS&quot;,
-        &quot;LW&quot;:&quot;SDDL_ML_LOW&quot;,
-        &quot;ME&quot;:&quot;SDDL_ML_MEDIUM&quot;,
-        &quot;MP&quot;:&quot;SDDL_ML_MEDIUM_PLUS&quot;,
-        &quot;MU&quot;:&quot;SDDL_PERFMON_USERS&quot;,
-        &quot;NO&quot;:&quot;SDDL_NETWORK_CONFIGURATION_OPS&quot;,
-        &quot;NS&quot;:&quot;SDDL_NETWORK_SERVICE&quot;,
-        &quot;NU&quot;:&quot;SDDL_NETWORK&quot;,
-        &quot;OW&quot;:&quot;SDDL_OWNER_RIGHTS&quot;,
-        &quot;PA&quot;:&quot;SDDL_GROUP_POLICY_ADMINS&quot;,
-        &quot;PO&quot;:&quot;SDDL_PRINTER_OPERATORS&quot;,
-        &quot;PS&quot;:&quot;SDDL_PERSONAL_SELF&quot;,
-        &quot;PU&quot;:&quot;SDDL_POWER_USERS&quot;,
-        &quot;RA&quot;:&quot;SDDL_RDS_REMOTE_ACCESS_SERVERS&quot;,
-        &quot;RC&quot;:&quot;SDDL_RESTRICTED_CODE&quot;,
-        &quot;RD&quot;:&quot;SDDL_REMOTE_DESKTOP&quot;,
-        &quot;RE&quot;:&quot;SDDL_REPLICATOR&quot;,
-        &quot;RM&quot;:&quot;SDDL_RMS__SERVICE_OPERATORS&quot;,
-        &quot;RO&quot;:&quot;SDDL_ENTERPRISE_RO_DCs&quot;,
-        &quot;RS&quot;:&quot;SDDL_RAS_SERVERS&quot;,
-        &quot;RU&quot;:&quot;SDDL_ALIAS_PREW2KCOMPACC&quot;,
-        &quot;SA&quot;:&quot;SDDL_SCHEMA_ADMINISTRATORS&quot;,
-        &quot;SI&quot;:&quot;SDDL_ML_SYSTEM&quot;,
-        &quot;SO&quot;:&quot;SDDL_SERVER_OPERATORS&quot;,
-        &quot;SS&quot;:&quot;SDDL_SERVICE_ASSERTED&quot;,
-        &quot;SU&quot;:&quot;SDDL_SERVICE&quot;,
-        &quot;SY&quot;:&quot;SDDL_LOCAL_SYSTEM&quot;,
-        &quot;UD&quot;:&quot;SDDL_USER_MODE_DRIVERS&quot;,
-        &quot;WD&quot;:&quot;SDDL_EVERYONE&quot;,
-        &quot;WR&quot;:&quot;SDDL_WRITE_RESTRICTED_CODE&quot;}'
+        $sid_const_json = '{"AA":"SDDL_ACCESS_CONTROL_ASSISTANCE_OPS",
+        "AC":"SDDL_ALL_APP_PACKAGES",
+        "AN":"SDDL_ANONYMOUS",
+        "AO":"SDDL_ACCOUNT_OPERATORS",
+        "AP":"SDDL_PROTECTED_USERS",
+        "AU":"SDDL_AUTHENTICATED_USERS",
+        "BA":"SDDL_BUILTIN_ADMINISTRATORS",
+        "BG":"SDDL_BUILTIN_GUESTS",
+        "BO":"SDDL_BACKUP_OPERATORS",
+        "BU":"SDDL_BUILTIN_USERS",
+        "CA":"SDDL_CERT_SERV_ADMINISTRATORS",
+        "CD":"SDDL_CERTSVC_DCOM_ACCESS",
+        "CG":"SDDL_CREATOR_GROUP",
+        "CN":"SDDL_CLONEABLE_CONTROLLERS",
+        "CO":"SDDL_CREATOR_OWNER",
+        "CY":"SDDL_CRYPTO_OPERATORS",
+        "DA":"SDDL_DOMAIN_ADMINISTRATORS",
+        "DC":"SDDL_DOMAIN_COMPUTERS",
+        "DD":"SDDL_DOMAIN_DOMAIN_CONTROLLERS",
+        "DG":"SDDL_DOMAIN_GUESTS",
+        "DU":"SDDL_DOMAIN_USERS",
+        "EA":"SDDL_ENTERPRISE_ADMINS",
+        "ED":"SDDL_ENTERPRISE_DOMAIN_CONTROLLERS",
+        "EK":"SDDL_ENTERPRISE_KEY_ADMINS",
+        "ER":"SDDL_EVENT_LOG_READERS",
+        "ES":"SDDL_RDS_ENDPOINT_SERVERS",
+        "HA":"SDDL_HYPER_V_ADMINS",
+        "HI":"SDDL_ML_HIGH",
+        "IS":"SDDL_IIS_USERS",
+        "IU":"SDDL_INTERACTIVE",
+        "KA":"SDDL_KEY_ADMINS",
+        "LA":"SDDL_LOCAL_ADMIN",
+        "LG":"SDDL_LOCAL_GUEST",
+        "LS":"SDDL_LOCAL_SERVICE",
+        "LU":"SDDL_PERFLOG_USERS",
+        "LW":"SDDL_ML_LOW",
+        "ME":"SDDL_ML_MEDIUM",
+        "MP":"SDDL_ML_MEDIUM_PLUS",
+        "MU":"SDDL_PERFMON_USERS",
+        "NO":"SDDL_NETWORK_CONFIGURATION_OPS",
+        "NS":"SDDL_NETWORK_SERVICE",
+        "NU":"SDDL_NETWORK",
+        "OW":"SDDL_OWNER_RIGHTS",
+        "PA":"SDDL_GROUP_POLICY_ADMINS",
+        "PO":"SDDL_PRINTER_OPERATORS",
+        "PS":"SDDL_PERSONAL_SELF",
+        "PU":"SDDL_POWER_USERS",
+        "RA":"SDDL_RDS_REMOTE_ACCESS_SERVERS",
+        "RC":"SDDL_RESTRICTED_CODE",
+        "RD":"SDDL_REMOTE_DESKTOP",
+        "RE":"SDDL_REPLICATOR",
+        "RM":"SDDL_RMS__SERVICE_OPERATORS",
+        "RO":"SDDL_ENTERPRISE_RO_DCs",
+        "RS":"SDDL_RAS_SERVERS",
+        "RU":"SDDL_ALIAS_PREW2KCOMPACC",
+        "SA":"SDDL_SCHEMA_ADMINISTRATORS",
+        "SI":"SDDL_ML_SYSTEM",
+        "SO":"SDDL_SERVER_OPERATORS",
+        "SS":"SDDL_SERVICE_ASSERTED",
+        "SU":"SDDL_SERVICE",
+        "SY":"SDDL_LOCAL_SYSTEM",
+        "UD":"SDDL_USER_MODE_DRIVERS",
+        "WD":"SDDL_EVERYONE",
+        "WR":"SDDL_WRITE_RESTRICTED_CODE"}'
         
         $sid_const = ConvertFrom-Json $sid_const_json
         
-        $ace = ((&amp; (Get-Command &quot;$($env:SystemRoot)\System32\sc.exe&quot;) @('sdshow', 'scmanager'))[1])
+        $ace = ((& (Get-Command "$($env:SystemRoot)\System32\sc.exe") @('sdshow', 'scmanager'))[1])
         $dacl_string = [regex]::match($ace, '.*D:(.*)S:').Groups[1].value
         $dacls = [regex]::match($dacl_string, '(?:\(([^\)]*?)\))+').Groups[1].Captures
         foreach ($dacl in $dacls) {
@@ -178,15 +179,15 @@ sources:
         
         '''
 
-        SELECT * FROM execve(argv=[&quot;Powershell&quot;, &quot;-ExecutionPolicy&quot;,
-            &quot;unrestricted&quot;, &quot;-c&quot;, ps])   
+        SELECT * FROM execve(argv=["Powershell", "-ExecutionPolicy",
+            "unrestricted", "-c", ps])   
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.min.js?1693663125></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
+<script src=/js/jquery.sticky.js?1693663125></script>
+<script src=/js/featherlight.min.js?1693663125></script>
+<script src=/js/highlight.min.js?1693663125></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
+<script src=/js/learn.js?1693663125></script>
+<script src=/js/hugo-learn.js?1693663125></script></body></html>

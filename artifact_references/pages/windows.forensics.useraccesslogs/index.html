@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.UserAccessLogs :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.UserAccessLogs :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.forensics.useraccesslogs/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -76,7 +76,8 @@ server.</p><p>The UAL only exists on Windows Server edition 2012 and above.</p><
 access the database because it has a builtin ESE parser. This means
 that you <strong>do not need to repair</strong> the files using <code>eseutil.exe</code> as
 is commonly explained in the references below. Velociraptor should
-have no trouble parsing these files on the live system.</p><pre><code class=language-yaml>name: Windows.Forensics.UserAccessLogs
+have no trouble parsing these files on the live system.</p><pre><code class=language-yaml>
+name: Windows.Forensics.UserAccessLogs
 description: |
   Parse and collect the SUM database
 
@@ -99,13 +100,13 @@ reference:
 
 export: |
     LET IPProfile = '''[
-      [&quot;X&quot;, 0, [
-        [&quot;A&quot;, 0, &quot;uint8&quot;],
-        [&quot;B&quot;, 1, &quot;uint8&quot;],
-        [&quot;C&quot;, 2, &quot;uint8&quot;],
-        [&quot;D&quot;, 3, &quot;uint8&quot;],
-        [&quot;IP&quot;, 0, &quot;Value&quot;, {
-           value: &quot;x=&gt; format(format='%d.%d.%d.%d', args=[x.A, x.B, x.C, x.D])&quot;
+      ["X", 0, [
+        ["A", 0, "uint8"],
+        ["B", 1, "uint8"],
+        ["C", 2, "uint8"],
+        ["D", 3, "uint8"],
+        ["IP", 0, "Value", {
+           value: "x=> format(format='%d.%d.%d.%d', args=[x.A, x.B, x.C, x.D])"
         }]
       ]]
     ]'''
@@ -114,26 +115,26 @@ export: |
     LET FormatAddress(Address) = if(condition=len(list=Address) = 4,
 
          -- IPv4 address should be formatted in dot notation
-         then=parse_binary(accessor=&quot;data&quot;,
-                           filename=Address, struct=&quot;X&quot;,
+         then=parse_binary(accessor="data",
+                           filename=Address, struct="X",
                            profile=IPProfile).IP,
          else=if(condition=len(list=Address)=16,
            -- IPv6 addresses are usually shortened
-           then=regex_replace(source=format(format=&quot;%x&quot;, args=Address),
-                              re=&quot;(00)+&quot;, replace=&quot;:&quot;),
+           then=regex_replace(source=format(format="%x", args=Address),
+                              re="(00)+", replace=":"),
 
            -- We dont know what kind of address it is.
-           else=format(format=&quot;%x&quot;, args=Address)))
+           else=format(format="%x", args=Address)))
 
     -- Get the Clients table from all snapshot files.
     LET SystemIdentity = SELECT OSPath FROM glob(globs=SUMGlob)
-      WHERE Name =~ &quot;SystemIdentity.mdb&quot;
+      WHERE Name =~ "SystemIdentity.mdb"
 
     -- Prepare a Role lookup to resolve the role GUID
-    LET RoleLookup &lt;= memoize(key=&quot;RoleGuid&quot;, query={
+    LET RoleLookup <= memoize(key="RoleGuid", query={
       SELECT * FROM foreach(row=SystemIdentity, query={
-         SELECT * FROM parse_ese(file=OSPath, table=&quot;ROLE_IDS&quot;)
-         WHERE log(message=&quot;RoleGuid &quot; + RoleGuid)
+         SELECT * FROM parse_ese(file=OSPath, table="ROLE_IDS")
+         WHERE log(message="RoleGuid " + RoleGuid)
       })
     })
 
@@ -152,28 +153,28 @@ sources:
       query: |
         SELECT * FROM foreach(row=SystemIdentity, query={
            SELECT *, OSPath AS _OSPath
-           FROM parse_ese(file=OSPath, table=&quot;SYSTEM_IDENTITY&quot;)
+           FROM parse_ese(file=OSPath, table="SYSTEM_IDENTITY")
         })
 
     - name: Chained Databases
       query: |
         SELECT * FROM foreach(row=SystemIdentity, query={
           SELECT *, OSPath AS _OSPath
-          FROM parse_ese(file=OSPath, table=&quot;CHAINED_DATABASES&quot;)
+          FROM parse_ese(file=OSPath, table="CHAINED_DATABASES")
         })
 
     - name: RoleIds
       query: |
         SELECT * FROM foreach(row=SystemIdentity, query={
            SELECT *, OSPath AS _OSPath
-           FROM parse_ese(file=OSPath, table=&quot;ROLE_IDS&quot;)
+           FROM parse_ese(file=OSPath, table="ROLE_IDS")
         })
 
     - name: Clients
       description: Dump the clients database from all ESE files
       query: |
         LET ContentDatabases =  SELECT * FROM glob(globs=SUMGlob)
-           WHERE Name =~ &quot;.mdb&quot; AND NOT Name =~ &quot;SystemIdentity&quot;
+           WHERE Name =~ ".mdb" AND NOT Name =~ "SystemIdentity"
 
         -- The clients table has potentially 365 columns (1 per day) so we
         -- format it a bit better by putting the Day* columns in their own dict.
@@ -181,19 +182,19 @@ sources:
              FROM foreach(row={
             SELECT to_dict(item={
                    SELECT _key, _value FROM items(item=_value)
-                   WHERE NOT _key =~ &quot;Day&quot;
+                   WHERE NOT _key =~ "Day"
                })  +
                dict(Days=to_dict(item={
                    SELECT _key, _value FROM items(item=_value)
-                   WHERE _key =~ &quot;Day&quot;
+                   WHERE _key =~ "Day"
                })) AS Value
             FROM items(item={
                SELECT *, get(item=RoleLookup, field=RoleGuid).RoleName AS RoleName,
                   Address AS RawAddress,
                   FormatAddress(Address=unhex(string=Address)) AS Address
-               FROM parse_ese(file=OSPath, table=&quot;CLIENTS&quot;)
+               FROM parse_ese(file=OSPath, table="CLIENTS")
             })
-        }, column=&quot;Value&quot;)
+        }, column="Value")
 
         -- Get the Clients table from all snapshot files.
         SELECT * FROM foreach(row=ContentDatabases, query={
@@ -204,14 +205,14 @@ sources:
       query: |
         SELECT * FROM foreach(row=ContentDatabases, query={
            SELECT *, OSPath AS _OSPath
-           FROM parse_ese(file=OSPath, table=&quot;VIRTUALMACHINES&quot;)
+           FROM parse_ese(file=OSPath, table="VIRTUALMACHINES")
         })
 
     - name: DNS
       query: |
         SELECT * FROM foreach(row=ContentDatabases, query={
            SELECT *, OSPath AS _OSPath
-           FROM parse_ese(file=OSPath, table=&quot;DNS&quot;)
+           FROM parse_ese(file=OSPath, table="DNS")
         })
 
     - name: Uploads
@@ -219,12 +220,12 @@ sources:
         SELECT OSPath, if(condition=AlsoUpload, then=upload(file=OSPath))
         FROM glob(globs=SUMGlob)
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

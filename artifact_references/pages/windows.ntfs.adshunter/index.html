@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.ADSHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567184 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567184 rel=stylesheet><link href=/css/featherlight.min.css?1693567184 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567184 rel=stylesheet><link href=/css/auto-complete.css?1693567184 rel=stylesheet><link href=/css/theme.css?1693567184 rel=stylesheet><link href=/css/tabs.css?1693567184 rel=stylesheet><link href=/css/hugo-theme.css?1693567184 rel=stylesheet><link href=/css/theme-mine.css?1693567184 rel=stylesheet><link href=/css/dark.css?1693567184 rel=stylesheet><link href=/css/syntax.css?1693567184 rel=stylesheet><link href=/css/light.css?1693567184 rel=stylesheet><link href=/css/hljs.css?1693567184 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567184 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567184></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.ADSHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.ntfs.adshunter/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -78,8 +78,9 @@ Alternate Data Streams (ADS) are additional $DATA attributes for an MFT entry in
 NTFS file systems. In NTFS, the primary $DATA attribute is
 never named but subsequent $DATA attributes must be named.</p><p>Targetting is via mix of path globs and include / exclude regex.</p><ul><li>TargetFolder is a folder glob: e.g C:, C:\Users*\Downloads that the user wishes
 to recursively search.</li><li>AdsName is name in glob format: e.g <em>, Zone.Identifier or Zone.</em>.</li><li>AdsNameExclusion - A regex value, common ADS added to exclusions have been
-added by default. The artifact also exlcudes NTFS system files by default.</li></ul><pre><code class=language-yaml>name: Windows.NTFS.ADSHunter
-author: &quot;Matt Green - @mgreen27&quot;
+added by default. The artifact also exlcudes NTFS system files by default.</li></ul><pre><code class=language-yaml>
+name: Windows.NTFS.ADSHunter
+author: "Matt Green - @mgreen27"
 description: |
    This artifact hunts
    for Alternate Data Streams on NTFS file systems. 
@@ -140,16 +141,16 @@ sources:
             Size,
             OSPath.Dirname + split(string=Name,sep=':')[0] as HostObject,
             dict(Mtime=Mtime,Atime=Atime,Ctime=Ctime,Btime=Btime) as HostTimestampsSI
-        FROM glob(globs=TargetFolder + &quot;/**/*:&quot; + AdsNameGlob, 
-                  accessor=&quot;ntfs&quot;,
+        FROM glob(globs=TargetFolder + "/**/*:" + AdsNameGlob, 
+                  accessor="ntfs",
                   nosymlink='Y')
         WHERE 
             NOT OSPath.Basename =~ '\\$Secure:\\$SDS|\\$Repair|\\$BadClus|\\$Bitmap|\\$UpCase'
             AND if(condition=MinSize,
-                    then= Size &gt; MinSize,
+                    then= Size > MinSize,
                     else= True )
             AND if(condition= MaxSize,
-                    then= Size &lt; MaxSize,
+                    then= Size < MaxSize,
                     else= True )
             AND NOT if(condition=AdsNameExclusion,
                         then= AdsName =~ AdsNameExclusion,
@@ -157,7 +158,7 @@ sources:
       
       -- Extract content and filter
       LET hits = SELECT *,
-            read_file(filename=OSPath[0]+Inode, accessor=&quot;mft&quot;,offset=0,length=1024) as AdsContent -- only upload first 1k of each hit
+            read_file(filename=OSPath[0]+Inode, accessor="mft",offset=0,length=1024) as AdsContent -- only upload first 1k of each hit
         FROM ads_entries
         WHERE AdsContent =~ AdsContentRegex
             AND NOT if(condition=AdsContentExclusion,
@@ -173,12 +174,12 @@ sources:
       SELECT * FROM if(condition=UploadDataStream,
                         then= upload_hits,
                         else= hits)
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.min.js?1693567184></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567184></script>
-<script src=/js/jquery.sticky.js?1693567184></script>
-<script src=/js/featherlight.min.js?1693567184></script>
-<script src=/js/highlight.min.js?1693567184></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567184></script>
-<script src=/js/learn.js?1693567184></script>
-<script src=/js/hugo-learn.js?1693567184></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.min.js?1693663121></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
+<script src=/js/jquery.sticky.js?1693663121></script>
+<script src=/js/featherlight.min.js?1693663121></script>
+<script src=/js/highlight.min.js?1693663121></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
+<script src=/js/learn.js?1693663121></script>
+<script src=/js/hugo-learn.js?1693663121></script></body></html>

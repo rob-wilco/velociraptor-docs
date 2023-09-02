@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Registry.NetshHelperDLLs :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Registry.NetshHelperDLLs :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.registry.netshhelperdlls/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,11 +75,12 @@ this artifact enumerates all NetSh Helper DLLs to provide
 opportunities to find outliers and potential persistence mechanisms
 tied to <a href=https://lolbas-project.github.io/lolbas/Binaries/Netsh/>netsh.exe</a></p><p>I have run this hunt across 6K+ systems and identified the most common entries and provided
 the <code>excludeCommon</code> option to exclude these. In very large environments there will likely still be FPs,
-but they should be far and few.</p><p>References:</p><ul><li><p><a href=https://attack.mitre.org/techniques/T1546/007/>https://attack.mitre.org/techniques/T1546/007/</a></p></li><li><p><a href=https://lolbas-project.github.io/lolbas/Binaries/Netsh/>https://lolbas-project.github.io/lolbas/Binaries/Netsh/</a></p></li></ul><pre><code class=language-yaml>name: Windows.Registry.NetshHelperDLLs
+but they should be far and few.</p><p>References:</p><ul><li><p><a href=https://attack.mitre.org/techniques/T1546/007/>https://attack.mitre.org/techniques/T1546/007/</a></p></li><li><p><a href=https://lolbas-project.github.io/lolbas/Binaries/Netsh/>https://lolbas-project.github.io/lolbas/Binaries/Netsh/</a></p></li></ul><pre><code class=language-yaml>
+name: Windows.Registry.NetshHelperDLLs
 description: |
     # Enumerate all NetSh Helper DLLs
 
-    Inspired by this [tweet](https://twitter.com/SecurePeacock/status/1532011932315680769?s=20&amp;t=IFbej-qpkF6IB7ycewE31w),
+    Inspired by this [tweet](https://twitter.com/SecurePeacock/status/1532011932315680769?s=20&t=IFbej-qpkF6IB7ycewE31w),
     this artifact enumerates all NetSh Helper DLLs to provide
     opportunities to find outliers and potential persistence mechanisms 
     tied to [netsh.exe](https://lolbas-project.github.io/lolbas/Binaries/Netsh/)
@@ -100,7 +101,7 @@ parameters:
       default: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NetSh\**
       description: Use a glob to define the files that will be searched.
     - name: excludeCommon
-      description: &quot;Exclude common well-known entries.&quot;
+      description: "Exclude common well-known entries."
       type: bool
 
 author: Eric Capuano - @eric_capuano
@@ -109,33 +110,33 @@ precondition: SELECT OS From info() where OS = 'windows'
 
 sources:
   - query: |
-        LET filteredResults &lt;= 
+        LET filteredResults <= 
             SELECT Name, FullPath, Data.value AS HelperDLL, ModTime as Modified
             FROM glob(globs=SearchRegistryGlob, accessor='registry')
             // filter out entries found consistently across 1000s of systems in the wild
-            WHERE NOT (Name = &quot;2&quot; AND HelperDLL = &quot;ifmon.dll&quot;)
-            AND NOT (Name = &quot;4&quot; AND HelperDLL = &quot;rasmontr.dll&quot;)
-            AND NOT (Name = &quot;WcnNetsh&quot; AND HelperDLL = &quot;WcnNetsh.dll&quot;)
-            AND NOT (Name = &quot;authfwcfg&quot; AND HelperDLL = &quot;authfwcfg.dll&quot;)
-            AND NOT (Name = &quot;dhcpclient&quot; AND HelperDLL = &quot;dhcpcmonitor.dll&quot;)
-            AND NOT (Name = &quot;dot3cfg&quot; AND HelperDLL = &quot;dot3cfg.dll&quot;)
-            AND NOT (Name = &quot;fwcfg&quot; AND HelperDLL = &quot;fwcfg.dll&quot;)
-            AND NOT (Name = &quot;hnetmon&quot; AND HelperDLL = &quot;hnetmon.dll&quot;)
-            AND NOT (Name = &quot;napmontr&quot; AND HelperDLL = &quot;napmontr.dll&quot;)
-            AND NOT (Name = &quot;netiohlp&quot; AND HelperDLL = &quot;netiohlp.dll&quot;)
-            AND NOT (Name = &quot;nettrace&quot; AND HelperDLL = &quot;nettrace.dll&quot;)
-            AND NOT (Name = &quot;nshhttp&quot; AND HelperDLL = &quot;nshhttp.dll&quot;)
-            AND NOT (Name = &quot;nshipsec&quot; AND HelperDLL = &quot;nshipsec.dll&quot;)
-            AND NOT (Name = &quot;nshwfp&quot; AND HelperDLL = &quot;nshwfp.dll&quot;)
-            AND NOT (Name = &quot;p2pnetsh&quot; AND HelperDLL = &quot;p2pnetsh.dll&quot;)
-            AND NOT (Name = &quot;peerdistsh&quot; AND HelperDLL = &quot;peerdistsh.dll&quot;)
-            AND NOT (Name = &quot;rpc&quot; AND HelperDLL = &quot;rpcnsh.dll&quot;)
-            AND NOT (Name = &quot;whhelper&quot; AND HelperDLL = &quot;whhelper.dll&quot;)
-            AND NOT (Name = &quot;wlancfg&quot; AND HelperDLL = &quot;wlancfg.dll&quot;)
-            AND NOT (Name = &quot;wshelper&quot; AND HelperDLL = &quot;wshelper.dll&quot;)
-            AND NOT (Name = &quot;wwancfg&quot; AND HelperDLL = &quot;wwancfg.dll&quot;)
+            WHERE NOT (Name = "2" AND HelperDLL = "ifmon.dll")
+            AND NOT (Name = "4" AND HelperDLL = "rasmontr.dll")
+            AND NOT (Name = "WcnNetsh" AND HelperDLL = "WcnNetsh.dll")
+            AND NOT (Name = "authfwcfg" AND HelperDLL = "authfwcfg.dll")
+            AND NOT (Name = "dhcpclient" AND HelperDLL = "dhcpcmonitor.dll")
+            AND NOT (Name = "dot3cfg" AND HelperDLL = "dot3cfg.dll")
+            AND NOT (Name = "fwcfg" AND HelperDLL = "fwcfg.dll")
+            AND NOT (Name = "hnetmon" AND HelperDLL = "hnetmon.dll")
+            AND NOT (Name = "napmontr" AND HelperDLL = "napmontr.dll")
+            AND NOT (Name = "netiohlp" AND HelperDLL = "netiohlp.dll")
+            AND NOT (Name = "nettrace" AND HelperDLL = "nettrace.dll")
+            AND NOT (Name = "nshhttp" AND HelperDLL = "nshhttp.dll")
+            AND NOT (Name = "nshipsec" AND HelperDLL = "nshipsec.dll")
+            AND NOT (Name = "nshwfp" AND HelperDLL = "nshwfp.dll")
+            AND NOT (Name = "p2pnetsh" AND HelperDLL = "p2pnetsh.dll")
+            AND NOT (Name = "peerdistsh" AND HelperDLL = "peerdistsh.dll")
+            AND NOT (Name = "rpc" AND HelperDLL = "rpcnsh.dll")
+            AND NOT (Name = "whhelper" AND HelperDLL = "whhelper.dll")
+            AND NOT (Name = "wlancfg" AND HelperDLL = "wlancfg.dll")
+            AND NOT (Name = "wshelper" AND HelperDLL = "wshelper.dll")
+            AND NOT (Name = "wwancfg" AND HelperDLL = "wwancfg.dll")
 
-        LET Results &lt;= 
+        LET Results <= 
             SELECT Name, FullPath, Data.value AS HelperDLL, ModTime as Modified
             FROM glob(globs=SearchRegistryGlob, accessor='registry')
 
@@ -144,12 +145,12 @@ sources:
             then={ SELECT * FROM filteredResults},
             else={ SELECT * FROM Results})
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
+<script src=/js/jquery.sticky.js?1693663126></script>
+<script src=/js/featherlight.min.js?1693663126></script>
+<script src=/js/highlight.min.js?1693663126></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
+<script src=/js/learn.js?1693663126></script>
+<script src=/js/hugo-learn.js?1693663126></script></body></html>

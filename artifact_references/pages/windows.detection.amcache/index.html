@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.Amcache :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567183 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567183 rel=stylesheet><link href=/css/featherlight.min.css?1693567183 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567183 rel=stylesheet><link href=/css/auto-complete.css?1693567183 rel=stylesheet><link href=/css/theme.css?1693567183 rel=stylesheet><link href=/css/tabs.css?1693567183 rel=stylesheet><link href=/css/hugo-theme.css?1693567183 rel=stylesheet><link href=/css/theme-mine.css?1693567183 rel=stylesheet><link href=/css/dark.css?1693567183 rel=stylesheet><link href=/css/syntax.css?1693567183 rel=stylesheet><link href=/css/light.css?1693567183 rel=stylesheet><link href=/css/hljs.css?1693567183 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567183 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567183></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.Amcache :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663120 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663120 rel=stylesheet><link href=/css/featherlight.min.css?1693663120 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663120 rel=stylesheet><link href=/css/auto-complete.css?1693663120 rel=stylesheet><link href=/css/theme.css?1693663120 rel=stylesheet><link href=/css/tabs.css?1693663120 rel=stylesheet><link href=/css/hugo-theme.css?1693663120 rel=stylesheet><link href=/css/theme-mine.css?1693663120 rel=stylesheet><link href=/css/dark.css?1693663120 rel=stylesheet><link href=/css/syntax.css?1693663120 rel=stylesheet><link href=/css/light.css?1693663120 rel=stylesheet><link href=/css/hljs.css?1693663120 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663120 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663120></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.detection.amcache/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -77,7 +77,8 @@ includes EntryName, EntryPath and SHA1 as great data points for IOC collection.
 Secondary datapoints include publisher/company, BinaryType and OriginalFileName.</p><p>Available filters include:</p><ul><li>SHA1regex - regex entries to filter by SHA1.</li><li>PathRegex - filter on path if available.</li><li>NameRegex - filter on EntryName OR OriginalFileName.</li></ul><p>NOTE:</p><ul><li>Secondary fields are not consistent across AMCache types and some legacy
 versions do not return these fields.</li><li>Some enrichment has occured but any secondary fields should be treated as
 guidance only.</li><li>This artifact collects only entries with a SHA1, for complete AMCache
-analysis please download raw artifact sets.</li></ul><pre><code class=language-yaml>name: Windows.Detection.Amcache
+analysis please download raw artifact sets.</li></ul><pre><code class=language-yaml>
+name: Windows.Detection.Amcache
 author: Matt Green - @mgreen27
 description: |
     This artifact collects AMCache entries with a SHA1 hash to enable threat
@@ -108,7 +109,7 @@ reference:
 
 parameters:
   - name: AMCacheGlob
-    default: &quot;%SYSTEMROOT%/appcompat/Programs/Amcache.hve&quot;
+    default: "%SYSTEMROOT%/appcompat/Programs/Amcache.hve"
     description: AMCache hive path
   - name: KeyPathGlob
     default: /Root/{Inventory, File}*/**
@@ -127,7 +128,7 @@ parameters:
 
 sources:
   - query: |
-        LET files &lt;= SELECT OSPath
+        LET files <= SELECT OSPath
            FROM glob(globs=expand(path=AMCacheGlob))
 
         SELECT * FROM foreach(row=files,
@@ -137,44 +138,44 @@ sources:
                       Key.OSPath.Path as EntryKey,
                       Key.ModTime as KeyMTime,
 
-                      -- Key is like \Root\InventoryDriverBinary\&quot;c:/windows/system32/drivers/1394ohci.sys&quot;
+                      -- Key is like \Root\InventoryDriverBinary\"c:/windows/system32/drivers/1394ohci.sys"
                       Key.OSPath.Components[1] as EntryType,
 
-                      if(condition=get(member=&quot;FileId&quot;),
+                      if(condition=get(member="FileId"),
                          then=strip(string=FileId, prefix='0000'),
-                      else=if(condition=get(member=&quot;101&quot;),
+                      else=if(condition=get(member="101"),
                          then=strip(string=`101`, prefix='0000'),
-                      else=if(condition=get(member=&quot;DriverId&quot;),
+                      else=if(condition=get(member="DriverId"),
                          then=strip(string=DriverId, prefix='0000')))) as SHA1,
 
-                      if(condition=get(member=&quot;Name&quot;),
+                      if(condition=get(member="Name"),
                          then=Name,
-                      else=if(condition=get(member=&quot;FriendlyName&quot;),
+                      else=if(condition=get(member="FriendlyName"),
                          then=FriendlyName,
-                      else=if(condition=get(member=&quot;15&quot;),
+                      else=if(condition=get(member="15"),
                          then=split(string=str(str=`15`), sep='\\\\')[-1],
-                      else=if(condition=get(member=&quot;DriverName&quot;),
+                      else=if(condition=get(member="DriverName"),
                          then=DriverName)))) as EntryName,
 
-                      if(condition=get(member=&quot;LowerCaseLongPath&quot;),
+                      if(condition=get(member="LowerCaseLongPath"),
                           then=LowerCaseLongPath,
-                      else=if(condition=get(member=&quot;15&quot;),
+                      else=if(condition=get(member="15"),
                           then=`15`,
-                      else=if(condition=get(member=&quot;AddinCLSID&quot;),
+                      else=if(condition=get(member="AddinCLSID"),
                           then=AddinCLSID))) as EntryPath,
 
-                      if(condition=get(member=&quot;Publisher&quot;),
+                      if(condition=get(member="Publisher"),
                           then=Publisher,
-                      else=if(condition=get(member=&quot;Provider&quot;),
+                      else=if(condition=get(member="Provider"),
                           then=Provider,
-                      else=if(condition=get(member=&quot;DriverCompany&quot;),
+                      else=if(condition=get(member="DriverCompany"),
                           then=DriverCompany))) as Publisher,
 
-                      get(member=&quot;OriginalFileName&quot;) AS OriginalFileName,
+                      get(member="OriginalFileName") AS OriginalFileName,
 
-                      if(condition=get(member=&quot;BinaryType&quot;),
+                      if(condition=get(member="BinaryType"),
                          then=BinaryType,
-                      else=if(condition=get(member=&quot;AddInType&quot;),
+                      else=if(condition=get(member="AddInType"),
                          then=AddinType + ' ' + OfficeArchitecture,
                       else=if(condition=Key.OSPath.Path =~ 'InventoryDevicePnp',
                          then='DevicePnp',
@@ -194,12 +195,12 @@ sources:
                             then= EntryPath =~ PathRegex,
                             else= True)
             })
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.min.js?1693567183></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567183></script>
-<script src=/js/jquery.sticky.js?1693567183></script>
-<script src=/js/featherlight.min.js?1693567183></script>
-<script src=/js/highlight.min.js?1693567183></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567183></script>
-<script src=/js/learn.js?1693567183></script>
-<script src=/js/hugo-learn.js?1693567183></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.min.js?1693663120></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663120></script>
+<script src=/js/jquery.sticky.js?1693663120></script>
+<script src=/js/featherlight.min.js?1693663120></script>
+<script src=/js/highlight.min.js?1693663120></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663120></script>
+<script src=/js/learn.js?1693663120></script>
+<script src=/js/hugo-learn.js?1693663120></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.RemoteAccessVPN :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693567190 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693567190 rel=stylesheet><link href=/css/featherlight.min.css?1693567190 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693567190 rel=stylesheet><link href=/css/auto-complete.css?1693567190 rel=stylesheet><link href=/css/theme.css?1693567190 rel=stylesheet><link href=/css/tabs.css?1693567190 rel=stylesheet><link href=/css/hugo-theme.css?1693567190 rel=stylesheet><link href=/css/theme-mine.css?1693567190 rel=stylesheet><link href=/css/dark.css?1693567190 rel=stylesheet><link href=/css/syntax.css?1693567190 rel=stylesheet><link href=/css/light.css?1693567190 rel=stylesheet><link href=/css/hljs.css?1693567190 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693567190 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693567190></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.RemoteAccessVPN :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.eventlogs.remoteaccessvpn/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,7 +74,8 @@
 Remote Access Service server role.
 It is designed to assist in identifying VPN connections on organizations that
 are using Microsoft VPN service. It targets both server and client side logs.</p><p>This artifact parses EvtxHunter output and returns a set of fields in results.
-An unparsed data field is availible in the hidden _RawData field.</p><p>There are several parameter&rsquo;s available for search leveraging regex.</p><ul><li>ClientEvtxGlob glob of VPN Client EventLogs to target. Default to Application.evtx.</li><li>ServerEvtxGlob glob of VPN Server EventLogs to target. Default to System.evtx.</li><li>NPSLogsGlob glob of NPS Server Text Logs to target.</li><li>dateAfter enables search for events after this date.</li><li>dateBefore enables search for events before this date.</li><li>IocRegex enables regex search over the message field.</li><li>IgnoreRegex enables a regex whitelist for the Message field.</li><li>SearchVSS enables searching over VSS.</li></ul><pre><code class=language-yaml>name: Windows.EventLogs.RemoteAccessVPN
+An unparsed data field is availible in the hidden _RawData field.</p><p>There are several parameter&rsquo;s available for search leveraging regex.</p><ul><li>ClientEvtxGlob glob of VPN Client EventLogs to target. Default to Application.evtx.</li><li>ServerEvtxGlob glob of VPN Server EventLogs to target. Default to System.evtx.</li><li>NPSLogsGlob glob of NPS Server Text Logs to target.</li><li>dateAfter enables search for events after this date.</li><li>dateBefore enables search for events before this date.</li><li>IocRegex enables regex search over the message field.</li><li>IgnoreRegex enables a regex whitelist for the Message field.</li><li>SearchVSS enables searching over VSS.</li></ul><pre><code class=language-yaml>
+name: Windows.EventLogs.RemoteAccessVPN
 author: Théo Letailleur, Synacktiv 
 description: |
   This Artifact enables scoping EventLogs from Microsoft VPN, served by 
@@ -106,27 +107,27 @@ precondition: SELECT OS From info() where OS = 'windows'
 parameters:
   - name: ClientEvtxGlob
     default: '%SystemRoot%\System32\Winevt\Logs\Application.evtx'
-    description: &quot;EVTX file path glob where RAS Client logs are stored&quot;
+    description: "EVTX file path glob where RAS Client logs are stored"
   - name: ServerEvtxGlob
     default: '%SystemRoot%\System32\Winevt\Logs\System.evtx'
-    description: &quot;EVTX file path glob where RAS Server logs are stored&quot;
+    description: "EVTX file path glob where RAS Server logs are stored"
   - name: NPSLogsGlob
     default: '%SystemRoot%\System32\LogFiles\IN*'
   - name: IocRegex
     default: .
     type: regex
   - name: IgnoreRegex
-    description: &quot;Regex of string to whitelist&quot;
+    description: "Regex of string to whitelist"
     type: regex
   - name: SearchVSS
-    description: &quot;Add VSS into query.&quot;
+    description: "Add VSS into query."
     type: bool
   - name: DateAfter
     type: timestamp
-    description: &quot;search for events after this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events after this date. YYYY-MM-DDTmm:hh:ssZ"
   - name: DateBefore
     type: timestamp
-    description: &quot;search for events before this date. YYYY-MM-DDTmm:hh:ssZ&quot;
+    description: "search for events before this date. YYYY-MM-DDTmm:hh:ssZ"
 
 sources:
   - name: VPN Server
@@ -138,7 +139,7 @@ sources:
       LET extract_user(eventid, eventdata) =
                 if(condition=eventid=20271,then=format(format='''%v''', args=[eventdata[1]]), else=
                 if(condition=(eventid=20250 OR eventid=20253 OR eventid=20255 OR eventid=20272 OR eventid=20274),then=format(format='''%v''', args=[eventdata[2]]), else=
-                if(condition=eventid=20275,then=&quot;N/A&quot;)
+                if(condition=eventid=20275,then="N/A")
             ))      
     
       -- TunnelIP
@@ -184,15 +185,15 @@ sources:
               SELECT FullPath FROM glob(globs=expand(path=NPSLogsGlob))
            },
            query={
-               SELECT * from parse_csv(filename=FullPath, columns=[&quot;ComputerName&quot;,&quot;ServiceName&quot;,&quot;Record-Date&quot;,&quot;Record-Time&quot;,&quot;Packet-Type&quot;,&quot;User-Name&quot;,&quot;Fully-Qualified-Distinguished-Name&quot;,&quot;Called-Station-ID&quot;,&quot;Calling-Station-ID&quot;,&quot;Callback-Number&quot;,&quot;Framed-IP-Address&quot;,&quot;NAS-Identifier&quot;,&quot;NAS-IP-Address&quot;,&quot;NAS-Port&quot;,&quot;Client-Vendor&quot;,&quot;Client-IP-Address&quot;,&quot;Client-Friendly-Name&quot;,&quot;Event-Timestamp&quot;,&quot;Port-Limit&quot;,&quot;NAS-Port-Type&quot;,&quot;Connect-Info&quot;,&quot;Framed-Protocol&quot;,&quot;Service-Type&quot;,&quot;Authentication-Type&quot;,&quot;Policy-Name&quot;,&quot;Reason-Code&quot;,&quot;Class&quot;,&quot;Session-Timeout&quot;,&quot;Idle-Timeout&quot;,&quot;Termination-Action&quot;,&quot;EAP-Friendly-Name&quot;,&quot;Acct-Status-Type&quot;,&quot;Acct-Delay-Time&quot;,&quot;Acct-Input-Octets&quot;,&quot;Acct-Output-Octets&quot;,&quot;Acct-Session-Id&quot;,&quot;Acct-Authentic&quot;,&quot;Acct-Session-Time&quot;,&quot;Acct-Input-Packets&quot;,&quot;Acct-Output-Packets&quot;,&quot;Acct-Terminate-Cause&quot;,&quot;Acct-Multi-Ssn-ID&quot;,&quot;Acct-Link-Count&quot;,&quot;Acct-Interim-Interval&quot;,&quot;Tunnel-Type&quot;,&quot;Tunnel-Medium-Type&quot;,&quot;Tunnel-Client-Endpt&quot;,&quot;Tunnel-Server-Endpt&quot;,&quot;Acct-Tunnel-Conn&quot;,&quot;Tunnel-Pvt-Group-ID&quot;,&quot;Tunnel-Assignment-ID&quot;,&quot;Tunnel-Preference&quot;,&quot;MS-Acct-Auth-Type&quot;,&quot;MS-Acct-EAP-Type&quot;,&quot;MS-RAS-Version&quot;,&quot;MS-RAS-Vendor&quot;,&quot;MS-CHAP-Error&quot;,&quot;MS-CHAP-Domain&quot;,&quot;MS-MPPE-Encryption-Types&quot;,&quot;MS-MPPE-Encryption-Policy&quot;,&quot;Proxy-Policy-Name&quot;,&quot;Provider-Type&quot;,&quot;Provider-Name&quot;,&quot;Remote-Server-Address&quot;,&quot;MS-RAS-Client-Name&quot;,&quot;MS-RAS-Client-Version&quot;])
+               SELECT * from parse_csv(filename=FullPath, columns=["ComputerName","ServiceName","Record-Date","Record-Time","Packet-Type","User-Name","Fully-Qualified-Distinguished-Name","Called-Station-ID","Calling-Station-ID","Callback-Number","Framed-IP-Address","NAS-Identifier","NAS-IP-Address","NAS-Port","Client-Vendor","Client-IP-Address","Client-Friendly-Name","Event-Timestamp","Port-Limit","NAS-Port-Type","Connect-Info","Framed-Protocol","Service-Type","Authentication-Type","Policy-Name","Reason-Code","Class","Session-Timeout","Idle-Timeout","Termination-Action","EAP-Friendly-Name","Acct-Status-Type","Acct-Delay-Time","Acct-Input-Octets","Acct-Output-Octets","Acct-Session-Id","Acct-Authentic","Acct-Session-Time","Acct-Input-Packets","Acct-Output-Packets","Acct-Terminate-Cause","Acct-Multi-Ssn-ID","Acct-Link-Count","Acct-Interim-Interval","Tunnel-Type","Tunnel-Medium-Type","Tunnel-Client-Endpt","Tunnel-Server-Endpt","Acct-Tunnel-Conn","Tunnel-Pvt-Group-ID","Tunnel-Assignment-ID","Tunnel-Preference","MS-Acct-Auth-Type","MS-Acct-EAP-Type","MS-RAS-Version","MS-RAS-Vendor","MS-CHAP-Error","MS-CHAP-Domain","MS-MPPE-Encryption-Types","MS-MPPE-Encryption-Policy","Proxy-Policy-Name","Provider-Type","Provider-Name","Remote-Server-Address","MS-RAS-Client-Name","MS-RAS-Client-Version"])
            })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.min.js?1693567190></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693567190></script>
-<script src=/js/jquery.sticky.js?1693567190></script>
-<script src=/js/featherlight.min.js?1693567190></script>
-<script src=/js/highlight.min.js?1693567190></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693567190></script>
-<script src=/js/learn.js?1693567190></script>
-<script src=/js/hugo-learn.js?1693567190></script></body></html>
+</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.min.js?1693663126></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
+<script src=/js/jquery.sticky.js?1693663126></script>
+<script src=/js/featherlight.min.js?1693663126></script>
+<script src=/js/highlight.min.js?1693663126></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
+<script src=/js/learn.js?1693663126></script>
+<script src=/js/hugo-learn.js?1693663126></script></body></html>

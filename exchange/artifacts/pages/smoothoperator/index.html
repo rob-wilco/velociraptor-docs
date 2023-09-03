@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.SmoothOperator :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.SmoothOperator :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/smoothoperator/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -88,11 +88,11 @@ description: |
    
    Impacted 3CXDesktopApp:
    
-   - Windows: 18.12.407 & 18.12.416
-   - MacOS: 18.11.1213, 18.12.402, 18.12.407 & 18.12.416
+   - Windows: 18.12.407 &amp; 18.12.416
+   - MacOS: 18.11.1213, 18.12.402, 18.12.407 &amp; 18.12.416
    
    NOTE: artifact tested on 0.6.8 - should also work on on 0.6.7.  
-   Be aware that the YARA rules are intentionally written in a way that is less strict & may
+   Be aware that the YARA rules are intentionally written in a way that is less strict &amp; may
 
     1. detect other malicious samples created in the time frame in which the known malicious samples were created
     2. lead to some FPs
@@ -133,8 +133,8 @@ parameters:
                $op4 = { 44 0F B6 CD 46 8A 8C 0C ?? ?? ?? ?? 45 30 0C 0E 48 FF C1} /* xor part in RC4 decryption*/
              condition:
                uint16(0) == 0x5a4d
-               and filesize < 3MB 
-               and pe.characteristics & pe.DLL
+               and filesize &lt; 3MB 
+               and pe.characteristics &amp; pe.DLL
                and 2 of them
          }
 
@@ -157,7 +157,7 @@ parameters:
                $op5 = { f7 f3 03 d5 69 ca e8 03 00 00 ff 15 c9 0a 02 00 48 8d 44 24 30 45 33 c0 4c 8d 4c 24 38 48 89 44 24 20 }
             condition:
                uint16(0) == 0x5a4d and
-               filesize < 900KB and 3 of them
+               filesize &lt; 900KB and 3 of them
                or 5 of them
          }
 
@@ -233,8 +233,8 @@ parameters:
                $sc1 = { 1B 66 11 DF 9C 9A 4D 6E CC 8E D5 0C 9B 91 78 73 } // Known compromised cert
             condition:
                uint16(0) == 0x5a4d
-               and pe.timestamp > 1669680000 // 29.11.2022 earliest known malicious sample 
-               and pe.timestamp < 1680108505 // 29.03.2023 date of the report
+               and pe.timestamp &gt; 1669680000 // 29.11.2022 earliest known malicious sample 
+               and pe.timestamp &lt; 1680108505 // 29.03.2023 date of the report
                and all of ($sa*)
                and $sc1 // serial number of known compromised certificate
          }
@@ -359,7 +359,7 @@ parameters:
                  $op1 = { 31 C0 41 80 34 06 ?? 48 FF C0 48 83 F8 ?? 75 ?? BE ?? ?? ?? ?? BA ?? ?? ?? ?? 4C 89 F7 48 89 D9 E8 ?? ?? ?? ?? 48 89 DF E8 ?? ?? ?? ?? 48 89 DF E8 ?? ?? ?? ?? 4C 89 F7 5B 41 5E 41 5F E9 ?? ?? ?? ?? 5B 41 5E 41 5F C3} /* string decryption */
                  $op2 = { 0F 11 84 24 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 29 84 24 ?? ?? ?? ?? 0F 28 05 ?? ?? ?? ?? 0F 29 84 24 ?? ?? ?? ?? 31 C0 80 B4 04 ?? ?? ?? ?? ?? 48 FF C0} /* string decryption */
              condition:
-               ( uint16(0) == 0xfeca and filesize < 6MB
+               ( uint16(0) == 0xfeca and filesize &lt; 6MB
                   and
                   (
                      ( 1 of ($sa*) and 1 of ($op* ) )
@@ -422,12 +422,12 @@ column_types:
   - name: HitContext
     type: preview_upload
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Events.SysmonRegistry :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Events.SysmonRegistry :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/sysmonregistry/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -92,7 +92,7 @@ description: |
     * FilterProcess - a regex to filter out Image field - 
     e.g ```C:\\Windows\\regedit\.exe$```.  
     * Details - a description of the Detection.   
-    * ATT&CK - a MITRE ATT&CK reference.  
+    * ATT&amp;CK - a MITRE ATT&amp;CK reference.  
     
   Note: This artifact may be impacted by your Sysmon configuration. 
   Generally it is more efficient to filter at the kernel level via Sysmon 
@@ -104,7 +104,7 @@ parameters:
   - name: KeyRegex
     type: csv
     default: |
-        Regex,FilterRegex,FilterProcess,Details,ATT&CK
+        Regex,FilterRegex,FilterProcess,Details,ATT&amp;CK
         CurrentVersion\\Run,,,"Windows: Wildcard for Run keys, including RunOnce, RunOnceEx, RunServices, RunServicesOnce [Also covers terminal server] ",T1060
         Policies\\Explorer\\Run,,,Windows: Alternate runs keys | Credit @ion-storm,T1060
         Group Policy\\Scripts,,,Windows: Group policy scripts,T1484
@@ -118,7 +118,7 @@ parameters:
         ^HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\Userinit,,,Windows: Autorun location [ https://www.cylance.com/windows-registry-persistence-part-2-the-run-keys-and-search-order ],
         ^HKLM\\Software\\WOW6432Node\\Microsoft\\Windows NT\\CurrentVersion\\Drivers32,,,Windows: Legacy driver loading | Credit @ion-storm ,
         ^HKLM\\SYSTEM\\CurrentControlSet\\Control\\Session Manager\\BootExecute,,,Windows: Autorun | Credit @ion-storm | [ https://www.cylance.com/windows-registry-persistence-part-2-the-run-keys-and-search-order ],
-        ^HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug,,,Windows: Automatic program crash debug program [ https://www.symantec.com/security_response/writeup.jsp?docid=2007-050712-5453-99&tabid=2 ],
+        ^HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\AeDebug,,,Windows: Automatic program crash debug program [ https://www.symantec.com/security_response/writeup.jsp?docid=2007-050712-5453-99&amp;tabid=2 ],
         UserInitMprLogonScript,,,Windows: Legacy logon script environment variable [ http://www.hexacorn.com/blog/2014/11/14/beyond-good-ol-run-key-part-18/ ],
         user shell folders\\startup$,,,Monitor changes to Startup folder location for monitoring evasion | Credit @SBousseaden,T1112
         \\ServiceDll$,,,Windows: Points to a service's DLL [ https://blog.cylance.com/windows-registry-persistence-part-1-introduction-attack-phases-and-windows-services ],T1031|T1050
@@ -137,7 +137,7 @@ parameters:
         exefile,,,"Windows Executable handler, to log any changes not already monitored",T1042
         \\InprocServer32\\(Default)$,,,Windows:COM Object Hijacking [ https://blog.gdatasoftware.com/2014/10/23941-com-object-hijacking-the-discreet-way-of-persistence ] | Credit @ion-storm,T1122
         \\Hidden$,,,"Windows:Explorer: Some types of malware try to hide their hidden system files from the user, good signal event ",T1158
-        \\ShowSuperHidden$,,,"Windows:Explorer: Some types of malware try to hide their hidden system files from the user, good signal event [ Example: https://www.symantec.com/security_response/writeup.jsp?docid=2007-061811-4341-99&tabid=2 ]",T1158
+        \\ShowSuperHidden$,,,"Windows:Explorer: Some types of malware try to hide their hidden system files from the user, good signal event [ Example: https://www.symantec.com/security_response/writeup.jsp?docid=2007-061811-4341-99&amp;tabid=2 ]",T1158
         \\HideFileExt$,,,Windows:Explorer: Some malware hides file extensions to make diagnosis/disinfection more daunting to novice users ,T1158
         Classes\\*\\,,,Windows:Explorer: [ http://www.silentrunners.org/launchpoints.html ] ,
         Classes\\AllFilesystemObjects\\,,,Windows:Explorer: [ http://www.silentrunners.org/launchpoints.html ] ,
@@ -223,7 +223,7 @@ sources:
       SELECT *, process_tracker_callchain(id=ProcessInfo.ProcessId).Data as ProcessChain
       FROM foreach(row=hits, query={
           SELECT EventTime,EventId,EventType,TargetObject,Value,ProcessInfo,
-            dict(Regex=Regex,FilterRegex=FilterRegex,FilterProcess=FilterProcess,Details=Details,`ATT&CK`=`ATT&CK`) as Detection
+            dict(Regex=Regex,FilterRegex=FilterRegex,FilterProcess=FilterProcess,Details=Details,`ATT&amp;CK`=`ATT&amp;CK`) as Detection
           FROM KeyRegex
           WHERE TargetObject =~ Regex
             AND NOT if(condition= FilterProcess,
@@ -234,12 +234,12 @@ sources:
                         else= False)
       })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

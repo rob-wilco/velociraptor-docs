@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.Applications.MRU :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663118 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663118 rel=stylesheet><link href=/css/featherlight.min.css?1693663118 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663118 rel=stylesheet><link href=/css/auto-complete.css?1693663118 rel=stylesheet><link href=/css/theme.css?1693663118 rel=stylesheet><link href=/css/tabs.css?1693663118 rel=stylesheet><link href=/css/hugo-theme.css?1693663118 rel=stylesheet><link href=/css/theme-mine.css?1693663118 rel=stylesheet><link href=/css/dark.css?1693663118 rel=stylesheet><link href=/css/syntax.css?1693663118 rel=stylesheet><link href=/css/light.css?1693663118 rel=stylesheet><link href=/css/hljs.css?1693663118 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663118 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663118></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.Applications.MRU :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741809 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741809 rel=stylesheet><link href=/css/featherlight.min.css?1693741809 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741809 rel=stylesheet><link href=/css/auto-complete.css?1693741809 rel=stylesheet><link href=/css/theme.css?1693741809 rel=stylesheet><link href=/css/tabs.css?1693741809 rel=stylesheet><link href=/css/hugo-theme.css?1693741809 rel=stylesheet><link href=/css/theme-mine.css?1693741809 rel=stylesheet><link href=/css/dark.css?1693741809 rel=stylesheet><link href=/css/syntax.css?1693741809 rel=stylesheet><link href=/css/light.css?1693741809 rel=stylesheet><link href=/css/hljs.css?1693741809 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741809 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741809></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/macos.applications.mru/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -88,7 +88,7 @@ parameters:
 
 export: |
         -- Parser for MAC Bookmark format
-        LET type_lookup <= dict(
+        LET type_lookup &lt;= dict(
            `0x100`="__DataString",
            `0x200`="__DataData",
            `0x300`="__DataUint32",
@@ -100,7 +100,7 @@ export: |
            `0x900`="__DataURL"
            )
 
-        LET MRULookup <= dict(
+        LET MRULookup &lt;= dict(
            `0x2040`="Volume Bookmark",
            `0x2002`="Volume Path",
            `0x2020`="Volume Flags",
@@ -130,8 +130,8 @@ export: |
           }],
           ["Size", 4, "uint32"],
           ["HeaderSize", 12, "uint32"],
-          ["TOCOffset", "x=>x.HeaderSize", "uint32"],
-          ["TOC", "x=>x.TOCOffset + x.HeaderSize", "TOC"]
+          ["TOCOffset", "x=&gt;x.HeaderSize", "uint32"],
+          ["TOC", "x=&gt;x.TOCOffset + x.HeaderSize", "TOC"]
          ]],
          ["TOC", 0, [
           ["SizeOfTOC", 0, "uint32"],
@@ -141,19 +141,19 @@ export: |
           ["TOCCount", 16, "uint32"],
           ["Items", 20, "Array", {
               type: "TOCItem",
-              count: "x=>x.TOCCount",
+              count: "x=&gt;x.TOCCount",
           }]
          ]],
          ["__TOCArrayPtr", 4, [
           ["Offset", 0, "uint32"],
           ["Item", 0, "Profile", {
             type: "TOCValue",
-            offset: "x=>x.Offset + 48"
+            offset: "x=&gt;x.Offset + 48"
            }]
          ]],
          ["TOCValue", 0, [
            ["MyOffset", 0, "Value", {
-               value: "x=>x.StartOf",
+               value: "x=&gt;x.StartOf",
            }],
            ["length", 0, "uint32"],
            ["subtype", 4, "BitField", {
@@ -167,38 +167,38 @@ export: |
                end_bit: 32,
             }],
             ["data", 0, "Value", {
-               value: "x=>get(item=x, field=get(item=type_lookup, field=format(format='%#x', args=x.data_type)))",
+               value: "x=&gt;get(item=x, field=get(item=type_lookup, field=format(format='%#x', args=x.data_type)))",
             }],
             ["__DataString", 8, "String", {
-               length: "x=>x.length",
+               length: "x=&gt;x.length",
                term: "",
             }],
             ["__DataData", 0, "Value", {
-               value: "x=>format(format='%x', args=x.__DataStr)",
+               value: "x=&gt;format(format='%x', args=x.__DataStr)",
             }],
             ["__DataDateFloat", 8, "float64be"],
             ["__DataDate", 0, "Value", {
-               value: "x=>timestamp(cocoatime=x.__DataDateFloat)",
+               value: "x=&gt;timestamp(cocoatime=x.__DataDateFloat)",
             }],
             ["__DataUint32", 8, "uint32"],
             ["__DataBool", 0, "Value", {
-                value: "x=>if(condition=x.subtype, then=TRUE, else=FALSE)",
+                value: "x=&gt;if(condition=x.subtype, then=TRUE, else=FALSE)",
             }],
             ["__DataURL", 0, "Value", {
-               value: "x=>x.__DataString",
+               value: "x=&gt;x.__DataString",
             }],
             ["__DataArrayOffsets", 8, "Array", {
-               count: "x=>x.length / 4",
+               count: "x=&gt;x.length / 4",
                type: "__TOCArrayPtr"
             }],
             ["__DataArray", 0, "Value", {
-               value: "x=>x.__DataArrayOffsets.Item.data",
+               value: "x=&gt;x.__DataArrayOffsets.Item.data",
             }],
          ]],
          ["TOCItem", 12, [
            ["ID", 0, "uint32"],
            ["Offset", 4, "uint32"],
-           ["TOCValue", "x=>x.Offset + 48 - x.StartOf", "TOCValue"],
+           ["TOCValue", "x=&gt;x.Offset + 48 - x.StartOf", "TOCValue"],
          ]]
         ]
         '''
@@ -235,12 +235,12 @@ sources:
           })
         })
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663118></script>
-<script src=/js/perfect-scrollbar.min.js?1693663118></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663118></script>
-<script src=/js/jquery.sticky.js?1693663118></script>
-<script src=/js/featherlight.min.js?1693663118></script>
-<script src=/js/highlight.min.js?1693663118></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663118></script>
-<script src=/js/learn.js?1693663118></script>
-<script src=/js/hugo-learn.js?1693663118></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741809></script>
+<script src=/js/perfect-scrollbar.min.js?1693741809></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741809></script>
+<script src=/js/jquery.sticky.js?1693741809></script>
+<script src=/js/featherlight.min.js?1693741809></script>
+<script src=/js/highlight.min.js?1693741809></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741809></script>
+<script src=/js/learn.js?1693741809></script>
+<script src=/js/hugo-learn.js?1693741809></script></body></html>

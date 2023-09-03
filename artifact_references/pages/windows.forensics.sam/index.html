@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.SAM :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663121 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663121 rel=stylesheet><link href=/css/featherlight.min.css?1693663121 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663121 rel=stylesheet><link href=/css/auto-complete.css?1693663121 rel=stylesheet><link href=/css/theme.css?1693663121 rel=stylesheet><link href=/css/tabs.css?1693663121 rel=stylesheet><link href=/css/hugo-theme.css?1693663121 rel=stylesheet><link href=/css/theme-mine.css?1693663121 rel=stylesheet><link href=/css/dark.css?1693663121 rel=stylesheet><link href=/css/syntax.css?1693663121 rel=stylesheet><link href=/css/light.css?1693663121 rel=stylesheet><link href=/css/hljs.css?1693663121 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663121 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663121></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.SAM :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741810 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741810 rel=stylesheet><link href=/css/featherlight.min.css?1693741810 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741810 rel=stylesheet><link href=/css/auto-complete.css?1693741810 rel=stylesheet><link href=/css/theme.css?1693741810 rel=stylesheet><link href=/css/tabs.css?1693741810 rel=stylesheet><link href=/css/hugo-theme.css?1693741810 rel=stylesheet><link href=/css/theme-mine.css?1693741810 rel=stylesheet><link href=/css/dark.css?1693741810 rel=stylesheet><link href=/css/syntax.css?1693741810 rel=stylesheet><link href=/css/light.css?1693741810 rel=stylesheet><link href=/css/hljs.css?1693741810 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741810 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741810></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.forensics.sam/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -124,63 +124,63 @@ export: |
         }],
         ["__username_offset", 12, "uint32"],
         ["__username_length", 16, "uint32"],
-        ["username", "x=>x.__username_offset + 0xcc", "String", {
-            "length": "x=>x.__username_length",
+        ["username", "x=&gt;x.__username_offset + 0xcc", "String", {
+            "length": "x=&gt;x.__username_length",
             "encoding": "utf16",
         }],
         ["__fullname_offset", 24, "uint32"],
         ["__fullname_length", 28, "uint32"],
-        ["fullname", "x=>x.__fullname_offset + 0xcc", "String", {
-            "length": "x=>x.__fullname_length",
+        ["fullname", "x=&gt;x.__fullname_offset + 0xcc", "String", {
+            "length": "x=&gt;x.__fullname_length",
             "encoding": "utf16",
         }],
         ["__comment_offset", 36, "uint32"],
         ["__comment_length", 40, "uint32"],
-        ["comment", "x=>x.__comment_offset + 0xcc", "String", {
+        ["comment", "x=&gt;x.__comment_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__comment_length",
+            length: "x=&gt;x.__comment_length",
         }],
 
         ["__driveletter_offset", 84, "uint32"],
         ["__driveletter_length", 88, "uint32"],
-        ["driveletter", "x=>x.__driveletter_offset + 0xcc", "String", {
+        ["driveletter", "x=&gt;x.__driveletter_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__driveletter_length",
+            length: "x=&gt;x.__driveletter_length",
         }],
 
         ["__logon_script_offset", 96, "uint32"],
         ["__logon_script_length", 100, "uint32"],
-        ["logon_script", "x=>x.__logon_script_offset + 0xcc", "String", {
+        ["logon_script", "x=&gt;x.__logon_script_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__logon_script_length",
+            length: "x=&gt;x.__logon_script_length",
         }],
 
         ["__profile_path_offset", 108, "uint32"],
         ["__profile_path_length", 112, "uint32"],
-        ["profile_path", "x=>x.__profile_path_offset + 0xcc", "String", {
+        ["profile_path", "x=&gt;x.__profile_path_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__profile_path_length",
+            length: "x=&gt;x.__profile_path_length",
         }],
 
         ["__workstation_offset", 120, "uint32"],
         ["__workstation_length", 124, "uint32"],
-        ["workstation", "x=>x.__workstation_offset + 0xcc", "String", {
+        ["workstation", "x=&gt;x.__workstation_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__workstation_length",
+            length: "x=&gt;x.__workstation_length",
         }],
 
         ["__lmpwd_hash_offset", 156, "uint32"],
         ["__lmpwd_hash_length", 160, "uint32"],
-        ["lmpwd_hash", "x=>x.__lmpwd_hash_offset + 0xcc", "String", {
+        ["lmpwd_hash", "x=&gt;x.__lmpwd_hash_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__lmpwd_hash_length",
+            length: "x=&gt;x.__lmpwd_hash_length",
         }],
 
         ["__ntpwd_hash_offset", 168, "uint32"],
         ["__ntpwd_hash_length", 172, "uint32"],
-        ["ntpwd_hash", "x=>x.__ntpwd_hash_offset + 0xcc", "String", {
+        ["ntpwd_hash", "x=&gt;x.__ntpwd_hash_offset + 0xcc", "String", {
             encoding: "utf16",
-            length: "x=>x.__ntpwd_hash_length",
+            length: "x=&gt;x.__ntpwd_hash_length",
         }]
        ]]
      ]
@@ -212,12 +212,12 @@ column_types:
   - name: V
     type: hex
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663121></script>
-<script src=/js/perfect-scrollbar.min.js?1693663121></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663121></script>
-<script src=/js/jquery.sticky.js?1693663121></script>
-<script src=/js/featherlight.min.js?1693663121></script>
-<script src=/js/highlight.min.js?1693663121></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663121></script>
-<script src=/js/learn.js?1693663121></script>
-<script src=/js/hugo-learn.js?1693663121></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741810></script>
+<script src=/js/perfect-scrollbar.min.js?1693741810></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741810></script>
+<script src=/js/jquery.sticky.js?1693741810></script>
+<script src=/js/featherlight.min.js?1693741810></script>
+<script src=/js/highlight.min.js?1693741810></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741810></script>
+<script src=/js/learn.js?1693741810></script>
+<script src=/js/hugo-learn.js?1693741810></script></body></html>

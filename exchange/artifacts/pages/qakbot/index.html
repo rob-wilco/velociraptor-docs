@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.Qakbot :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Carving.Qakbot :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/qakbot/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -211,7 +211,7 @@ parameters:
                 $sequence_37 = { 01c1 894c2404 8b442404 8d65fc }
                 $sequence_38 = { 01c1 21d1 8a442465 f6642465 }
             condition:
-                7 of them and filesize < 1168384
+                7 of them and filesize &lt; 1168384
         }
 
     
@@ -239,7 +239,7 @@ sources:
                     list=split(sep='\x00',string=xor(key=data[Index],string=_value)),
                     regex="^[ -~]{2,}$" ) as String
             FROM foreach(row=data[Index:])
-            WHERE len(list=String) > 2 
+            WHERE len(list=String) &gt; 2 
                 AND NOT String =~ '^\\s+$'
         })
             
@@ -293,7 +293,7 @@ sources:
       LET target_files = SELECT OSPath, Size,
                 Mtime, Btime, Ctime, Atime 
         FROM glob(globs=TargetGlob)
-        WHERE NOT IsDir AND Size > 0
+        WHERE NOT IsDir AND Size &gt; 0
         
       -- search for qakbot in scoped files
       LET file_payloads = SELECT * FROM foreach(row= target_files,
@@ -391,24 +391,24 @@ sources:
              ["Qakbot1", 0, [
                ["Method1", 0, "Array",
                      {  "type": "Entry","count": 200,
-                        "sentinel": "x=>x.C2 = '0.0.0.0:0'"
+                        "sentinel": "x=&gt;x.C2 = '0.0.0.0:0'"
                      }],
                ]],
               ["Entry", 8, [
                ["__IP", 1, "uint32"],
                ["__PORT", 5, "uint16b"],
-               ['C2',0,'Value',{'value':"x=>format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
+               ['C2',0,'Value',{'value':"x=&gt;format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
              ]],
              ["Qakbot2", 0, [
                ["Method2", 0, "Array",
                      {  "type": "Entry2", "count": 200,
-                        "sentinel": "x=>x.C2 = '0.0.0.0:0'"
+                        "sentinel": "x=&gt;x.C2 = '0.0.0.0:0'"
                      }],
                ]],
               ["Entry2", 7, [
                ["__IP", 1, "uint32"],
                ["__PORT", 5, "uint16b"],
-               ['C2',0,'Value',{'value':"x=>format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
+               ['C2',0,'Value',{'value':"x=&gt;format(format='%s:%d', args=[ip(netaddr4_le=x.__IP),x.__PORT])"}],
              ]]
            ]'''
            
@@ -417,8 +417,8 @@ sources:
             Campaign.Key as Key,
             parse_string_with_regex(string=Campaign.Data,
                 regex=[
-                        '''3=(?P<timestamp>[ -~]*)\r\n''',
-                        '''10=(?P<name>[ -~]*)\r\n'''
+                        '''3=(?P&lt;Timestamp&gt;[ -~]*)\r\n''',
+                        '''10=(?P&lt;Name&gt;[ -~]*)\r\n'''
                     ]) as Campaign,
             parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct="Qakbot1").Method1['C2'] as _C2method1,
             parse_binary(filename=_C2Raw,accessor='data', profile=PROFILE, struct="Qakbot2").Method2['C2'] as _C2method2
@@ -433,12 +433,12 @@ sources:
                 find_c2(methods=[_C2method1,_C2method2])[0].C2 as C2
             FROM results
         }, exclude=["_C2method1","_C2method2","_C2Raw","Resources"])
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

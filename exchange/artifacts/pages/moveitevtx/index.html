@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.MoveIt :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.MoveIt :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/moveitevtx/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -75,7 +75,7 @@ Transfer. It is designed to assist in identifying exfiltration resulting from
 the exploitation of CVE-2023-34362</p><p>This artifact parses EvtxHunter output and returns a set of fields in results.
 An unparsed data field is availible in the hidden _RawData field.</p><p>There are several parameter&rsquo;s available for search leveraging regex.</p><ul><li>EvtxGlob glob of EventLogs to target. Default to MoveIt.evtx but can be targeted.</li><li>dateAfter enables search for events after this date.</li><li>dateBefore enables search for events before this date.</li><li>IocRegex enables regex search over the message field.</li><li>IgnoreRegex enables a regex whitelist for the Message field.</li><li>IdRegex enables a regex query to select specific event Ids.</li><li>SearchVSS enables searching over VSS.</li></ul><p>NOTE: MoveIT event logging may not be turned on by default.</p><pre><code class=language-yaml>
 name:  Windows.EventLogs.MoveIt
-author: Rapid7 team -  Ted Samuels, @mgreen27 & @scudette
+author: Rapid7 team -  Ted Samuels, @mgreen27 &amp; @scudette
 description: |
   This Artifact enables scoping EventLogs from Progress Software's MoveIT File 
   Transfer. It is designed to assist in identifying exfiltration resulting from
@@ -135,7 +135,7 @@ sources:
                   regex_replace(re="^\\s+|\\s+$", replace="", source=split(sep=":", string=Column0)[1]) AS _value
            FROM split_records(accessor="data", filenames=X, regex="\r\n")
            WHERE Column0 =~ "^[a-zA-Z0-9]+:"
-        }) +  parse_string_with_regex(regex="User '(?P<user>[^']+)'", string=X)
+        }) +  parse_string_with_regex(regex="User '(?P&lt;User&gt;[^']+)'", string=X)
 
       SELECT EventTime,Computer,Channel,Provider,EventID,EventRecordID,
         Parse(X=split(string=EventData.Data[0],sep="\r\n\r\n")[1]) as EventData,
@@ -152,12 +152,12 @@ sources:
                         SearchVSS=SearchVSS )
 
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

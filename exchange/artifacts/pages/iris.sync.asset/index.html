@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>IRIS.Sync.Asset :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>IRIS.Sync.Asset :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741810 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741810 rel=stylesheet><link href=/css/featherlight.min.css?1693741810 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741810 rel=stylesheet><link href=/css/auto-complete.css?1693741810 rel=stylesheet><link href=/css/theme.css?1693741810 rel=stylesheet><link href=/css/tabs.css?1693741810 rel=stylesheet><link href=/css/hugo-theme.css?1693741810 rel=stylesheet><link href=/css/theme-mine.css?1693741810 rel=stylesheet><link href=/css/dark.css?1693741810 rel=stylesheet><link href=/css/syntax.css?1693741810 rel=stylesheet><link href=/css/light.css?1693741810 rel=stylesheet><link href=/css/hljs.css?1693741810 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741810 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741810></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/iris.sync.asset/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -90,7 +90,7 @@ description: |
    
    ```VQL
    SELECT server_set_metadata(IrisURL="https://dfir-iris.local:4433",IrisKey="This-is-an_API_KEY",IrisCaseId="1",IrisRootCA='''-----BEGIN CERTIFICATE-----
-   <...>
+   &lt;...&gt;
    -----END CERTIFICATE-----'''),server_metadata() FROM scope()
    ```
    
@@ -143,7 +143,7 @@ parameters:
 sources:
   - query: |
       
-      LET URL <= if(
+      LET URL &lt;= if(
             condition=IrisURL,
             then=IrisURL,
             else=server_metadata().IrisURL)
@@ -151,11 +151,11 @@ sources:
            condition=IrisKey,
            then=IrisKey,
            else=server_metadata().IrisKey)
-      LET CaseID <= if(
+      LET CaseID &lt;= if(
            condition=IrisCaseId,
            then=IrisCaseId,
            else=server_metadata().IrisCaseId)
-      LET RootCA <= if(
+      LET RootCA &lt;= if(
             condition=IrisRootCA,
             then=IrisRootCA,
             else=server_metadata().IrisRootCA)
@@ -182,8 +182,8 @@ sources:
             {SELECT `Network Info` FROM flow_results(client_id=clientId,flow_id=last_interrogate_flow_id,artifact="Generic.Client.Info/WindowsInfo")} as NetworkInfo
         FROM clients(client_id=clientId)
         
-      LET primaryIP = SELECT parse_string_with_regex(string=if(condition=NetworkInfo[0],then=NetworkInfo[0].IPAddresses,else=NetworkInfo.IPAddresses),regex="(?P<ip>[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})").IP as PrimaryIPv4Address FROM resolveIPs
-      LET networkInterfaces = SELECT parse_string_with_regex(string=NetworkInfo.Caption,regex="^\\[.*\\] (?P<if>.*)").IF as NetworkInterface,
+      LET primaryIP = SELECT parse_string_with_regex(string=if(condition=NetworkInfo[0],then=NetworkInfo[0].IPAddresses,else=NetworkInfo.IPAddresses),regex="(?P&lt;IP&gt;[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3})").IP as PrimaryIPv4Address FROM resolveIPs
+      LET networkInterfaces = SELECT parse_string_with_regex(string=NetworkInfo.Caption,regex="^\\[.*\\] (?P&lt;IF&gt;.*)").IF as NetworkInterface,
                             NetworkInfo.IPAddresses as IPAddresses, NetworkInfo.MACAddress as MACAddress FROM flatten(query=resolveIPs)
       LET networkInterfacesDescription = SELECT join(array=array(a1={
                                             SELECT format(format="%v (%v): %v",args=[NetworkInterface,MACAddress,IPAddresses]) FROM networkInterfaces}),
@@ -210,7 +210,7 @@ sources:
                             ,format="json"
                         )
                                                     
-      LET apiRequestIrisAdd = if(condition=config.version.version < "0.6.9",
+      LET apiRequestIrisAdd = if(condition=config.version.version &lt; "0.6.9",
             then={ SELECT *,if(condition=parse_json(data=Content).data.asset_id,
                         then={SELECT addMetadata(assetIdValue=format(format="%v",args=parse_json(data=Content).data.asset_id)),
                                       label(client_id=clientId,op="set",labels="IRIS"),
@@ -238,7 +238,7 @@ sources:
                         method="POST",
                         url=format(format="%v/case/assets/add?cid=%v", args=[URL,CaseID])) })
      
-      LET apiRequestIrisGet(assetId) = if(condition=config.version.version < "0.6.9",
+      LET apiRequestIrisGet(assetId) = if(condition=config.version.version &lt; "0.6.9",
             then={ SELECT parse_json(data=Content),parse_json(data=Content).data.asset_name as asset_name,parse_json(data=Content).data.asset_type_id as asset_type_id,
                 parse_json(data=Content).data.analysis_status_id as analysis_status_id,parse_json(data=Content).data.asset_tags as asset_tags,
                 parse_json(data=Content).data.linked_ioc as linked_ioc,parse_json(data=Content).data.custom_attributes as custom_attributes,
@@ -271,7 +271,7 @@ sources:
                             ,format="json"
                         )
                         
-      LET apiRequestIrisUpdate(currentAsset,assetId) = if(condition=config.version.version < "0.6.9",
+      LET apiRequestIrisUpdate(currentAsset,assetId) = if(condition=config.version.version &lt; "0.6.9",
             then={ SELECT *,if(condition= Response=200,
                         then={SELECT addMetadata(assetIdValue=format(format="%v",args=parse_json(data=Content).data.asset_id)),
                                       label(client_id=clientId,op="set",labels="IRIS"),
@@ -304,7 +304,7 @@ sources:
       
       
       SELECT * FROM if(condition= metadata_preparation,
-        then = {SELECT "Already Added -> Update labels and compromise status in IRIS" as Action,if(condition= apiRequestIrisUpdate.Response=200,then="SUCCESS",else="ERROR") as Result,
+        then = {SELECT "Already Added -&gt; Update labels and compromise status in IRIS" as Action,if(condition= apiRequestIrisUpdate.Response=200,then="SUCCESS",else="ERROR") as Result,
                 parse_json(data=apiRequestIrisUpdate.Content).data as AssetProperties,
                 apiRequestIrisUpdate.applyLabels[0].`addMetadata(assetIdValue=format(format="%v", args=parse_json(data=Content).data.asset_id))`[0].`client_metadata(client_id=clientId)`.IRIS_AssetId as IRIS_AssetId,
                 apiRequestIrisUpdate as _rawEvent FROM updateAsset},
@@ -313,12 +313,12 @@ sources:
                 apiRequestIrisAdd.applyLabels[0].`addMetadata(assetIdValue=format(format="%v", args=parse_json(data=Content).data.asset_id))`[0].`client_metadata(client_id=clientId)`.IRIS_AssetId as IRIS_AssetId,
                 apiRequestIrisAdd as _rawEvent FROM addAsset})
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
-<script src=/js/perfect-scrollbar.min.js?1693663124></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
-<script src=/js/jquery.sticky.js?1693663124></script>
-<script src=/js/featherlight.min.js?1693663124></script>
-<script src=/js/highlight.min.js?1693663124></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
-<script src=/js/learn.js?1693663124></script>
-<script src=/js/hugo-learn.js?1693663124></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741810></script>
+<script src=/js/perfect-scrollbar.min.js?1693741810></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741810></script>
+<script src=/js/jquery.sticky.js?1693741810></script>
+<script src=/js/featherlight.min.js?1693741810></script>
+<script src=/js/highlight.min.js?1693741810></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741810></script>
+<script src=/js/learn.js?1693741810></script>
+<script src=/js/hugo-learn.js?1693741810></script></body></html>

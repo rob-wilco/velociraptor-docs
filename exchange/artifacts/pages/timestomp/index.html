@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.Timestomp :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.NTFS.Timestomp :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/timestomp/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -134,14 +134,14 @@ sources:
         --WHERE NOT IsDir
       
       -- if MZ files collect shimcache to compare modification time
-      LET shimcache <= SELECT * 
+      LET shimcache &lt;= SELECT * 
         FROM if(condition= ShimcacheTest,
             then= { SELECT Name, ModificationTime FROM Artifact.Windows.Registry.AppCompatCache() })
       LET shimcache_mtime(target) = SELECT Name, ModificationTime FROM shimcache 
         WHERE Name = target 
         ORDER BY ModificationTime
       
-      LET i30 <= SELECT * FROM if(condition= I30Test,
+      LET i30 &lt;= SELECT * FROM if(condition= I30Test,
             then= { 
                 SELECT * FROM foreach(
                     row={ 
@@ -159,19 +159,150 @@ sources:
       LET find_i30_slack(inode,folder,filenames,mtime,ctime,slackcheck) = SELECT * FROM i30 
         WHERE MFTId = str(str=inode) OR ( split(sep_string='''\\.\''',string=FullPath)[1] = folder AND Name in filenames) 
             AND if(condition= slackcheck,
-                then= ( Mtime > mtime OR Btime > btime ) AND IsSlack,
+                then= ( Mtime &gt; mtime OR Btime &gt; btime ) AND IsSlack,
                 else= True )
                 
       LET base_results = SELECT 
             OSPath,
             dict(Created0x10=Created0x10,Created0x30=Created0x30) as CreatedTimestamps,
             InUse,
-            SI_Lt_FN as `SI<fn`,useczeros, if(condition=PE.FileHeader.TimeDateStamp, then="if(condition=" lastmodified0x10 < pe.fileheader.timedatestamp or lastaccess0x10 < pe.fileheader.timedatestamp or lastrecordchange0x10 < pe.fileheader.timedatestamp or created0x10 < pe.fileheader.timedatestamp, then=True, else=False), else=N/A ) as suspiciouscompiletime, parse_ntfs(mft=EntryNumber, device=MFTDrive ) as ntfsmetadata, magic, if(condition=PE, then="PE,else='N/A')" as pe, created0x10,lastmodified0x10,filenames,entrynumber, if(condition="Magic=~'^PE'" and not magic=~ '\(dll\)', then="if(condition=" lastmodified0x10 < shimcache_mtime(target="str(str=OSPath))[0].ModificationTime," then=True, else=False), else=N/A ) as suspiciousshimcache, if(condition="Magic=~'^PE'" and not magic=~ '\(dll\)', then="shimcache_mtime(target=str(str=OSPath))[0]," else=N/A ) as shimcache, if(condition="find_i30_slack(inode=EntryNumber,folder=dirname(path=OSPath),filenames=FileNames,mtime=LastModified0x10,ctime=Created0x10,slackcheck=True)," then=True, else=False ) as suspiciousi30, find_i30_slack(inode="EntryNumber,folder=dirname(path=OSPath),filenames=FileNames,mtime=LastModified0x10,ctime=Created0x10,slackcheck=False)" as i30 from mft_entries let results=SELECT * from if(condition=ShimcacheTest and i30test and outputpeinfo, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousshimcache, suspiciousi30, ntfsmetadata, magic, shimcache, i30, pe from base_results }, else="if(condition=" shimcachetest and i30test, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousshimcache, suspiciousi30, ntfsmetadata, magic, shimcache, i30 from base_results }, else="if(condition=" shimcachetest and outputpeinfo, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousshimcache, ntfsmetadata, magic, shimcache, pe from base_results }, else="if(condition=" i30test and outputpeinfo, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousi30, ntfsmetadata, magic, i30, pe from base_results }, else="if(condition=" shimcachetest, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousshimcache, ntfsmetadata, magic, shimcache from base_results }, else="if(condition=" i30test, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, suspiciousi30, ntfsmetadata, magic, i30 from base_results }, else="if(condition=" outputpeinfo, then={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, ntfsmetadata, magic, pe from base_results }, else={ select ospath,createdtimestamps,inuse, `si<fn`,useczeros, suspiciouscompiletime, ntfsmetadata, magic from base_results }) )))))) let upload_results=SELECT *, upload(file=OSPath) as upload from results select * from if(condition=UploadHits, then=upload_results, else=results) </code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+            SI_Lt_FN as `SI&lt;FN`,uSecZeros,
+            if(condition=PE.FileHeader.TimeDateStamp,
+                then= if(condition= LastModified0x10 &lt; PE.FileHeader.TimeDateStamp OR LastAccess0x10 &lt; PE.FileHeader.TimeDateStamp OR LastRecordChange0x10 &lt; PE.FileHeader.TimeDateStamp OR Created0x10 &lt; PE.FileHeader.TimeDateStamp,
+                        then= True,
+                        else= False),
+                else= 'N/A') as SuspiciousCompileTime,
+            parse_ntfs(mft=EntryNumber, device=MFTDrive ) as NtfsMetadata,
+            Magic,
+            if(condition=PE, then=PE,else='N/A') as PE,
+            Created0x10,LastModified0x10,FileNames,EntryNumber,
+            if(condition= Magic=~'^PE' AND NOT Magic =~ '\(DLL\)',
+                then= if(condition= LastModified0x10 &lt; shimcache_mtime(target=str(str=OSPath))[0].ModificationTime,
+                    then= True,
+                    else= False),
+                else= 'N/A') as SuspiciousShimcache,
+            if(condition= Magic=~'^PE' AND NOT Magic =~ '\(DLL\)',
+                then= shimcache_mtime(target=str(str=OSPath))[0],
+                else= 'N/A') as Shimcache,
+            if(condition = find_i30_slack(inode=EntryNumber,folder=dirname(path=OSPath),filenames=FileNames,mtime=LastModified0x10,ctime=Created0x10,slackcheck=True),
+                then= True,
+                else= False ) as SuspiciousI30,
+            find_i30_slack(inode=EntryNumber,folder=dirname(path=OSPath),filenames=FileNames,mtime=LastModified0x10,ctime=Created0x10,slackcheck=False) as I30
+      FROM mft_entries
+      
+      LET results = SELECT * FROM if(condition= ShimcacheTest AND I30Test AND OutputPEInfo,
+            then={
+                SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousShimcache,
+                    SuspiciousI30,
+                    NtfsMetadata,
+                    Magic,
+                    Shimcache,
+                    I30,
+                    PE
+                FROM base_results
+            },
+            else= if(condition= ShimcacheTest AND I30Test,
+                then={
+                SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousShimcache,
+                    SuspiciousI30,
+                    NtfsMetadata,
+                    Magic,
+                    Shimcache,
+                    I30
+                FROM base_results
+            },
+            else= if(condition= ShimcacheTest AND OutputPEInfo,
+                then={
+                    SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousShimcache,
+                    NtfsMetadata,
+                    Magic,
+                    Shimcache,
+                    PE
+                FROM base_results
+            },
+            else= if(condition= I30Test AND OutputPEInfo,
+                then={
+                    SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousI30,
+                    NtfsMetadata,
+                    Magic,
+                    I30,
+                    PE
+                FROM base_results
+            },
+            else= if(condition= ShimcacheTest,
+                then={
+                    SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousShimcache,
+                    NtfsMetadata,
+                    Magic,
+                    Shimcache
+                FROM base_results
+            },
+            else= if(condition= I30Test,
+                then={
+                    SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    SuspiciousI30,
+                    NtfsMetadata,
+                    Magic,
+                    I30
+                FROM base_results
+            },
+            else= if(condition= OutputPEInfo,
+                then={
+                    SELECT 
+                    OSPath,CreatedTimestamps,InUse,
+                    `SI&lt;FN`,uSecZeros,
+                    SuspiciousCompileTime,
+                    NtfsMetadata,
+                    Magic,
+                    PE
+                FROM base_results
+            },
+                else={
+                    SELECT 
+                        OSPath,CreatedTimestamps,InUse,
+                        `SI&lt;FN`,uSecZeros,
+                        SuspiciousCompileTime,
+                        NtfsMetadata,
+                        Magic
+                    FROM base_results
+            })
+            ))))))
+
+      LET upload_results = SELECT *, upload(file=OSPath) as Upload FROM results
+      
+      SELECT * FROM if(condition= UploadHits,
+        then= upload_results,
+        else= results)
+
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

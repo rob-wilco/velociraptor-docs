@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.EvtxHussar :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663126 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663126 rel=stylesheet><link href=/css/featherlight.min.css?1693663126 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663126 rel=stylesheet><link href=/css/auto-complete.css?1693663126 rel=stylesheet><link href=/css/theme.css?1693663126 rel=stylesheet><link href=/css/tabs.css?1693663126 rel=stylesheet><link href=/css/hugo-theme.css?1693663126 rel=stylesheet><link href=/css/theme-mine.css?1693663126 rel=stylesheet><link href=/css/dark.css?1693663126 rel=stylesheet><link href=/css/syntax.css?1693663126 rel=stylesheet><link href=/css/light.css?1693663126 rel=stylesheet><link href=/css/hljs.css?1693663126 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663126 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663126></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.EventLogs.EvtxHussar :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/windows.eventlogs.evtxhussar/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -77,22 +77,22 @@ description: |
    Grab important events from Windows logs (.evtx) using [EvtxHussar](https://github.com/yarox24/EvtxHussar).
    Also upload PowerShell ScriptBlocks (reconstructed as files).
    
-   Following categories are supported:<br>
-   - Antivirus (Symantec, Windows Defender)<br>
-   - Accounts (Users related operations)<br>
-   - Audit (Log cleared, Policy changed)<br>
-   - Windows Firewall <br>
-   - Logons<br>
-   - Powershell events<br>
-   - Processes<br>
-   - RDP<br>
-   - ScheduledTasks (creation/modification/execution)<br>
-   - Services<br>
-   - WinRM<br>
-   - Boot up/Restart/Shutdown<br>
+   Following categories are supported:&lt;br /&gt;
+   - Antivirus (Symantec, Windows Defender)&lt;br /&gt;
+   - Accounts (Users related operations)&lt;br /&gt;
+   - Audit (Log cleared, Policy changed)&lt;br /&gt;
+   - Windows Firewall &lt;br /&gt;
+   - Logons&lt;br /&gt;
+   - Powershell events&lt;br /&gt;
+   - Processes&lt;br /&gt;
+   - RDP&lt;br /&gt;
+   - ScheduledTasks (creation/modification/execution)&lt;br /&gt;
+   - Services&lt;br /&gt;
+   - WinRM&lt;br /&gt;
+   - Boot up/Restart/Shutdown&lt;br /&gt;
    - SMB
    
-   Note: If no logs from specific category will be found, source will remain empty.<br>
+   Note: If no logs from specific category will be found, source will remain empty.&lt;br /&gt;
    Based on version 1.7 of EvtxHussar. 
    
 author: Jarosław Oparka - @yarox24
@@ -224,81 +224,81 @@ sources:
   - name: Antivirus_Symantec
     query: |
       // Execute EvtxHussar
-      LET ZipInfo <= SELECT FullPath FROM Artifact.Generic.Utils.FetchBinary(ToolName= "EvtxHussar17", IsExecutable= False)
+      LET ZipInfo &lt;= SELECT FullPath FROM Artifact.Generic.Utils.FetchBinary(ToolName= "EvtxHussar17", IsExecutable= False)
       
-      LET tmpdir <= tempdir()
+      LET tmpdir &lt;= tempdir()
       
-      LET Unpack <= SELECT * FROM unzip(filename=ZipInfo[0].FullPath, output_directory=tmpdir)
+      LET Unpack &lt;= SELECT * FROM unzip(filename=ZipInfo[0].FullPath, output_directory=tmpdir)
       
-      LET Binpath <= tmpdir + "\\EvtxHussar\\EvtxHussar.exe"
-      LET CWDpath <= tmpdir + "\\EvtxHussar\\"
+      LET Binpath &lt;= tmpdir + "\\EvtxHussar\\EvtxHussar.exe"
+      LET CWDpath &lt;= tmpdir + "\\EvtxHussar\\"
       
-      LET outdir <= tempdir()
+      LET outdir &lt;= tempdir()
       
-      LET cnt <= int(int=0)
+      LET cnt &lt;= int(int=0)
       LET IncreaseCounter(c, cat_flag) = if(condition= cat_flag = "Y", then=c + 1, else=c)
       
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=AntivirusSymantec)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=AntivirusWindowsDefender)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=AccountsUserRelatedOperations)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=AuditLogCleared)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=AuditPolicyChanges)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=BootupRestartShutdown)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=Logons)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=PowerShellScriptBlocksReconstructAndUpload)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=PowerShellEvents)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=Processes)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=RDP)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=ScheduledTasksCreationModification)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=ScheduledTasksExecution)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=Services)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=SMBClientDestinations)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=SMBServerAccessAudit)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=SMBServerModifications)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=WinRM)
-      LET cnt <= IncreaseCounter(c=cnt, cat_flag=WindowsFirewall)
-      LET cnt_max <= int(int=19)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=AntivirusSymantec)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=AntivirusWindowsDefender)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=AccountsUserRelatedOperations)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=AuditLogCleared)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=AuditPolicyChanges)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=BootupRestartShutdown)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=Logons)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=PowerShellScriptBlocksReconstructAndUpload)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=PowerShellEvents)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=Processes)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=RDP)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=ScheduledTasksCreationModification)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=ScheduledTasksExecution)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=Services)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=SMBClientDestinations)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=SMBServerAccessAudit)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=SMBServerModifications)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=WinRM)
+      LET cnt &lt;= IncreaseCounter(c=cnt, cat_flag=WindowsFirewall)
+      LET cnt_max &lt;= int(int=19)
       
       
       LET AppendIfEnabled(arr, cat_flag, l2propername) = if(condition= cat_flag = "Y", then= arr + l2propername, else= arr )
       
-      LET EnabledL2Maps <= array(a="TO_DELETE")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AntivirusSymantec, l2propername="AV_SymantecNetwork")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AntivirusWindowsDefender, l2propername="AV_WindowsDefender")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AccountsUserRelatedOperations, l2propername="AccountsUserRelatedOperations")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AuditLogCleared, l2propername="AuditLogCleared")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AuditPolicyChanges, l2propername="AuditPolicyChanged")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=BootupRestartShutdown, l2propername="General_BootupRestartShutdown")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Logons, l2propername="LogonsUniversal")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=PowerShellScriptBlocksReconstructAndUpload, l2propername="PowerShellScriptBlock")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=PowerShellEvents, l2propername="PowerShellUniversal")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Processes, l2propername="ProcessCreation")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=RDP, l2propername="RDPUniversal")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=ScheduledTasksCreationModification, l2propername="ScheduledTasks_CreationModification")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=ScheduledTasksExecution, l2propername="ScheduledTasks_Execution")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Services, l2propername="ServicesUniversal")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBClientDestinations, l2propername="SMB_ClientDestinations")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBServerAccessAudit, l2propername="SMB_ServerAccessAudit")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBServerModifications, l2propername="SMB_ServerModifications")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=WinRM, l2propername="WinRMUniversal")
-      LET EnabledL2Maps <= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=WindowsFirewall, l2propername="FirewallUniversal")
+      LET EnabledL2Maps &lt;= array(a="TO_DELETE")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AntivirusSymantec, l2propername="AV_SymantecNetwork")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AntivirusWindowsDefender, l2propername="AV_WindowsDefender")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AccountsUserRelatedOperations, l2propername="AccountsUserRelatedOperations")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AuditLogCleared, l2propername="AuditLogCleared")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=AuditPolicyChanges, l2propername="AuditPolicyChanged")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=BootupRestartShutdown, l2propername="General_BootupRestartShutdown")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Logons, l2propername="LogonsUniversal")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=PowerShellScriptBlocksReconstructAndUpload, l2propername="PowerShellScriptBlock")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=PowerShellEvents, l2propername="PowerShellUniversal")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Processes, l2propername="ProcessCreation")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=RDP, l2propername="RDPUniversal")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=ScheduledTasksCreationModification, l2propername="ScheduledTasks_CreationModification")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=ScheduledTasksExecution, l2propername="ScheduledTasks_Execution")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=Services, l2propername="ServicesUniversal")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBClientDestinations, l2propername="SMB_ClientDestinations")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBServerAccessAudit, l2propername="SMB_ServerAccessAudit")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=SMBServerModifications, l2propername="SMB_ServerModifications")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=WinRM, l2propername="WinRMUniversal")
+      LET EnabledL2Maps &lt;= AppendIfEnabled(arr=EnabledL2Maps, cat_flag=WindowsFirewall, l2propername="FirewallUniversal")
       
       
-      LET HussArgs <= array(bin=Binpath, 
+      LET HussArgs &lt;= array(bin=Binpath, 
                       outdir_flag="-o", 
                       outdir_path=outdir, 
                       format_flag="-f", 
                       format_val="jsonl"
                       )
-      LET HussArgs <= if(condition= cnt < cnt_max, then= HussArgs + "--includeonly" + join(array=EnabledL2Maps[1:], sep=","), else= HussArgs)
-      LET HussArgs <= if(condition= Option_PowerShellScriptBlocksXorApply = "Y", then= HussArgs + "--scriptblockxor", else= HussArgs)
-      LET HussArgs <= HussArgs + LogsPath
+      LET HussArgs &lt;= if(condition= cnt &lt; cnt_max, then= HussArgs + "--includeonly" + join(array=EnabledL2Maps[1:], sep=","), else= HussArgs)
+      LET HussArgs &lt;= if(condition= Option_PowerShellScriptBlocksXorApply = "Y", then= HussArgs + "--scriptblockxor", else= HussArgs)
+      LET HussArgs &lt;= HussArgs + LogsPath
       
-      LET _ <= log(message="EvtxHussar cmdline arguments: %v", arguments=HussArgs)
+      LET _ &lt;= log(message="EvtxHussar cmdline arguments: %v", arguments=HussArgs)
       
       LET ExecuteHussar = SELECT log(message="EvtxHussar stdout: %s", args=[Stdout]) FROM execve(cwd=CWDpath, argv=HussArgs, sep="\n")
       
-      LET _ <= if(condition= cnt > 0, then= ExecuteHussar, else= log(message="As no plugins were selected, nothing to do."))
+      LET _ &lt;= if(condition= cnt &gt; 0, then= ExecuteHussar, else= log(message="As no plugins were selected, nothing to do."))
       
       
       // Helper functions for sources
@@ -388,12 +388,12 @@ sources:
       SELECT *, "EvtxHussar.WindowsFirewall" AS __Source FROM PluginOutput(search_result=GetOutputFiles(category="firewall", jsonl_filename="windows_firewall.jsonl"))
       
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663126></script>
-<script src=/js/perfect-scrollbar.min.js?1693663126></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663126></script>
-<script src=/js/jquery.sticky.js?1693663126></script>
-<script src=/js/featherlight.min.js?1693663126></script>
-<script src=/js/highlight.min.js?1693663126></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663126></script>
-<script src=/js/learn.js?1693663126></script>
-<script src=/js/hugo-learn.js?1693663126></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

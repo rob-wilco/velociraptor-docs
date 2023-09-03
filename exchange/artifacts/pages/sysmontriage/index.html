@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Triage.Sysmon :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663125 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663125 rel=stylesheet><link href=/css/featherlight.min.css?1693663125 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663125 rel=stylesheet><link href=/css/auto-complete.css?1693663125 rel=stylesheet><link href=/css/theme.css?1693663125 rel=stylesheet><link href=/css/tabs.css?1693663125 rel=stylesheet><link href=/css/hugo-theme.css?1693663125 rel=stylesheet><link href=/css/theme-mine.css?1693663125 rel=stylesheet><link href=/css/dark.css?1693663125 rel=stylesheet><link href=/css/syntax.css?1693663125 rel=stylesheet><link href=/css/light.css?1693663125 rel=stylesheet><link href=/css/hljs.css?1693663125 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663125 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663125></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Triage.Sysmon :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/sysmontriage/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -105,9 +105,9 @@ sources:
 
     query: |
       -- firstly set boxed timebounds
-      LET DateAfterTime <= if(condition=TargetTime,
+      LET DateAfterTime &lt;= if(condition=TargetTime,
         then=timestamp(epoch=TargetTime.Unix - TargetTimeBox), else=timestamp(epoch=now() - TargetTimeBox))
-      LET DateBeforeTime <= if(condition=TargetTime,
+      LET DateBeforeTime &lt;= if(condition=TargetTime,
         then=timestamp(epoch=TargetTime.Unix + TargetTimeBox), else=timestamp(epoch=now() + TargetTimeBox))
         
       -- run query and output rows
@@ -144,7 +144,7 @@ sources:
                 --,EventData.LogonId as LogonId
                 --,EventData.TerminalSessionId as TerminalSessionId
                 --,EventData.IntegrityLevel as IntegrityLevel
-                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)","IMPHASH=(?P<imphash>[^,]+)"] ) as Hash
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P&lt;MD5&gt;[^,]+)","SHA1=(?P&lt;SHA1&gt;[^,]+)","SHA256=(?P&lt;SHA256&gt;[^,]+)","IMPHASH=(?P&lt;IMPHASH&gt;[^,]+)"] ) as Hash
                 --,EventData.ParentProcessGuid as ParentProcessGuid
                 ,EventData.ParentProcessId as ParentProcessId
                 ,EventData.ParentImage as ParentImage
@@ -341,7 +341,7 @@ sources:
                 ,EventData.User as User
                 ,EventData.TargetFileName as TargetFileName
                 ,EventData.CreationUtcTime as CreationUtcTime
-                --,parse_string_with_regex(string=EventData.Hash, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hash
+                --,parse_string_with_regex(string=EventData.Hash, regex=["MD5=(?P&lt;MD5&gt;[^,]+)","SHA1=(?P&lt;SHA1&gt;[^,]+)","SHA256=(?P&lt;SHA256&gt;[^,]+)"] ) as Hash
                 ,EventData.Hash as Hash
                 --,EventData
                 --,Message
@@ -443,7 +443,7 @@ sources:
                 ,EventData.Image as Image
                 ,EventData.User as User
                 ,EventData.TargetFilename as TargetFilename
-                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hashes
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P&lt;MD5&gt;[^,]+)","SHA1=(?P&lt;SHA1&gt;[^,]+)","SHA256=(?P&lt;SHA256&gt;[^,]+)"] ) as Hashes
                 ,EventData.Hashes as Hashes
                 ,EventData.Archived as Archived
                 --,EventData
@@ -467,7 +467,7 @@ sources:
                 ,EventData.User as User
                 ,EventData.Session as Session
                 ,EventData.ClientInfo as ClientInfo
-                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P<md5>[^,]+)","SHA1=(?P<sha1>[^,]+)","SHA256=(?P<sha256>[^,]+)"] ) as Hashes
+                --,parse_string_with_regex(string=EventData.Hashes, regex=["MD5=(?P&lt;MD5&gt;[^,]+)","SHA1=(?P&lt;SHA1&gt;[^,]+)","SHA256=(?P&lt;SHA256&gt;[^,]+)"] ) as Hashes
                 ,EventData.Hashes as Hashes
                 ,EventData.Archived as Archived
                 --,EventData
@@ -518,12 +518,12 @@ sources:
                 --,EventData
             FROM source(artifact="Exchange.Windows.Triage.Sysmon")
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.min.js?1693663125></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663125></script>
-<script src=/js/jquery.sticky.js?1693663125></script>
-<script src=/js/featherlight.min.js?1693663125></script>
-<script src=/js/highlight.min.js?1693663125></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663125></script>
-<script src=/js/learn.js?1693663125></script>
-<script src=/js/hugo-learn.js?1693663125></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

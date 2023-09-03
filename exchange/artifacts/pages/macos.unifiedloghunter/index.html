@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.UnifiedLogHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693663124 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693663124 rel=stylesheet><link href=/css/featherlight.min.css?1693663124 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693663124 rel=stylesheet><link href=/css/auto-complete.css?1693663124 rel=stylesheet><link href=/css/theme.css?1693663124 rel=stylesheet><link href=/css/tabs.css?1693663124 rel=stylesheet><link href=/css/hugo-theme.css?1693663124 rel=stylesheet><link href=/css/theme-mine.css?1693663124 rel=stylesheet><link href=/css/dark.css?1693663124 rel=stylesheet><link href=/css/syntax.css?1693663124 rel=stylesheet><link href=/css/light.css?1693663124 rel=stylesheet><link href=/css/hljs.css?1693663124 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693663124 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693663124></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.118.2"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>MacOS.UnifiedLogHunter :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1693741811 rel=stylesheet><link href=/css/fontawesome-all.min.css?1693741811 rel=stylesheet><link href=/css/featherlight.min.css?1693741811 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1693741811 rel=stylesheet><link href=/css/auto-complete.css?1693741811 rel=stylesheet><link href=/css/theme.css?1693741811 rel=stylesheet><link href=/css/tabs.css?1693741811 rel=stylesheet><link href=/css/hugo-theme.css?1693741811 rel=stylesheet><link href=/css/theme-mine.css?1693741811 rel=stylesheet><link href=/css/dark.css?1693741811 rel=stylesheet><link href=/css/syntax.css?1693741811 rel=stylesheet><link href=/css/light.css?1693741811 rel=stylesheet><link href=/css/hljs.css?1693741811 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1693741811 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1693741811></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/exchange/artifacts/pages/macos.unifiedloghunter/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -195,22 +195,22 @@ sources:
             Failed Local User Password Change,subsystem == "com.apple.opendirectoryd" AND process == "opendirectoryd" AND category == "auth" AND eventMessage CONTAINS "Failed to change password"
             Failed sudo access,process == "sudo" AND eventMessage CONTAINS[c] "TTY" AND eventMessage CONTAINS[c] "3 incorrect password attempts"
             Inbound screen sharing,process == "screensharingd" AND eventMessage BEGINSWITH "Authentication: "
-            Kernel Extension Additions,process == "kextd" && sender == "IOKit"
-            Keychain DB Unlock,process == "loginwindow" && sender == "Security"
+            Kernel Extension Additions,process == "kextd" &amp;&amp; sender == "IOKit"
+            Keychain DB Unlock,process == "loginwindow" &amp;&amp; sender == "Security"
             MDM Profile - Manual Removal,subsystem == "com.apple.ManagedClient" AND eventMessage CONTAINS "Removed configuration profile: MDM Profile" AND eventMessage CONTAINS "Source: Manual"
             Network server connection attempts inbound,process == "NetAuthSysAgent" AND subsystem == "com.apple.NetAuthAgent" AND category == "IPC" AND eventMessage BEGINSWITH "URL = "
             Permissions and Access Violations,process == "tccd"
             Root user enabled or password changed,processImagePath == "/usr/libexec/opendirectoryd" AND process == "opendirectoryd" AND subsystem == "com.apple.opendirectoryd" AND eventMessage CONTAINS "Password changed for root"
-            Session Creation and Destruction,process == "securityd" && eventMessage CONTAINS "Session"  && subsystem == "com.apple.securityd"
+            Session Creation and Destruction,process == "securityd" &amp;&amp; eventMessage CONTAINS "Session"  &amp;&amp; subsystem == "com.apple.securityd"
             SSH Login Activity,process == "sshd"
             Successful Local Password Login,processImagePath BEGINSWITH "/System/Library/CoreServices" AND process == "loginwindow" AND subsystem == "com.apple.loginwindow.logging" AND eventMessage CONTAINS "[Login1 doLogin] | shortUsername"
             Successful Local TouchID Login,process == "loginwindow" AND eventMessage CONTAINS[c] "APEventTouchIDMatch"
             Successful Local User Password Change,subsystem == "com.apple.opendirectoryd" AND process == "opendirectoryd" AND category == "auth" AND eventMessage CONTAINS "Password changed for"
-            XProtect Remediator scanning activity,subsystem == "com.apple.XProtectFramework.PluginAPI" && category == "XPEvent.structured"''')
+            XProtect Remediator scanning activity,subsystem == "com.apple.XProtectFramework.PluginAPI" &amp;&amp; category == "XPEvent.structured"''')
       
-      LET QueriesToRun <= SELECT Q FROM QueryTable WHERE if(condition=RunAllQueries, then=QueryName, else=get(field=QueryName))
+      LET QueriesToRun &lt;= SELECT Q FROM QueryTable WHERE if(condition=RunAllQueries, then=QueryName, else=get(field=QueryName))
                                               
-      LET Raw <= SELECT * FROM foreach(row={ SELECT * FROM chain( a=QueriesToRun, b=if(condition=Predicate, then={ SELECT Predicate AS Q FROM scope()}))}, 
+      LET Raw &lt;= SELECT * FROM foreach(row={ SELECT * FROM chain( a=QueriesToRun, b=if(condition=Predicate, then={ SELECT Predicate AS Q FROM scope()}))}, 
                                        query={ SELECT Stdout FROM execve(
                    length=Length, 
                    argv=[
@@ -249,12 +249,12 @@ sources:
         get(member="timezoneName") AS _TimezoneName
       FROM foreach(row=Raw.Stdout, query={SELECT * FROM parse_json_array(data=_value)})
 
-</code></pre><footer class=footline></footer></div></div><div id=navigation></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693663124></script>
-<script src=/js/perfect-scrollbar.min.js?1693663124></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1693663124></script>
-<script src=/js/jquery.sticky.js?1693663124></script>
-<script src=/js/featherlight.min.js?1693663124></script>
-<script src=/js/highlight.min.js?1693663124></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693663124></script>
-<script src=/js/learn.js?1693663124></script>
-<script src=/js/hugo-learn.js?1693663124></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.min.js?1693741811></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1693741811></script>
+<script src=/js/jquery.sticky.js?1693741811></script>
+<script src=/js/featherlight.min.js?1693741811></script>
+<script src=/js/highlight.min.js?1693741811></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1693741811></script>
+<script src=/js/learn.js?1693741811></script>
+<script src=/js/hugo-learn.js?1693741811></script></body></html>

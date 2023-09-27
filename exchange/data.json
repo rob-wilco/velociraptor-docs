@@ -1068,7 +1068,7 @@
     {
         "title": "Windows.Detection.ISOMount",
         "author": "cquinn-r7",
-        "description": "Following Microsoft's decision to block macros by default on MS Office applications, threat actors are increasingly using container files such as ISO files to distribute malware. \nThis artifact will extract evidence of .iso files being mounted that may be malicious from the Microsoft-Windows-VHDMP-Operational EventLog. \nThe artifact targets the string \".iso\" in event IDs: 1 (mount), 2 (unmount) and 12 (type, path, handle).\n",
+        "description": "Following Microsoft's decision to block macros by default on MS Office applications, threat actors are increasingly using container files such as ISO files to distribute malware. \nThis artifact will extract evidence of container files being mounted that may be malicious from the Microsoft-Windows-VHDMP-Operational EventLog. \nThe artifact targets the string \".(iso|vhd|vhdx|img)$\" in event IDs: 1 (mount), 2 (unmount) and 12 (type, path, handle).\n",
         "link": "/exchange/artifacts/pages/windows.detection.isomount",
         "tags": [],
         "author_link": "https://github.com/cquinn-r7",

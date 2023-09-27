@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.119.0"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.Lnk :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1695778116 rel=stylesheet><link href=/css/fontawesome-all.min.css?1695778116 rel=stylesheet><link href=/css/featherlight.min.css?1695778116 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1695778116 rel=stylesheet><link href=/css/auto-complete.css?1695778116 rel=stylesheet><link href=/css/theme.css?1695778116 rel=stylesheet><link href=/css/tabs.css?1695778116 rel=stylesheet><link href=/css/hugo-theme.css?1695778116 rel=stylesheet><link href=/css/theme-mine.css?1695778116 rel=stylesheet><link href=/css/dark.css?1695778116 rel=stylesheet><link href=/css/syntax.css?1695778116 rel=stylesheet><link href=/css/light.css?1695778116 rel=stylesheet><link href=/css/hljs.css?1695778116 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1695778116 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1695778116></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.119.0"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.Lnk :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1695793659 rel=stylesheet><link href=/css/fontawesome-all.min.css?1695793659 rel=stylesheet><link href=/css/featherlight.min.css?1695793659 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1695793659 rel=stylesheet><link href=/css/auto-complete.css?1695793659 rel=stylesheet><link href=/css/theme.css?1695793659 rel=stylesheet><link href=/css/tabs.css?1695793659 rel=stylesheet><link href=/css/hugo-theme.css?1695793659 rel=stylesheet><link href=/css/theme-mine.css?1695793659 rel=stylesheet><link href=/css/dark.css?1695793659 rel=stylesheet><link href=/css/syntax.css?1695793659 rel=stylesheet><link href=/css/light.css?1695793659 rel=stylesheet><link href=/css/hljs.css?1695793659 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1695793659 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1695793659></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/artifact_references/pages/windows.forensics.lnk/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -74,7 +74,7 @@
 specific file, folder, or application. It contains metadata and information
 about the accessed file or location and is a valuable forensic artifact.
 LNK files can be automatically created by the Windows operating system when a
-user accesses a file from a supported application or manually created by the user.</p><p>This artifact has several configurable options:</p><ul><li>TargetGlob: glob targeting. Default targets *.lnk files in user path.</li><li>IOCRegex: Regex search on key fields: StringData, TrackerData and PropertyStore.</li><li>IgnoreRegex: Ignore regex filter on key fields.</li><li>UploadLnk: uploads lnk hits.</li></ul><p>List of fields targeted by filter regex:</p><ul><li>StringData.TargetPath</li><li>StringData.Name</li><li>StringData.RelativePath</li><li>StringData.WorkingDir</li><li>StringData.Arguments</li><li>StringData.IconLocation</li><li>LinkTarget.LinkTarget</li><li>PropertyStore</li><li>TrackerData.MachineID</li><li>TrackerData.MacAddress</li></ul><p>NOTE: regex startof (^) and endof ($) line modifiers will not work.</p><pre><code class=language-yaml>
+user accesses a file from a supported application or manually created by the user.</p><p>This artifact has several configurable options:</p><ul><li>TargetGlob: glob targeting. Default targets *.lnk files in Startup and Recent paths.</li><li>IOCRegex: Regex search on key fields: StringData, TrackerData and PropertyStore.</li><li>IgnoreRegex: Ignore regex filter on key fields.</li><li>UploadLnk: uploads lnk hits.</li><li>SuspiciousOnly: only returns LNK files reporting a suspicious attribute.</li><li>SusSize: Any lnk over this size in bytes is suspicious.</li><li>SusArgSize: Any lnk with Argument strings over this size is suspicious.</li><li>SusArgRegex: Regex for suspicious strings in Arguments.</li><li>SusHostnameRegex: Regex for suspicious TrackerData Hostname.</li><li>CheckHostnameMismatch: Compare TrackerData.MachineID with Hostname (noisy in many networks)</li></ul><p>List of fields targeted by filter regex:</p><ul><li>StringData.TargetPath</li><li>StringData.Name</li><li>StringData.RelativePath</li><li>StringData.WorkingDir</li><li>StringData.Arguments</li><li>StringData.IconLocation</li><li>LinkTarget.LinkTarget</li><li>PropertyStore</li><li>TrackerData.MachineID</li><li>TrackerData.MacAddress</li></ul><p>NOTE: regex startof (^) and endof ($) line modifiers will not work.</p><p>Windows.Forensics.Lnk also will highlight suspicious lnk attributes in a Suspicious field.</p><ul><li>Large Size - default over 20000 bytes</li><li>Startup Path - path with \Startup\</li><li>Environment variable script - environment vatiable with a common script configured (bat|cmd|ps1|js|vbs|vbe|py)</li><li>No Target with environmant variable - environment variable only execution</li><li>Suspicious argument size - large sized arguments over 250 characters as default</li><li>Arguments have ticks - ticks are common in malicious LNK files</li><li>Arguments have environment variables - environment variables (%|$env:) are common in malicious LNKs</li><li>Arguments have rare characters - looks for specific rare characters that may indicate obfuscation (?|!|~|@)</li><li>Arguments have leading space malicious LNK files may have a many leading spaces to obfuscate some tools</li><li>Arguments have http strings - LNKs are reguarly used as a download cradle - https?://</li><li>Suspicious arguments - some common malicious arguments observed in field (with mind to False positive)</li><li>Suspicious hostname - some common malicious hostnames</li><li>Hostname mismatch - if selected will compare trackerdata hostname to machine name (lots of FPs)</li></ul><pre><code class=language-yaml>
 name: Windows.Forensics.Lnk
 author: Matt Green - @mgreen27
 description: |
@@ -88,10 +88,16 @@ description: |
   
   This artifact has several configurable options:
   
-  - TargetGlob: glob targeting. Default targets *.lnk files in user path.
+  - TargetGlob: glob targeting. Default targets *.lnk files in Startup and Recent paths.
   - IOCRegex: Regex search on key fields: StringData, TrackerData and PropertyStore.
   - IgnoreRegex: Ignore regex filter on key fields.
   - UploadLnk: uploads lnk hits.
+  - SuspiciousOnly: only returns LNK files reporting a suspicious attribute.
+  - SusSize: Any lnk over this size in bytes is suspicious.
+  - SusArgSize: Any lnk with Argument strings over this size is suspicious.
+  - SusArgRegex: Regex for suspicious strings in Arguments.
+  - SusHostnameRegex: Regex for suspicious TrackerData Hostname.
+  - CheckHostnameMismatch: Compare TrackerData.MachineID with Hostname (noisy in many networks)
   
   List of fields targeted by filter regex:
   
@@ -106,7 +112,24 @@ description: |
     - TrackerData.MachineID
     - TrackerData.MacAddress  
       
-    NOTE: regex startof (^) and endof ($) line modifiers will not work.
+    NOTE: regex startof (^) and endof ($) line modifiers will not work.  
+    
+    
+    Windows.Forensics.Lnk also will highlight suspicious lnk attributes in a Suspicious field.
+   
+    * Large Size - default over 20000 bytes
+    * Startup Path - path with \Startup\
+    * Environment variable script - environment vatiable with a common script configured (bat|cmd|ps1|js|vbs|vbe|py)
+    * No Target with environmant variable - environment variable only execution
+    * Suspicious argument size - large sized arguments over 250 characters as default
+    * Arguments have ticks - ticks are common in malicious LNK files
+    * Arguments have environment variables - environment variables (%|\$env:) are common in malicious LNKs
+    * Arguments have rare characters - looks for specific rare characters that may indicate obfuscation (\?|\!|\~|\@)
+    * Arguments have leading space malicious LNK files may have a many leading spaces to obfuscate some tools
+    * Arguments have http strings - LNKs are reguarly used as a download cradle - https?://
+    * Suspicious arguments - some common malicious arguments observed in field (with mind to False positive)
+    * Suspicious hostname - some common malicious hostnames
+    * Hostname mismatch - if selected will compare trackerdata hostname to machine name (lots of FPs)
 
 
 reference:
@@ -114,7 +137,7 @@ reference:
 
 parameters:
   - name: TargetGlob
-    default: C:\Users\**\*.lnk
+    default: C:\{ProgramData,Users\*\AppData\*}\Microsoft\Windows\{Start Menu\Programs\StartUp,Recent\**}\*.lnk
   - name: IocRegex
     type: regex
     description: A regex to filter on all fields
@@ -123,6 +146,26 @@ parameters:
     description: A regex to ignore ilter all fields
   - name: UploadLnk
     description: Also upload the link files themselves.
+    type: bool
+  - name: SuspiciousOnly
+    description: Only returns LNK files reporting a suspicious attribute
+    type: bool
+  - name: SusSize
+    description: Any lnk over this size in bytes is suspicious.
+    default: 20000
+    type: int
+  - name: SusArgSize
+    default: 250
+    description: Any lnk with Argument strings over this size is suspicious.
+    type: int
+  - name: SusArgRegex
+    description: Regex for suspicious strings in Argumetns.
+    default: \\AppData\\|\\Users\\Public\\|\\Temp\\|comspec|&amp;cd&amp;echo| -NoP | -W Hidden | [-/]decode | -e.* (JAB|SUVYI|SQBFAFgA|aWV4I|aQBlAHgA)|start\s*[\\/]b|\.downloadstring\(|\.downloadfile\(|iex
+  - name: SusHostnameRegex
+    description: Regex for suspicious TrackerData Hastname.
+    default: ^(Win-|Desktop-|Commando$)
+  - name: CheckHostnameMismatch
+    description: Compare TrackerData.MachineID with Hostname (noisy in many networks) 
     type: bool
 
 export: |
@@ -1303,6 +1346,8 @@ export: |
 
 sources:
   - query: |
+     LET hostname &lt;= if(condition=CheckHostnameMismatch, then={ SELECT Hostname FROM info()})
+     
      LET targets = SELECT OSPath, Mtime,Atime,Ctime,Btime,Size,
             read_file(filename=OSPath,offset=0,length=2) as _Header
         FROM glob(globs=TargetGlob)
@@ -1393,15 +1438,37 @@ sources:
                             join(array=PropertyStore.Value,sep='\n')
                         ]) =~ IgnoreRegex,
                     else= False)
+      
+      LET add_suspicious = SELECT *, dict(
+                `Large Size` = SourceFile.Size &gt; SusSize,
+                `Startup Path` = SourceFile.OSPath =~ '''\\Startup\\''',
+                `Environment variable script` = ExtraData.EnvironmentVariable =~ '''\.(bat|cmd|ps1|js|vbs|vbe|py)$''',
+                `No Target with environmant variable` = ExtraData.EnvironmentVariable AND StringData.Arguments AND NOT (StringData.TargetPath OR StringData.RelativePath),
+                `Suspicious argument size` = len(list=StringData.Arguments) &gt; SusArgSize,
+                `Arguments have ticks` = StringData.Arguments=~'''\^''',
+                `Arguments have environment variables` = StringData.Arguments=~'''\%|\$env:''',
+                `Arguments have rare characters` = StringData.Arguments=~'''\?\!\~\@''',
+                `Arguments have leading space` = StringData.Arguments =~ '^ ',
+                `Arguments have http strings` = StringData.Arguments =~'''https?://''',
+                `Suspicious arguments` = StringData.Arguments =~ SusArgRegex,
+                `Suspicious hostname` = ExtraData.TrackerData.MachineID AND SusHostnameRegex AND ExtraData.TrackerData.MachineID=~SusHostnameRegex AND NOT lowcase(string=ExtraData.TrackerData.MachineID)=~lowcase(string=hostname[0].Hostname),
+                `Hostname mismatch` = CheckHostnameMismatch AND ExtraData.TrackerData.MachineID AND NOT lowcase(string=ExtraData.TrackerData.MachineID)=~lowcase(string=hostname[0].Hostname)
+            ) as Suspicious
+        FROM results
+        WHERE if(condition=SuspiciousOnly,
+            then= join(array=Suspicious) =~ ':true',
+            else= True )
         
       LET upload_results = SELECT *, 
             upload(file=SourceFile.OSPath) as UploadedLnk
-        FROM results
+        FROM add_suspicious
         
-      SELECT *
+      -- finally return rows and remove suspicious attributes that are not true
+      SELECT *,
+            to_dict(item={SELECT * FROM items(item=Suspicious) WHERE _value = True}) as Suspicious
         FROM if(condition=UploadLnk,
             then= upload_results,
-            else= results )
+            else= add_suspicious )
 
 column_types:
   - name: SourceFile.Mtime
@@ -1415,12 +1482,12 @@ column_types:
   - name: ShellLinkHeader.WriteTime
     type: timestamp
 
-</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1695778116></script>
-<script src=/js/perfect-scrollbar.min.js?1695778116></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1695778116></script>
-<script src=/js/jquery.sticky.js?1695778116></script>
-<script src=/js/featherlight.min.js?1695778116></script>
-<script src=/js/highlight.min.js?1695778116></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1695778116></script>
-<script src=/js/learn.js?1695778116></script>
-<script src=/js/hugo-learn.js?1695778116></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1695793659></script>
+<script src=/js/perfect-scrollbar.min.js?1695793659></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1695793659></script>
+<script src=/js/jquery.sticky.js?1695793659></script>
+<script src=/js/featherlight.min.js?1695793659></script>
+<script src=/js/highlight.min.js?1695793659></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1695793659></script>
+<script src=/js/learn.js?1695793659></script>
+<script src=/js/hugo-learn.js?1695793659></script></body></html>

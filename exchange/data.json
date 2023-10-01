@@ -2,7 +2,7 @@
     {
         "title": "Windows.Detection.WS_FTP",
         "author": "mgreen27",
-        "description": "This is an artifact to detect exploitation of a MoveIt WS_FTP critical \nvulnerability observed in the wild. CVE-2023-34362",
+        "description": "This is an artifact to detect exploitation of a MoveIt WS_FTP critical \nvulnerability observed in the wild.",
         "link": "/exchange/artifacts/pages/ws_ftp",
         "tags": [],
         "author_link": "https://github.com/mgreen27",

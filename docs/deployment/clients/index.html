@@ -1,4 +1,4 @@
-<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.119.0"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Deploying Clients :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1696194808 rel=stylesheet><link href=/css/fontawesome-all.min.css?1696194808 rel=stylesheet><link href=/css/featherlight.min.css?1696194808 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1696194808 rel=stylesheet><link href=/css/auto-complete.css?1696194808 rel=stylesheet><link href=/css/theme.css?1696194808 rel=stylesheet><link href=/css/tabs.css?1696194808 rel=stylesheet><link href=/css/hugo-theme.css?1696194808 rel=stylesheet><link href=/css/theme-mine.css?1696194808 rel=stylesheet><link href=/css/dark.css?1696194808 rel=stylesheet><link href=/css/syntax.css?1696194808 rel=stylesheet><link href=/css/light.css?1696194808 rel=stylesheet><link href=/css/hljs.css?1696194808 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1696194808 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1696194808></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
+<!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.119.0"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Deploying Clients :: Velociraptor - Digging deeper!</title><link href=/css/nucleus.css?1696217500 rel=stylesheet><link href=/css/fontawesome-all.min.css?1696217500 rel=stylesheet><link href=/css/featherlight.min.css?1696217500 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1696217500 rel=stylesheet><link href=/css/auto-complete.css?1696217500 rel=stylesheet><link href=/css/theme.css?1696217500 rel=stylesheet><link href=/css/tabs.css?1696217500 rel=stylesheet><link href=/css/hugo-theme.css?1696217500 rel=stylesheet><link href=/css/theme-mine.css?1696217500 rel=stylesheet><link href=/css/dark.css?1696217500 rel=stylesheet><link href=/css/syntax.css?1696217500 rel=stylesheet><link href=/css/light.css?1696217500 rel=stylesheet><link href=/css/hljs.css?1696217500 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1696217500 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1696217500></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script>
 <script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script>
 <script></script></head><body data-url=/docs/deployment/clients/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
@@ -70,7 +70,7 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/docs/deployment/clients/_index.md target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i></a></span>
 <span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>Deploying Clients</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#running-clients-interactively>Running clients interactively</a></li><li><a href=#installing-an-msi>Installing an MSI</a><ul><li><a href=#official-release-msi>Official release MSI</a></li><li><a href=#repacking-client-configuration-into-the-windows-msi>Repacking client configuration into the Windows MSI</a></li><li><a href=#installing-using-custom-msi-package>Installing using custom MSI package</a></li></ul></li><li><a href=#installing-the-client-as-a-service>Installing the client as a service</a><ul><li><a href=#windows>Windows</a></li><li><a href=#mac>Mac</a></li><li><a href=#linux>Linux</a></li></ul></li><li><a href=#agentless-deployment>Agentless deployment</a><ul><li></li></ul></li><li><a href=#client-upgrades>Client upgrades</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Deploying Clients</h1><p>Velociraptor endpoint agents are called <code>clients</code>. Clients connect to
+<span class=links>Deploying Clients</span></div><div class=progress><div class=wrapper><nav id=TableOfContents><ul><li><a href=#running-clients-interactively>Running clients interactively</a></li><li><a href=#installing-an-msi>Installing an MSI</a><ul><li><a href=#official-release-msi>Official release MSI</a></li><li><a href=#installing-using-custom-msi-package>Installing using custom MSI package</a></li></ul></li><li><a href=#installing-the-client-as-a-service>Installing the client as a service</a><ul><li><a href=#windows>Windows</a></li><li><a href=#mac>Mac</a></li><li><a href=#linux>Linux</a></li></ul></li><li><a href=#agentless-deployment>Agentless deployment</a><ul><li></li></ul></li><li><a href=#client-upgrades>Client upgrades</a></li></ul></nav></div></div></div></div><div id=head-tags></div><div id=body-inner><h1>Deploying Clients</h1><p>Velociraptor endpoint agents are called <code>clients</code>. Clients connect to
 the server and wait for instructions, which mostly consist of VQL
 statements, then run any VQL queries and return the result to the
 server.</p><p>There are several ways to run clients, depending on your
@@ -100,23 +100,16 @@ identify the location of the server, we can&rsquo;t package the
 configuration file in the official release. Therefore, the official
 MSI does not include a valid configuration file. You will need to
 modify the MSI to pack your configuration file (that was generated
-earlier) into it.</p><p>The official release installs the Velociraptor executable into
+earlier) into it.</p><p>The easiest way to configure the MSI package is via the
+<code>Server.Utils.CreateMSI</code> server artifact. After gaining access to the
+Velociraptor web GUI, simply switch the relevant Organization, then
+select <code>Server Artifacts</code> from the sidebar. Then add a new collection,
+search for <code>Server.Utils.CreateMSI</code> and click launch. The produced MSI
+will be available in the <code>Uploaded Files</code> tab.</p><p>The official release installs the Velociraptor executable into
 <code>C:\Program Files\Velociraptor\</code> then creates a new Windows service
 that points to this executable and starts automatically at boot
 time. If an existing Velociraptor service is already installed, it
-will be overwritten.</p><p>When the service starts, it attempts to load the configuration file
-from <code>C:\Program Files\Velociraptor\client.config.yaml</code>.</p><p>By default, the official MSI comes bundled with an invalid
-configuration file which is placed at the above location. This means
-that just installing the official MSI will create a service which is
-unable to fully start. It is possible to overwrite the
-<code>client.config.yaml</code> file at any time to have the service start
-fully. You can arrange for the file to be written using SCCM scheduled
-tasks or other administrative methods.</p><h3 id=repacking-client-configuration-into-the-windows-msi>Repacking client configuration into the Windows MSI</h3><p>By far the easiest method is to update the MSI with the customized
-<code>client.config.yaml</code>. We call this process <code>repacking</code> the MSI because
-we do not need to build a new MSI from scratch we only replace the
-config file in the official MSI.</p><p>You can repack the MSI like this (Even from linux):</p><pre><code>velociraptor-v0.6.7-4-linux-amd64 config repack --msi velociraptor-v0.6.7-4-windows-amd64.msi client.config.yaml output.msi
-</code></pre><p>The above command will repack the provided client.config.yaml into the
-official MSI and write out a new MSI file.</p><p><figure><img src=repacking.png alt="Building custom MSI" class=captioned><figcaption>Building custom MSI</figcaption></figure></p><div class="mynotices note"><div heading=" Resigning the repacked MSI "><p>Modifying the MSI file will invalidate its digital signature. While
+will be overwritten.</p><div class="mynotices note"><div heading=" Resigning the repacked MSI "><p>Modifying the MSI file will invalidate its digital signature. While
 the packaged Velociraptor binary inside the MSI is officially signed
 by the Velociraptor Team, we highly recommend the MSI also be signed
 by a valid code signing certificate.</p></div></div><h3 id=installing-using-custom-msi-package>Installing using custom MSI package</h3><p>If you wish to customize the MSI from scratch (e.g. change name of
@@ -124,7 +117,7 @@ service, install locations etc). You will need to use the Wix
 Framework to build a new MSI.</p><p>Velociraptor already includes a Wix Framework configuration files that
 create a proper custom MSI with embedded configuration. You can also
 customize this Wix file to specify a different service name,
-destination location etc.</p><p>To do so, follow follow the instructions
+destination location etc.</p><p>To do so, follow the instructions
 <a href=https://github.com/Velocidex/velociraptor/tree/master/docs/wix>here</a></p><p>To summarize the process, you will need to:</p><ol><li>Download the Velociraptor repository to a Windows host. Specifically,
 you need to copy the appropriate custom XML file and build batch file
 from the <code>docs/wix</code> directory into a new working directory on your host.</li></ol><p><figure><img src=image34.png alt="Extracting Wix files" class=captioned><figcaption>Extracting Wix files</figcaption></figure></p><ol start=2><li>Update the custom XML for your installation. The README file from
@@ -141,9 +134,9 @@ command:</p><pre><code class=language-shell># velociraptor.exe --config client.c
 configuration file under <code>Client.windows_installer</code>. You can also
 change the name of the binary and the service name if you wish.</p><div class="mynotices note"><div heading=" Installing the service directly "><p>Although Velociraptor supports installing the service directly as
 described above, this is not actually the recommended method. We
-recommend using the MSI as described above instead.</p><p>One common problem with installing the service is the difficulty in
-uninstalling without the MSI infrastructure being able to clean up old
-files.</p></div></div><h3 id=mac>Mac</h3><p>The <code>service install</code> directive can be used to install Velociraptor on
+recommend using the MSI as described above instead.</p><p>One common problem with installing the service in this way, is the
+difficulty in uninstalling without the MSI infrastructure being able
+to clean up old files.</p></div></div><h3 id=mac>Mac</h3><p>The <code>service install</code> directive can be used to install Velociraptor on
 Mac client. The following command installs binary & config to /usr/local/sbin.
 Persistence is via launchd (check with <code>ps -eaf | grep velo</code> and
 <code>sudo launchctl list | grep velo</code>)</p><pre><code class=language-shell># velociraptor --config client.config.yaml service install
@@ -244,12 +237,12 @@ would appear to never complete it (in the GUI the flow looks
 hung). This is OK and part of the upgrade process.</p></div></div><p>To verify that clients are upgraded we recommend running the
 <code>Generic.Client.Info</code> hunt periodically. This hunt will refresh the
 server&rsquo;s datastore of client details (including reporting the client&rsquo;s
-version).</p><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1696194808></script>
-<script src=/js/perfect-scrollbar.min.js?1696194808></script>
-<script src=/js/perfect-scrollbar.jquery.min.js?1696194808></script>
-<script src=/js/jquery.sticky.js?1696194808></script>
-<script src=/js/featherlight.min.js?1696194808></script>
-<script src=/js/highlight.min.js?1696194808></script>
-<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1696194808></script>
-<script src=/js/learn.js?1696194808></script>
-<script src=/js/hugo-learn.js?1696194808></script></body></html>
+version).</p><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1696217500></script>
+<script src=/js/perfect-scrollbar.min.js?1696217500></script>
+<script src=/js/perfect-scrollbar.jquery.min.js?1696217500></script>
+<script src=/js/jquery.sticky.js?1696217500></script>
+<script src=/js/featherlight.min.js?1696217500></script>
+<script src=/js/highlight.min.js?1696217500></script>
+<script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1696217500></script>
+<script src=/js/learn.js?1696217500></script>
+<script src=/js/hugo-learn.js?1696217500></script></body></html>

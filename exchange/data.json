@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Timeline.Prefetch.Improved",
+        "author": "scudette",
+        "description": "NOTE: This is a fixed version of Windows.Timeline.Prefetch which is\navailable in the release binary after 0.7.0-3.",
+        "link": "/exchange/artifacts/pages/windows.timeline.prefetch.improved",
+        "tags": [],
+        "author_link": "https://github.com/scudette",
+        "author_avatar": "https://avatars.githubusercontent.com/u/3856546?v=4",
+        "date": "2023-10-02"
+    },
+    {
         "title": "Windows.Detection.WS_FTP",
         "author": "mgreen27",
         "description": "This is an artifact to detect exploitation of a Progress Software's WS_FTP \ncritical vulnerability observed in the wild.",

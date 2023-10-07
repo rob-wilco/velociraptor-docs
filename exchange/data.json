@@ -442,7 +442,7 @@
     {
         "title": "Generic.Collection.UAC",
         "author": "tclahr",
-        "description": "This artifact leverages UAC (Unix-like Artifacts Collector)\nto collect artifacts from Unix-like systems, then uploads the\noutput to the Velociraptor server.\n",
+        "description": "This artifact leverages UAC (Unix-like Artifacts Collector) to collect artifacts\nfrom Unix-like systems, and then upload the output to the Velociraptor server.\n",
         "link": "/exchange/artifacts/pages/generic.collection.uac",
         "tags": [],
         "author_link": "https://github.com/tclahr",

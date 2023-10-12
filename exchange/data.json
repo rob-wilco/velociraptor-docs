@@ -1,5 +1,15 @@
 [
     {
+        "title": "Linux.Network.NM.Connections",
+        "author": "misje",
+        "description": "NetworkManager is a popular high-level interface for configuring\nnetworks in Linux systems, in particular Ubuntu and other Debian-based\nflavours. This artifact lists the NetworkManager state, all configured\nconnections and their settings, as well as when the connections were\nlast activated. A list of BSSIDs per connection is also retrieved.",
+        "link": "/exchange/artifacts/pages/linux.network.nm.connections",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-10-12"
+    },
+    {
         "title": "Windows.Timeline.Prefetch.Improved",
         "author": "scudette",
         "description": "NOTE: This is a fixed version of Windows.Timeline.Prefetch which is\navailable in the release binary after 0.7.0-3.",

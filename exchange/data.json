@@ -1,5 +1,15 @@
 [
     {
+        "title": "IPCheck.Virustotal",
+        "author": "AdrianX21",
+        "description": "Submit a IP to Virustotal. Default Public API restriction is 4 requests/min (Inspired on Virustotal file Check created by Wes Lambert -- @therealwlambert).",
+        "link": "/exchange/artifacts/pages/ipcheck.virustotal",
+        "tags": [],
+        "author_link": "https://github.com/AdrianX21",
+        "author_avatar": "https://avatars.githubusercontent.com/u/147482138?v=4",
+        "date": "2023-10-19"
+    },
+    {
         "title": "Linux.Network.NM.Connections",
         "author": "misje",
         "description": "NetworkManager is a popular high-level interface for configuring\nnetworks in Linux systems, in particular Ubuntu and other Debian-based\nflavours. This artifact lists the NetworkManager state, all configured\nconnections and their settings, as well as when the connections were\nlast activated. A list of BSSIDs per connection is also retrieved.",

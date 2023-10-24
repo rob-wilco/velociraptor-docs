@@ -968,7 +968,7 @@
     {
         "title": "Windows.Detection.Termsrv",
         "author": "mgreen27",
-        "description": "This artifact detects patched TerminalService / Remote Desktop (RDP) dynamic link library - \ntermsrv.dll.",
+        "description": "This artifact detects patched TerminalService / Remote Desktop (RDP) dynamic link library or ServiceDll - \ntermsrv.dll.",
         "link": "/exchange/artifacts/pages/termsrv",
         "tags": [],
         "author_link": "https://github.com/mgreen27",

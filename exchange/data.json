@@ -10,6 +10,16 @@
         "date": "2023-10-29"
     },
     {
+        "title": "Linux.Detection.IncorrectPermissions",
+        "author": "misje",
+        "description": "NOTE: Requires velociraptor 0.7.1 or higher. \u2013 Alternatively, import the\nartifact dependency Linux.Sys.Groups manually into your installation.",
+        "link": "/exchange/artifacts/pages/linux.detection.incorrectpermissions",
+        "tags": [],
+        "author_link": "https://github.com/misje",
+        "author_avatar": "https://avatars.githubusercontent.com/u/4006538?v=4",
+        "date": "2023-10-29"
+    },
+    {
         "title": "Windows.Forensics.UEFI",
         "author": "mgreen27",
         "description": "This artifact enables disk analysis over an EFI System Partition (ESP).",

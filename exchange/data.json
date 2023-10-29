@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Forensics.UEFI.BootApplication",
+        "author": "mgreen27",
+        "description": "This artifact parses Windows MeasuredBoot TCGLogs to extract PathName of \nEV_EFI_Boot_Services_Application events, which can assist detection of \npotential ESP based persistance.  ",
+        "link": "/exchange/artifacts/pages/bootapplication",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-10-29"
+    },
+    {
         "title": "Windows.Forensics.UEFI",
         "author": "mgreen27",
         "description": "This artifact enables disk analysis over an EFI System Partition (ESP).",

@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Detection.Network.Changed",
+        "author": "zaneGittins",
+        "description": "Detects when a new network is added or removed from the system via the NetworkList registry keys.\n",
+        "link": "/exchange/artifacts/pages/windows.detection.network.changed",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-03"
+    },
+    {
         "title": "Linux.Memory.AVML",
         "author": "Zawadidone",
         "description": "Acquires a full memory image in LiME output format. We download\navml and use it to acquire a full memory image.\nNOTE: This artifact usually transfers a lot of data. You should\nincrease the default timeout to allow it to complete.\n",

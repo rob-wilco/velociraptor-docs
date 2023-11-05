@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Sys.LoggedInUsers",
+        "author": "zaneGittins",
+        "description": "Get all currently logged in users via WMI.\n",
+        "link": "/exchange/artifacts/pages/windows.sys.loggedinusers",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
+        "date": "2023-11-05"
+    },
+    {
         "title": "Server.Utils.ScheduledDeletion",
         "author": "zaneGittins",
         "description": "Schedules Server.Utils.DeleteMonitoringData to cleanup server monitoring data.\n",

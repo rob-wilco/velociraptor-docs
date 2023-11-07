@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Applications.FreeFileSync",
+        "author": "freeze-syn",
+        "description": "This artefact can be used to retrieve and parse some GoodSync file in order to:\n- Identify the latest account used to transfer data and the remote ip adresse destination in the case of SFTP protocol with the qeury GlobalInfo\n- Identify the latest transfered files with Latest Data Transfer\n- Identify the presence of others interesting logs about previous or attempt of files transfer",
+        "link": "/exchange/artifacts/pages/windows.applications.freefilesync",
+        "tags": [],
+        "author_link": "https://github.com/freeze-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/144700084?v=4",
+        "date": "2023-11-07"
+    },
+    {
         "title": "Windows.Sys.LoggedInUsers",
         "author": "zaneGittins",
         "description": "Get all currently logged in users via WMI.\n",

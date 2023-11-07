@@ -10,6 +10,16 @@
         "date": "2023-11-07"
     },
     {
+        "title": "Windows.Applications.GoodSync",
+        "author": "freeze-syn",
+        "description": "This artefact can be used to retrieve and parse some GoodSync file in order to\n- identify configured Good Sync account;\n- identify data and time of transfered files.",
+        "link": "/exchange/artifacts/pages/windows.applications.goodsync",
+        "tags": [],
+        "author_link": "https://github.com/freeze-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/144700084?v=4",
+        "date": "2023-11-07"
+    },
+    {
         "title": "Windows.Sys.LoggedInUsers",
         "author": "zaneGittins",
         "description": "Get all currently logged in users via WMI.\n",

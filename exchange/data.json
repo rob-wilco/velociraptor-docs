@@ -1,5 +1,25 @@
 [
     {
+        "title": "Server.Import.WatchLocalDirectory",
+        "author": "bmcder02",
+        "description": "This is an artifact that will monitor a local path for collections, \nwhich it will then ingest. \n",
+        "link": "/exchange/artifacts/pages/server.import.watchlocaldirectory",
+        "tags": [],
+        "author_link": "https://github.com/bmcder02",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90826967?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Server.Import.WatchS3Directory",
+        "author": "bmcder02",
+        "description": "This is an artifact that will monitor an S3 path for collections, \nwhich it will then ingest. \n",
+        "link": "/exchange/artifacts/pages/server.import.watchs3directory",
+        "tags": [],
+        "author_link": "https://github.com/bmcder02",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90826967?v=4",
+        "date": "2023-11-09"
+    },
+    {
         "title": "Windows.Detection.SysAid",
         "author": "mgreen27",
         "description": "This artifact detects artifacts associated with post exploitation activity of \nLaceTempest related to the SysAid 0day.",
@@ -7,6 +27,16 @@
         "tags": [],
         "author_link": "https://github.com/mgreen27",
         "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-11-09"
+    },
+    {
+        "title": "Windows.Sys.BitLocker",
+        "author": "zaneGittins",
+        "description": "This artifact gets all Bitlocker volumes using PowerShell, including the recovery password.\n",
+        "link": "/exchange/artifacts/pages/windows.sys.bitlocker",
+        "tags": [],
+        "author_link": "https://github.com/zaneGittins",
+        "author_avatar": "https://avatars.githubusercontent.com/u/22203776?v=4",
         "date": "2023-11-09"
     },
     {

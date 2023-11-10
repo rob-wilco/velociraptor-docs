@@ -22,7 +22,7 @@
     {
         "title": "Windows.Detection.SysAid",
         "author": "mgreen27",
-        "description": "This artifact detects artifacts associated with post exploitation activity of \nLaceTempest related to the SysAid 0day.",
+        "description": "Detects artifacts associated with post exploitation activity of \nLaceTempest related to the SysAid 0day.",
         "link": "/exchange/artifacts/pages/sysaid",
         "tags": [],
         "author_link": "https://github.com/mgreen27",

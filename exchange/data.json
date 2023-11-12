@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Detection.EffluenceWebshell",
+        "author": "mgreen27",
+        "description": "This artifact detects Effluence Webshell observed deployed during exploitation \nof Atlassian Confluence CVE-2023-22515.\n",
+        "link": "/exchange/artifacts/pages/effluencewebshell",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2023-11-12"
+    },
+    {
         "title": "Server.Import.WatchLocalDirectory",
         "author": "bmcder02",
         "description": "This is an artifact that will monitor a local path for collections, \nwhich it will then ingest. \n",

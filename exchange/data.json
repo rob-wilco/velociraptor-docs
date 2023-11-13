@@ -1,6 +1,6 @@
 [
     {
-        "title": "Windows.Detection.EffluenceWebshell",
+        "title": "Generic.Detection.EffluenceWebshell",
         "author": "mgreen27",
         "description": "This artifact detects Effluence Webshell observed deployed during exploitation \nof Atlassian Confluence CVE-2023-22515.\n",
         "link": "/exchange/artifacts/pages/effluencewebshell",

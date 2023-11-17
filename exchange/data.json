@@ -110,7 +110,7 @@
         "date": "2023-10-31"
     },
     {
-        "title": "Custom.Windows.Services.Hijacking",
+        "title": "Windows.Services.Hijacking",
         "author": "Sam0rai",
         "description": "Service Executable Hijacking is a misconfiguration flaw, where a service runs an executable which has \noverly permissive permissions on it (for example: \"Full Control\" permissions to \"Authenticated Users\").\nIf a service runs under the security context of a user with high permissions (such as: NT Authority\\SYSTEM), \nand an attacker with low privileges is able to modify the executable that service is running (such as \nreplacing it with their own) - the service could run that executable with high privileges.",
         "link": "/exchange/artifacts/pages/windows.services.hijacking",

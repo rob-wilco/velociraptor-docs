@@ -1461,7 +1461,7 @@
     {
         "title": "MacOS.Forensics.FSEvents",
         "author": "scudette",
-        "description": "This artifact parses the FSEvents log files.\n",
+        "description": "This artifact parses the FSEvents log files.",
         "link": "/exchange/artifacts/pages/macos.forensics.fsevents",
         "tags": [],
         "author_link": "https://github.com/scudette",

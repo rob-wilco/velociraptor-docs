@@ -1,5 +1,5 @@
 <!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.120.4"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Detection.Yara.UEFI :: Velociraptor - Digging deeper!</title>
-<link href=/css/nucleus.css?1700616823 rel=stylesheet><link href=/css/fontawesome-all.min.css?1700616823 rel=stylesheet><link href=/css/featherlight.min.css?1700616823 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1700616823 rel=stylesheet><link href=/css/auto-complete.css?1700616823 rel=stylesheet><link href=/css/theme.css?1700616823 rel=stylesheet><link href=/css/tabs.css?1700616823 rel=stylesheet><link href=/css/hugo-theme.css?1700616823 rel=stylesheet><link href=/css/theme-mine.css?1700616823 rel=stylesheet><link href=/css/dark.css?1700616823 rel=stylesheet><link href=/css/syntax.css?1700616823 rel=stylesheet><link href=/css/light.css?1700616823 rel=stylesheet><link href=/css/hljs.css?1700616823 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1700616823 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1700616823></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script><script></script></head><body data-url=/exchange/artifacts/pages/yara.uefi/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
+<link href=/css/nucleus.css?1701159836 rel=stylesheet><link href=/css/fontawesome-all.min.css?1701159836 rel=stylesheet><link href=/css/featherlight.min.css?1701159836 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1701159836 rel=stylesheet><link href=/css/auto-complete.css?1701159836 rel=stylesheet><link href=/css/theme.css?1701159836 rel=stylesheet><link href=/css/tabs.css?1701159836 rel=stylesheet><link href=/css/hugo-theme.css?1701159836 rel=stylesheet><link href=/css/theme-mine.css?1701159836 rel=stylesheet><link href=/css/dark.css?1701159836 rel=stylesheet><link href=/css/syntax.css?1701159836 rel=stylesheet><link href=/css/light.css?1701159836 rel=stylesheet><link href=/css/hljs.css?1701159836 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1701159836 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1701159836></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script><script></script></head><body data-url=/exchange/artifacts/pages/yara.uefi/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
 <a href=/announcements/2023-cves/>Current CVEs</a></div></li></ul></li><li data-nav-id=https://docs.velociraptor.app/docs/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/docs/><i class="fas fa-book-reader"></i>Documentation</a></div><ul><li data-nav-id=https://docs.velociraptor.app/docs/overview/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
@@ -133,6 +133,24 @@ parameters:
                 condition:
                     7 of them and filesize &lt; 181248
             }
+            rule MAL_Rootkit_CosmicStrand
+            {
+                meta:
+                	author = "Natalie Zargarov @ Rapid7"
+                    description = "CosmicStrand UEFI rootkit detection rule. Detects the compromised .efi driver "
+                    targeting = "process,efi"
+                    tags ="Rootkit"
+                strings:
+                    $trait_0 = {89 C6 53 89 D8 BB 3F B8 11 03}
+                    $trait_1 = {8B 3D 18 10 01 00 33 DB 8D 45 F8 50 53 53 6A 0B}
+                    $trait_2= {83 EC 4C 53 57 68 A0 10 01 00 8D 45 F8}
+                    $trait_3= {53 81 C7 FF 0F 00 00 68 54 44 55 00 81 E7 00 F0 FF FF 57 6A 01}
+                    $trait_4= {50 68 08 08 08 08 68 D0 43 DE DE 68 1F 96 00 00 BF E4 10 01 00}
+                    $string_0 = "winlogon.exe" 
+                condition:
+                    1 of ($trait_*) and 
+                    1 of ($string_*)
+            }
   - name: NumberOfHits
     description: This artifact will stop by default at one hit. This setting allows additional hits
     default: 1
@@ -185,7 +203,6 @@ sources:
       
       LET target_files = SELECT 
             StartOffset as PartitionOffset, PartitionSize,
-            --name as Name,
             OSPath,
             Size, Mtime, Atime, Ctime, Btime,
             Data.first_cluster as FirstCluster,
@@ -228,8 +245,7 @@ sources:
                                 then= Size,
                                 else= String.Offset + ContextBytes) ]
                         )) as HitContext
-            FROM yara( accessor='fat',start=FirstCluster,
-                    rules=yara_rules,files=OSPath,
+            FROM yara( accessor='fat', rules=yara_rules,files=OSPath,
                     context=ContextBytes,number=NumberOfHits )
         })
       
@@ -247,4 +263,4 @@ column_types:
   - name: HitContext
     type: preview_upload
 
-</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1700616823></script><script src=/js/perfect-scrollbar.min.js?1700616823></script><script src=/js/perfect-scrollbar.jquery.min.js?1700616823></script><script src=/js/jquery.sticky.js?1700616823></script><script src=/js/featherlight.min.js?1700616823></script><script src=/js/highlight.min.js?1700616823></script><script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1700616823></script><script src=/js/learn.js?1700616823></script><script src=/js/hugo-learn.js?1700616823></script></body></html>
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1701159836></script><script src=/js/perfect-scrollbar.min.js?1701159836></script><script src=/js/perfect-scrollbar.jquery.min.js?1701159836></script><script src=/js/jquery.sticky.js?1701159836></script><script src=/js/featherlight.min.js?1701159836></script><script src=/js/highlight.min.js?1701159836></script><script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1701159836></script><script src=/js/learn.js?1701159836></script><script src=/js/hugo-learn.js?1701159836></script></body></html>

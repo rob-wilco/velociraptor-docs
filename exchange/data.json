@@ -1621,7 +1621,7 @@
     {
         "title": "Windows.EventLogs.Bitsadmin",
         "author": "mgreen27",
-        "description": "This content will extract BITS Transfer events and enable filtering by URL\n",
+        "description": "This content will extract BITS Transfer events and enable filtering by URL \nand TLD.\n",
         "link": "/exchange/artifacts/pages/bitsadmin",
         "tags": [],
         "author_link": "https://github.com/mgreen27",

@@ -1,5 +1,15 @@
 [
     {
+        "title": "Generic.Detection.Confluence_CVE_2023_22527",
+        "author": "mgreen27",
+        "description": "This artifact detects evidence of exploitation of Confluence RCE CVE-2023-22527.",
+        "link": "/exchange/artifacts/pages/confluence_cve_2023_22527",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-01-26"
+    },
+    {
         "title": "Windows.Forensics.PersistenceSniper",
         "author": "ablescia",
         "description": "PersistenceSniper is a Powershell module that can be used by Blue Teams, Incident Responders and System Administrators to hunt persistences implanted in Windows machines. It is also available on Powershell Gallery and it is digitally signed with a valid code signing certificate. The tool is under active development with new releases coming out regularly, so make sure to use the up-to-date version. https://github.com/last-byte/PersistenceSniper",

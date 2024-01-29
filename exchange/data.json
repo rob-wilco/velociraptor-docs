@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Veeam.RestorePoints.MetadataFiles",
+        "author": "cybiosity-syn",
+        "description": "Parses the metadata found in Veeam backup chain metadata files (.vbm) to extract relevant fields for each Restore Point.",
+        "link": "/exchange/artifacts/pages/windows.veeam.restorepoints.metadatafiles",
+        "tags": [],
+        "author_link": "https://github.com/cybiosity-syn",
+        "author_avatar": "https://avatars.githubusercontent.com/u/158057079?v=4",
+        "date": "2024-01-29"
+    },
+    {
         "title": "Generic.Detection.Confluence_CVE_2023_22527",
         "author": "mgreen27",
         "description": "This artifact detects evidence of exploitation of Confluence RCE CVE-2023-22527.",

@@ -1,5 +1,15 @@
 [
     {
+        "title": "ArtifactExchange.Windows.Forensics.ThumbCache",
+        "author": "ydkhatri",
+        "description": "ThumbCache_xx.db parser. ",
+        "link": "/exchange/artifacts/pages/artifactexchange.windows.forensics.thumbcache",
+        "tags": [],
+        "author_link": "https://github.com/ydkhatri",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13247440?v=4",
+        "date": "2024-02-05"
+    },
+    {
         "title": "Windows.Veeam.RestorePoints.MetadataFiles",
         "author": "cybiosity-syn",
         "description": "Parses the metadata found in Veeam backup chain metadata files (.vbm) to extract relevant fields for each Restore Point.",

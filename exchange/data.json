@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Registry.ScheduledTasks",
+        "author": "mgreen27",
+        "description": "This artefact will collect Scheduled task information from the registry without \nrelying on the existance of an XML file in C:\\\\Windows\\\\System32\\\\Tasks.",
+        "link": "/exchange/artifacts/pages/scheduledtasks",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-02-12"
+    },
+    {
         "title": "Generic.Detection.Yara.SSH",
         "author": "mgreen27",
         "description": "This is a server artifact that enables running Generic.Detection.Yara.Glob \nover ssh.",

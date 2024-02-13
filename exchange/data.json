@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Mounted.Mass.Storage",
+        "author": "hasamba",
+        "description": "Find drives/usb mass storage that were mounted\n",
+        "link": "/exchange/artifacts/pages/windows.mounted.mass.storage",
+        "tags": [],
+        "author_link": "https://github.com/hasamba",
+        "author_avatar": "https://avatars.githubusercontent.com/u/7392290?v=4",
+        "date": "2024-02-13"
+    },
+    {
         "title": "Windows.Registry.ScheduledTasks",
         "author": "mgreen27",
         "description": "This artefact will collect Scheduled task information from the registry without \nrelying on the existance of an XML file in C:\\\\Windows\\\\System32\\\\Tasks.",

@@ -1,5 +1,15 @@
 [
     {
+        "title": "Generic.Detection.WebShells",
+        "author": "sec-hbaer",
+        "description": "This artifact looks for evidence of a web shell being present on the system. It targets Windows and Linux hosts.\nThe artifact should be run on web servers, be it dedicated web servers or systems with integrated web servers. \nFor such machines, find the root directory of the web server and change the artifact parameters as needed.",
+        "link": "/exchange/artifacts/pages/generic.detection.webshells",
+        "tags": [],
+        "author_link": "https://github.com/sec-hbaer",
+        "author_avatar": "https://avatars.githubusercontent.com/u/150132280?v=4",
+        "date": "2024-02-14"
+    },
+    {
         "title": "Windows.Forensics.Jumplists_JLECmd",
         "author": "orhan-emre",
         "description": "* Execute Eric Zimmerman's JLECmd to parse AUTOMATICDESTINATIONS-MS and CUSTOMDESTINATIONS-MS files in C:\\ drive recursively and return output for analysis. (jlecmd.exe -d C:/ --csvf -csv tmpdir results.csv).  \n* JLECmd.zip is downloaded from the URL to 'C:\\Program Files\\Velociraptor\\Tools' folder.   \n* JLECmd.zip can be uploaded to Velociraptor Server in order to copy it to the clients in case there is no internet connection.\n* Created using @carlos_cajigas LECmd VQL as a quide.  \n* JLECmd is a CLI tool for analyzing Custom Destinations jump list data. Learn more - https://github.com/EricZimmerman/JLECmd\n",

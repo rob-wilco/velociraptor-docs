@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Audit.CISCat_Lite",
+        "author": "ablescia",
+        "description": "This artifact runs the CISCat-Lite tool on the target machine and uploads the html output on the velociraptor server.",
+        "link": "/exchange/artifacts/pages/windows.audit.ciscat_lite",
+        "tags": [],
+        "author_link": "https://github.com/ablescia",
+        "author_avatar": "https://avatars.githubusercontent.com/u/90195154?v=4",
+        "date": "2024-02-18"
+    },
+    {
         "title": "Generic.Detection.WebShells",
         "author": "sec-hbaer",
         "description": "This artifact looks for evidence of a web shell being present on the system. It targets Windows and Linux hosts.\nThe artifact should be run on web servers, be it dedicated web servers or systems with integrated web servers. \nFor such machines, find the root directory of the web server and change the artifact parameters as needed.",

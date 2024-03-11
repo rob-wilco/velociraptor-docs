@@ -1,5 +1,5 @@
 <!doctype html><html lang=en class="js csstransforms3d"><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=generator content="Hugo 0.122.0"><meta name=description content><link rel=icon href=/images/favicon.png type=image/png><title>Windows.Forensics.UEFI :: Velociraptor - Digging deeper!</title>
-<link href=/css/nucleus.css?1709469149 rel=stylesheet><link href=/css/fontawesome-all.min.css?1709469149 rel=stylesheet><link href=/css/featherlight.min.css?1709469149 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1709469149 rel=stylesheet><link href=/css/auto-complete.css?1709469149 rel=stylesheet><link href=/css/theme.css?1709469149 rel=stylesheet><link href=/css/tabs.css?1709469149 rel=stylesheet><link href=/css/hugo-theme.css?1709469149 rel=stylesheet><link href=/css/theme-mine.css?1709469149 rel=stylesheet><link href=/css/dark.css?1709469149 rel=stylesheet><link href=/css/syntax.css?1709469149 rel=stylesheet><link href=/css/light.css?1709469149 rel=stylesheet><link href=/css/hljs.css?1709469149 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1709469149 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1709469149></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script><script></script></head><body data-url=/artifact_references/pages/windows.forensics.uefi/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
+<link href=/css/nucleus.css?1710164956 rel=stylesheet><link href=/css/fontawesome-all.min.css?1710164956 rel=stylesheet><link href=/css/featherlight.min.css?1710164956 rel=stylesheet><link href=/css/perfect-scrollbar.min.css?1710164956 rel=stylesheet><link href=/css/auto-complete.css?1710164956 rel=stylesheet><link href=/css/theme.css?1710164956 rel=stylesheet><link href=/css/tabs.css?1710164956 rel=stylesheet><link href=/css/hugo-theme.css?1710164956 rel=stylesheet><link href=/css/theme-mine.css?1710164956 rel=stylesheet><link href=/css/dark.css?1710164956 rel=stylesheet><link href=/css/syntax.css?1710164956 rel=stylesheet><link href=/css/light.css?1710164956 rel=stylesheet><link href=/css/hljs.css?1710164956 rel=stylesheet><link href=https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css?1710164956 rel=stylesheet><script src=/js/jquery-3.3.1.min.js?1710164956></script><style>:root #header+#content>#left>#rlblock_left{display:none!important}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-QYH72LMYCS"></script><script>var doNotTrack=!1;if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QYH72LMYCS",{anonymize_ip:!1})}</script><script>var doNotTrack=!1;doNotTrack||(window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","G-QYH72LMYCS","auto"),ga("send","pageview"))</script><script async src=https://www.google-analytics.com/analytics.js></script><script></script></head><body data-url=/artifact_references/pages/windows.forensics.uefi/><nav id=sidebar><div id=header-wrapper><div id=header><script>function darkmode(){$("body").addClass("dark").removeClass("light"),document.cookie="theme=darkmode;path=/"}function lightmode(){$("body").removeClass("dark").addClass("light"),document.cookie="theme=lightmode;path=/"}const regex=new RegExp("theme=darkmode");regex.test(document.cookie)?darkmode():lightmode()</script><div class="btn btn-default ThemeSelector darkmode" onclick=darkmode()><i class="fas fa-moon"></i></div><div class="btn btn-default ThemeSelector lightmode" onclick=lightmode()><i class="fas fa-sun"></i></div><a href=https://docs.velociraptor.app/><img src=https://docs.velociraptor.app//images/logo.svg></a></div></div><div class=highlightable><ul class=topics><li data-nav-id=https://docs.velociraptor.app/announcements/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/announcements/><i class="fas fa-bullhorn"></i>Announcements</a></div><ul><li data-nav-id=https://docs.velociraptor.app/announcements/2023-cves/ class=dd-item><div><i class="fa fa-circleXX fa-sm category-icon"></i>
 <a href=/announcements/2023-cves/>Current CVEs</a></div></li></ul></li><li data-nav-id=https://docs.velociraptor.app/docs/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
 <a href=/docs/><i class="fas fa-book-reader"></i>Documentation</a></div><ul><li data-nav-id=https://docs.velociraptor.app/docs/overview/ class="dd-item haschildren"><div><i class="fa fa-angle-right fa-sm category-icon"></i>
@@ -70,40 +70,85 @@
 <img src=/images/Rapid7_logo.svg class=rapid7><br><i class="fas fa-copyright"></i> 2022</div></section></div></nav><script>$("#sidebar i.fa-angle-right").each(function(){$(this).parent().parent().find("ul").hide()})</script><section id=body><div id=overlay></div><div class="padding highlightable"><div><div id=top-bar><div id=top-github-link><a class=github-link title='Edit this page' href=https://github.com/Velocidex/velociraptor-docs/edit/master/content/artifact_references/pages/windows.forensics.uefi.md target=blank><i class="fas fa-code-branch"></i>
 <span id=top-github-link-text>Edit this page</span></a></div><div id=breadcrumbs itemscope itemtype=http://data-vocabulary.org/Breadcrumb><span id=sidebar-toggle-span><a href=# id=sidebar-toggle data-sidebar-toggle><i class="fas fa-bars"></i>
 </a></span><span id=toc-menu><i class="fas fa-list-alt"></i></span>
-<span class=links>Windows.Forensics.UEFI</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.Forensics.UEFI</h1><p>Searches for an EFI partition in the current partition table and
-enumerates all files in it.</p><pre><code class=language-yaml>
+<span class=links>Windows.Forensics.UEFI</span></div><div class=progress><div class=wrapper><nav id=TableOfContents></nav></div></div></div></div><div id=head-tags><div class=tags><a class=tag-link href=/tags/client-artifact>Client Artifact</a></div></div><div id=body-inner><h1>Windows.Forensics.UEFI</h1><p>This artifact enables disk analysis over an EFI System Partition (ESP).</p><p>The artifact queries the specified pysical disk, parses the partition table
+to targets the ESPs File Allocation Table (FAT).</p><p>The default artifact returns file information, and PE enrichment as typical EFI files are in the PE format.</p><p>We can looks for anomalities in EFI such as:</p><ul><li>unexpected time stamps outside install / OS updates</li><li>unexpected paths (EFI/ is typically the root folder on this partition)</li><li>unexpected metadata: signer non microsoft or known vendor (note we expect non trusted certificates here as the authenticode api does not service ESP binaries)</li></ul><p>NOTE: default returns EFI files, rerun with <code>TargetGlob=**/*</code> glob and
+return all files.</p><pre><code class=language-yaml>
 name: Windows.Forensics.UEFI
+author: Matt Green - @mgreen27
 description: |
-  Searches for an EFI partition in the current partition table and
-  enumerates all files in it.
+  This artifact enables disk analysis over an EFI System Partition (ESP).
+
+  The artifact queries the specified pysical disk, parses the partition table
+  to targets the ESPs File Allocation Table (FAT).
+
+  The default artifact returns file information, and PE enrichment as typical EFI files are in the PE format.
+
+  We can looks for anomalities in EFI such as:
+
+  - unexpected time stamps outside install / OS updates
+  - unexpected paths (EFI/ is typically the root folder on this partition)
+  - unexpected metadata: signer non microsoft or known vendor (note we expect non trusted certificates here as the authenticode api does not service ESP binaries)
+
+  NOTE: default returns EFI files, rerun with ```TargetGlob=**/*``` glob and
+  return all files.
 
 parameters:
   - name: ImagePath
-    default: "\\\\?\\GLOBALROOT\\Device\\Harddisk0\\DR0"
+    default: \\.\PhysicalDrive0
     description: Raw Device for main disk containing partition table to parse.
   - name: SectorSize
     type: int
     default: 512
+  - name: TargetGlob
+    default: "**/*.efi"
+  - name: DISABLE_DANGEROUS_API_CALLS
+    type: bool
+    description: |
+      Enable this to disable potentially flakey APIs which may cause
+      crashes.
 
 sources:
 - query: |
-    SELECT * FROM foreach(row={
-       SELECT *, Size AS PartitionSize
+      LET find_efi = SELECT StartOffset,EndOffset,
+            Size AS PartitionSize,
+            name AS PartitionName
        FROM Artifact.Windows.Forensics.PartitionTable(
           ImagePath=ImagePath, SectorSize=SectorSize)
-      WHERE name =~ "EFI"
+      WHERE PartitionName =~ "EFI"
 
-    }, query={
-       SELECT StartOffset, PartitionSize, name,
-              OSPath.Path AS OSPath, Size, Mtime, Atime, Ctime, Data
-       FROM glob(globs="/*",
-          accessor="fat",
-          root=pathspec(
-            DelegateAccessor="offset",
-            DelegatePath=pathspec(
-               DelegateAccessor="raw_file",
-               DelegatePath=ImagePath,
-               Path=format(format="%d", args=StartOffset))))
-    })
+      LET find_files = SELECT * FROM foreach(row=find_efi,
+        query={
+            SELECT *,
+                StartOffset as PartitionOffset,
+                PartitionSize,
+                PartitionName
+            FROM glob(globs=TargetGlob,
+                accessor="fat",
+                root=pathspec(
+                    DelegateAccessor="offset",
+                    DelegatePath=pathspec(
+                        DelegateAccessor="raw_file",
+                        DelegatePath=ImagePath,
+                        Path=format(format="%d", args=StartOffset))))
+        })
 
-</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1709469149></script><script src=/js/perfect-scrollbar.min.js?1709469149></script><script src=/js/perfect-scrollbar.jquery.min.js?1709469149></script><script src=/js/jquery.sticky.js?1709469149></script><script src=/js/featherlight.min.js?1709469149></script><script src=/js/highlight.min.js?1709469149></script><script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1709469149></script><script src=/js/learn.js?1709469149></script><script src=/js/hugo-learn.js?1709469149></script></body></html>
+      SELECT
+        dict(
+            ImagePath=ImagePath,
+            PartitionOffset=PartitionOffset,
+            PartitionSize=PartitionSize,
+            PartitionName=PartitionName
+                ) as Partition,
+        OSPath.Path as OSPath,
+        Size, Mtime, Atime, Ctime, Btime,
+        Data.first_cluster as FirstCluster,
+        Data.attr AS Attr,
+        Data.deleted as IsDeleted,
+        Data.short_name AS ShortName,
+        hash(accessor='fat',path=OSPath) as Hash,
+        magic(accessor='fat',path=OSPath) as Magic,
+        parse_pe(accessor='fat',file=OSPath) as PEInfo,
+        authenticode(accessor='fat',filename=OSPath) as Authenticode
+      FROM find_files
+
+</code></pre><footer class=footline></footer></div></div></section><div style=left:-1000px;overflow:scroll;position:absolute;top:-1000px;border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px><div style=border:none;box-sizing:content-box;height:200px;margin:0;padding:0;width:200px></div></div><script src=/js/clipboard.min.js?1710164956></script><script src=/js/perfect-scrollbar.min.js?1710164956></script><script src=/js/perfect-scrollbar.jquery.min.js?1710164956></script><script src=/js/jquery.sticky.js?1710164956></script><script src=/js/featherlight.min.js?1710164956></script><script src=/js/highlight.min.js?1710164956></script><script>hljs.highlightAll()</script><script src=/js/modernizr.custom-3.6.0.js?1710164956></script><script src=/js/learn.js?1710164956></script><script src=/js/hugo-learn.js?1710164956></script></body></html>

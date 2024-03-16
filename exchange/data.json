@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Forensics.ThumbCache",
+        "author": "mgreen27",
+        "description": "ThumbCache_xx.db parser. ",
+        "link": "/exchange/artifacts/pages/thumbcache",
+        "tags": [],
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-03-16"
+    },
+    {
         "title": "Windows.Forensics.TabState",
         "author": "mgreen27",
         "description": "This artifact parses notepad TabState files in available in Windows 11.",
@@ -78,16 +88,6 @@
         "author_link": "https://github.com/mgreen27",
         "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
         "date": "2024-02-06"
-    },
-    {
-        "title": "ArtifactExchange.Windows.Forensics.ThumbCache",
-        "author": "ydkhatri",
-        "description": "ThumbCache_xx.db parser. ",
-        "link": "/exchange/artifacts/pages/artifactexchange.windows.forensics.thumbcache",
-        "tags": [],
-        "author_link": "https://github.com/ydkhatri",
-        "author_avatar": "https://avatars.githubusercontent.com/u/13247440?v=4",
-        "date": "2024-02-05"
     },
     {
         "title": "Windows.Veeam.RestorePoints.MetadataFiles",

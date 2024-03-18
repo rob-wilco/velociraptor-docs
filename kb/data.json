@@ -1,6 +1,6 @@
 [
     {
-        "title": "How do I enable password protected downloads?",
+        "title": "How do I enable password protected VFS downloads?",
         "link": "/knowledge_base/tips/download_password",
         "tags": [
             "password",
@@ -8,8 +8,8 @@
             "gui"
         ],
         "author": "mgreen27",
-        "author_link": "https://github.com/mgreen27",
         "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "author_link": "https://github.com/mgreen27",
         "date": "2024-03-18"
     },
     {

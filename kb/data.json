@@ -1,5 +1,18 @@
 [
     {
+        "title": "How do I enable password protected downloads?",
+        "link": "/knowledge_base/tips/download_password",
+        "tags": [
+            "password",
+            "download",
+            "gui"
+        ],
+        "author": "mgreen27",
+        "author_link": "https://github.com/mgreen27",
+        "author_avatar": "https://avatars.githubusercontent.com/u/13081800?v=4",
+        "date": "2024-03-18"
+    },
+    {
         "title": "How do you generate random characters?",
         "link": "/knowledge_base/tips/random",
         "tags": [

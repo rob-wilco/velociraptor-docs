@@ -172,7 +172,7 @@
     {
         "title": "Windows.Applications.FreeFileSync",
         "author": "freeze-syn",
-        "description": "This artefact can be used to retrieve and parse some GoodSync file in order to:\n- Identify the latest account used to transfer data and the remote ip adresse destination in the case of SFTP protocol with the qeury GlobalInfo\n- Identify the latest transfered files with Latest Data Transfer\n- Identify the presence of others interesting logs about previous or attempt of files transfer",
+        "description": "This artefact can be used to retrieve and parse some FreeFileSync file in order to:\n- Identify the latest account used to transfer data and the remote ip adresse destination in the case of SFTP protocol with the qeury GlobalInfo\n- Identify the latest transfered files with Latest Data Transfer\n- Identify the presence of others interesting logs about previous or attempt of files transfer",
         "link": "/exchange/artifacts/pages/windows.applications.freefilesync",
         "tags": [],
         "author_link": "https://github.com/freeze-syn",

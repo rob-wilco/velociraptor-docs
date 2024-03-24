@@ -1,9 +1,29 @@
 [
     {
+        "title": "Windows.Forensics.AdvancedPortScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensics analysis of Angry IP Scanner usage on Windows platforms. This facilitates the identification of how Angry IP Scanner was configured and used, aiding in DFIR investigations. It examines registry keys HKEY_USERS\\\\*\\\\SOFTWARE\\\\Famatech\\\\advanced_port_scanner and HKEY_USERS\\\\*\\\\SOFTWARE\\\\Famatech\\\\advanced_port_scanner\\\\State for retrieve some informations about:\n   \n- run: Displays the version of Advanced Port Scanner\n- locale_timestamp: Indicates the time in EPOCH (UTC +0) at which the application was first launched\n- locale: Displays the language chosen for the graphical interface, may prove useful to have an idea of the native language of a threat actor (it is necessary to correlate with a modus operandi in order not to fall into the trap of a false flag)\n- LastPortsUsed: Displays the last ports used in the last scan\n- LastRangeUsed: Displays the last IP range used in the last scan\n- IpRangesMruList: Displays all the IP ranges scanned by the tool, the first digit of each prefix in this list indicates the frequency of scans for each range\n- PortsMruList: Displays all the ports that have been scanned by the tool, the first digit of each prefix in this list indicates the frequency of scans for each port\n- SearchMruList: Displays all the IP addresses or hostnames that have been searched using the GUI's \"search\" feature\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.advancedportscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
         "title": "Windows.Forensics.AngryIPScanner",
         "author": "y0sh1mitsu",
         "description": "This Velociraptor artifact is tailored for forensic analysis of Angry IP Scanner usage on Windows platforms. This facilitates the identification of how Angry IP Scanner was configured and used, aiding in DFIR investigations. It examines HKEY_USERS\\\\*\\\\SOFTWARE\\\\JavaSoft\\\\Prefs\\\\ipscan from the registry for retrieve some informations about:\n  \n  - language: Displays the language used in the GUI, may prove useful to have an idea of the language used by a threat actor (it is necessary to correlate with a modus operandi in order not to fall into the trap of a false flag)\n  - Version: Displays the version of Angry IP Scanner\n  - LastVersionCheck: Captures the last time (EPOCH format in UTC +0) when the application checked for an update\n  - PortScanConfiguration: Displays the selected ports for scanning\n",
         "link": "/exchange/artifacts/pages/windows.forensics.angryipscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
+        "title": "Windows.Forensics.SoftPerfectNetworkScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensic analysis of SoftPerfect Network Scanner (NetScan) usage on Windows platforms. This facilitates the identification of how SoftPerfect Network Scanner was configured and used, aiding in DFIR investigations. It parse the MFT to search and retrieve the content of two files:",
+        "link": "/exchange/artifacts/pages/windows.forensics.softperfectnetworkscanner",
         "tags": [],
         "author_link": "https://github.com/y0sh1mitsu",
         "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",

@@ -1,5 +1,15 @@
 [
     {
+        "title": "Windows.Forensics.AngryIPScanner",
+        "author": "y0sh1mitsu",
+        "description": "This Velociraptor artifact is tailored for forensic analysis of Angry IP Scanner usage on Windows platforms. This facilitates the identification of how Angry IP Scanner was configured and used, aiding in DFIR investigations. It examines HKEY_USERS\\\\*\\\\SOFTWARE\\\\JavaSoft\\\\Prefs\\\\ipscan from the registry for retrieve some informations about:\n  \n  - language: Displays the language used in the GUI, may prove useful to have an idea of the language used by a threat actor (it is necessary to correlate with a modus operandi in order not to fall into the trap of a false flag)\n  - Version: Displays the version of Angry IP Scanner\n  - LastVersionCheck: Captures the last time (EPOCH format in UTC +0) when the application checked for an update\n  - PortScanConfiguration: Displays the selected ports for scanning\n",
+        "link": "/exchange/artifacts/pages/windows.forensics.angryipscanner",
+        "tags": [],
+        "author_link": "https://github.com/y0sh1mitsu",
+        "author_avatar": "https://avatars.githubusercontent.com/u/62485373?v=4",
+        "date": "2024-03-24"
+    },
+    {
         "title": "Windows.Forensics.ThumbCache",
         "author": "mgreen27",
         "description": "ThumbCache_xx.db parser. ",

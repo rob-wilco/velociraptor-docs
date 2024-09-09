@@ -8,7 +8,7 @@ This workshop took place on the 22nd May 2024.
 
 This is an introductory workshop to Velociraptor covering basic GUI
 navigation, and using high level artifacts such as `SQLiteHunter`,
-`EvtxHunter`, `Registery Hunter` and `Sigma` to quickly triage an
+`EvtxHunter`, `Registry Hunter` and `Sigma` to quickly triage an
 endpoint in an incident.
 
 You can follow along by watching the below videos and reading the
